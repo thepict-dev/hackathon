@@ -110,9 +110,50 @@ public class PictVO extends PictDefaultVO {
 	private String board_type;
 	private String news;
 	private String reg_date_for;
+	private String file_1; 
+	private String file_2;
+	private String file_3;
+	private String file_4;
+	private String file_5;
+	private String del_idx;
 	
 	
-	
+	public String getDel_idx() {
+		return del_idx;
+	}
+	public void setDel_idx(String del_idx) {
+		this.del_idx = del_idx;
+	}
+	public String getFile_1() {
+		return file_1;
+	}
+	public void setFile_1(String file_1) {
+		this.file_1 = file_1;
+	}
+	public String getFile_2() {
+		return file_2;
+	}
+	public void setFile_2(String file_2) {
+		this.file_2 = file_2;
+	}
+	public String getFile_3() {
+		return file_3;
+	}
+	public void setFile_3(String file_3) {
+		this.file_3 = file_3;
+	}
+	public String getFile_4() {
+		return file_4;
+	}
+	public void setFile_4(String file_4) {
+		this.file_4 = file_4;
+	}
+	public String getFile_5() {
+		return file_5;
+	}
+	public void setFile_5(String file_5) {
+		this.file_5 = file_5;
+	}
 	public String getReg_date_for() {
 		return reg_date_for;
 	}

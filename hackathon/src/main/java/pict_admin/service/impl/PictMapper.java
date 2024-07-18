@@ -96,6 +96,8 @@ public interface PictMapper {
 
 	void board_delete(PictVO pictVO) throws Exception;
 
+	void board_att_del(PictVO pictVO) throws Exception;
+
 	//void attendance_update(PictVO pictVO) throws Exception;
 
 

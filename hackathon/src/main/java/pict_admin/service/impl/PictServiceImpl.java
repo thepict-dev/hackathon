@@ -216,6 +216,12 @@ public class PictServiceImpl extends EgovAbstractServiceImpl implements PictServ
 		
 	}
 
+	@Override
+	public void board_att_del(PictVO pictVO) throws Exception {
+		// TODO Auto-generated method stub
+		pictMapper.board_att_del(pictVO);
+	}
+
 //	@Override
 //	public void attendance_update(PictVO pictVO) throws Exception {
 //		pictMapper.attendance_update(pictVO);

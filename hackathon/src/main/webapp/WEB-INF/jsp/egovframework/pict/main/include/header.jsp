@@ -10,10 +10,16 @@
             <h1><a href="#lnk"></a></h1>
             <ul class="nav">
                 <li><a href="/intro.do">행사소개</a></li>
-                <li><a href="#lnk">멘토소개</a></li>
+                <li><a href="#lnk" onclick="fn_alert()">멘토소개</a></li>
                 <li><a href="/notice.do">행사소식</a></li>
             </ul>
         </div>
         <a href="#lnk">로그인</a>
     </div>
+    
+    <script>
+    	function fn_alert(){
+    		alert("해당 페이지는 추후 제공 예정입니다.");
+    	}
+    </script>
 </header>

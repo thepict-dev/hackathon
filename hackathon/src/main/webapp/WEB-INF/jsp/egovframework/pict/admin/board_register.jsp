@@ -32,6 +32,16 @@
 									</div>
 								</div>
 								
+								<div class="write-box">
+									<div class="write-item">
+										<label for="title" class="title">카테고리</label>
+										<select id="category" name="category" class="input opt-max-width-300">
+											<option value="1" <c:if test="${'1' eq pictVO.category}"> selected</c:if> >공지사항</option>
+											<option value="2" <c:if test="${'2' eq pictVO.category}"> selected</c:if> >보도자료</option>
+										</select>
+									</div>
+								</div>
+								
 								<div class="write-item">
 									<label for="title" class="title">내용</label>
 									<div class="input-box">

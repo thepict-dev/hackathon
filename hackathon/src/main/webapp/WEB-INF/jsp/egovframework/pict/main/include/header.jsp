@@ -7,14 +7,14 @@
 <header>
     <div class="headerInner">
         <div class="gnb">
-            <h1><a href="#lnk"></a></h1>
+            <h1><a href="/"></a></h1>
             <ul class="nav">
                 <li><a href="/intro.do">행사소개</a></li>
                 <li><a href="#lnk" onclick="fn_alert()">멘토소개</a></li>
                 <li><a href="/notice.do">행사소식</a></li>
             </ul>
         </div>
-        <a href="#lnk">로그인</a>
+        <a href="#lnk" onclick="fn_alert()">로그인</a>
     </div>
     
     <script>

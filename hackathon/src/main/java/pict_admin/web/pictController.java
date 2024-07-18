@@ -69,26 +69,33 @@ public class pictController {
 	}
 	//공지
 	@RequestMapping(value = "/notice.do")
-	public String notice(@ModelAttribute("searchVO") AdminVO adminVO, HttpServletRequest request, ModelMap model, HttpSession session, RedirectAttributes rttr) throws Exception {
-		
+	public String notice(@ModelAttribute("searchVO") PictVO pictVO, HttpServletRequest request, ModelMap model, HttpSession session, RedirectAttributes rttr) throws Exception {
+		pictVO.setCategory("1");
+		List<?> reference_list = pictService.board_list(pictVO);
+		model.addAttribute("resultList", reference_list);
 		return "pict/main/notice";
 	}
 	//공지뷰
 	@RequestMapping(value = "/notice_view.do")
-	public String notice_view(@ModelAttribute("searchVO") AdminVO adminVO, HttpServletRequest request, ModelMap model, HttpSession session, RedirectAttributes rttr) throws Exception {
-		
+	public String notice_view(@ModelAttribute("searchVO") PictVO pictVO, HttpServletRequest request, ModelMap model, HttpSession session, RedirectAttributes rttr) throws Exception {
+		pictVO = pictService.board_list_one(pictVO);
+		model.addAttribute("pictVO", pictVO);
 		return "pict/main/notice_view";
 	}
 	//뉴스
 	@RequestMapping(value = "/news.do")
-	public String news(@ModelAttribute("searchVO") AdminVO adminVO, HttpServletRequest request, ModelMap model, HttpSession session, RedirectAttributes rttr) throws Exception {
+	public String news(@ModelAttribute("searchVO") PictVO pictVO, HttpServletRequest request, ModelMap model, HttpSession session, RedirectAttributes rttr) throws Exception {
+		pictVO.setCategory("2");
+		List<?> reference_list = pictService.board_list(pictVO);
+		model.addAttribute("resultList", reference_list);
 		
 		return "pict/main/news";
 	}
 	//뉴스뷰
 	@RequestMapping(value = "/news_view.do")
-	public String news_view(@ModelAttribute("searchVO") AdminVO adminVO, HttpServletRequest request, ModelMap model, HttpSession session, RedirectAttributes rttr) throws Exception {
-		
+	public String news_view(@ModelAttribute("searchVO") PictVO pictVO, HttpServletRequest request, ModelMap model, HttpSession session, RedirectAttributes rttr) throws Exception {
+		pictVO = pictService.board_list_one(pictVO);
+		model.addAttribute("pictVO", pictVO);
 		return "pict/main/news_view";
 	}
 	

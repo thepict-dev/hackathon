@@ -35,6 +35,7 @@
 							        <table style="text-align : left">
 							        	<colgroup>
 							        		<col style="width:10%;">
+							        		<col style="width:10%;">
 							        		<col style="width:40%;">
 							        		<col style="width:20%;">
 							        		<col style="width:20%;">
@@ -42,6 +43,7 @@
 							            <thead>
 							                <tr class="thead">
 							                    <th>순서</th>
+							                    <th>카테고리</th>
 							                    <th>제목</th>
 							                    <th>등록일</th>
 							                    <th>삭제</th>
@@ -51,7 +53,10 @@
 								            <c:forEach var="resultList" items="${resultList}" varStatus="status">
 								                <tr>
 							                    	<td>${status.count}</td>
-							                    	
+							                    	<td>
+							                    		<c:if test="${resultList.category eq '1'}">공지사항</c:if>
+							                    		<c:if test="${resultList.category eq '2'}">보도자료</c:if>
+													</td>
 							                    	<td class="opt-tl"><a href="javascript:void(0);" onclick="board_mod('${resultList.idx}');" class="link">${resultList.title}</a></td>
 							                    	<td>${resultList.reg_date}</td>
 							                    	<td>

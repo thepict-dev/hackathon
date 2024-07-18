@@ -3,6 +3,7 @@
 <%@ taglib prefix="form"   uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="ui"     uri="http://egovframework.gov/ctl/ui"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 
 <!DOCTYPE html>
 <html lang="ko">
@@ -17,18 +18,18 @@
 	                <div class="viewContainer">
 	                    <div class="viewTop">
 	                        <div class="viewTitles">
-	                            <a href="/notice"><img src="/front_img/back.png" alt=""></a>
-	                            <p>SW융합 해커톤 대회 강원지역 참가팀 모집 공고</p>
+	                            <a href="/news.do"><img src="/front_img/back.png" alt=""></a>
+	                            <p>${pictVO.title}</p>
 	                        </div>
-	                        <p class="date">2024.07.15</p>
+	                        <p class="date">${fn:substring(pictVO.reg_date,0,11)}</p>
 	                    </div>
 	                    <div class="viewBottom">
-	                        <p>내용</p>
-	                        <img src="/front_img/poster1.png" alt="">
+	                        <p>${pictVO.text}</p>
+	                        <!--<img src="/front_img/poster1.png" alt=""> -->
 	                    </div>
 	                </div>
 	                <div class="buttonContainer">
-	                    <a href="/notice">목록으로</a>
+	                    <a href="/news.do">목록으로</a>
 	                </div>
 	            </div>
 	        </div>

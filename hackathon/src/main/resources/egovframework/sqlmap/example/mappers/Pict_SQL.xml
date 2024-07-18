@@ -4,10 +4,15 @@
 	
 	<select id="board_list" resultType="pictVO">
 		select * from board_table
+		where 1=1
 		<if test="search_text != null and search_text != '' ">
-			where (
+			and (
 				title LIKE CONCAT('%', #{search_text}, '%')
 			) 
+		</if>
+		
+		<if test="category != null and category != '' ">
+			and category = #{category}
 		</if>
 		order by reg_date desc
 	</select>
@@ -20,16 +25,16 @@
 	<insert id="board_insert" parameterType="pictVO">
 		INSERT INTO board_table
 			(
-			 title, text, reg_date, file_1, file_2, file_3, file_4, file_5
+			 title, text, reg_date, file_1, file_2, file_3, file_4, file_5, category
 			)
 		VALUES (
-			 #{title}, #{text}, now(), #{file_1}, #{file_2}, #{file_3}, #{file_4}, #{file_5}
+			 #{title}, #{text}, now(), #{file_1}, #{file_2}, #{file_3}, #{file_4}, #{file_5}, #{category}
 			  ) 
 	</insert>
 	
 	<update id="board_update" parameterType="pictVO">
 		update board_table
-		set title =#{title}, text=#{text}, reg_date = now()
+		set title =#{title}, text=#{text}, reg_date = now(), category = #{category}
 		<if test="file_1 != null and file_1 != ''">
 			, file_1 = #{file_1}
 		</if>

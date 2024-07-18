@@ -27,6 +27,16 @@
     <script src="/js/odometer.min.js"></script>
     <script src="/js/script.js" defer></script>
     
+    
+    <meta name="description" content="제11회 대한민국 SW융합 해커톤 대회">
+	<meta name="keywords" content="제11회 대한민국 SW융합 해커톤 대회, 해커톤대회, SW해커톤">
+	<meta property="og:title" content="제11회 대한민국 SW융합 해커톤 대회">
+	<meta property="og:description" content="제11회 대한민국 SW융합 해커톤 대회">
+	<meta property="og:image" content="/front_img/poster1.png">
+	<meta property="og:type" content="website">
+	<meta property="og:site_name" content="제11회 대한민국 SW융합 해커톤 대회">
+	
+    
 	<!-- Google tag (gtag.js) -->
 	<script async src="https://www.googletagmanager.com/gtag/js?id=G-99PXCBKWEW"></script>
 	<script>

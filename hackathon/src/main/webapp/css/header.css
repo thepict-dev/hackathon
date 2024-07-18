@@ -85,6 +85,10 @@ header.active .headerInner > a{
     color: #fff;
 }
 
+.mbNavWrap{
+	display: none;
+}
+
 @media all and (max-width : 1024px){
     header{
         height: 54px;

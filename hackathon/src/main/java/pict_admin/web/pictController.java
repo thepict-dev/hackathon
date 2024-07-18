@@ -91,6 +91,36 @@ public class pictController {
 		
 		return "pict/main/main";
 	}
+	//행사소개
+	@RequestMapping(value = "/intro.do")
+	public String intro(@ModelAttribute("searchVO") AdminVO adminVO, HttpServletRequest request, ModelMap model, HttpSession session, RedirectAttributes rttr) throws Exception {
+		
+		return "pict/main/intro";
+	}
+	//공지
+	@RequestMapping(value = "/notice.do")
+	public String notice(@ModelAttribute("searchVO") AdminVO adminVO, HttpServletRequest request, ModelMap model, HttpSession session, RedirectAttributes rttr) throws Exception {
+		
+		return "pict/main/notice";
+	}
+	//공지뷰
+	@RequestMapping(value = "/notice_view.do")
+	public String notice_view(@ModelAttribute("searchVO") AdminVO adminVO, HttpServletRequest request, ModelMap model, HttpSession session, RedirectAttributes rttr) throws Exception {
+		
+		return "pict/main/notice_view";
+	}
+	//뉴스
+	@RequestMapping(value = "/news.do")
+	public String news(@ModelAttribute("searchVO") AdminVO adminVO, HttpServletRequest request, ModelMap model, HttpSession session, RedirectAttributes rttr) throws Exception {
+		
+		return "pict/main/news";
+	}
+	//뉴스뷰
+	@RequestMapping(value = "/news_view.do")
+	public String news_view(@ModelAttribute("searchVO") AdminVO adminVO, HttpServletRequest request, ModelMap model, HttpSession session, RedirectAttributes rttr) throws Exception {
+		
+		return "pict/main/news_view";
+	}
 	
 	@RequestMapping(value = "/board.do")
 	public String board(@ModelAttribute("searchVO") PictVO pictVO, HttpServletRequest request, ModelMap model, HttpSession session, RedirectAttributes rttr) throws Exception {

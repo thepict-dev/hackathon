@@ -1,0 +1,35 @@
+@import url("https://cdn.jsdelivr.net/gh/wanteddev/wanted-sans@v1.0.3/packages/wanted-sans/fonts/webfonts/variable/complete/WantedSansVariable.min.css");
+@import url('https://webfontworld.github.io/sunn/SUIT.css');
+
+:root {
+    --fn-wanted: 'Wanted Sans Variable';
+    --fn-suit: 'SUIT';
+    --grey-50: #f3f5f6;
+    --grey-100: #dbdee2;
+    --grey-200: #cacfd4;
+    --grey-300: #b1b9c1;
+    --grey-400: #a2abb5;
+    --grey-500: #8b96a2;
+    --grey-600: #7e8993;
+    --grey-700: #636b73;
+    --grey-800: #4c5359;
+    --grey-900: #3a3f44;
+    --text-color: #242A30;
+}
+
+body{
+    font-family: var(--fn-wanted);
+}
+
+button{
+    font-family: var(--fn-wanted);
+}
+
+.blind {
+    width: 0;
+    height: 0;
+    text-indent: -9999px;
+    padding: 0;
+    margin: 0;
+    visibility: hidden;
+}

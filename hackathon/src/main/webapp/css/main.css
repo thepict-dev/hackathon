@@ -1,0 +1,310 @@
+/* parallax__cont */
+#parallaxCont {
+    overflow: hidden;
+}
+.parallaxItem {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100vh;
+}
+
+#section1{
+    height: 100vh;
+}
+.videoWrap{
+    width: 100%;
+    height: 100%;
+}
+.videoWrap video{
+    width: 100%;
+    height: 100%;
+    /* object-fit: cover; */
+    object-fit: fill;
+    border: none;
+    min-width: 1920px;
+}
+
+#section2 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-family: var(--fn-wanted);
+    background-color: var(--grey-50);
+}
+#section2 .text-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.dateTexts{
+    position: absolute;
+    left: 0;
+    top: 0;
+    /* transform: translate(-50%, -50%); */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+}
+#section2 .parallaxItemText {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+#section2 .t1, #section2 .t2, #section2 .t5, #section2 .t6 {
+    color: var(--yellow, #F5E344);
+    font-size: 200px;
+    font-weight: 700;
+    line-height: 140%; /* 280px */
+}
+#section2 .t3, #section2 .t4 {
+    color: var(--bk, #000);
+    font-size: 200px;
+    font-weight: 700;
+    line-height: 140%; /* 280px */
+}
+#section2 .t3{
+    margin-left: 15px;
+}
+#section2 .t4{
+    margin-right: 45px;
+}
+#section2 .t5 span, #section2 .t6 span{
+    margin-left: 25px;
+    color: var(--bk, #000);
+    font-size: 200px;
+    font-weight: 700;
+    line-height: 140%; /* 280px */
+}
+
+.secInner{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    max-width: 1640px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+.secInner h2{
+    margin-bottom: 25px;
+    color: var(--bk, #000);
+    font-family: var(--fn-wanted);
+    font-size: 72px;
+    font-weight: 700;
+    line-height: 140%; /* 100.8px */
+    letter-spacing: -3.6px;
+}
+.secInner > p{
+    margin-bottom: 104px;
+    color: var(--bk, #000);
+    font-family: var(--fn-wanted);
+    font-size: 30px;
+    font-weight: 500;
+    line-height: 140%; /* 42px */
+    letter-spacing: -1.5px;
+}
+.circles{
+    display: flex;
+    column-gap: 20px;
+}
+.circles li{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 385px;
+    height: 385px;
+    border-radius: 999px;
+    background: var(--yellow, #F5E344);
+}
+.circles li span{
+    color: var(--bk, #000);
+    font-family: var(--fn-wanted);
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 140%; /* 28px */
+    letter-spacing: -1px;
+}
+.circles li .bigTitle{
+    margin: 20px 0 12px 0;
+    color: var(--bk, #000);
+    font-family: var(--fn-wanted);
+    font-size: 40px;
+    font-weight: 700;
+    line-height: 140%; /* 56px */
+    letter-spacing: -2px;
+}
+.circles li .smallTitle{
+    color: var(--bk, #000);
+    font-family: var(--fn-wanted);
+    font-size: 28px;
+    font-weight: 500;
+    line-height: 140%; /* 39.2px */
+    letter-spacing: -1.4px;
+}
+
+#section4 .secInner h2{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+#section4 .secInner h2 span{
+    color: var(--yellow, #F5E344);
+}
+.boxes{
+    display: flex;
+    flex-direction: column;
+    row-gap: 16px;
+    margin-top: 104px;
+}
+.boxes li{
+    display: flex;
+    align-items: center;
+    column-gap: 40px;
+    width: 100%;
+    height: 96px;
+    padding: 0 60px;
+    border: 1px solid var(--grey-100);
+    font-family: var(--fn-wanted);
+}
+.boxes li span{
+    width: 115px;
+    color: var(--bk, #000);
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 140%; /* 28px */
+    letter-spacing: -1px;
+}
+.boxes li p{
+    color: var(--bk, #000);
+    font-size: 30px;
+    font-weight: 700;
+    line-height: 140%; /* 42px */
+    letter-spacing: -1.5px;
+}
+
+.bottomSection{
+    width: 100%;
+    padding: 120px 0;
+    background-color: #000;
+}
+.bottomSecInner{
+    width: 100%;
+    max-width: 1640px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+.families{
+    display: flex;
+    flex-direction: column;
+    row-gap: 60px;
+}
+.families li{
+    display: flex;
+    flex-direction: column;
+    row-gap: 12px;
+}
+.families li p{
+    color: #FFF;
+    font-size: 28px;
+    font-weight: 700;
+    line-height: 140%; /* 39.2px */
+    font-family: var(--fn-wanted);
+}
+.logosContianer{
+    display: flex;
+    flex-wrap: wrap;
+    column-gap: 14px;
+    row-gap: 18px;
+}
+.logosContianer img{
+    width: 253px;
+    max-width: 253px;
+}
+
+.bottomSecInner > h2{
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 40px;
+    color: var(--wh, #FFF);
+    font-family: var(--fn-wanted);
+    font-size: 50px;
+    font-weight: 700;
+    line-height: 140%; /* 70px */
+}
+.bottomSecInner > h2 a{
+    display: block;
+    width: 40px;
+    height: 40px;
+}
+.bottomSecInner > h2 a img{
+    width: 100%;
+}
+.noticeWrap{
+    width: 100%;
+}
+.noticeList{
+    display: flex;
+    flex-direction: column;
+    row-gap: 20px;
+    width: 100%;
+    padding-top: 20px;
+}
+.noticeList.main{
+    padding-bottom: 30px;
+    border-top: 2px solid #FFF;
+}
+.noticeList li{
+    width: 100%;
+}
+.noticeList.main li{
+    border-bottom: 1px solid #fff;
+}
+.noticeList li a{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 16px 40px;
+}
+.noticeList li a p{
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-family: var(--fn-suit);
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 130%; /* 26px */
+    letter-spacing: -1px;
+}
+.noticeList.main li a p{
+    color: var(--wh, #FFF);
+}
+.noticeList li a span{
+    display: flex;
+    align-items: center;
+    column-gap: 20px;
+    font-size: 16px;
+    font-weight: 500;
+    letter-spacing: -0.8px;
+    color: var(--grey-500);
+    font-family: var(--fn-suit);
+}
+.noticeList li a span img{
+    padding-bottom: 3px;
+}
+.noticeList.main li:hover{
+    background-color: rgba(255, 255, 255, 0.3);
+    transition: all .2s;
+}

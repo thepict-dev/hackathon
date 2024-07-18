@@ -6,156 +6,231 @@
 
 <!DOCTYPE html>
 <html lang="ko">
-	<c:import url="../main/header.jsp">
-    	<c:param name="pageTitle" value="2023 메타버스·XR 전문인력 양성 교육"/>
+	<c:import url="./include/head.jsp">
+    	<c:param name="pageTitle" value="해커톤"/>
     </c:import>
     <body>
-    	<div class="wrapper">
-   			<%@include file="./navigation.jsp" %>
-	        <main class="container">
-        		<section class="main-box recruit" id="main-recruit">
-        			<div class="main-container">
-        				<h2 class="main-title">
-	        				<span class="desc">2023 메타버스·XR 전문인력 양성 교육</span>
-	        				모집안내
-	        			</h2>
-	        			<div class="main-item">
-	        				<div class="main-recruit">
-	        					<div class="main-recruit-item img">
-	        						<a href="javascript:void(0);" class="main-poster-lnk" title="포스터 크게보기" onclick="poster('open');">
-	        							<img src="../../../../../images/pict/main-poster2.png" alt="">
-	        						</a>
-	        						<a href="https://docs.google.com/forms/d/e/1FAIpQLSfWCMoYCyk1KDMsvNR6P_3czHs4gIEAsGVH2RhJK-qqOCifRw/viewform" target="_blank" title="새창이동" class="recruit-btn mobile">신청하러가기&nbsp;&nbsp;&nbsp;+</a>
-	        					</div>
-	        					<div class="main-recruit-item desc">
-	        						<h3 class="recruit-title">
-	        							모션디자인부터 메타버스제작까지
-	        							<strong class="strong">하나의 교육에서 여러가지 커리큘럼으로</strong>
-        							</h3>
-        							<div class="recruit-desc">
-        								<div></div>
-        								<a href="https://docs.google.com/forms/d/e/1FAIpQLSfWCMoYCyk1KDMsvNR6P_3czHs4gIEAsGVH2RhJK-qqOCifRw/viewform" target="_blank" title="새창이동" class="recruit-btn">신청하러가기&nbsp;&nbsp;&nbsp;+</a>
-        							</div>
-        							
-        							<ul class="recruit-list">
-        								<li>도내 메타버스 기업에서 근무하고 있는 강사진들에게 실무에 바로 투입 될 수 있는 프로그램들을 배워보세요!</li>
-        								<li>또한 우수 교육생에게는 200만원 상당의 취/창업 지원금까지 제공! 강원자치도내 메타버스 기업 모의면접 기회 제공까지!</li>
-        								<li>교육부터 취/창업까지 One-Stop!</li>
-        								<li>지금 바로 신청하세요.</li>
-        								
-        								
-        								<!-- 
-        								<li>
-        									<h3 class="title">교육일정</h3>
-        									<div class="desc">2022.06.21 - 2022.11.18</div>
-        								</li>
-        								<li>
-        									<h3 class="title">교육장소</h3>
-        									<div class="desc">강원정보문화산업진흥원</div>
-        								</li>
-        								<li>
-        									<h3 class="title">교육혜택</h3>
-        									<div class="desc">교육지원금 월 150만 원 * 5개월 (PBL교육생의 경우 지급)</div>
-        								</li>
-        								<li>
-        									<h3 class="title">문의처</h3>
-        									<div class="desc">edu@pict.kr / 1644-4845</div>
-        								</li>
-        								<li>
-        									<h3 class="title">커리큘럼</h3>
-        									<div class="desc">콘텐츠 기획 과정, 2D 디자인 과정, 메타버스 과정, 인터랙션 IT 개발 과정</div>
-        								</li>
-        								-->
-        							</ul>
-        							 
-	        					</div>
-	        				</div>
-	        			</div>
-        			</div>
-        		</section>
-        		<section class="main-box program" id="main-program">
-        			<div class="main-container">
-        				<h2 class="main-title">
-	        				<span class="desc">2023 메타버스·XR 전문인력 양성 교육</span>
-	        				프로그램안내
-	        			</h2>
-	        			<div class="main-item" style="text-align:center;">
-	        				<img src="../../../../../images/pict/main-program.jpg" alt="" style="max-width:1000px; width:100%;">
-	        			</div>
-        			</div>
-        		</section>
-				<div class="main-poster-layer">
-					<div class="main-poster-layer-box">
-						<div class="main-poster-layer-item">
-							<img src="../../../../../images/pict/main-poster2.png" alt="">
-						</div>
-					</div>
-					<button type="button" title="팝업 닫기" class="main-poster-close" onclick="poster('close');"><i class="fa-solid fa-xmark"></i></button>
-				</div>
-				<!-- 
-        		<section class="main-box promote">
-        			<div class="main-container">
-        				<h2 class="main-title">
-	        				<span class="desc">2023 메타버스·XR 전문인력 양성 교육</span>
-	        				홍보영상
-	        			</h2>
-	        			<div class="main-item">
-	        				<video controls autoplay muted class="main-video">
-							    <source src="../../../../../images/pict/main-promote.mp4" type="video/mp4">
-							</video>				
-	        			</div>
-        			</div>
-        		</section>
-        		 -->
-        		<section class="main-box ask" id="main-ask">
-        			<div class="main-container">
-        				<h2 class="main-title">
-	        				<span class="desc">2023 강원 메타버스 · XR 전문인력</span>
-	        				문의하기
-	        			</h2>
-	        			<div class="main-item">
-	        				<div class="ask-box">
-	        					<div class="ask-item">
-	        						<h3 class="title">Call</h3>
-	        						<div class="desc"><a href="tel:1644-4845" title="전화걸기">1644-4845</a></div>
-	        					</div>
-	        					<div class="ask-item">
-	        						<h3 class="title">E-mail</h3>
-	        						<div class="desc"><a href="mailto:edu@pict.kr" title="이메일 보내기">edu@pict.kr</a></div>
-	        					</div>
-	        				</div>		
-	        			</div>
-        			</div>
-        		</section>
-        		<!-- 
-        		<section class="main-box related">
-        			<div class="main-container">
-        				<div class="main-item">
-        					<ul class="related-list">
-        						<li><a href="https://www.kocca.kr/" target="_blank" title="새창이동"><img src="../../../../../images/pict/related-content.png" alt="한국콘텐츠진흥원"></a></li>
-        						<li><a href="https://www.gica.or.kr/Home/intro" target="_blank" title="새창이동"><img src="../../../../../images/pict/related-gica.png" alt="강원정보문화산업진흥원"></a></li>
-        						<li><a href="https://thepict.co.kr/" target="_blank" title="새창이동"><img src="../../../../../images/pict/related-pict.png" alt="pict"></a></li>
-        					</ul>
-        				</div>
-        			</div>
-        		</section>
-        		 -->
-	        </main>
-	        <script>
-	        	// poster open/close
-	        	function poster(type) {
-	        		const $popup = $(".main-poster-layer");
-	        		const $body = $("body");
-	        		if(type === "open") {
-	        			$popup.addClass("active");
-	        			$body.addClass("layer-open");
-	        		} else {
-	        			$popup.removeClass("active");
-	        			$body.removeClass("layer-open");
-	        		}
-	        	}
-	        </script>
-	        <%@include file="./footer.jsp" %>
-        </div>
+        <%@include file="./include/header.jsp" %>
+	    <main id="parallaxCont">
+		    <section id="section1" class="parallaxItem">
+		        <div class="videoWrap">
+		            <video src="/front_img/main-video.mp4" autoplay loop muted></video>
+		        </div>
+		    </section>
+		    <section id="section2" class="parallaxItem">
+		        <div class="text-container">
+		            <div class="parallaxItemText">
+		                <p class="t1 odometer">40.000</p>
+		                <span class="t3">시간 동안</span>
+		            </div>
+		            <div class="parallaxItemText">
+		                <span class="t4">펼쳐질</span>
+		                <p class="t2">혁신의 여정</p>
+		            </div>
+		            <div class="dateTexts">
+		                <div class="parallaxItemText t5">
+		                    <p>2024.8.23</p><span>부터</span>
+		                </div>
+		                <div class="parallaxItemText t6">
+		                    <p>2024.8.25</p><span>까지</span>
+		                </div>
+		            </div>
+		        </div>
+		    </section>
+		    <section id="section3" class="parallaxItem">
+		        <div class="secInner">
+		            <h2 class="t1">디지털 시대의<br>새 지평을 열다</h2>
+		            <p class="t2">대한민국 SW융합 해커톤 대회는 디지털 시대를 선도하는 국내 최대 규모의 해커톤입니다.<br>창의적이고 혁신적인 소프트웨어 솔루션을 개발하며, 기술과 경험, 노하우를 공유하고 함께 성장합니다.</p>
+		            <ul class="circles">
+		                <li class="i1">
+		                    <span>참가 대상</span>
+		                    <p class="bigTitle">총 55개 팀 이내</p>
+		                    <p class="smallTitle">팀당 2-5인 구성</p>
+		                </li>
+		                <li class="i2">
+		                    <span>참가 자격</span>
+		                    <p class="bigTitle">만 15세 이상 누구나</p>
+		                    <p class="smallTitle">중·고·대학생 및 일반인</p>
+		                </li>
+		                <li class="i3">
+		                    <span>개최 장소</span>
+		                    <p class="bigTitle">춘천 봄내체육관</p>
+		                    <p class="smallTitle">강원특별자치도 춘천시 평화로 25</p>
+		                </li>
+		                <li class="i4">
+		                    <span>상금 규모</span>
+		                    <p class="bigTitle">5,100만원</p>
+		                    <p class="smallTitle">대상/우수상/특별상</p>
+		                </li>
+		            </ul>
+		        </div>
+		    </section>
+		    <section id="section4" class="parallaxItem">
+		        <div class="secInner">
+		            <h2 class="t1">디지털 혁신의 중심에서 새로운 시대를 열어갑니다 <span>미래를 선도할 기술과 창의력을 발휘하세요</span></h2>
+		            <ul class="boxes">
+		                <li class="i1">
+		                    <span>자유과제</span>
+		                    <p>디지털 기반 SW융합제품 또는 서비스 개발</p>
+		                </li>
+		                <li class="i2">
+		                    <span>지정 과제 ①</span>
+		                    <p>지역사회 현안해결을 위한 SW융합제품 및 서비스 개발</p>
+		                </li>
+		                <li class="i3">
+		                    <span>지정 과제 ②</span>
+		                    <p>관광데이터 기반 SW융합제품 및 서비스 개발</p>
+		                </li>
+		            </ul>
+		        </div>
+		    </section>
+		    <section class="bottomSection">
+		        <div class="bottomSecInner">
+		            <ul class="families">
+		                <li>
+		                    <p>주최</p>
+		                    <div class="logosContianer">
+		                        <img src="/front_img/logos/logo1-1.png" alt="">
+		                    </div>
+		                </li>
+		                <li>
+		                    <p>후원</p>
+		                    <div class="logosContianer">
+		                        <img src="/front_img/logos/logo2-1.png" alt="">
+		                        <img src="/front_img/logos/logo2-2.png" alt="">
+		                        <img src="/front_img/logos/logo2-3.png" alt="">
+		                        <img src="/front_img/logos/logo2-4.png" alt="">
+		                        <img src="/front_img/logos/logo2-5.png" alt="">
+		                        <img src="/front_img/logos/logo2-6.png" alt="">
+		                        <img src="/front_img/logos/logo2-7.png" alt="">
+		                        <img src="/front_img/logos/logo2-8.png" alt="">
+		                        <img src="/front_img/logos/logo2-9.png" alt="">
+		                        <img src="/front_img/logos/logo2-10.png" alt="">
+		                        <img src="/front_img/logos/logo2-11.png" alt="">
+		                        <img src="/front_img/logos/logo2-12.png" alt="">
+		                    </div>
+		                </li>
+		                <li>
+		                    <p>후원</p>
+		                    <div class="logosContianer">
+		                        <img src="/front_img/logos/logo3-1.png" alt="">
+		                        <img src="/front_img/logos/logo3-2.png" alt="">
+		                        <img src="/front_img/logos/logo3-3.png" alt="">
+		                        <img src="/front_img/logos/logo3-4.png" alt="">
+		                        <img src="/front_img/logos/logo3-5.png" alt="">
+		                        <img src="/front_img/logos/logo3-6.png" alt="">
+		                        <img src="/front_img/logos/logo3-7.png" alt="">
+		                        <img src="/front_img/logos/logo3-8.png" alt="">
+		                        <img src="/front_img/logos/logo3-9.png" alt="">
+		                        <img src="/front_img/logos/logo3-10.png" alt="">
+		                        <img src="/front_img/logos/logo3-11.png" alt="">
+		                        <img src="/front_img/logos/logo3-12.png" alt="">
+		                        <img src="/front_img/logos/logo3-13.png" alt="">
+		                    </div>
+		                </li>
+		            </ul>
+		        </div>
+		    </section>
+		    <section class="bottomSection">
+		        <div class="bottomSecInner">
+		            <h2><p>NOTICE</p><a href="#lnk"><img src="/front_img/arrow-white-lg.png" alt=""></a></h2>
+		            <div class="noticeWrap">
+		                <ul class="noticeList main">
+		                    <li>
+		                        <a href="#lnk">
+		                            <p>SW융합 해커톤 대회 강원지역 참가팀 모집 공고</p>
+		                            <span>2024.07.15 <img src="/front_img/arrow-white.png" alt=""></span>
+		                        </a>
+		                    </li>
+		                </ul>
+		            </div>
+		        </div>
+		    </section>
+		</main>
+        <%@include file="./include/footer.jsp" %>
+        <script>
+	        // Odometer 초기화
+	        let odometer = new Odometer({
+	            el: document.querySelector('.odometer'),
+	            value: 40.000,
+	            format: '(,ddd).ddd',
+	            duration: 3000
+	        });
+	
+	        // ScrollTrigger를 사용하여 section5에 도달했을 때 Odometer 값 변경
+	        ScrollTrigger.create({
+	            trigger: "#section2",
+	            start: "top center",
+	            onEnter: () => {
+	                odometer.update(42.195);
+	            },
+	            once: true
+	        });
+	
+	        //section2
+	        const ani2 = gsap.timeline();
+	        ani2.to("#section2 .t3", {autoAlpha: 0, duration: 10, y: 50}, "+=3")
+	            .to("#section2 .t4", {autoAlpha: 0, duration: 10, y: 50}, "+=3")
+	            .to("#section2 .t1", {x: 50, xPercent: 50, duration: 10}, "+=1")
+	            .to("#section2 .t2", {x: 50, xPercent: -30, duration: 10}, "<")
+	            .to("#section2 .t1", {x: -100, autoAlpha: 0, xPercent: 350, duration: 10}, "+=3")
+	            .to("#section2 .t2", {x: -100, autoAlpha: 0, xPercent: -300, duration: 10}, "+=3")
+	            .from("#section2 .t5", {x: -100, autoAlpha: 0, xPercent: 300, duration: 20}, "+=3")
+	            .from("#section2 .t6", {x: -100, autoAlpha: 0, xPercent: -300, duration: 20}, "<")
+	            .to({}, {duration: 30});
+	
+	        ScrollTrigger.create({
+	            animation: ani2,
+	            trigger: "#section2",
+	            start: "top top", // 섹션 5가 뷰포트의 상단에 도달했을 때 시작
+	            end: "+=6000",
+	            scrub: true,
+	            pin: true, 
+	            anticipatePin: 1,
+	            markers: false
+	        });
+	
+	        //section3
+	        const ani3 = gsap.timeline();
+	        ani3.from("#section3 .t1", {autoAlpha:0, duration: 10, y: 50}, "+=1")
+	            .from("#section3 .t2", {autoAlpha:0, duration: 10, y: 50}, "+=1")
+	            .from("#section3 .i1", {y: -100, autoAlpha:0, duration: 10})
+	            .from("#section3 .i2", {y: 100, autoAlpha:0, duration: 10})
+	            .from("#section3 .i3", {y: -100, autoAlpha:0, duration: 10})
+	            .from("#section3 .i4", {y: 100, autoAlpha:0, duration: 10})
+	            .to({}, {duration: 30});
+	
+	        ScrollTrigger.create({
+	            animation: ani3,
+	            trigger: "#section3",
+	            start: "top top",
+	            end: "+=6000",
+	            scrub: true,
+	            pin: true, 
+	            anticipatePin: 1,
+	            markers: false
+	        });
+	
+	        section4
+	        const ani4 = gsap.timeline();
+	        ani4.from("#section4 .t1", {autoAlpha:0, duration: 10, y: 50}, "+=1")
+	            .from("#section4 .t2", {autoAlpha:0, duration: 10, y: 50}, "+=1")
+	            .from("#section4 .i1", {y: 100, autoAlpha:0, duration: 10})
+	            .from("#section4 .i2", {y: 100, autoAlpha:0, duration: 10})
+	            .from("#section4 .i3", {y: 100, autoAlpha:0, duration: 10})
+	            .to({}, {duration: 30});
+	
+	        ScrollTrigger.create({
+	            animation: ani4,
+	            trigger: "#section4",
+	            start: "top top",
+	            end: "+=6000",
+	            scrub: true,
+	            pin: true, 
+	            anticipatePin: 1,
+	            markers: false
+	        });
+
+    </script>
     </body>
 </html>

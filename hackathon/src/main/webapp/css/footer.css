@@ -50,3 +50,44 @@ footer{
 .fBotoom li:last-of-type::after{
     display: none;
 }
+
+@media all and (max-width : 1024px){
+    .footerInner{
+        font-size: 14px;
+    }
+    .fInfo{
+        display: flex;
+        flex-direction: column;
+        row-gap: 12px;
+    }
+    .fInfo li{
+        display: flex;
+        justify-content: center;
+        text-align: center;
+        column-gap: 4px;
+    }
+    .fInfo li span{
+        font-weight: 400;
+    }
+    .copy{
+        padding-bottom: 40px;
+        text-align: center;
+    }
+    .fBotoom{
+        display: flex;
+        column-gap: 12px;
+    }
+    .fBotoom li{
+        position: relative;
+        padding: 8px 12px;
+    }
+    .fBotoom li::after{
+        position: absolute;
+        right: -6px;
+        display: inline-block;
+        content: "|";
+    }
+    .fBotoom li:last-of-type::after{
+        display: none;
+    }
+}

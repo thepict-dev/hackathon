@@ -26,6 +26,22 @@
     border: none;
     min-width: 1920px;
 }
+.videoWrap video.mbVideo{
+    display: none;
+}
+
+@media all and (max-width : 1024px){
+    .videoWrap video{
+        object-fit: fill;
+        min-width: unset;
+    }
+    .videoWrap video.pcVideo{
+        display: none;
+    }
+    .videoWrap video.mbVideo{
+        display: block;
+    }
+}
 
 #section2 {
     display: flex;
@@ -84,6 +100,55 @@
     font-size: 200px;
     font-weight: 700;
     line-height: 140%; /* 280px */
+}
+
+@media all and (max-width : 1600px){
+    #section2 .t1, #section2 .t2, #section2 .t5, #section2 .t6 {
+        font-size: 100px;
+    }
+    #section2 .t3, #section2 .t4 {
+        font-size: 100px;
+    }
+    #section2 .t5 span, #section2 .t6 span{
+        font-size: 100px;
+    }
+}
+
+@media all and (max-width : 1024px){
+    /* #section2 {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        font-family: var(--fn-wanted);
+        background-color: var(--grey-50);
+    } */
+    #section2 .parallaxItemText {
+        flex-direction: column;
+    }
+    #section2 .t1, #section2 .t2, #section2 .t5, #section2 .t6 {
+        font-size: 50px;
+    }
+    #section2 .t3, #section2 .t4 {
+        font-size: 40px;
+    }
+    #section2 .t3{
+        margin-left: 0;
+    }
+    #section2 .t4{
+        margin-right: 0;
+    }
+    #section2 .parallaxItemText.mb{
+        flex-direction: row;
+    }
+    #section2 .t5 p, #section2 .t6 p{
+        margin-left: 10px;
+        font-size: 40px;
+    }
+    #section2 .t5 span, #section2 .t6 span{
+        margin-left: 10px;
+        font-size: 40px;
+    }
 }
 
 .secInner{
@@ -153,6 +218,66 @@
     line-height: 140%; /* 39.2px */
     letter-spacing: -1.4px;
 }
+@media all and (max-width : 1600px){
+    .circles{
+        row-gap: 20px;
+    }
+    .circles li{
+        width: 250px;
+        height: 250px;
+    }
+    .circles li span{
+        font-size: 18px;
+    }
+    .circles li .bigTitle{
+        font-size: 24px;
+    }
+    .circles li .smallTitle{
+        font-size: 16px;
+    }
+}
+@media all and (max-width : 1024px){
+    .secInner{
+        padding: 0 30px;
+    }
+    .secInner h2{
+        margin-bottom: 12px;
+        font-size: 40px;
+        letter-spacing: -2px;
+    }
+    .secInner > p{
+        margin-bottom: 32px;
+        font-size: 20px;
+        letter-spacing: -1px;
+    }
+    .circles{
+        display: grid;
+        grid-template-columns: repeat(2, 162px);
+        column-gap: 8px;
+        /* justify-content: center; */
+    }
+    .circles li{
+        width: 162px;
+        height: 162px;
+    }
+    .circles li span{
+        display: none;
+    }
+    .circles li .bigTitle{
+        /* width: 140px; */
+        margin: 0;
+        font-size: 24px;
+        letter-spacing: -1.2px;
+        text-align: center;
+    }
+    .circles li .bigTitle.mbWidth{
+        width: 130px;
+        word-break: keep-all;
+    }
+    .circles li .smallTitle{
+        display: none;
+    }
+}
 
 #section4 .secInner h2{
     display: flex;
@@ -194,6 +319,36 @@
     letter-spacing: -1.5px;
 }
 
+@media all and (max-width : 1024px){
+    #section4 .secInner h2{
+        display: flex;
+        flex-direction: column;
+        text-align: left;
+    }
+    #section4 .secInner h2 span{
+        color: var(--yellow, #F5E344);
+    }
+    .boxes{
+        row-gap: 10px;
+        margin-top: 10px;
+    }
+    .boxes li{
+        align-items: flex-start;
+        flex-direction: column;
+        row-gap: 10px;
+        height: fit-content;
+        padding: 16px;
+    }
+    .boxes li span{
+        font-size: 16px;
+        letter-spacing: -0.8px;
+    }
+    .boxes li p{
+        font-size: 20px;
+        letter-spacing: -1px;
+    }
+}
+
 .bottomSection{
     width: 100%;
     padding: 120px 0;
@@ -204,6 +359,16 @@
     max-width: 1640px;
     margin: 0 auto;
     padding: 0 20px;
+}
+.bottomSecInner > h2{
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 40px;
+    color: var(--wh, #FFF);
+    font-family: var(--fn-wanted);
+    font-size: 50px;
+    font-weight: 700;
+    line-height: 140%; /* 70px */
 }
 .families{
     display: flex;
@@ -233,15 +398,24 @@
     max-width: 253px;
 }
 
-.bottomSecInner > h2{
-    display: flex;
-    justify-content: space-between;
-    padding-bottom: 40px;
-    color: var(--wh, #FFF);
-    font-family: var(--fn-wanted);
-    font-size: 50px;
-    font-weight: 700;
-    line-height: 140%; /* 70px */
+@media all and (max-width : 1024px){
+    .bottomSection{
+        padding: 44px 0;
+    }
+    .bottomSecInner{
+        padding: 0 30px;
+    }
+    .families li p{
+        font-size: 28px;
+        text-align: center;
+    }
+    .logosContianer{
+        justify-content: center;
+    }
+}
+
+.bottomSecInner > h2.center{
+    justify-content: center;
 }
 .bottomSecInner > h2 a{
     display: block;
@@ -279,8 +453,6 @@
     padding: 16px 40px;
 }
 .noticeList li a p{
-    overflow: hidden;
-    text-overflow: ellipsis;
     font-family: var(--fn-suit);
     font-size: 20px;
     font-style: normal;
@@ -307,4 +479,39 @@
 .noticeList.main li:hover{
     background-color: rgba(255, 255, 255, 0.3);
     transition: all .2s;
+}
+
+@media all and (max-width : 1024px){
+    .noticeList.main{
+        padding-bottom: 150px;
+    }
+    .noticeList li a{
+        justify-content: flex-start;
+        align-items: flex-start;
+        flex-direction: column;
+        row-gap: 20px;
+        padding: 16px 0;
+    }
+    .noticeList li a p{
+        width: 100%;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+    .noticeList.main li a p{
+        color: var(--wh, #FFF);
+    }
+    .noticeList li a span{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+    }
+    .noticeList li a span img{
+        padding-bottom: 3px;
+    }
+    .noticeList.main li:hover{
+        background-color: rgba(255, 255, 255, 0.3);
+        transition: all .2s;
+    }
 }

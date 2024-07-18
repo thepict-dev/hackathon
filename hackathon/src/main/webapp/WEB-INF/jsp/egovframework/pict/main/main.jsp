@@ -86,6 +86,7 @@
 		    </section>
 		    <section class="bottomSection">
 		        <div class="bottomSecInner">
+                	<h2 class="center">PARTNERS</h2>
 		            <ul class="families">
 		                <li>
 		                    <p>주최</p>

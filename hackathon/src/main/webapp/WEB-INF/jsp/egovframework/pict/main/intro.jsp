@@ -14,7 +14,8 @@
         <div class="subContainer">
 	        <div class="subTop">
 	            <h2>행사소개</h2>
-	            <p>디지털 시대의 새 지평을 열고픈<br>모든 이들에게 열려있습니다</p>
+	            <p class="pcText">디지털 시대의 새 지평을 열고픈<br>모든 이들에게 열려있습니다</p>
+	            <p class="mbText">디지털 시대의<br>새 지평을 열고픈<br>모든 이들에게<br>열려있습니다</p>
 	        </div>
 	        <div class="subBottom">
 	            <div class="subBottomInner">

@@ -38,6 +38,26 @@
     width: 100%;
 }
 
+@media all and (max-width : 1024px){
+    .subContainer{
+        margin-top: 54px;
+    }
+    .subTop{
+        height: 480px;
+        padding-top: 72px;
+    }
+    .subTop h2{
+        margin-bottom: 21px;
+    }
+    .subTop p{
+        font-size: 36px;
+        letter-spacing: -1.8px;
+    }
+    .subTop span{
+        margin-top: 52px;
+    }
+}
+
 .subBottom{
     width: 100%;
     padding-bottom: 150px;
@@ -47,6 +67,12 @@
     max-width: 1600px;
     margin: 0 auto;
     padding: 0 20px;
+}
+
+@media all and (max-width : 1024px){
+    .subBottomInner{
+        padding: 0 0;
+    }
 }
 
 /* intro */
@@ -59,6 +85,7 @@
     position: absolute;
     top: 140px;
     left: 0;
+    z-index: -1;
     content: "";
     display: inline-block;
     width: 145px;
@@ -72,6 +99,7 @@
     position: absolute;
     top: 140px;
     right: 0;
+    z-index: -1;
     content: "";
     display: inline-block;
     width: 145px;
@@ -203,6 +231,78 @@
     height: 458px;
     background-color: var(--grey-500);
     overflow: hidden;
+}
+.mbText{
+    display: none;
+}
+
+@media all and (max-width : 1024px){
+    .pcText{
+        display: none;
+    }
+    .mbText{
+        display: block;
+    }
+    .introContainer{
+        position: relative;
+        width: 100%;
+        height: fit-content;
+    }
+    .introContainer::before{
+        display: none;
+    }
+    .introContainer::after{
+        display: none;
+    }
+    .posters{
+        top: -110px;
+        overflow-x: scroll;
+        padding: 0 30px;
+    }
+    .posters li{
+        width: 270px;
+    }
+    .posters li img{
+        width: 270px;
+    }
+    .introTexts{
+        padding: 311px 30px 0 30px;
+    }
+    .introTexts li .textTop{
+        align-items: flex-start;
+        flex-direction: column;
+        row-gap: 9px;
+    }
+    .introTexts li .textTop p{
+        width: 116px;
+        padding: 8px;
+    }
+    .introTexts li .textTop span{
+        letter-spacing: -1.2px;
+
+    }
+    .introTexts li .textBottom{
+        margin-left: 8px;
+        padding-top: 8px;
+    }
+    .introTexts li .textBottom span{
+        min-width: 88px;
+    }
+    .location{
+        padding: 60px 20px 0 20px;
+    }
+    .subTitleContainer{
+        align-items: flex-start;
+        flex-direction: column;
+        row-gap: 12px;
+    }
+    .subTitleContainer p{
+        align-items: flex-start;
+    }
+    .subTitleContainer p > span span{
+        display: block;
+        margin-left: 0;
+    }
 }
 
 /* notice */

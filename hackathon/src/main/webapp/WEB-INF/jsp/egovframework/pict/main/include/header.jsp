@@ -15,6 +15,20 @@
             </ul>
         </div>
         <a href="#lnk" onclick="fn_alert()">로그인</a>
+        <button></button>
+    </div>
+    
+    <div class="mbNavWrap">
+        <div class="mbNavTop">
+            <h1><a href="/"><img src="/front_img/logo-white.png" alt=""></a></h1>
+            <button><img src="/front_img/close.png" alt=""></button>
+        </div>
+        <ul class="mbGnb">
+            <li><a href="/intro.do">행사소개</a></li>
+            <li><a href="#lnk" onclick="fn_alert()">멘토소개</a></li>
+            <li><a href="/notice.do">행사소식</a></li>
+            <li><a href="#lnk" onclick="fn_alert()">로그인</a></li>
+        </ul>
     </div>
     
     <script>

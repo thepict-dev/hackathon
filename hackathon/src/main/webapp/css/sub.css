@@ -350,6 +350,30 @@
     transition: all .2s;
 }
 
+@media all and (max-width : 1024px){
+    .tabNav{
+        column-gap: 8px;
+        padding: 40px 0 12px 0;
+    }
+    .tabNav li a{
+        font-size: 20px;
+        letter-spacing: -1px;
+    }
+    .tabNav li:hover a{
+        font-weight: 700;
+        color: #000;
+        transition: all .2s;
+    }
+    .tabNav li.active a{
+        font-weight: 700;
+        color: #000;
+        border-bottom: 1px solid #000;
+    }
+    .noticeList.sub{
+        padding: 0 30px 30px 30px;
+    }
+}
+
 /* view */
 .viewContainer{
     width: 100%;
@@ -393,8 +417,9 @@
 }
 .viewBottom{
     width: 100%;
-    margin: 40px 0;
+    margin: 40px 0 0 0;
     padding: 40px 0;
+    border-bottom: 1px solid var(--bk, #000);
 }
 .viewBottom p{
     color: #000;
@@ -435,4 +460,48 @@
 .buttonContainer a:hover{
     background-color: var(--grey-50);
     transition: all .2s;
+}
+
+.addFile{
+	display: flex;
+	flex-direction: column;
+	row-gap: 8px;
+	width: 100%;
+	padding: 16px 20px;
+    margin-bottom: 40px;
+	border-bottom: 1px solid #000;
+}
+.addFile a{
+	display: flex;
+	align-items: center;
+	column-gap: 8px;
+	color: #000;
+}
+
+@media all and (max-width : 1024px){
+    .viewContainer{
+        padding: 41px 30px 0 30px;
+    }
+    .viewTop{
+        display: flex;
+        flex-direction: column;
+        row-gap: 24px;
+        padding: 16px 0;
+        border-bottom: 1px solid var(--bk, #000);
+    }
+    .viewTitles{
+        display: flex;
+        align-items: center;
+        column-gap: 12px;
+    }
+    .viewTitles p{
+        font-size: 28px;
+        letter-spacing: -1.4px;
+    }
+    .buttonContainer{
+        padding: 0 16px;
+    }
+    .buttonContainer a{
+        width: 100%;
+    }
 }

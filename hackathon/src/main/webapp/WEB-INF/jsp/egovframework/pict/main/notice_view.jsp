@@ -27,6 +27,12 @@
 	                        <p>${pictVO.text}</p>
 	                        <!--<img src="/front_img/poster1.png" alt=""> -->
 	                    </div>
+		                <div class="addFile">
+		                    <a href="#lnk" download>
+		                        <img src="/front_img/file.png" alt="">
+		                        파일이름ㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇ
+		                    </a>
+		                </div>
 	                </div>
 	                <div class="buttonContainer">
 	                    <a href="/notice.do">목록으로</a>

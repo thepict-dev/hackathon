@@ -14,6 +14,14 @@ window.addEventListener('scroll', handleHeaderScroll);
 // 페이지 로드 시 초기 상태 확인
 window.addEventListener('load', handleHeaderScroll);
 
+// 모바일 메뉴
+$('.headerInner button').click(function(){
+  $('.mbNavWrap').show();
+});
+$('.mbNavTop button').click(function(){
+  $('.mbNavWrap').hide();
+});
+
 // 사이트맵 모달
 // $('.gnbRight button').click(function(){
 //   $('.siteMap').show();

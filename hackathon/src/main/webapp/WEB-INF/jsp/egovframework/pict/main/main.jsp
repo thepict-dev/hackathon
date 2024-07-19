@@ -4,6 +4,7 @@
 <%@ taglib prefix="ui"     uri="http://egovframework.gov/ctl/ui"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <!DOCTYPE html>
 <html lang="ko">
 	<c:import url="./include/head.jsp">
@@ -28,10 +29,10 @@
 		                <p class="t2">혁신의 여정</p>
 		            </div>
 		            <div class="dateTexts">
-		                <div class="parallaxItemText t5">
+		                <div class="parallaxItemText t5 mb">
 		                    <p>2024.8.23</p><span>부터</span>
 		                </div>
-		                <div class="parallaxItemText t6">
+		                <div class="parallaxItemText t6 mb">
 		                    <p>2024.8.25</p><span>까지</span>
 		                </div>
 		            </div>
@@ -134,15 +135,17 @@
 		    </section>
 		    <section class="bottomSection">
 		        <div class="bottomSecInner">
-		            <h2><p>NOTICE</p><a href="#lnk"><img src="/front_img/arrow-white-lg.png" alt=""></a></h2>
+		            <h2><p>NOTICE</p><a href="/notice.do"><img src="/front_img/arrow-white-lg.png" alt=""></a></h2>
 		            <div class="noticeWrap">
 		                <ul class="noticeList main">
-		                    <li>
-		                        <a href="#lnk">
-		                            <p>SW융합 해커톤 대회 강원지역 참가팀 모집 공고</p>
-		                            <span>2024.07.15 <img src="/front_img/arrow-white.png" alt=""></span>
-		                        </a>
-		                    </li>
+		                	<c:forEach var="resultList" items="${resultList}" varStatus="status">
+			                    <li>
+			                        <a href="notice_view.do?idx=${resultList.idx}">
+			                            <p>${resultList.title }</p>
+			                            <span>${fn:substring(resultList.reg_date,0,11)} <img src="/front_img/arrow-white.png" alt=""></span>
+			                        </a>
+			                    </li>
+		                    </c:forEach>
 		                </ul>
 		            </div>
 		        </div>

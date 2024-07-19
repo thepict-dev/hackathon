@@ -30,7 +30,7 @@
 		                        <li>
 		                            <a href="notice_view.do?idx=${resultList.idx}">
 		                                <p>${resultList.title}</p>
-		                                <span>${fn:substring(board_list.reg_date,0,11)} <img src="/front_img/arrow-black.png" alt=""></span>
+		                                <span>${fn:substring(resultList.reg_date,0,11)} <img src="/front_img/arrow-black.png" alt=""></span>
 		                            </a>
 		                        </li>
 	                        </c:forEach>

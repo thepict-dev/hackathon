@@ -17,11 +17,13 @@
                 <span>ellipse1229@gica.or.kr</span>
             </li>
         </ul>
-        <p class="copy">Copyright ⓒ 2019 Gangwon Information & Multimedia Corporation. All rights reserved.</p>
+        <p class="copy">Copyright ⓒ 2024 Gangwon Information & Multimedia Corporation. All rights reserved.</p>
+        <!-- 
         <ul class="fBotoom">
             <li><a href="#lnk">개인정보 처리 방침</a></li>
             <li><a href="#lnk">이용약관</a></li>
             <li><a href="#lnk">이메일 무단 수집거부</a></li>
         </ul>
+         -->
     </div>
 </footer>

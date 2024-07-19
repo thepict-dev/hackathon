@@ -218,6 +218,15 @@
     line-height: 140%; /* 39.2px */
     letter-spacing: -1.4px;
 }
+@media all and (max-width : 1920px){
+    .secInner h2{
+        font-size: 50px;
+    }
+    .secInner > p{
+        margin-bottom: 40px;
+        font-size: 25px;
+    }
+}
 @media all and (max-width : 1600px){
     .circles{
         row-gap: 20px;
@@ -319,6 +328,11 @@
     letter-spacing: -1.5px;
 }
 
+@media all and (max-width : 1920px){
+    .boxes{
+        margin-top: 50px;
+    }
+}
 @media all and (max-width : 1024px){
     #section4 .secInner h2{
         display: flex;
@@ -351,7 +365,7 @@
 
 .bottomSection{
     width: 100%;
-    padding: 120px 0;
+    padding: 120px 0 150px 0;
     background-color: #000;
 }
 .bottomSecInner{
@@ -400,7 +414,7 @@
 
 @media all and (max-width : 1024px){
     .bottomSection{
-        padding: 44px 0;
+        padding: 44px 0 150px 0;
     }
     .bottomSecInner{
         padding: 0 30px;
@@ -512,6 +526,49 @@
     }
     .noticeList.main li:hover{
         background-color: rgba(255, 255, 255, 0.3);
+        transition: all .2s;
+    }
+}
+
+.top{
+    opacity: 0;
+    position: fixed;
+    right: 94px;
+    bottom: 34px;
+    width: 66px;
+    height: 66px;
+    padding: 0;
+    cursor: pointer;
+}
+.top img{
+    width: 100%;
+}
+.top.active{
+    opacity: 1;
+    transition: all .2s;
+}
+
+@media all and (max-width : 1024px){
+    .t2 span{
+        display: none;
+    }
+    .t1 span{
+        display: none;
+    }
+    .top{
+        position: fixed;
+        right: 34px;
+        bottom: 34px;
+        width: 46px;
+        height: 46px;
+        padding: 0;
+        cursor: pointer;
+    }
+    .top img{
+        width: 100%;
+    }
+    .top.active{
+        opacity: 1;
         transition: all .2s;
     }
 }

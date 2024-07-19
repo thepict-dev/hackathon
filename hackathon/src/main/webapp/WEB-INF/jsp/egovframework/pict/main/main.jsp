@@ -41,16 +41,16 @@
 		    <section id="section3" class="parallaxItem">
 		        <div class="secInner">
 		            <h2 class="t1">디지털 시대의<br>새 지평을 열다</h2>
-		            <p class="t2">대한민국 SW융합 해커톤 대회는 디지털 시대를 선도하는 국내 최대 규모의 해커톤입니다.<br>창의적이고 혁신적인 소프트웨어 솔루션을 개발하며, 기술과 경험, 노하우를 공유하고 함께 성장합니다.</p>
+               		<p class="t2">대한민국 SW융합 해커톤 대회는 디지털 시대를 선도하는 국내 최대 규모의 해커톤입니다.<br><span>창의적이고 혁신적인 소프트웨어 솔루션을 개발하며, 기술과 경험, 노하우를 공유하고 함께 성장합니다.</span></p>
 		            <ul class="circles">
 		                <li class="i1">
 		                    <span>참가 대상</span>
-		                    <p class="bigTitle">총 55개 팀 이내</p>
+		                    <p class="bigTitle mbWidth">총 55개 팀 이내</p>
 		                    <p class="smallTitle">팀당 2-5인 구성</p>
 		                </li>
 		                <li class="i2">
 		                    <span>참가 자격</span>
-		                    <p class="bigTitle">만 15세 이상 누구나</p>
+		                    <p class="bigTitle mbWidth">만 15세 이상 누구나</p>
 		                    <p class="smallTitle">중·고·대학생 및 일반인</p>
 		                </li>
 		                <li class="i3">
@@ -133,6 +133,7 @@
 		            </ul>
 		        </div>
 		    </section>
+		    <!-- 
 		    <section class="bottomSection">
 		        <div class="bottomSecInner">
 		            <h2><p>NOTICE</p><a href="/notice.do"><img src="/front_img/arrow-white-lg.png" alt=""></a></h2>
@@ -150,91 +151,127 @@
 		            </div>
 		        </div>
 		    </section>
+		     -->
+       	<button type="button" class="top"><img src="/front_img/top.png" alt=""></button>
 		</main>
         <%@include file="./include/footer.jsp" %>
         <script>
-	        // Odometer 초기화
-	        let odometer = new Odometer({
-	            el: document.querySelector('.odometer'),
-	            value: 40.000,
-	            format: '(,ddd).ddd',
-	            duration: 3000
-	        });
-	
-	        // ScrollTrigger를 사용하여 section5에 도달했을 때 Odometer 값 변경
-	        ScrollTrigger.create({
-	            trigger: "#section2",
-	            start: "top center",
-	            onEnter: () => {
-	                odometer.update(42.195);
-	            },
-	            once: true
-	        });
-	
-	        //section2
-	        const ani2 = gsap.timeline();
-	        ani2.to("#section2 .t3", {autoAlpha: 0, duration: 10, y: 50}, "+=3")
-	            .to("#section2 .t4", {autoAlpha: 0, duration: 10, y: 50}, "+=3")
-	            .to("#section2 .t1", {x: 50, xPercent: 50, duration: 10}, "+=1")
-	            .to("#section2 .t2", {x: 50, xPercent: -30, duration: 10}, "<")
-	            .to("#section2 .t1", {x: -100, autoAlpha: 0, xPercent: 350, duration: 10}, "+=3")
-	            .to("#section2 .t2", {x: -100, autoAlpha: 0, xPercent: -300, duration: 10}, "+=3")
-	            .from("#section2 .t5", {x: -100, autoAlpha: 0, xPercent: 300, duration: 20}, "+=3")
-	            .from("#section2 .t6", {x: -100, autoAlpha: 0, xPercent: -300, duration: 20}, "<")
-	            .to({}, {duration: 30});
-	
-	        ScrollTrigger.create({
-	            animation: ani2,
-	            trigger: "#section2",
-	            start: "top top", // 섹션 5가 뷰포트의 상단에 도달했을 때 시작
-	            end: "+=6000",
-	            scrub: true,
-	            pin: true, 
-	            anticipatePin: 1,
-	            markers: false
-	        });
-	
-	        //section3
-	        const ani3 = gsap.timeline();
-	        ani3.from("#section3 .t1", {autoAlpha:0, duration: 10, y: 50}, "+=1")
-	            .from("#section3 .t2", {autoAlpha:0, duration: 10, y: 50}, "+=1")
-	            .from("#section3 .i1", {y: -100, autoAlpha:0, duration: 10})
-	            .from("#section3 .i2", {y: 100, autoAlpha:0, duration: 10})
-	            .from("#section3 .i3", {y: -100, autoAlpha:0, duration: 10})
-	            .from("#section3 .i4", {y: 100, autoAlpha:0, duration: 10})
-	            .to({}, {duration: 30});
-	
-	        ScrollTrigger.create({
-	            animation: ani3,
-	            trigger: "#section3",
-	            start: "top top",
-	            end: "+=6000",
-	            scrub: true,
-	            pin: true, 
-	            anticipatePin: 1,
-	            markers: false
-	        });
-	
-	        section4
-	        const ani4 = gsap.timeline();
-	        ani4.from("#section4 .t1", {autoAlpha:0, duration: 10, y: 50}, "+=1")
-	            .from("#section4 .t2", {autoAlpha:0, duration: 10, y: 50}, "+=1")
-	            .from("#section4 .i1", {y: 100, autoAlpha:0, duration: 10})
-	            .from("#section4 .i2", {y: 100, autoAlpha:0, duration: 10})
-	            .from("#section4 .i3", {y: 100, autoAlpha:0, duration: 10})
-	            .to({}, {duration: 30});
-	
-	        ScrollTrigger.create({
-	            animation: ani4,
-	            trigger: "#section4",
-	            start: "top top",
-	            end: "+=6000",
-	            scrub: true,
-	            pin: true, 
-	            anticipatePin: 1,
-	            markers: false
-	        });
 
+        const lenis = new Lenis()
+
+        function raf(time) {
+            lenis.raf(time)
+            requestAnimationFrame(raf)
+        }
+
+        requestAnimationFrame(raf)
+
+        // Odometer 초기화
+        let odometer = new Odometer({
+            el: document.querySelector('.odometer'),
+            value: 40.000,
+            format: '(,ddd).ddd',
+            duration: 3000
+        });
+
+        // ScrollTrigger를 사용하여 section5에 도달했을 때 Odometer 값 변경
+        ScrollTrigger.create({
+            trigger: "#section2",
+            start: "top center",
+            onEnter: () => {
+                odometer.update(42.195);
+            },
+            once: true
+        });
+
+        //section2
+        const ani2 = gsap.timeline();
+        ani2.to("#section2 .t3", {autoAlpha: 0, duration: 1, y: 50, ease: "power2.inOut"}, "+=0.5")
+            .to("#section2 .t4", {autoAlpha: 0, duration: 1, y: 50, ease: "power2.inOut"}, "<")
+            .to("#section2 .t1", {x: 50, xPercent: 50, duration: 1, ease: "power2.inOut"}, "+=0.5")
+            .to("#section2 .t2", {x: 50, xPercent: -30, duration: 1, ease: "power2.inOut"}, "<")
+            .to("#section2 .t1", {x: -100, autoAlpha: 0, xPercent: 350, duration: 1, ease: "power2.inOut"}, "+=0.5")
+            .to("#section2 .t2", {x: -100, autoAlpha: 0, xPercent: -300, duration: 1, ease: "power2.inOut"}, "<")
+            .from("#section2 .t5", {x: -100, autoAlpha: 0, xPercent: 300, duration: 2, ease: "power2.inOut"}, "+=0.5")
+            .from("#section2 .t6", {x: -100, autoAlpha: 0, xPercent: -300, duration: 3, ease: "power2.inOut"}, "<")
+            .to({}, {duration: 5});
+
+        ScrollTrigger.create({
+            animation: ani2,
+            trigger: "#section2",
+            start: "top top", // 섹션 5가 뷰포트의 상단에 도달했을 때 시작
+            end: "+=2000",
+            scrub: true,
+            pin: true, 
+            anticipatePin: 1,
+            ease: "power2.inOut",
+            markers: false,
+            smooth: 1,
+            effects: true,
+            smoothTouch: 0.1,
+        });
+
+        //section3
+        const ani3 = gsap.timeline();
+        ani3.from("#section3 .t1", {autoAlpha:0, duration: 2, y: 50, ease: "power2.inOut"}, "+=1")
+            .from("#section3 .t2", {autoAlpha:0, duration: 2, y: 50, ease: "power2.inOut"}, "<")
+            .from("#section3 .i1", {y: -100, autoAlpha:0, duration: 1, ease: "power2.inOut"}, "<")
+            .from("#section3 .i2", {y: 100, autoAlpha:0, duration: 1, ease: "power2.inOut"}, "<")
+            .from("#section3 .i3", {y: -100, autoAlpha:0, duration: 1, ease: "power2.inOut"}, "<")
+            .from("#section3 .i4", {y: 100, autoAlpha:0, duration: 1, ease: "power2.inOut"}, "<")
+            .to({}, {duration: 5});
+
+        ScrollTrigger.create({
+            animation: ani3,
+            trigger: "#section3",
+            start: "top top",
+            end: "+=2000",
+            scrub: true,
+            pin: true, 
+            anticipatePin: 1,
+            markers: false,
+            smooth: 1,
+            effects: true,
+            smoothTouch: 0.1,
+        });
+
+        section4
+        const ani4 = gsap.timeline();
+        ani4.from("#section4 .t1", {autoAlpha:0, duration: 2, y: 50, ease: "power2.inOut"}, "+=1")
+            .from("#section4 .t2", {autoAlpha:0, duration: 2, y: 50, ease: "power2.inOut"}, "<")
+            .from("#section4 .i1", {y: 100, autoAlpha:0, duration: 2, ease: "power2.inOut"}, "<")
+            .from("#section4 .i2", {y: 100, autoAlpha:0, duration: 2, ease: "power2.inOut"}, "<")
+            .from("#section4 .i3", {y: 100, autoAlpha:0, duration: 2, ease: "power2.inOut"}, "<")
+            .to({}, {duration: 5});
+
+        ScrollTrigger.create({
+            animation: ani4,
+            trigger: "#section4",
+            start: "top top",
+            end: "+=2000",
+            scrub: true,
+            pin: true, 
+            anticipatePin: 1,
+            markers: false,
+            smooth: 1,
+            effects: true,
+            smoothTouch: 0.1,
+        });
+        
+        let topBtn = document.querySelector('.top');
+
+        window.addEventListener('scroll', function() {
+            if (this.scrollY > 3000) {
+                topBtn.classList.add('active');
+            } else {
+                topBtn.classList.remove('active');
+            }
+        })
+
+        topBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            window.scrollTo({top: 0, behavior: 'smooth'});
+        })
     </script>
     </body>
 </html>

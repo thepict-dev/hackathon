@@ -6,6 +6,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -20,6 +21,7 @@ import javax.servlet.http.HttpServletResponse;
 import net.sf.json.JSONArray;
 
 import org.apache.commons.codec.binary.Base64;
+import org.json.JSONObject;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -27,6 +29,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 
 @Controller
@@ -37,12 +41,12 @@ public class apiController {
 	@Resource(name = "adminService")
 	private AdminService adminService;
 	
-	@GetMapping("api/inventory_list.do")
+	@GetMapping("api/vote_list.do")
 	@ResponseBody
 	public void inventory_list(HttpServletResponse response, HttpServletRequest request, @ModelAttribute("searchVO") PictVO pictVO, ModelMap model, @ModelAttribute("adminVO") AdminVO adminVO) throws Exception {
 		response.setHeader("Access-Control-Allow-Origin", "*");
-		response.setHeader("Content-Type", "application/xml");
-		response.setContentType("text/xml;charset=UTF-8");
+		response.setHeader("Content-Type", "application/json");
+		response.setContentType("application/json;charset=UTF-8");
 		response.setCharacterEncoding("utf-8");
 		response.setHeader("Access-Control-Allow-Methods", "GET");
 		
@@ -53,36 +57,15 @@ public class apiController {
 		pictVO.setType(type);
 		ArrayList<Map<String, Object>> list = new ArrayList();
 		
-		if(type.equals("badge")) {
-			List<PictVO> badgeList = pictService.api_get_badge(pictVO);
-			for(PictVO a : badgeList){
-				Map<String, Object> map = new HashMap<>();
-				map.put("key_id" , a.getKey_id()); 
-				map.put("user_id" , a.getUser_id());
-				map.put("title" , a.getTitle());
-				map.put("content" , a.getContent());
-				map.put("reg_date" , a.getReg_date());
-				list.add(map);
-			}
-			
-		}
-		else if(type.equals("coin")) {
-			System.out.println(":::::::::::::coin");
-			List<PictVO> coinList = pictService.api_get_coin(pictVO);
-			for(PictVO a : coinList){
-				Map<String, Object> map = new HashMap<>();
-				map.put("key_id" , a.getKey_id()); 
-				map.put("user_id" , a.getUser_id());
-				map.put("title" , a.getTitle());
-				map.put("content" , a.getContent());
-				map.put("coin_text" , a.getCoin_text());
-				map.put("reg_date" , a.getReg_date());
-				map.put("type" , a.getType());
-				list.add(map);
-			}
+
+		List<PictVO> coinList = pictService.vote_list(pictVO);
+		for(PictVO a : coinList){
+			Map<String, Object> map = new HashMap<>();
+			map.put("title" , a.getTitle()); 
+			map.put("cnt" , Integer.parseInt(a.getCnt()));
+			list.add(map);
 		}
 		
-		System.out.println(list);
 		
 		PrintWriter out = response.getWriter();
 		JSONArray js = JSONArray.fromObject(list);
@@ -92,45 +75,57 @@ public class apiController {
 		
 	}
 	
-	@GetMapping("api/get_avata.do")
+	@GetMapping("api/vote_list2.do")
 	@ResponseBody
-	public void get_avata(HttpServletResponse response, HttpServletRequest request, @ModelAttribute("searchVO") PictVO pictVO, ModelMap model, @ModelAttribute("adminVO") AdminVO adminVO) throws Exception {
+	public void vote_list2(HttpServletResponse response, HttpServletRequest request, @ModelAttribute("searchVO") PictVO pictVO, ModelMap model, @ModelAttribute("adminVO") AdminVO adminVO) throws Exception {
 		response.setHeader("Access-Control-Allow-Origin", "*");
-		response.setHeader("Content-Type", "application/xml");
-		response.setContentType("text/xml;charset=UTF-8");
+		response.setHeader("Content-Type", "application/json");
+		response.setContentType("application/json;charset=UTF-8");
 		response.setCharacterEncoding("utf-8");
 		response.setHeader("Access-Control-Allow-Methods", "GET");
 		
 		String user_id = request.getParameter("user_id");
+		String type = request.getParameter("type");
+		
 		pictVO.setUser_id(user_id);
-		pictVO = pictService.api_get_avata(pictVO);
-		
-		Map<String, Object> map = new HashMap<>();
-		map.put("name" , pictVO.getName()); 
-		map.put("user_id" , pictVO.getUser_id());
-		map.put("position_x" , pictVO.getPosition_x());
-		map.put("position_y" , pictVO.getPosition_y());
-		map.put("position_z" , pictVO.getPosition_z());
-		map.put("rotation_x" , pictVO.getRotation_x());
-		map.put("rotation_y" , pictVO.getRotation_y());
-		map.put("rotation_z" , pictVO.getRotation_z());
-		
-		map.put("cloth_id" , pictVO.getCloth_id());
-		map.put("face_id" , pictVO.getFace_id());
-		map.put("hair_id" , pictVO.getHair_id());
-		map.put("shoes_id" , pictVO.getShoes_id());
-		map.put("body" , pictVO.getBody());
+		pictVO.setType(type);
+		ArrayList<Map<String, Object>> list = new ArrayList();
+
+		Map<String, Integer> resultMap = new HashMap<>();
+		List<PictVO> coinList = pictService.vote_list(pictVO);
+		for(PictVO a : coinList){
+			
+			resultMap.put(a.getTitle(), Integer.parseInt(a.getCnt()));
+		}
 		
 		
+		List<Map.Entry<String, Integer>> list2 = new ArrayList<>(resultMap.entrySet());
+		list2.sort(Map.Entry.<String, Integer>comparingByValue().reversed());
+		
+		Map<String, Integer> sortedMap = new LinkedHashMap<>();
+		for (Map.Entry<String, Integer> entry : list2) {
+		    sortedMap.put(entry.getKey(), entry.getValue());
+		}
+		if(list2.size() < 10) {
+			for(int i=1; i<=10 - list2.size(); i++) {
+				System.out.println("여기 몇번탈까?");
+				sortedMap.put("팀명"+i, 0);
+			}
+		}
+		
+		String json = new ObjectMapper().writeValueAsString(sortedMap);
+
 		PrintWriter out = response.getWriter();
-		JSONArray js = JSONArray.fromObject(map);
-		out.print(js);
+		
+		out.print(json);
 		out.flush();
+		
+		
 	}
 	
 	
 	@SuppressWarnings("null")
-	@PostMapping("api/save_avata.do")
+	@PostMapping("api/vote_insert.do")
 	@ResponseBody
 	public void save_avata(HttpServletResponse response, HttpServletRequest request, @ModelAttribute("searchVO") PictVO pictVO, ModelMap model, @ModelAttribute("adminVO") AdminVO adminVO) throws Exception {
 		response.setHeader("Access-Control-Allow-Origin", "*");
@@ -139,69 +134,24 @@ public class apiController {
 		response.setCharacterEncoding("utf-8");
 		response.setHeader("Access-Control-Allow-Methods", "POST");
 		
-		String user_id = request.getParameter("user_id");
-		pictVO.setUser_id(user_id);
-		pictVO = pictService.api_get_avata(pictVO);
 		
-		if(pictVO == null) {
-			PictVO vo = new PictVO();
-			System.out.println("여기 오면 널임");
-			vo.setUser_id(user_id);
-			vo.setPosition_x(request.getParameter("position_x"));
-			vo.setPosition_y(request.getParameter("position_y"));
-			vo.setPosition_z(request.getParameter("position_z"));
-			
-			vo.setRotation_x(request.getParameter("rotation_x"));
-			vo.setRotation_y(request.getParameter("rotation_y"));
-			vo.setRotation_z(request.getParameter("rotation_z"));
-			
-			vo.setCloth(request.getParameter("cloth"));
-			vo.setFace(request.getParameter("face"));
-			vo.setHair(request.getParameter("hair"));
-			vo.setShoes(request.getParameter("shoes"));
-			vo.setBody(request.getParameter("body"));
-			
-			pictService.insert_avata(vo);
-		}
-		else {
-			System.out.println("여기 오면 널아님");
-			if(request.getParameter("position_x") != null) pictVO.setPosition_x(request.getParameter("position_x"));
-			if(request.getParameter("position_y") != null) pictVO.setPosition_y(request.getParameter("position_y"));
-			if(request.getParameter("position_z") != null) pictVO.setPosition_z(request.getParameter("position_z"));
-			
-			if(request.getParameter("rotation_x") != null) pictVO.setRotation_x(request.getParameter("rotation_x"));
-			if(request.getParameter("rotation_y") != null) pictVO.setRotation_y(request.getParameter("rotation_y"));
-			if(request.getParameter("rotation_z") != null) pictVO.setRotation_z(request.getParameter("rotation_z"));
-			
-			if(request.getParameter("cloth") != null) pictVO.setCloth(request.getParameter("cloth"));
-			if(request.getParameter("face") != null) pictVO.setFace(request.getParameter("face"));
-			if(request.getParameter("hair") != null) pictVO.setHair(request.getParameter("hair"));
-			if(request.getParameter("shoes") != null) pictVO.setShoes(request.getParameter("shoes"));
-			if(request.getParameter("body") != null) pictVO.setBody(request.getParameter("body"));
-			
-			pictService.update_avata(pictVO);
-		}
-		pictVO = pictService.api_get_avata(pictVO);
+		pictService.vote_insert(pictVO);
+		JSONObject obj = new JSONObject();
+		obj.put("response", "200");
+		/*
 		Map<String, Object> map = new HashMap<>();
-		map.put("name" , pictVO.getName()); 
-		map.put("user_id" , pictVO.getUser_id());
-		map.put("position_x" , pictVO.getPosition_x());
-		map.put("position_y" , pictVO.getPosition_y());
-		map.put("position_z" , pictVO.getPosition_z());
-		map.put("rotation_x" , pictVO.getRotation_x());
-		map.put("rotation_y" , pictVO.getRotation_y());
-		map.put("rotation_z" , pictVO.getRotation_z());
-		
+		map.put("response", "200");
+
 		map.put("cloth_id" , pictVO.getCloth_id());
 		map.put("face_id" , pictVO.getFace_id());
 		map.put("hair_id" , pictVO.getHair_id());
 		map.put("shoes_id" , pictVO.getShoes_id());
 		map.put("body" , pictVO.getBody());
-		
+*/	
 		
 		PrintWriter out = response.getWriter();
-		JSONArray js = JSONArray.fromObject(map);
-		out.print(js);
+		//JSONArray js = JSONArray.fromObject(map);
+		out.print(obj);
 		out.flush();
 	}
 	

@@ -116,8 +116,22 @@ public class PictVO extends PictDefaultVO {
 	private String file_4;
 	private String file_5;
 	private String del_idx;
+	private String target_id;
+	private String cnt;
 	
 	
+	public String getCnt() {
+		return cnt;
+	}
+	public void setCnt(String cnt) {
+		this.cnt = cnt;
+	}
+	public String getTarget_id() {
+		return target_id;
+	}
+	public void setTarget_id(String target_id) {
+		this.target_id = target_id;
+	}
 	public String getDel_idx() {
 		return del_idx;
 	}

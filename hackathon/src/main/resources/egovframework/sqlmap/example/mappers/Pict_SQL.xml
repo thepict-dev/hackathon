@@ -79,4 +79,27 @@
 		where idx = #{idx}
 	</update>
 	
+	
+	<select id="vote_list" resultType="pictVO">
+		select t.title, count(v.idx) as cnt
+		from vote_table v
+		left outer join team_table t on v.target_id = t.idx
+		group by v.target_id
+		order by cnt desc
+		limit 10 offset 0
+	</select>
+	
+	<insert id="vote_insert" parameterType="pictVO">
+		INSERT INTO vote_table
+			(
+			 target_id, reg_date
+			)
+		VALUES (
+			 #{target_id}, now()
+			  ) 
+	</insert>
+	
+	
+	
+	
 </mapper>

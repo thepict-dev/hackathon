@@ -30,7 +30,7 @@
     
     
     <meta name="description" content="제11회 대한민국 SW융합 해커톤 대회">
-	<meta name="keywords" content="제11회 대한민국 SW융합 해커톤 대회, 해커톤대회, SW해커톤">
+	<meta name="keywords" content="제11회 대한민국 sw융합 해커톤 대회, 해커톤, 소프트웨어, 대학생 해커톤, 기업 해커톤, 코딩 대회">
 	<meta property="og:title" content="제11회 대한민국 SW융합 해커톤 대회">
 	<meta property="og:description" content="제11회 대한민국 SW융합 해커톤 대회">
 	<meta property="og:image" content="/front_img/poster1.png">

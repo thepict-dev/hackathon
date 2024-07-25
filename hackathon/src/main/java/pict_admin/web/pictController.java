@@ -19,12 +19,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.util.List;
+import java.util.Map;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
@@ -324,8 +328,29 @@ public class pictController {
 	
 	
 	
-	 //메소드
- 	public static String encryptPassword(String password, String id) throws Exception {
+	//투표테스트
+	@RequestMapping(value = "/vote/vote_test.do")
+	public String vote_test(@ModelAttribute("searchVO") PictVO pictVO, ModelMap model, HttpServletRequest request) throws Exception {
+
+		return "pict/admin/vote_list";
+	}
+	
+	@RequestMapping(value = "/vote/vote_save.do", method = RequestMethod.POST)
+	@ResponseBody
+	public String vote_save2(@ModelAttribute("searchVO") PictVO pictVO, ModelMap model, HttpServletRequest request,
+			 @RequestBody Map<String, Object> param) throws Exception {
+
+		String target_id = param.get("target_id").toString();
+		pictVO.setTarget_id(target_id);
+		
+		pictService.vote_insert(pictVO);
+		
+		return "Y";
+	}	
+	
+	
+	//메소드
+	public static String encryptPassword(String password, String id) throws Exception {
  		if (password == null) return "";
  		if (id == null) return ""; // KISA 보안약점 조치 (2018-12-11, 신용호)
  		byte[] hashValue = null; // 해쉬값
@@ -336,7 +361,7 @@ public class pictController {
  		hashValue = md.digest(password.getBytes());
  	
  		return new String(Base64.encodeBase64(hashValue));
-     }
+ 	}
  	public String fileUpload(MultipartHttpServletRequest request, MultipartFile uploadFile, String target) {
      	String path = "";
      	String fileName = "";

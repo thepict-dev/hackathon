@@ -7,7 +7,7 @@
 <!DOCTYPE html>
 <html lang="ko">
 	<c:import url="./include/head.jsp">
-    	<c:param name="pageTitle" value="해커톤"/>
+    	<c:param name="pageTitle" value="제11회 대한민국 SW융합 해커톤 대회"/>
     </c:import>
     <body>
         <%@include file="./include/header.jsp" %>

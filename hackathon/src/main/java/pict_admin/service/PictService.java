@@ -93,7 +93,7 @@ public interface PictService {
 
 	void board_att_del(PictVO pictVO) throws Exception;
 
-	List<PictVO> vote_list(PictVO pictVO) throws Exception;
+	List<TestVO> vote_list(TestVO testVO) throws Exception;
 
 	void vote_insert(PictVO pictVO) throws Exception;
 

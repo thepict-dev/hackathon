@@ -14,6 +14,7 @@ import pict_admin.service.PictService;
 import pict_admin.service.PictVO;
 import pict_admin.service.AdminService;
 import pict_admin.service.AdminVO;
+import pict_admin.service.TestVO;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -41,85 +42,35 @@ public class apiController {
 	@Resource(name = "adminService")
 	private AdminService adminService;
 	
-	@GetMapping("api/vote_list.do")
-	@ResponseBody
-	public void inventory_list(HttpServletResponse response, HttpServletRequest request, @ModelAttribute("searchVO") PictVO pictVO, ModelMap model, @ModelAttribute("adminVO") AdminVO adminVO) throws Exception {
-		response.setHeader("Access-Control-Allow-Origin", "*");
-		response.setHeader("Content-Type", "application/json");
-		response.setContentType("application/json;charset=UTF-8");
-		response.setCharacterEncoding("utf-8");
-		response.setHeader("Access-Control-Allow-Methods", "GET");
-		
-		String user_id = request.getParameter("user_id");
-		String type = request.getParameter("type");
-		
-		pictVO.setUser_id(user_id);
-		pictVO.setType(type);
-		ArrayList<Map<String, Object>> list = new ArrayList();
-		
-
-		List<PictVO> coinList = pictService.vote_list(pictVO);
-		for(PictVO a : coinList){
-			Map<String, Object> map = new HashMap<>();
-			map.put("title" , a.getTitle()); 
-			map.put("cnt" , Integer.parseInt(a.getCnt()));
-			list.add(map);
-		}
-		
-		
-		PrintWriter out = response.getWriter();
-		JSONArray js = JSONArray.fromObject(list);
-		out.print(js);
-		out.flush();
-		
-		
-	}
 	
 	@GetMapping("api/vote_list2.do")
 	@ResponseBody
-	public void vote_list2(HttpServletResponse response, HttpServletRequest request, @ModelAttribute("searchVO") PictVO pictVO, ModelMap model, @ModelAttribute("adminVO") AdminVO adminVO) throws Exception {
+	public Map<String, Object> vote_list2(HttpServletResponse response, HttpServletRequest request, @ModelAttribute("searchVO") TestVO testVO, ModelMap model) throws Exception {
 		response.setHeader("Access-Control-Allow-Origin", "*");
 		response.setHeader("Content-Type", "application/json");
 		response.setContentType("application/json;charset=UTF-8");
 		response.setCharacterEncoding("utf-8");
 		response.setHeader("Access-Control-Allow-Methods", "GET");
-		
-		String user_id = request.getParameter("user_id");
-		String type = request.getParameter("type");
-		
-		pictVO.setUser_id(user_id);
-		pictVO.setType(type);
-		ArrayList<Map<String, Object>> list = new ArrayList();
 
-		Map<String, Integer> resultMap = new HashMap<>();
-		List<PictVO> coinList = pictService.vote_list(pictVO);
-		for(PictVO a : coinList){
-			
-			resultMap.put(a.getTitle(), Integer.parseInt(a.getCnt()));
+		Map<String, Object> resultMap = new HashMap<String, Object>();
+		List<TestVO> coinList = pictService.vote_list(testVO);
+
+		for(int i=0; i<coinList.size(); i++) {
+			Map<String, Object> obj = new HashMap<>();
+			obj.put("cnt", coinList.get(i).getCnt());
+			obj.put("title", coinList.get(i).getTitle());
+			resultMap.put(String.valueOf(i + 1), obj);
 		}
 		
-		
-		List<Map.Entry<String, Integer>> list2 = new ArrayList<>(resultMap.entrySet());
-		list2.sort(Map.Entry.<String, Integer>comparingByValue().reversed());
-		
-		Map<String, Integer> sortedMap = new LinkedHashMap<>();
-		for (Map.Entry<String, Integer> entry : list2) {
-		    sortedMap.put(entry.getKey(), entry.getValue());
-		}
-		if(list2.size() < 10) {
-			for(int i=1; i<=10 - list2.size(); i++) {
-				System.out.println("여기 몇번탈까?");
-				sortedMap.put("팀명"+i, 0);
+		if(coinList.size() < 10) {
+			for (int j = coinList.size() + 1; j <= 10; j++) {
+				Map<String, Object> obj = new HashMap<>();
+				obj.put("cnt", 0);
+				obj.put("title", "팀명"+ j);
+				resultMap.put(String.valueOf(j), obj);
 			}
 		}
-		
-		String json = new ObjectMapper().writeValueAsString(sortedMap);
-
-		PrintWriter out = response.getWriter();
-		
-		out.print(json);
-		out.flush();
-		
+		return resultMap;
 		
 	}
 	
@@ -155,115 +106,6 @@ public class apiController {
 		out.flush();
 	}
 	
-	@PostMapping("api/attendance_save.do")
-	@ResponseBody
-	public void attendance_save(@ModelAttribute("searchVO") PictVO pictVO, ModelMap model, HttpServletRequest request, HttpServletResponse response) throws Exception {
-		response.setHeader("Access-Control-Allow-Origin", "*");
-		response.setHeader("Content-Type", "application/xml");
-		response.setContentType("text/xml;charset=UTF-8");
-		response.setCharacterEncoding("utf-8");
-		response.setHeader("Access-Control-Allow-Methods", "POST");
-		
-		SimpleDateFormat sp = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
-		String now = sp.format(new Date());
-		
-		
-		String name = request.getParameter("name");
-		String std_num = request.getParameter("std_num");
-		String in_out = request.getParameter("in_out");
-		String week_count = request.getParameter("week_count");
-		String week_cha = request.getParameter("week_cha");
-		String title = request.getParameter("title");
-		
-		
-		pictVO.setWeek_cha(week_cha);
-		pictVO.setWeek_count(week_count);
-		pictVO.setName(name);
-		pictVO.setStd_num(std_num);
-		pictVO.setTitle(title);
-
-		System.out.println(in_out);
-		if(in_out.equals("in")) {
-			pictVO.setIn_date(now);
-			pictService.attendance_save(pictVO);
-			
-		}
-		else {
-			PictVO vo = pictService.attendance_select_one(pictVO);
-			vo.setOut_date(now);
-			pictService.attendance_save_update(vo);
-		}
-		
-		PrintWriter out = response.getWriter();
-		Map<String, Object> map = new HashMap<>();
-		map.put("result", 200);
-		JSONArray js = JSONArray.fromObject(map);
-		out.print(js);
-		out.flush();
-	}
-
-	@GetMapping("api/lecture_list.do")
-	@ResponseBody
-	public void lecture_list(@ModelAttribute("searchVO") PictVO pictVO, ModelMap model, HttpServletRequest request, HttpServletResponse response) throws Exception {
-		response.setHeader("Access-Control-Allow-Origin", "*");
-		response.setHeader("Content-Type", "application/xml");
-		response.setContentType("text/xml;charset=UTF-8");
-		response.setCharacterEncoding("utf-8");
-		response.setHeader("Access-Control-Allow-Methods", "GET");
-		List<PictVO> lecture_list = pictService.api_lecture_list(pictVO);
-		
-		ArrayList<Map<String, Object>> list = new ArrayList();
-		for(PictVO a : lecture_list){
-			Map<String, Object> map = new HashMap<>();
-			map.put("idx" , a.getIdx()); 
-			map.put("title" , a.getTitle());
-			map.put("name" , a.getName());
-			map.put("link_url" , a.getLink_url());
-			list.add(map);
-		}
-		
-		PrintWriter out = response.getWriter();
-		JSONArray js = JSONArray.fromObject(list);
-		out.print(js);
-		out.flush();
-	}
-	
-	@GetMapping("api/lecture_attendance.do")
-	@ResponseBody
-	public void lecture_attendance(@ModelAttribute("searchVO") PictVO pictVO, ModelMap model, HttpServletRequest request, HttpServletResponse response) throws Exception {
-		response.setHeader("Access-Control-Allow-Origin", "*");
-		response.setHeader("Content-Type", "application/xml");
-		response.setContentType("text/xml;charset=UTF-8");
-		response.setCharacterEncoding("utf-8");
-		response.setHeader("Access-Control-Allow-Methods", "GET");
-		
-		String idx = request.getParameter("idx");
-		pictVO.setIdx(Integer.parseInt(idx));
-		List<PictVO> attendance_list = pictService.lecture_attendance_api(pictVO);
-		
-		ArrayList<Map<String, Object>> list = new ArrayList();
-		for(PictVO a : attendance_list){
-			Map<String, Object> map = new HashMap<>();
-			map.put("idx" , a.getIdx()); 
-			map.put("title" , a.getTitle());
-			map.put("professor" , a.getProfessor());
-			map.put("name" , a.getName());
-			map.put("in_date" , a.getIn_date());
-			map.put("out_date" , a.getOut_date());
-			map.put("std_num" , a.getStd_num());
-			map.put("timediff" , a.getTimediff());
-			map.put("category_cnt" , a.getCategory_cnt());
-			map.put("whole_timediff" , a.getWhole_timediff());
-			
-			list.add(map);
-		}
-		
-		PrintWriter out = response.getWriter();
-		JSONArray js = JSONArray.fromObject(list);
-		out.print(js);
-		out.flush();
-	
-	}
 
 	public static String encryptPassword(String password, String id) throws Exception {
 		if (password == null) return "";

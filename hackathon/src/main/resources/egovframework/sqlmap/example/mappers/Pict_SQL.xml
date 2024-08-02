@@ -80,7 +80,7 @@
 	</update>
 	
 	
-	<select id="vote_list" resultType="pictVO">
+	<select id="vote_list" resultType="testVO">
 		select t.title, count(v.idx) as cnt
 		from vote_table v
 		left outer join team_table t on v.target_id = t.idx

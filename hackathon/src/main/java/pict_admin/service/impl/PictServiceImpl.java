@@ -23,6 +23,7 @@ import pict_admin.service.AdminVO;
 import pict_admin.service.PictDefaultVO;
 import pict_admin.service.PictService;
 import pict_admin.service.PictVO;
+import pict_admin.service.TestVO;
 
 import javax.annotation.Resource;
 
@@ -223,9 +224,9 @@ public class PictServiceImpl extends EgovAbstractServiceImpl implements PictServ
 	}
 
 	@Override
-	public List<PictVO> vote_list(PictVO pictVO) throws Exception {
+	public List<TestVO> vote_list(TestVO testVO) throws Exception {
 		// TODO Auto-generated method stub
-		return pictMapper.vote_list(pictVO);
+		return pictMapper.vote_list(testVO);
 	}
 
 	@Override

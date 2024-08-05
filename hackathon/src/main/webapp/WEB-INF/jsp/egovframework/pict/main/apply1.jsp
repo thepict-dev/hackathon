@@ -118,8 +118,6 @@
 						if(assignment_name != null && assignment_name != '' && assignment_name != undefined){
 							if(keyword != null && keyword != '' && keyword != undefined){
 								$('#apply1_next').addClass("active");
-								$('body').addClass('modal-open');
-								
 							}	
 						}	
 					}	

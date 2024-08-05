@@ -248,7 +248,7 @@
 	function fn_apply2_next(){
 		$('#apply2').hide();
 		$('#apply3').css("display", "flex");
-		apply_draw()
+		apply_draw();
 	}
 	$('#birthday_1').blur(function(e){
 		var birth = $('#birthday_1').val()

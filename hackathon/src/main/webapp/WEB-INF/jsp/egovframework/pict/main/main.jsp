@@ -156,15 +156,7 @@
 		</main>
         <%@include file="./include/footer.jsp" %>
         <script>
-	        const lenis = new Lenis()
-	    
-	        function raf(time) {
-	            lenis.raf(time)
-	            requestAnimationFrame(raf)
-	        }
-	    
-	        requestAnimationFrame(raf)
-	    
+	        
 	        // Odometer 초기화
 	        let odometer = new Odometer({
 	            el: document.querySelector('.odometer'),

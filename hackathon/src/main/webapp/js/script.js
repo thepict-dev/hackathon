@@ -38,6 +38,37 @@ $('.appTop button').click(function(){
    $('.applyWrapper').hide();
 });
 
+//탭
+const tabItem = document.querySelectorAll('.tabNav li');
+const tabInner = document.querySelectorAll('.tabInner');
+
+function activateTab(items, index) {
+    	tabInner.forEach((inner) => {
+        inner.classList.remove('active');
+    });
+
+    items.forEach((item) => {
+        item.classList.remove('active');
+    });
+
+    items[index].classList.add('active');
+    tabInner[index].classList.add('active');
+}
+
+tabItem.forEach((tab, idx) => {
+    tab.addEventListener('click', function() {
+        activateTab(tabItem, idx);
+    });
+});
+
+// 메인 스와이퍼
+const swiper = new Swiper('.swiper', {
+  speed: 2000,
+  pagination: {
+    el: ".swiper-pagination",
+    clickable: true,
+  },
+});
 // 사이트맵 모달
 // $('.gnbRight button').click(function(){
 //   $('.siteMap').show();

@@ -60,6 +60,25 @@
     background-color: #fff;
     border-radius: 0 0 20px 20px;
     padding: 16px 40px;
+    overflow:overlay;
+}
+.appBottom::-webkit-scrollbar {
+    width: 12px; /* 전체 스크롤바 너비 */
+}
+
+.appBottom::-webkit-scrollbar-track {
+    background: transparent; /* 트랙을 투명하게 설정 */
+}
+
+.appBottom::-webkit-scrollbar-thumb {
+    background-color: #000; /* 스크롤바 색상 */
+    border-radius: 6px; /* 확실한 둥근 모서리 */
+    border: 4px solid transparent; /* 투명한 테두리로 여백 생성 */
+    background-clip: content-box; /* 배경을 content-box에만 적용 */
+}
+
+.appBottom::-webkit-scrollbar-button {
+    display: none; /* 스크롤바 버튼 숨김 */
 }
 .appTitle{
     color: var(--bk, #000);
@@ -167,7 +186,7 @@
     width: 89px;
     height: 34px;
     margin-bottom: 20px;
-    border: 1px solid var(--200, #E2E8F0);
+    border: 1px solid #E2E8F0;
     color: var(--grey-600);
     font-size: 14px;
     font-weight: 500;
@@ -256,9 +275,125 @@
     align-items: center;
     width: 89px;
     height: 34px;
-    border: 1px solid var(--200, #E2E8F0);
+    border: 1px solid #E2E8F0;
     color: var(--grey-600);
     font-size: 14px;
     font-weight: 500;
     cursor: pointer;
+}
+
+
+.confirmWrapper{
+    position: fixed;
+    left: 0;
+    top: 0;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.60);
+}
+.confirmContainer{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    background-color: #fff;
+    overflow-y: auto;
+    border-radius: 0 0 20px 20px;
+    padding: 16px 40px;
+}
+.confirmTitle{
+    width: 100%;
+    text-align: center;
+    color: var(--bk, #000);
+    font-family: var(--fn-suit);
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 100%; /* 18px */
+    letter-spacing: -1px;
+}
+
+.tabNav.app{
+    padding: 12px 0;
+}
+.tabNav.app li a{
+    padding: 20px 24px;
+    font-size: 20px;
+    letter-spacing: -1px;
+}
+.tabInner{
+	display: none;
+    width: 100%;
+}
+.tabInner.active {
+	display: block;
+}
+
+.teamInfo{
+    display: flex;
+    flex-direction: column;
+    row-gap: 12px;
+    width: 100%;
+    margin-top: 12px;
+    padding: 20px 0;
+    border-top: 1px solid var(--grey-100);
+    border-bottom: 1px solid var(--grey-100);
+}
+.teamInfo li{
+    display: flex;
+    column-gap: 8px;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 140%; /* 22.4px */
+    letter-spacing: -0.8px;
+}
+.teamInfo li p:first-of-type{
+    width: 100px;
+    color: var(--grey-500);
+}
+.checkInput{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    column-gap: 8px;
+    padding: 32px 0 24px;
+}
+.checkInput input[type="checkbox"]{
+    width: 12px;
+    height: 12px;
+    border-radius: 0;
+    border: 1px solid #583D94;
+}
+.checkInput input[type="checkbox"]:checked::after {
+    width: 6px;
+    height: 6px;
+    border-radius: 0;
+}
+.checkInput label{
+    color: #000;
+    font-family: SUIT;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 100%; /* 14px */
+    letter-spacing: -0.7px;
+    cursor: pointer;
+}
+
+.swiper-horizontal>.swiper-pagination-bullets, .swiper-pagination-bullets.swiper-pagination-horizontal, .swiper-pagination-custom, .swiper-pagination-fraction{
+	position: unset;
+}
+.swiper-pagination-bullet{
+	width: 5px;
+	height: 5px;
+	margin: 0 10px !important;
+	border-radius: 10px;
+	background-color: var(--grey-300);
+	opacity: 1;
+	transition: all .3s;
+}
+.swiper-pagination-bullet-active{
+	background-color: #171C61;
 }

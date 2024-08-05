@@ -33,6 +33,7 @@
 <%@include file="../apply2.jsp" %>
 <%@include file="../apply3.jsp" %>
 <%@include file="../apply4.jsp" %>
+<%@include file="../confirm_popup.jsp" %>
 
 
 <script>

@@ -20,6 +20,9 @@
 body{
     font-family: var(--fn-wanted);
 }
+body.modal-open {
+    overflow: hidden;
+}
 
 button{
     font-family: var(--fn-wanted);

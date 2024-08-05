@@ -118,7 +118,7 @@
 		where idx = #{idx}
 	</select>
 	
-	<insert id="team_insert" parameterType="pictVO">
+	<insert id="team_insert" parameterType="pictVO" useGeneratedKeys="true" keyProperty="idx">
 		INSERT INTO team_table
 			(
 			 assignment_id, local, reg_date, title, team_cnt, assignment_name, keyword, file_url, award

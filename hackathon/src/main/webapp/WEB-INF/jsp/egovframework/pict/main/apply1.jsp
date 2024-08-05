@@ -36,7 +36,7 @@
                             <p class="inputCaption mb24">참가구분</p>
                             <select name="local" id="local" onchange="fn_active()">
                                 <option value="">소속 지역</option>
-                                <option value="1">강원</option>
+                                <option value="강원">강원</option>
                             </select>
                         </div>
                     </div>
@@ -95,7 +95,7 @@
             </div>
             <div class="applyButton">
                 <!-- <a href="#lnk" class="prevButton">이전으로</a> -->
-                <a href="#lnk" onclick="fn_next()" class="nextButton active" id="apply1_next">다음으로</a>
+                <a href="#lnk" onclick="fn_next()" class="nextButton" id="apply1_next">다음으로</a>
             </div>
         </form>
     </div>

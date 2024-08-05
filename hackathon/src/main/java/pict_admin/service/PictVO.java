@@ -137,8 +137,15 @@ public class PictVO extends PictDefaultVO {
 	private String parent_address2;
 	private String award;
 	private String judge;
+	private String sex;
 	
 	
+	public String getSex() {
+		return sex;
+	}
+	public void setSex(String sex) {
+		this.sex = sex;
+	}
 	public String getJudge() {
 		return judge;
 	}

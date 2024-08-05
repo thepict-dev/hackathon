@@ -3,7 +3,7 @@
 <%@ taglib prefix="form"   uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="ui"     uri="http://egovframework.gov/ctl/ui"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
-
+<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <div class="applyWrapper" id="apply2">
     <div class="applyContainer">
         <div class="appTop">
@@ -81,9 +81,9 @@
                         <div class="addContainer">
                             <div class="inputBox">
                                 <p class="inputCaption">보호자 주소</p>
-                                <input type="text" name="parent_address" id="parent_address" readonly value="23423">
+                                <input type="text" name="parent_address" id="parent_address" readonly>
                             </div>
-                            <a href="#lnk">주소검색</a>
+                            <a href="#lnk" id="searchZip">주소검색</a>
                         </div>
                         <input type="text" name="parent_address2" id="parent_address2" placeholder="상세주소를 입력해주세요">
                     </div>
@@ -199,7 +199,7 @@
             </div>
             <div class="applyButton">
                 <a href="#lnk" onclick="fn_apply1_back()" class="prevButton">이전으로</a>
-                <a href="#lnk" onclick="fn_apply2_next()" class="nextButton active" id="apply2_next">다음으로</a>
+                <a href="#lnk" onclick="fn_apply2_next()" class="nextButton" id="apply2_next">다음으로</a>
             </div>
         </form>
     </div>
@@ -292,6 +292,19 @@
 			
 		}
 	})
+	
+	window.onload = function(){
+	    document.getElementById("searchZip").addEventListener("click", function(){ //주소입력칸을 클릭하면
+	        //카카오 지도 발생
+	        new daum.Postcode({
+	            oncomplete: function(data) { //선택시 입력값 세팅
+	                //document.getElementById("HPOSTCODE").value = data.zonecode;
+	                document.getElementById("parent_address").value = data.address; // 주소 넣기
+	                document.getElementById("parent_address2").focus();
+	            }
+	        }).open();
+	    });
+	}
 	
 	
 

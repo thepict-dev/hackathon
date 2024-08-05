@@ -11,7 +11,10 @@ import java.io.PrintWriter;
 import java.security.MessageDigest;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.HashMap;
+
 import org.apache.commons.codec.binary.Base64;
 import javax.annotation.Resource;
 import javax.mail.PasswordAuthentication;
@@ -30,6 +33,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
@@ -96,7 +100,97 @@ public class pictController {
 		return "pict/main/news_view";
 	}
 	
+	//사전등록
+	
+	@RequestMapping("/register_insert.do")
+	@ResponseBody
+	public String profile_img(@ModelAttribute("pictVO") PictVO pictVO, ModelMap model, MultipartHttpServletRequest request, 
+			@RequestParam("img") MultipartFile multi,
+			@RequestPart(value = "request") Map<String, Object> param) throws Exception {	
+		try {
+			//String uploadpath = "/user1/upload_file/hackathon/team";
+			String uploadpath  = "D:\\user1\\upload_file\\default";
+            String originFilename = multi.getOriginalFilename();
+            String extName = originFilename.substring(originFilename.lastIndexOf("."),originFilename.length());
+            long size = multi.getSize();
+            String saveFileName = genSaveFileName(extName);
+            
+            String assignment_id = param.get("assignment_id").toString();
+            String local = param.get("local").toString();
+            String title = param.get("title").toString();
+            String team_cnt = param.get("team_cnt").toString();
+            String assignment_name = param.get("assignment_name").toString();
+            String keyword = param.get("keyword").toString();
+            
+            pictVO.setAssignment_id(assignment_id);
+            pictVO.setLocal(local);
+            pictVO.setTitle(title);
+            pictVO.setTeam_cnt(team_cnt);
+            pictVO.setAssignment_name(assignment_name);
+            pictVO.setKeyword(keyword);
+			
+            
+            if(!multi.isEmpty()){
+                File file = new File(uploadpath, multi.getOriginalFilename());
+                multi.transferTo(file);
+                pictVO.setFile_url(file.getAbsolutePath());
+                pictService.team_insert(pictVO);    
+            }
+            
 
+            //팀원정보 넣기 (팀장포함)
+            ArrayList<Object> arr = new ArrayList<Object>();
+            arr = (ArrayList<Object>) param.get("person_info");
+            
+            for(int i=0; i<arr.size(); i++) {
+            	Object obj = arr.get(i);
+            	
+            	if (obj instanceof Map<?, ?>) {
+                    @SuppressWarnings("unchecked")
+                    Map<String, Object> map = (Map<String, Object>) obj;
+                    pictVO.setTeam_id(pictVO.getIdx()+"");
+                    pictVO.setName(map.get("name").toString());
+                    pictVO.setBirthday(map.get("birthday").toString());
+                    pictVO.setSex(map.get("birthday_extra").toString());
+                    pictVO.setMobile(map.get("mobile").toString());
+                    pictVO.setEmail(map.get("email").toString());
+                    pictVO.setCompany(map.get("company").toString());
+                    pictVO.setDepart(map.get("depart").toString());
+                    pictVO.setShirt(map.get("shirt").toString());
+                    pictVO.setParent_name(map.get("parent_name").toString());
+                    pictVO.setParent_birthday(map.get("parent_birthday").toString());
+                    pictVO.setParent_mobile(map.get("parent_mobile").toString());
+                    pictVO.setParent_address(map.get("parent_address").toString());
+                    pictVO.setParent_address2(map.get("parent_address2").toString());
+                    
+                    pictService.user_insert(pictVO);
+                }
+            }
+            
+            
+			return "Y";
+		}
+		catch(Exception e) {
+			System.out.println(e);
+			return "N";
+		}
+	}
+
+	private String genSaveFileName(String extName) {
+        String fileName = "";
+        
+        Calendar calendar = Calendar.getInstance();
+        fileName += calendar.get(Calendar.YEAR);
+        fileName += calendar.get(Calendar.MONTH);
+        fileName += calendar.get(Calendar.DATE);
+        fileName += calendar.get(Calendar.HOUR);
+        fileName += calendar.get(Calendar.MINUTE);
+        fileName += calendar.get(Calendar.SECOND);
+        fileName += calendar.get(Calendar.MILLISECOND);
+        fileName += extName;
+        
+        return fileName;
+    }
 	
 	//관리자
 	@RequestMapping(value = "/pict_main.do")

@@ -16,7 +16,7 @@
         	</div>
             <div class="applyButton">
             	<a href="#lnk" onclick="fn_apply2_back()" class="prevButton">이전으로</a>
-                <a href="#lnk" onclick="fn_apply3_next()" class="nextButton active" id="apply3_next">다음으로</a>
+                <a href="#lnk" onclick="fn_apply3_next()" class="nextButton" id="apply3_next">다음으로</a>
                 
             </div>
         </form>
@@ -146,28 +146,28 @@
 				'</div>'+
 				'<div class="radioContainer">'+
 				'<div class="radioInput">'+
-				'<input type="radio" name="shirt_'+i+'" id="s" value="S" onchange="fn_active_apply3()">'+
-				'<label for="s">S</label>'+
+				'<input type="radio" name="shirt_'+i+'" id="shirt_s_'+i+'" value="S" onchange="fn_active_apply3()">'+
+				'<label for="shirt_s_'+i+'">S</label>'+
 				'</div>'+
 				'<div class="radioInput">'+
-				'<input type="radio" name="shirt_'+i+'" id="m" value="M" onchange="fn_active_apply3()">'+
-				'<label for="m">M</label>'+
+				'<input type="radio" name="shirt_'+i+'" id="shirt_m_'+i+'" value="M" onchange="fn_active_apply3()">'+
+				'<label for="shirt_m_'+i+'">M</label>'+
 				'</div>'+
 				'<div class="radioInput">'+
-				'<input type="radio" name="shirt_'+i+'" id="l" value="L" onchange="fn_active_apply3()">'+
-				'<label for="l">L</label>'+
+				'<input type="radio" name="shirt_'+i+'" id="shirt_l_'+i+'" value="L" onchange="fn_active_apply3()">'+
+				'<label for="shirt_l_'+i+'">L</label>'+
 				'</div>'+
 				'<div class="radioInput">'+
-				'<input type="radio" name="shirt_'+i+'" id="xl" value="XL" onchange="fn_active_apply3()">'+
-				'<label for="xl">XL</label>'+
+				'<input type="radio" name="shirt_'+i+'" id="shirt_xl_'+i+'" value="XL" onchange="fn_active_apply3()">'+
+				'<label for="shirt_xl_'+i+'">XL</label>'+
 				'</div>'+
 				'<div class="radioInput">'+
-				'<input type="radio" name="shirt_'+i+'" id="2xl" value="2XL" onchange="fn_active_apply3()">'+
-				'<label for="2xl">2XL</label>'+
+				'<input type="radio" name="shirt_'+i+'" id="shirt_2xl_'+i+'" value="2XL" onchange="fn_active_apply3()">'+
+				'<label for="shirt_2xl_'+i+'">2XL</label>'+
 				'</div>'+
 				'<div class="radioInput">'+
-				'<input type="radio" name="shirt_'+i+'" id="3xl" value="3XL" onchange="fn_active_apply3()">'+
-				'<label for="3xl">3XL</label>'+
+				'<input type="radio" name="shirt_'+i+'" id="shirt_3xl_'+i+'" value="3XL" onchange="fn_active_apply3()">'+
+				'<label for="shirt_3xl_'+i+'">3XL</label>'+
 				'</div>'+
 				'</div>'+
 				'</div>'+

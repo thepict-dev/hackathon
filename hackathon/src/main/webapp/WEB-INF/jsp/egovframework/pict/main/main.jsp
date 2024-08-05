@@ -96,7 +96,7 @@
 		                    </div>
 		                </li>
 		                <li>
-		                    <p>후원</p>
+		                    <p>주관</p>
 		                    <div class="logosContianer">
 		                        <img src="/front_img/logos/logo2-1.png" alt="">
 		                        <img src="/front_img/logos/logo2-2.png" alt="">

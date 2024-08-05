@@ -33,13 +33,25 @@
 @media all and (max-width : 1024px){
     .videoWrap video{
         object-fit: fill;
-        min-width: unset;
+        min-width: 1024px;
     }
     .videoWrap video.pcVideo{
         display: none;
     }
     .videoWrap video.mbVideo{
         display: block;
+    }
+}
+@media all and (max-width : 768px){
+    .videoWrap video{
+        object-fit: fill;
+        min-width: 768px;
+    }
+}
+@media all and (max-width : 450px){
+    .videoWrap video{
+        object-fit: fill;
+        min-width: unset;
     }
 }
 

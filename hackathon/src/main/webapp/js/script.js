@@ -15,11 +15,27 @@ window.addEventListener('scroll', handleHeaderScroll);
 window.addEventListener('load', handleHeaderScroll);
 
 // 모바일 메뉴
-$('.headerInner button').click(function(){
+$('.headerInner > button').click(function(){
   $('.mbNavWrap').show();
 });
 $('.mbNavTop button').click(function(){
   $('.mbNavWrap').hide();
+});
+
+function openClose() {
+  $(".sizePopup").toggle();
+}
+
+$("#file").on('change',function(){
+  var fileName = $("#file").val();
+  $(".upload-name").val(fileName);
+});
+
+$('.rightButtons button').click(function(){
+   $('#apply1').css('display', 'flex');
+});
+$('.appTop button').click(function(){
+   $('.applyWrapper').hide();
 });
 
 // 사이트맵 모달

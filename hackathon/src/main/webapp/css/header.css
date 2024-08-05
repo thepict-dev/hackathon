@@ -17,7 +17,7 @@ header{
     max-width: 2080px;
     margin: 0 auto;
 }
-.headerInner button{
+.headerInner > button{
     display: none;
 }
 .gnb{
@@ -55,7 +55,12 @@ header{
     color: var(--yellow, #F5E344);
     font-weight: 700;
 }
-.headerInner > a{
+.rightButtons{
+    display: flex;
+    align-items: center;
+    column-gap: 12px;
+}
+.rightButtons a, .rightButtons button{
     display: block;
     padding: 16px 20px;
     border-radius: 999px;
@@ -66,6 +71,11 @@ header{
     font-weight: 500;
     line-height: 100%; /* 18px */
     letter-spacing: -0.9px;
+}
+.rightButtons button{
+    color: #fff;
+    background-color: #000;
+    cursor: pointer;
 }
 .nav li a:hover{
     font-weight: 700;
@@ -80,13 +90,13 @@ header.active .gnb h1 a{
 header.active .nav li a{
     color: #fff;
 }
-header.active .headerInner > a{
+header.active .rightButtons > a, header.active .rightButtons > button{
     border: 1px solid #fff;
     color: #fff;
 }
 
 .mbNavWrap{
-	display: none;
+    display: none;
 }
 
 @media all and (max-width : 1024px){
@@ -96,10 +106,10 @@ header.active .headerInner > a{
     .headerInner{
         padding: 0 22px;
     }
-    .headerInner button{
+    .headerInner > button{
         display: block;
     }
-    .headerInner button::after{
+    .headerInner > button::after{
         display: inline-block;
         content: "";
         width: 24px;
@@ -109,7 +119,7 @@ header.active .headerInner > a{
         background-repeat: no-repeat;
         background-position: center center;
     }
-    header.active .headerInner button::after{
+    header.active .headerInner > button::after{
         background-image: url(/front_img/menu2.png);
 	}
     .gnb h1{
@@ -127,7 +137,8 @@ header.active .headerInner > a{
     .nav{
         display: none;
     }
-    .headerInner > a{
+    
+    .rightButtons{
         display: none;
     }
 
@@ -136,7 +147,7 @@ header.active .headerInner > a{
         top: 0;
         left: 0;
         z-index: 99;
-        display: none;
+        display: block;
         width: 100%;
         height: 100%;
         background-color: #000;

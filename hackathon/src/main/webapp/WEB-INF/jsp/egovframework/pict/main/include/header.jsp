@@ -14,7 +14,10 @@
                 <li><a href="/notice.do">행사소식</a></li>
             </ul>
         </div>
-        <a href="#lnk" onclick="fn_alert()">로그인</a>
+        <div class="rightButtons">
+            <a href="/user_login.do">로그인</a>
+            <button type="button">본선등록</button>
+        </div>
         <button></button>
     </div>
     
@@ -31,9 +34,4 @@
         </ul>
     </div>
     
-    <script>
-    	function fn_alert(){
-    		alert("해당 페이지는 추후 제공 예정입니다.");
-    	}
-    </script>
 </header>

@@ -103,112 +103,123 @@
 		$('.confirmWrapper').hide();
 	}
 	function fn_submit(){
-		var confirm = $("input[name='confirm']:checked").val()
-		if(confirm != 'Y'){
+		var confirms = $("input[name='confirm']:checked").val()
+		if(confirms != 'Y'){
 			alert("모든정보 확인란을 체크해주세요.")
 			$('#confirm').focus()
 			return false
 		}
 		
-		var arr = []
-		
-		var json = {}
-		var name = $('#name_1').val()
-		var birthday = $('#birthday_1').val()
-		var birthday_extra = $('#birthday_1_extra').val()
-		var mobile = $('#mobile_1').val()
-		var email = $('#email_1').val()
-		var company = $('#company_1').val()
-		var depart = $('#depart_1').val()
-		var shirt = $("input[name='shirt_1']:checked").val()
-		var parent_name = $('#parent_name').val()
-		var parent_birthday = $('#parent_birthday').val()
-		var parent_mobile = $('#parent_mobile').val()
-		var parent_address = $('#parent_address').val()
-		var parent_address2 = $('#parent_address2').val()
-		
-		json.name = name
-		json.birthday = birthday
-		json.birthday_extra = birthday_extra
-		json.mobile = mobile
-		json.email = email
-		json.company = company
-		json.depart = depart
-		json.shirt = shirt
-		json.parent_name = parent_name
-		json.parent_birthday = parent_birthday
-		json.parent_mobile = parent_mobile
-		json.parent_address = parent_address
-		json.parent_address2 = parent_address2
-		arr.push(json)
-		
-		
-		
-		var team_cnt = Number($("input[name='team_cnt']:checked").val())
-		if(team_cnt > 0 ){
-			for(var i=2; i<team_cnt+1; i++){
-				var json_won = {}
-				
-				var name = $('#name_'+i).val()
-				var birthday = $('#birthday_'+i).val()
-				var birthday_extra = $('#birthday_'+i+'_extra').val()
-				var mobile = $('#mobile_'+i).val()
-				var email = $('#email_'+i).val()
-				var company = $('#company_'+i).val()
-				var depart = $('#depart_'+i).val()
-				var shirt = $("input[name='shirt_"+i+"']:checked").val()
-				
-				
-				json_won.name = name
-				json_won.birthday = birthday
-				json_won.birthday_extra = birthday_extra
-				json_won.mobile = mobile
-				json_won.email = email
-				json_won.company = company
-				json_won.depart = depart
-				json_won.shirt = shirt
-				json_won.parent_name = "공란"
-				json_won.parent_birthday = "공란"
-				json_won.parent_mobile = "공란"
-				json_won.parent_address = "공란"
-				json_won.parent_address2 = "공란"
-				
-				arr.push(json_won)
-			}
-		}
-		
-		var requestData = {
-			assignment_id : $("input[name='assignment_id']:checked").val(),
-			local : $("select[name=local]").val(),
-			title : $('#title').val(),
-			team_cnt : $("input[name='team_cnt']:checked").val(),
-			assignment_name : $('#assignment_name').val(),
-			keyword : $('#keyword').val(),
-			person_info : arr
-	    }
-	 
-		var form = $('#attach_file')[0].files[0];
-		var formData = new FormData();
-		formData.append('img', form);
-		formData.append("request", new Blob([JSON.stringify(requestData)], {type: "application/json"}));
-		
-		
-		$.ajax({
-			url: '/register_insert.do',
-			processData : false,
-			contentType : false,
-			data : formData,
-			type : 'POST',
-			success : function(result){
-				alert("정상적으로 저장되었습니다.")
-				window.location.reload()
-				
-			},
-			error : function(err){
-				alert("오류가 발생했습니다.\n관리자에게 문의해주세요")
-				console.log(err)
+		var text= "본선등록을 진행하시겠습니까?"
+		if(confirm(text)){
+			var arr = []
+			
+			var json = {}
+			var name = $('#name_1').val()
+			var birthday = $('#birthday_1').val()
+			var birthday_extra = $('#birthday_1_extra').val()
+			var mobile = $('#mobile_1').val()
+			var email = $('#email_1').val()
+			var company = $('#company_1').val()
+			var depart = $('#depart_1').val()
+			var shirt = $("input[name='shirt_1']:checked").val()
+			var parent_name = $('#parent_name').val()
+			var parent_birthday = $('#parent_birthday').val()
+			var parent_mobile = $('#parent_mobile').val()
+			var parent_relation = $("input[name='parent_relation']:checked").val()
+			var parent_relation_text = ""
+			if(parent_relation == '기타') parent_relation_text = $('#parent_relation_text').val()
+			else parent_relation_text = parent_relation
+			var parent_address = $('#parent_address').val()
+			var parent_address2 = $('#parent_address2').val()
+			
+			json.name = name
+			json.birthday = birthday
+			json.birthday_extra = birthday_extra
+			json.mobile = mobile
+			json.email = email
+			json.company = company
+			json.depart = depart
+			json.shirt = shirt
+			json.parent_name = parent_name
+			json.parent_birthday = parent_birthday
+			json.parent_mobile = parent_mobile
+			json.parent_relation = parent_relation_text 
+			json.parent_address = parent_address
+			json.parent_address2 = parent_address2
+			arr.push(json)
+			
+			
+			
+			var team_cnt = Number($("input[name='team_cnt']:checked").val())
+			if(team_cnt > 0 ){
+				for(var i=2; i<team_cnt+1; i++){
+					var json_won = {}
+					
+					var name = $('#name_'+i).val()
+					var birthday = $('#birthday_'+i).val()
+					var birthday_extra = $('#birthday_'+i+'_extra').val()
+					var mobile = $('#mobile_'+i).val()
+					var email = $('#email_'+i).val()
+					var company = $('#company_'+i).val()
+					var depart = $('#depart_'+i).val()
+					var shirt = $("input[name='shirt_"+i+"']:checked").val()
+					
+					
+					json_won.name = name
+					json_won.birthday = birthday
+					json_won.birthday_extra = birthday_extra
+					json_won.mobile = mobile
+					json_won.email = email
+					json_won.company = company
+					json_won.depart = depart
+					json_won.shirt = shirt
+					json_won.parent_name = "공란"
+					json_won.parent_birthday = "공란"
+					json_won.parent_mobile = "공란"
+					json_won.parent_relation = "공란"
+					json_won.parent_address = "공란"
+					json_won.parent_address2 = "공란"
+					
+					arr.push(json_won)
+				}
 			}
 			
-		});
+			var requestData = {
+				assignment_id : $("input[name='assignment_id']:checked").val(),
+				local : $("select[name=local]").val(),
+				title : $('#title').val(),
+				team_cnt : $("input[name='team_cnt']:checked").val(),
+				assignment_name : $('#assignment_name').val(),
+				keyword : $('#keyword').val(),
+				person_info : arr
+		    }
+		 
+			var form = $('#attach_file')[0].files[0];
+			var formData = new FormData();
+			formData.append('img', form);
+			formData.append("request", new Blob([JSON.stringify(requestData)], {type: "application/json"}));
+			
+			
+			$.ajax({
+				url: '/register_insert.do',
+				processData : false,
+				contentType : false,
+				data : formData,
+				type : 'POST',
+				success : function(result){
+					alert("정상적으로 저장되었습니다.")
+					window.location.reload()
+					
+				},
+				error : function(err){
+					alert("오류가 발생했습니다.\n관리자에게 문의해주세요")
+					console.log(err)
+				}
+				
+			});
+		}
+	
 	}
+	
 </script>

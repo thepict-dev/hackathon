@@ -128,6 +128,8 @@ public interface PictMapper {
 
 	List<?> judge_list(PictVO pictVO) throws Exception;
 
+	PictVO password_compare(PictVO pictVO) throws Exception;
+
 
 
 }

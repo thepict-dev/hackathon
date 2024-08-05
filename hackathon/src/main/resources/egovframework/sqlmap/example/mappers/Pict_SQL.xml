@@ -166,10 +166,10 @@
 	<insert id="user_insert" parameterType="pictVO">
 		INSERT INTO user_table
 			(
-			 team_id, name, birthday, mobile, email, company, depart, shirt, parent_name, parent_birthday, parent_mobile, parent_relation, parent_address, parent_address2, judge, reg_date
+			 team_id, name, birthday, mobile, email, company, depart, shirt, parent_name, parent_birthday, parent_mobile, parent_relation, parent_address, parent_address2, judge, reg_date, sex
 			)
 		VALUES (
-			 #{team_id}, #{name}, #{birthday}, #{mobile}, #{email}, #{company}, #{depart}, #{shirt}, #{parent_name}, #{parent_birthday}, #{parent_mobile}, #{parent_relation}, #{parent_address}, #{parent_address2}, #{judge}, now()
+			 #{team_id}, #{name}, #{birthday}, #{mobile}, #{email}, #{company}, #{depart}, #{shirt}, #{parent_name}, #{parent_birthday}, #{parent_mobile}, #{parent_relation}, #{parent_address}, #{parent_address2}, #{judge}, now(), #{sex}
 			  ) 
 	</insert>
 	
@@ -223,6 +223,12 @@
 	</select>
 	
 	
+	
+	<select id="password_compare" resultType="pictVO">
+		select * from password_table
+		where 1=1
+		and password = #{password}
+	</select>
 	
 	
 </mapper>

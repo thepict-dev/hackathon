@@ -57,6 +57,7 @@
 		$('#final_team_cnt').text(team_cnt + "명")
 		$('#final_assignment_name').text(assignment_name)
 		
+		debugger
 		//팀장정보
 		var name_1 = $('#name_1').val()
 		var birthday_1 = $('#birthday_1').val()

@@ -102,14 +102,33 @@ public class pictController {
 	
 	//사전등록
 	
+	
+	@RequestMapping("/password_compare.do")
+	@ResponseBody
+	public HashMap<String, Object> password_compare(@ModelAttribute("pictVO") PictVO pictVO, ModelMap model, HttpServletRequest request, @RequestBody Map<String, Object> param) throws Exception {	
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		String password = param.get("password").toString();
+		pictVO.setPassword(password);
+		
+		pictVO = pictService.password_compare(pictVO);
+		if(pictVO != null) {
+			map.put("rst", "Y");
+			return map;
+		}
+		else {
+			map.put("rst", "N");
+			return map;
+		}
+		
+	}
 	@RequestMapping("/register_insert.do")
 	@ResponseBody
 	public String profile_img(@ModelAttribute("pictVO") PictVO pictVO, ModelMap model, MultipartHttpServletRequest request, 
 			@RequestParam("img") MultipartFile multi,
 			@RequestPart(value = "request") Map<String, Object> param) throws Exception {	
 		try {
-			//String uploadpath = "/user1/upload_file/hackathon/team";
-			String uploadpath  = "D:\\user1\\upload_file\\default";
+			String uploadpath = "/user1/upload_file/hackathon/team";
+			//String uploadpath  = "D:\\user1\\upload_file\\default";
             String originFilename = multi.getOriginalFilename();
             String extName = originFilename.substring(originFilename.lastIndexOf("."),originFilename.length());
             long size = multi.getSize();
@@ -160,9 +179,10 @@ public class pictController {
                     pictVO.setParent_name(map.get("parent_name").toString());
                     pictVO.setParent_birthday(map.get("parent_birthday").toString());
                     pictVO.setParent_mobile(map.get("parent_mobile").toString());
+                    pictVO.setParent_relation(map.get("parent_relation").toString());
                     pictVO.setParent_address(map.get("parent_address").toString());
                     pictVO.setParent_address2(map.get("parent_address2").toString());
-                    
+                    pictVO.setJudge("N");
                     pictService.user_insert(pictVO);
                 }
             }

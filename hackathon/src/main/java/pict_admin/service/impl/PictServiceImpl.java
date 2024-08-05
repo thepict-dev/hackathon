@@ -319,6 +319,12 @@ public class PictServiceImpl extends EgovAbstractServiceImpl implements PictServ
 		return pictMapper.judge_list(pictVO);
 	}
 
+	@Override
+	public PictVO password_compare(PictVO pictVO) throws Exception {
+		// TODO Auto-generated method stub
+		return pictMapper.password_compare(pictVO);
+	}
+
 
 
 	

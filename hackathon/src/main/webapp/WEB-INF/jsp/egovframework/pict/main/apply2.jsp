@@ -42,10 +42,10 @@
                             <div class="inputBox per">
                                 <p class="inputCaption">보호자 생년월일</p>
                                 <div class="birthInput">
-                                    <input type="text" name="parent_birthday" id="parent_birthday" placeholder="YYMMDD" class="">
+                                    <input type="text" name="parent_birthday" id="parent_birthday" placeholder="YYMMDD" class="" maxlength="6">
                                     <span>-</span>
                                     <label for="birth2">
-                                        <input type="text" name="parent_birthday_extra" id="parent_birthday_extra" class="">
+                                        <input type="text" name="parent_birthday_extra" id="parent_birthday_extra" class="" maxlength="1">
                                     </label>
                                 </div>
                             </div>
@@ -55,24 +55,24 @@
                         <div class="flexInputs">
                             <div class="inputBox per">
                                 <p class="inputCaption">보호자 연락처</p>
-                                <input type="text" name="parent_mobile" id="parent_mobile" placeholder="-빼고 입력하세요">
+                                <input type="text" name="parent_mobile" id="parent_mobile" placeholder="-빼고 입력하세요" maxlength="11">
                             </div>
                             <div class="inputBox per">
                                 <p class="inputCaption mb24">관계</p>
                                 <div class="radioContainer">
                                     <div class="radioInput">
-                                        <input type="radio" name="parent_relation" id="parents">
+                                        <input type="radio" name="parent_relation" id="parents" value="부모">
                                         <label for="parents">부모</label>
                                     </div>
                                     <div class="radioInput">
-                                        <input type="radio" name="parent_relation" id="grand_parents">
+                                        <input type="radio" name="parent_relation" id="grand_parents" value="조부모">
                                         <label for="grand_parents">조부모</label>
                                     </div>
                                     <div class="radioInput">
-                                        <input type="radio" name="parent_relation" id="etc">
+                                        <input type="radio" name="parent_relation" id="etc" value="기타">
                                         <label for="etc">기타</label>
                                     </div>
-                                    <input type="text" name="parent_relation" id="parent_relation" class="etcInput" placeholder="관계를 입력하세요">
+                                    <input type="text" name="parent_relation_text" id="parent_relation_text" class="etcInput" placeholder="관계를 입력하세요">
                                 </div>
                             </div>
                         </div>

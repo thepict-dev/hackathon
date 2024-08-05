@@ -30,6 +30,10 @@
 #apply4 .applyContainer{
 	max-height: 417px;
 }
+#apply_acsses .applyContainer{
+	max-width: 600px;
+	max-height: 350px;
+}
   
 @media all and (max-width : 768px){
     .applyContainer {

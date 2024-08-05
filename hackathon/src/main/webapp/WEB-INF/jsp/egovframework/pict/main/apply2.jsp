@@ -17,15 +17,15 @@
                     <div class="flexInputs">
                         <div class="inputBox per">
                             <p class="inputCaption">성명</p>
-                            <input type="text" name="name" id="name" placeholder="성명을 입력하세요">
+                            <input type="text" name="name_1" id="name_1" placeholder="성명을 입력하세요" onkeyup="fn_active_apply2()">
                         </div>
                         <div class="inputBox per">
                             <p class="inputCaption">생년월일</p>
                             <div class="birthInput">
-                                <input type="text" name="birth1" id="birth1" placeholder="YYMMDD" class="">
+                                <input type="text" name="birthday_1" id="birthday_1" placeholder="YYYYMMDD" class="" maxlength="8" onkeyup="fn_active_apply2()">
                                 <span>-</span>
                                 <label for="birth2">
-                                    <input type="text" name="birth2" id="birth2" class="">
+                                    <input type="text" name="birthday_1_extra" id="birthday_1_extra" class="" maxlength="1" onkeyup="fn_active_apply2()">
                                 </label>
                             </div>
                             <span class="inputSubCaption youth">미성년자의 경우 보호자의 정보가 필요합니다</span>
@@ -42,10 +42,10 @@
                             <div class="inputBox per">
                                 <p class="inputCaption">보호자 생년월일</p>
                                 <div class="birthInput">
-                                    <input type="text" name="parent_birth1" id="parent_birth1" placeholder="YYMMDD" class="">
+                                    <input type="text" name="parent_birthday" id="parent_birthday" placeholder="YYMMDD" class="">
                                     <span>-</span>
                                     <label for="birth2">
-                                        <input type="text" name="parent_birth2" id="parent_birth2" class="">
+                                        <input type="text" name="parent_birthday_extra" id="parent_birthday_extra" class="">
                                     </label>
                                 </div>
                             </div>
@@ -55,24 +55,24 @@
                         <div class="flexInputs">
                             <div class="inputBox per">
                                 <p class="inputCaption">보호자 연락처</p>
-                                <input type="text" name="parent_phone" id="parent_phone" placeholder="-빼고 입력하세요">
+                                <input type="text" name="parent_mobile" id="parent_mobile" placeholder="-빼고 입력하세요">
                             </div>
                             <div class="inputBox per">
                                 <p class="inputCaption mb24">관계</p>
                                 <div class="radioContainer">
                                     <div class="radioInput">
-                                        <input type="radio" name="relation" id="parents">
+                                        <input type="radio" name="parent_relation" id="parents">
                                         <label for="parents">부모</label>
                                     </div>
                                     <div class="radioInput">
-                                        <input type="radio" name="relation" id="grand_parents">
+                                        <input type="radio" name="parent_relation" id="grand_parents">
                                         <label for="grand_parents">조부모</label>
                                     </div>
                                     <div class="radioInput">
-                                        <input type="radio" name="relation" id="etc">
+                                        <input type="radio" name="parent_relation" id="etc">
                                         <label for="etc">기타</label>
                                     </div>
-                                    <input type="text" name="etc_text" id="etc_text" class="etcInput" placeholder="관계를 입력하세요">
+                                    <input type="text" name="parent_relation" id="parent_relation" class="etcInput" placeholder="관계를 입력하세요">
                                 </div>
                             </div>
                         </div>
@@ -81,7 +81,7 @@
                         <div class="addContainer">
                             <div class="inputBox">
                                 <p class="inputCaption">보호자 주소</p>
-                                <input type="text" name="parent_address1" id="parent_address1" readonly value="23423">
+                                <input type="text" name="parent_address" id="parent_address" readonly value="23423">
                             </div>
                             <a href="#lnk">주소검색</a>
                         </div>
@@ -92,11 +92,11 @@
                     <div class="flexInputs">
                         <div class="inputBox per">
                             <p class="inputCaption">연락처</p>
-                            <input type="text" name="phone" id="phone" placeholder="-빼고 입력하세요">
+                            <input type="text" name="mobile_1" id="mobile_1" placeholder="-빼고 입력하세요" onkeyup="fn_active_apply2()" oninput="oninputPhone(this)" maxlength="13">
                         </div>
                         <div class="inputBox per">
                             <p class="inputCaption">이메일</p>
-                            <input type="text" name="email" id="email" placeholder="이메일주소를 입력하세요">
+                            <input type="text" name="email_1" id="email_1" placeholder="이메일주소를 입력하세요" onkeyup="fn_active_apply2()">
                         </div>
                     </div>
                 </div>
@@ -104,11 +104,11 @@
                     <div class="flexInputs">
                         <div class="inputBox per">
                             <p class="inputCaption">직장/학교명</p>
-                            <input type="text" name="group" id="group" placeholder="직장/학교명을 입력하세요">
+                            <input type="text" name="company_1" id="company_1" placeholder="직장/학교명을 입력하세요" onkeyup="fn_active_apply2()">
                         </div>
                         <div class="inputBox per">
                             <p class="inputCaption">부서/학과명(선택)</p>
-                            <input type="text" name="division" id="division" placeholder="부서/학과명을 입력하세요">
+                            <input type="text" name="depart_1" id="depart_1" placeholder="부서/학과명을 입력하세요" onkeyup="fn_active_apply2()">
                         </div>
                     </div>
                 </div>
@@ -169,27 +169,27 @@
                             </div>
                             <div class="radioContainer">
                                 <div class="radioInput">
-                                    <input type="radio" name="size" id="s">
+                                    <input type="radio" name="shirt_1" id="s" onchange="fn_active_apply2()" value="S">
                                     <label for="s">S</label>
                                 </div>
                                 <div class="radioInput">
-                                    <input type="radio" name="size" id="m">
+                                    <input type="radio" name="shirt_1" id="m" onchange="fn_active_apply2()" value="M">
                                     <label for="m">M</label>
                                 </div>
                                 <div class="radioInput">
-                                    <input type="radio" name="size" id="l">
+                                    <input type="radio" name="shirt_1" id="l" onchange="fn_active_apply2()" value="L">
                                     <label for="l">L</label>
                                 </div>
                                 <div class="radioInput">
-                                    <input type="radio" name="size" id="xl">
+                                    <input type="radio" name="shirt_1" id="xl" onchange="fn_active_apply2()" value="XL">
                                     <label for="xl">XL</label>
                                 </div>
                                 <div class="radioInput">
-                                    <input type="radio" name="size" id="2xl">
+                                    <input type="radio" name="shirt_1" id="2xl" onchange="fn_active_apply2()" value="2XL">
                                     <label for="2xl">2XL</label>
                                 </div>
                                 <div class="radioInput">
-                                    <input type="radio" name="size" id="3xl">
+                                    <input type="radio" name="shirt_1" id="3xl" onchange="fn_active_apply2()" value="3XL">
                                     <label for="3xl">3XL</label>
                                 </div>
                             </div>
@@ -198,9 +198,101 @@
                 </div>
             </div>
             <div class="applyButton">
-                <a href="#lnk" class="prevButton">이전으로</a>
-                <a href="#lnk" class="nextButton">다음으로</a>
+                <a href="#lnk" onclick="fn_apply1_back()" class="prevButton">이전으로</a>
+                <a href="#lnk" onclick="fn_apply2_next()" class="nextButton active" id="apply2_next">다음으로</a>
             </div>
         </form>
     </div>
 </div>
+
+<script>
+	function oninputPhone(target) {
+	    target.value = target.value
+	        .replace(/[^0-9]/g, '')
+	        .replace(/(^02.{0}|^01.{1}|[0-9]{3,4})([0-9]{3,4})([0-9]{4})/g, "$1-$2-$3");
+	}
+	function fn_active_apply2(){
+		var name_1 = $('#name_1').val()
+		var birthday_1 = $('#birthday_1').val()
+		var birthday_1_extra = $('#birthday_1_extra').val()
+		var mobile_1 = $('#mobile_1').val()
+		var email_1 = $('#email_1').val()
+		var company = $('#company_1').val()
+		var depart = $('#depart_1').val()
+		var shirt_1 = $("input[name='shirt_1']:checked").val()
+		
+		
+		if(name_1 != null && name_1 != '' && name_1 != undefined){
+			if(birthday_1 != null && birthday_1 != '' && birthday_1 != undefined){
+				if(birthday_1_extra != null && birthday_1_extra != '' && birthday_1_extra != undefined){
+					if(mobile_1 != null && mobile_1 != '' && mobile_1 != undefined){
+						if(email_1 != null && email_1 != '' && email_1 != undefined){
+							if(company != null && company != '' && company != undefined){
+								if(depart != null && depart != '' && depart != undefined){
+									if(shirt_1 != null && shirt_1 != '' && shirt_1 != undefined){
+										$('#apply2_next').addClass("active");
+									}	
+								}	
+							}	
+						}	
+					}	
+				}	
+			}	
+		}
+	}
+
+	function fn_apply1_back(){
+		$('#apply1').css("display", "flex");
+		$('#apply2').hide();
+	}
+	function fn_apply2_next(){
+		$('#apply2').hide();
+		$('#apply3').css("display", "flex");
+		apply_draw()
+	}
+	$('#birthday_1').blur(function(e){
+		var birth = $('#birthday_1').val()
+		if(birth.length != 8){
+			alert("생년월일 입력을 확인해주세요.")
+			return false;
+		}
+		else{
+			birth = birth.substring(0,4) + '-' + birth.substring(4,6) + "-" + birth.substring(6)
+			birth = new Date(birth)
+		}
+		var birthYear = birth.getFullYear();
+		var birthMonth = birth.getMonth();
+		var birthDay = birth.getDate();
+		
+		// 현재 날짜를 가져옵니다.
+		var currentDate = new Date();
+		var currentYear = currentDate.getFullYear();
+		var currentMonth = currentDate.getMonth();
+		var currentDay = currentDate.getDate();
+		
+		// 만 나이를 계산합니다.
+		var age = currentYear - birthYear;
+		
+		// 현재 월과 생일의 월을 비교합니다.
+		if (currentMonth < birthMonth) {
+		  age--;
+		}
+		// 현재 월과 생일의 월이 같은 경우, 현재 일과 생일의 일을 비교합니다.
+		else if (currentMonth === birthMonth && currentDay < birthDay) {
+		  age--;
+		}
+		
+		//미성년자
+		if(age < 19){
+			$('.parentsContainer').addClass("active")
+			$('.youth').addClass("active")
+			
+		}
+		else{
+			
+		}
+	})
+	
+	
+
+</script>

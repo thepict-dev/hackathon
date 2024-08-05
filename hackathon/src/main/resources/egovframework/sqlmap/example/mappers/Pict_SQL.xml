@@ -100,6 +100,129 @@
 	</insert>
 	
 	
+	<!-- 참가팀 -->
+	<select id="team_list" resultType="pictVO">
+		select * from team_table
+		where 1=1
+		<if test="search_text != null and search_text != '' ">
+			and (
+				title LIKE CONCAT('%', #{search_text}, '%') or assignment_name LIKE CONCAT('%', #{search_text}, '%')
+			) 
+		</if>
+
+		order by reg_date desc
+	</select>
+	
+	<select id="team_list_one" resultType="pictVO">
+		select * from team_table
+		where idx = #{idx}
+	</select>
+	
+	<insert id="team_insert" parameterType="pictVO">
+		INSERT INTO team_table
+			(
+			 assignment_id, local, reg_date, title, team_cnt, assignment_name, keyword, file_url, award
+			)
+		VALUES (
+			 #{assignment_id}, #{local}, now(), #{title}, #{team_cnt}, #{assignment_name}, #{keyword}, #{file_url}, #{award}
+			  ) 
+	</insert>
+	
+	<update id="team_update" parameterType="pictVO">
+		update team_table
+		set title =#{title}, assignment_id=#{assignment_id}, reg_date = now(), local = #{local}
+		, team_cnt = #{team_cnt}, assignment_name = #{assignment_name}, keyword = #{keyword}, award = #{award}
+		
+		<if test="file_url != null and file_url != ''">
+			, file_url = #{file_url}
+		</if>
+		
+		where idx = #{idx}
+	</update>
+	
+	<delete id="team_delete" parameterType="pictVO">
+		delete from team_table where idx = #{idx}
+	</delete>
+	
+	
+	<!-- 참가자 -->
+	<select id="user_list" resultType="pictVO">
+		select * from user_table
+		where 1=1
+		<if test="search_text != null and search_text != '' ">
+			and (
+				title LIKE CONCAT('%', #{search_text}, '%') or mobile LIKE CONCAT('%', #{search_text}, '%')
+			) 
+		</if>
+
+		order by reg_date desc
+	</select>
+	
+	<select id="user_list_one" resultType="pictVO">
+		select * from user_table
+		where idx = #{idx}
+	</select>
+	
+	<insert id="user_insert" parameterType="pictVO">
+		INSERT INTO user_table
+			(
+			 team_id, name, birthday, mobile, email, company, depart, shirt, parent_name, parent_birthday, parent_mobile, parent_relation, parent_address, parent_address2, judge, reg_date
+			)
+		VALUES (
+			 #{team_id}, #{name}, #{birthday}, #{mobile}, #{email}, #{company}, #{depart}, #{shirt}, #{parent_name}, #{parent_birthday}, #{parent_mobile}, #{parent_relation}, #{parent_address}, #{parent_address2}, #{judge}, now()
+			  ) 
+	</insert>
+	
+	<update id="user_update" parameterType="pictVO">
+		update user_table
+		set team_id =#{team_id}, name=#{name}, birthday = #{birthday}, mobile = #{mobile}
+		, email = #{email}, company = #{company}, depart = #{depart}, shirt = #{shirt}
+		, parent_name = #{parent_name}, parent_birthday = #{parent_birthday}, parent_mobile = #{parent_mobile}, parent_relation = #{parent_relation}
+		, parent_address = #{parent_address}, parent_address2 = #{parent_address2}, judge = #{judge}, reg_date = now()
+		
+		where idx = #{idx}
+	</update>
+	
+	<delete id="user_delete" parameterType="pictVO">
+		delete from user_table where idx = #{idx}
+	</delete>
+	
+	
+	<!-- 파일함 -->
+	<select id="file_list" resultType="pictVO">
+		select * from drive_table
+		where 1=1
+		<if test="search_text != null and search_text != '' ">
+			and (
+				title LIKE CONCAT('%', #{search_text}, '%')
+			) 
+		</if>
+
+		order by reg_date desc
+	</select>
+	
+	
+	<delete id="file_delete" parameterType="pictVO">
+		delete from drive_table where idx = #{idx}
+	</delete>
+	
+	<!-- 청중투표 -->
+	<select id="vote_user_list" resultType="pictVO">
+		select * from drive_table
+		where 1=1
+
+		order by reg_date desc
+	</select>
+
+	<!-- 심사평가 -->	
+	<select id="judge_list" resultType="pictVO">
+		select * from drive_table
+		where 1=1
+
+		order by reg_date desc
+	</select>
+	
+	
 	
 	
 </mapper>

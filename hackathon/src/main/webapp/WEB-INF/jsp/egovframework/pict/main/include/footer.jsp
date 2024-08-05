@@ -28,7 +28,13 @@
     </div>
 </footer>
 
+
 <%@include file="../apply1.jsp" %>
 <%@include file="../apply2.jsp" %>
 <%@include file="../apply3.jsp" %>
 <%@include file="../apply4.jsp" %>
+
+
+<script>
+
+</script>

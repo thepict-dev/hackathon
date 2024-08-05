@@ -118,10 +118,143 @@ public class PictVO extends PictDefaultVO {
 	private String del_idx;
 	private String target_id;
 	private String cnt;
+	private String assignment_id;
+	private String local;
+	private String team_cnt;
+	private String assignment_name;
+	private String keyword;
+	private String file_url;
+	private String team_id;
+	private String birthday;
+	private String company;
+	private String depart;
+	private String shirt;
+	private String parent_name;
+	private String parent_birthday;
+	private String parent_mobile;
+	private String parent_relation;
+	private String parent_address;
+	private String parent_address2;
+	private String award;
+	private String judge;
 	
 	
+	public String getJudge() {
+		return judge;
+	}
+	public void setJudge(String judge) {
+		this.judge = judge;
+	}
+	public String getAward() {
+		return award;
+	}
+	public void setAward(String award) {
+		this.award = award;
+	}
 	public String getCnt() {
 		return cnt;
+	}
+	public String getAssignment_id() {
+		return assignment_id;
+	}
+	public String getLocal() {
+		return local;
+	}
+	public String getTeam_cnt() {
+		return team_cnt;
+	}
+	public String getAssignment_name() {
+		return assignment_name;
+	}
+	public String getKeyword() {
+		return keyword;
+	}
+	public String getFile_url() {
+		return file_url;
+	}
+	public String getTeam_id() {
+		return team_id;
+	}
+	public String getBirthday() {
+		return birthday;
+	}
+	public String getCompany() {
+		return company;
+	}
+	public String getDepart() {
+		return depart;
+	}
+	public String getShirt() {
+		return shirt;
+	}
+	public String getParent_name() {
+		return parent_name;
+	}
+	public String getParent_birthday() {
+		return parent_birthday;
+	}
+	public String getParent_mobile() {
+		return parent_mobile;
+	}
+	public String getParent_relation() {
+		return parent_relation;
+	}
+	public String getParent_address() {
+		return parent_address;
+	}
+	public String getParent_address2() {
+		return parent_address2;
+	}
+	public void setAssignment_id(String assignment_id) {
+		this.assignment_id = assignment_id;
+	}
+	public void setLocal(String local) {
+		this.local = local;
+	}
+	public void setTeam_cnt(String team_cnt) {
+		this.team_cnt = team_cnt;
+	}
+	public void setAssignment_name(String assignment_name) {
+		this.assignment_name = assignment_name;
+	}
+	public void setKeyword(String keyword) {
+		this.keyword = keyword;
+	}
+	public void setFile_url(String file_url) {
+		this.file_url = file_url;
+	}
+	public void setTeam_id(String team_id) {
+		this.team_id = team_id;
+	}
+	public void setBirthday(String birthday) {
+		this.birthday = birthday;
+	}
+	public void setCompany(String company) {
+		this.company = company;
+	}
+	public void setDepart(String depart) {
+		this.depart = depart;
+	}
+	public void setShirt(String shirt) {
+		this.shirt = shirt;
+	}
+	public void setParent_name(String parent_name) {
+		this.parent_name = parent_name;
+	}
+	public void setParent_birthday(String parent_birthday) {
+		this.parent_birthday = parent_birthday;
+	}
+	public void setParent_mobile(String parent_mobile) {
+		this.parent_mobile = parent_mobile;
+	}
+	public void setParent_relation(String parent_relation) {
+		this.parent_relation = parent_relation;
+	}
+	public void setParent_address(String parent_address) {
+		this.parent_address = parent_address;
+	}
+	public void setParent_address2(String parent_address2) {
+		this.parent_address2 = parent_address2;
 	}
 	public void setCnt(String cnt) {
 		this.cnt = cnt;

@@ -26,8 +26,8 @@ function openClose() {
   $(".sizePopup").toggle();
 }
 
-$("#file").on('change',function(){
-  var fileName = $("#file").val();
+$("#attach_file").on('change',function(){
+  var fileName = $("#attach_file").val();
   $(".upload-name").val(fileName);
 });
 

@@ -18,17 +18,32 @@
                         <p class="inputCaption mb24">팀원 수</p>
                         <div class="filebox">
                             <input class="upload-name" readonly>
-                            <label for="file">파일찾기</label> 
-                            <input type="file" id="file" class="blind">
+                            <label for="attach_file">파일찾기</label> 
+                            <input type="file" id="attach_file" class="blind">
                         </div>
                     </div>
                     <span class="inputSubCaption lh"><span>•</span>첨부파일의 용량은 50메가바이트(mb)를 넘을 수 없습니다.<br><span>•</span>지원 서류는 1개 파일만 업로드 가능합니다. 지원서류가 여러 파일일 경우, 폴더에 넣어 1개 파일로 압축한 형태로 업로드해주세요.</span>
                 </div>
             </div>
             <div class="applyButton">
-                <a href="#lnk" class="prevButton">이전으로</a>
-                <a href="#lnk" class="nextButton">다음으로</a>
+                <a href="#lnk" class="prevButton" onclick="fn_apply3_back()">이전으로</a>
+                <a href="#lnk" class="nextButton" id="apply4_next" onclick="fn_apply4_next()">다음으로</a>
             </div>
         </form>
     </div>
 </div>
+
+<script>
+	function fn_apply3_back(){
+		$('#apply3').css("display", "flex");
+		$('#apply4').hide();
+	}
+	function fn_apply4_next(){
+		$('#apply4').hide();
+		$('#apply5').css("display", "flex");
+	}
+
+	$("#attach_file").change(function(){
+		$('#apply4_next').addClass("active");
+	})
+</script>

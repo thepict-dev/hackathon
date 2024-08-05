@@ -100,7 +100,34 @@ public interface PictMapper {
 
 	void vote_insert(PictVO pictVO) throws Exception;
 
-	//void attendance_update(PictVO pictVO) throws Exception;
+	List<?> team_list(PictVO pictVO) throws Exception;
+
+	PictVO team_list_one(PictVO pictVO) throws Exception;
+
+	void team_update(PictVO pictVO) throws Exception;
+
+	void team_insert(PictVO pictVO) throws Exception;
+
+	void team_delete(PictVO pictVO) throws Exception;
+
+	List<?> user_list(PictVO pictVO) throws Exception;
+
+	PictVO user_list_one(PictVO pictVO) throws Exception;
+
+	void user_update(PictVO pictVO) throws Exception;
+
+	void user_insert(PictVO pictVO) throws Exception;
+
+	void user_delete(PictVO pictVO) throws Exception;
+
+	List<?> file_list(PictVO pictVO) throws Exception;
+
+	void file_delete(PictVO pictVO) throws Exception;
+
+	List<?> vote_user_list(PictVO pictVO) throws Exception;
+
+	List<?> judge_list(PictVO pictVO) throws Exception;
+
 
 
 }

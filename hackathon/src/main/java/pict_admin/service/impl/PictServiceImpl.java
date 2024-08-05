@@ -235,11 +235,90 @@ public class PictServiceImpl extends EgovAbstractServiceImpl implements PictServ
 		pictMapper.vote_insert(pictVO);
 	}
 
-//	@Override
-//	public void attendance_update(PictVO pictVO) throws Exception {
-//		pictMapper.attendance_update(pictVO);
-//		
-//	}
+	@Override
+	public List<?> team_list(PictVO pictVO) throws Exception {
+		// TODO Auto-generated method stub
+		return pictMapper.team_list(pictVO);
+	}
+
+	@Override
+	public PictVO team_list_one(PictVO pictVO) throws Exception {
+		// TODO Auto-generated method stub
+		return pictMapper.team_list_one(pictVO);
+	}
+
+	@Override
+	public void team_update(PictVO pictVO) throws Exception {
+		// TODO Auto-generated method stub
+		pictMapper.team_update(pictVO);
+	}
+
+	@Override
+	public void team_insert(PictVO pictVO) throws Exception {
+		// TODO Auto-generated method stub
+		pictMapper.team_insert(pictVO);
+	}
+
+	@Override
+	public void team_delete(PictVO pictVO) throws Exception {
+		// TODO Auto-generated method stub
+		pictMapper.team_delete(pictVO);
+	}
+
+	@Override
+	public List<?> user_list(PictVO pictVO) throws Exception {
+		// TODO Auto-generated method stub
+		return pictMapper.user_list(pictVO);
+	}
+
+	@Override
+	public PictVO user_list_one(PictVO pictVO) throws Exception {
+		// TODO Auto-generated method stub
+		return pictMapper.user_list_one(pictVO);
+	}
+
+	@Override
+	public void user_update(PictVO pictVO) throws Exception {
+		// TODO Auto-generated method stub
+		pictMapper.user_update(pictVO);
+	}
+
+	@Override
+	public void user_insert(PictVO pictVO) throws Exception {
+		// TODO Auto-generated method stub
+		pictMapper.user_insert(pictVO);
+	}
+
+	@Override
+	public void user_delete(PictVO pictVO) throws Exception {
+		// TODO Auto-generated method stub
+		pictMapper.user_delete(pictVO);
+	}
+
+	@Override
+	public List<?> file_list(PictVO pictVO) throws Exception {
+		// TODO Auto-generated method stub
+		return pictMapper.file_list(pictVO);
+	}
+
+	@Override
+	public void file_delete(PictVO pictVO) throws Exception {
+		// TODO Auto-generated method stub
+		pictMapper.file_delete(pictVO);
+	}
+
+	@Override
+	public List<?> vote_user_list(PictVO pictVO) throws Exception {
+		// TODO Auto-generated method stub
+		return pictMapper.vote_user_list(pictVO);
+	}
+
+	@Override
+	public List<?> judge_list(PictVO pictVO) throws Exception {
+		// TODO Auto-generated method stub
+		return pictMapper.judge_list(pictVO);
+	}
+
 
 
 	

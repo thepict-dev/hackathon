@@ -184,12 +184,12 @@
 
 @media all and (max-width : 768px){
     .birthInput input {
-        width: 110px;
+        width: 100px;
         font-size: 16px;
     }
     .birthInput label::after{
         right: 4px;
-        font-size: 14px;
+        font-size: 12px;
     }
 }
 
@@ -207,7 +207,7 @@
     background-color: transparent;
 }
 .etcInput{
-    width: calc(100% - 205px) !important;
+    width: calc(100% - 222px) !important;
     padding: 10px 12px !important;
 }
 

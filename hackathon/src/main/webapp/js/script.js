@@ -49,7 +49,7 @@ lenis.on('scroll', ({ scroll, limit, velocity, direction, progress }) => {
 });
 
 $('.rightButtons button, .mbGnb li button').click(function(){
-   $('#apply1').css('display', 'flex');
+   $('#apply_acsses').css('display', 'flex');
    lenis.stop();
    $('body').addClass('modal-open');
     

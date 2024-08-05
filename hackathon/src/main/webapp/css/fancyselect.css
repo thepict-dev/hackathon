@@ -178,6 +178,9 @@ select[disabled] + .fsb-select .fsb-list {
   overflow: auto;
 }
 
+.fsb-list::-webkit-scrollbar {
+    display: none;
+}
 .fsb-top .fsb-list {
   top: auto;
   bottom: 100%;

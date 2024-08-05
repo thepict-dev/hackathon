@@ -15,7 +15,8 @@
 	    <main id="parallaxCont">
 		    <section id="section1" class="parallaxItem">
 		        <div class="videoWrap">
-		            <video src="/front_img/main-video.mp4" autoplay loop muted></video>
+		            <video class="pcVideo" src="/front_img/main-video.mp4" autoplay loop muted playsinline></video>
+		            <video class="mbVideo" src="/front_img/mb-video.mp4" autoplay loop muted playsinline></video>
 		        </div>
 		    </section>
 		    <section id="section2" class="parallaxItem">
@@ -230,7 +231,6 @@
 	        // section4 애니메이션
 	        const ani4 = gsap.timeline();
 	        ani4.from("#section4 .t1", {autoAlpha:0, duration: 0.5, y: 50, ease: "power2.inOut"})
-	            .from("#section4 .t2", {autoAlpha:0, duration: 0.5, y: 50, ease: "power2.inOut"}, "-=0.3")
 	            .from("#section4 .i1", {y: 100, autoAlpha:0, duration: 0.5, ease: "power2.inOut"}, "-=0.3")
 	            .from("#section4 .i2", {y: 100, autoAlpha:0, duration: 0.5, ease: "power2.inOut"}, "-=0.3")
 	            .from("#section4 .i3", {y: 100, autoAlpha:0, duration: 0.5, ease: "power2.inOut"}, "-=0.3");

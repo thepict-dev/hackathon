@@ -31,6 +31,12 @@
 	max-height: 417px;
 }
   
+@media all and (max-width : 768px){
+    .applyContainer {
+        height: 70%;
+    }
+}
+
 .appTop {
     display: flex;
     justify-content: space-between;
@@ -48,6 +54,19 @@
     font-weight: 700;
     line-height: 100%;
     letter-spacing: -1px;
+}
+
+@media all and (max-width : 768px){
+    .appTop {
+        height: auto;
+        padding: 10px 20px;
+    }
+    .appTop p {
+        width: 225px;
+        font-size: 16px;
+        line-height: 140%;
+    }
+
 }
 
 .appBottom {
@@ -88,6 +107,17 @@
     font-weight: 700;
     line-height: 100%; /* 18px */
     letter-spacing: -0.9px;
+}
+
+@media all and (max-width : 768px){
+    .appBottom {
+        row-gap: 20px;
+        padding: 16px 20px;
+    }
+    .appTitle{
+        font-size: 16px;
+    }
+
 }
 
 .applyButton{
@@ -152,6 +182,17 @@
     line-height: 100%; /* 18px */
 }
 
+@media all and (max-width : 768px){
+    .birthInput input {
+        width: 110px;
+        font-size: 16px;
+    }
+    .birthInput label::after{
+        right: 4px;
+        font-size: 14px;
+    }
+}
+
 .parentsContainer{
     display: none;
     flex-direction: column;
@@ -168,6 +209,13 @@
 .etcInput{
     width: calc(100% - 205px) !important;
     padding: 10px 12px !important;
+}
+
+@media all and (max-width : 768px){
+    .etcInput{
+        width: 150px !important;
+        padding: 10px 12px !important;
+    }
 }
 
 .addContainer{
@@ -191,6 +239,31 @@
     font-size: 14px;
     font-weight: 500;
     line-height: 100%; /* 14px */
+}
+
+@media all and (max-width : 768px){
+    .addContainer{
+        display: flex;
+        align-items: flex-end;
+        width: 100%;
+        column-gap: 4px;
+    }
+    .addContainer .inputBox{
+        width: calc(100% - 70px) !important;
+    }
+    .addContainer a{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 70px;
+        height: 34px;
+        margin-bottom: 20px;
+        border: 1px solid #E2E8F0;
+        color: var(--grey-600);
+        font-size: 14px;
+        font-weight: 500;
+        line-height: 100%; /* 14px */
+    }
 }
 
 .inputSubCaption.youth{
@@ -380,6 +453,20 @@
     line-height: 100%; /* 14px */
     letter-spacing: -0.7px;
     cursor: pointer;
+}
+
+@media all and (max-width : 768px){
+    .tabNav.app li a{
+        padding: 8px 12px;
+        font-size: 16px;
+    }
+    .teamInfo li{
+        column-gap: 4px;
+        font-size: 16px;
+    }
+    .teamInfo li p:first-of-type{
+        width: 90px;
+    }
 }
 
 .swiper-horizontal>.swiper-pagination-bullets, .swiper-pagination-bullets.swiper-pagination-horizontal, .swiper-pagination-custom, .swiper-pagination-fraction{

@@ -48,30 +48,31 @@ lenis.on('scroll', ({ scroll, limit, velocity, direction, progress }) => {
     }
 });
 
-$('.rightButtons button').click(function(){
+$('.rightButtons button, .mbGnb li button').click(function(){
    $('#apply1').css('display', 'flex');
-	lenis.stop();
-    $('body').addClass('modal-open');
+   lenis.stop();
+   $('body').addClass('modal-open');
     
-    // 모달 내부 스크롤만 허용
-    lenis.options.touchMultiplier = 0;
-    lenis.options.mouseMultiplier = 0;
-    
-    // .appBottom에 대한 스크롤 이벤트 추가
-    $('.appBottom').on('wheel touchmove', function(e) {
-        e.stopPropagation();
-    });
+   // .appBottom에 대한 스크롤 이벤트 추가
+   $('.appBottom').on('wheel touchmove', function(e) {
+       e.stopPropagation();
+   });
 });
+
 $('.appTop button').click(function(){
    $('.applyWrapper').hide();
-    $('body').removeClass('modal-open');
-    
-    // Lenis 스크롤 설정 복원
-    lenis.options.touchMultiplier = 2;
-    lenis.options.mouseMultiplier = 1;
-    
-    // .appBottom 스크롤 이벤트 제거
-    $('.appBottom').off('wheel touchmove');
+   $('body').removeClass('modal-open');
+   
+   // Lenis 스크롤 다시 시작
+   lenis.start();
+   
+   // body에 추가된 이벤트 리스너 제거 (있다면)
+   $('body').off('wheel touchmove');
+   
+   // .appBottom 스크롤 이벤트 제거
+   $('.appBottom').off('wheel touchmove');
+
+	location.reload(); // 페이지 새로고침
 });
 
 //탭

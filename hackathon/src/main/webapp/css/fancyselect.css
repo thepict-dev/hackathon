@@ -64,7 +64,7 @@ select[disabled] + .fsb-select {
   background-color: #fff;
   background-color: var(--fsb-background);
   font-size: 1em;
-  font-size: var(--fsb-font-size);
+  font-size: 20px;
   box-shadow: none;
   box-shadow: var(--fsb-shadow);
 }
@@ -194,7 +194,7 @@ select[disabled] + .fsb-select .fsb-list {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: var(--fsb-padding);
+  padding: 12px 22px;
   white-space: nowrap;
   text-overflow: ellipsis;
   overflow: hidden;
@@ -220,4 +220,35 @@ select[disabled] + .fsb-select .fsb-list {
 
 .fsb-resize > * {
   display: block;
+}
+
+
+@media all and (max-width : 768px){
+  .fsb-select,
+  .fsb-original-select {
+    width: 158px;
+    border: 1px solid #ccc;
+    border: var(--fsb-border);
+    border-radius: 5px;
+    border-radius: var(--fsb-radius);
+    box-sizing: border-box;
+    color: inherit;
+    color: var(--fsb-color);
+    background-color: #fff;
+    background-color: var(--fsb-background);
+    font-size: 1em;
+    font-size: 16px;
+    box-shadow: none;
+    box-shadow: var(--fsb-shadow);
+  }
+
+  .fsb-option {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px 12px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+  }
 }

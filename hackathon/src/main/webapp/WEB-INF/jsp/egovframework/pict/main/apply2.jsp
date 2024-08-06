@@ -64,7 +64,7 @@
                         <div class="flexInputs">
                             <div class="inputBox per">
                                 <p class="inputCaption">보호자 연락처</p>
-                                <input type="text" name="parent_mobile_1" id="parent_mobile_1" placeholder="-빼고 입력하세요" maxlength="11">
+                                <input type="text" name="parent_mobile_1" id="parent_mobile_1" placeholder="-빼고 입력하세요" oninput="oninputPhone(this)" maxlength="13">
                             </div>
                             <div class="inputBox per">
                                 <p class="inputCaption mb24">관계</p>
@@ -270,55 +270,51 @@
 	}
 	
 	
-	$('[id^="birthday_"]').blur(function(e) {
-		
-		var target = $(this).attr('id');
-		var idx = target.split("_")[1] 
-		//var birth = $('#birthday_1').val()
-		var birth = $('#' + target).val();
-		
-		
-		if(birth.length != 8){
-			alert("생년월일 입력을 확인해주세요.")
-			return false;
-		}
-		else{
-			birth = birth.substring(0,4) + '-' + birth.substring(4,6) + "-" + birth.substring(6)
-			birth = new Date(birth)
-		}
-		var birthYear = birth.getFullYear();
-		var birthMonth = birth.getMonth();
-		var birthDay = birth.getDate();
-		
-		// 현재 날짜를 가져옵니다.
-		var currentDate = new Date();
-		var currentYear = currentDate.getFullYear();
-		var currentMonth = currentDate.getMonth();
-		var currentDay = currentDate.getDate();
-		
-		// 만 나이를 계산합니다.
-		var age = currentYear - birthYear;
-		
-		// 현재 월과 생일의 월을 비교합니다.
-		if (currentMonth < birthMonth) {
-		  age--;
-		}
-		// 현재 월과 생일의 월이 같은 경우, 현재 일과 생일의 일을 비교합니다.
-		else if (currentMonth === birthMonth && currentDay < birthDay) {
-		  age--;
-		}
-		
-		//미성년자
-		if(age < 19){
-			
-			$('#parent_' + idx).addClass("active")
-			$('#youth_' + idx).addClass("active")
-		}
-		else{
-			$('#parent_' + idx).removeClass("active")
-			$('#youth_' + idx).removeClass("active")
-		}
-	})
+	$('[id^="birthday_"]').on('input', function(e) {
+	    var target = $(this).attr('id');
+	    var idx = target.split("_")[1];
+	    var birth = $('#' + target).val();
+	    
+	    if(birth.length === 8) {
+	        birth = birth.substring(0,4) + '-' + birth.substring(4,6) + "-" + birth.substring(6);
+	        var birthDate = new Date(birth);
+	        
+	        var birthYear = birthDate.getFullYear();
+	        var birthMonth = birthDate.getMonth();
+	        var birthDay = birthDate.getDate();
+	        
+	        // 현재 날짜를 가져옵니다.
+	        var currentDate = new Date();
+	        var currentYear = currentDate.getFullYear();
+	        var currentMonth = currentDate.getMonth();
+	        var currentDay = currentDate.getDate();
+	        
+	        // 만 나이를 계산합니다.
+	        var age = currentYear - birthYear;
+	        
+	        // 현재 월과 생일의 월을 비교합니다.
+	        if (currentMonth < birthMonth) {
+	          age--;
+	        }
+	        // 현재 월과 생일의 월이 같은 경우, 현재 일과 생일의 일을 비교합니다.
+	        else if (currentMonth === birthMonth && currentDay < birthDay) {
+	          age--;
+	        }
+	        
+	        //미성년자
+	        if(age < 19){
+	            $('#parent_' + idx).addClass("active");
+	            $('#youth_' + idx).addClass("active");
+	        }
+	        else{
+	            $('#parent_' + idx).removeClass("active");
+	            $('#youth_' + idx).removeClass("active");
+	        }
+	    } else {
+	        $('#parent_' + idx).removeClass("active");
+	        $('#youth_' + idx).removeClass("active");
+	    }
+	});
 	
 	
 	

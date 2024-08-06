@@ -125,11 +125,16 @@
 		$('#apply4').css("display", "flex");
 		$('.confirmWrapper').hide();
 	}
+    $('#confirm').change(function() {
+        if ($(this).is(':checked')) {
+            $('#confirm_btn').addClass('active');
+        } else {
+            $('#confirm_btn').removeClass('active');
+        }
+    });
 	function fn_submit(){
 		var confirms = $("input[name='confirm']:checked").val()
-		if(confirms == 'Y'){
-			$('#confirm_btn').addClass("active");
-		} else {
+		if(confirms != 'Y'){
 			alert("모든정보 확인란을 체크해주세요.")
 			$('#confirm').focus()
 			return false

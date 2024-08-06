@@ -160,7 +160,7 @@ public class pictController {
             //팀원정보 넣기 (팀장포함)
             ArrayList<Object> arr = new ArrayList<Object>();
             arr = (ArrayList<Object>) param.get("person_info");
-            
+            System.out.println(arr.size()+ " 사이즈 몇이냐@@@@@@@@@@@@@@@@@@");
             for(int i=0; i<arr.size(); i++) {
             	Object obj = arr.get(i);
             	

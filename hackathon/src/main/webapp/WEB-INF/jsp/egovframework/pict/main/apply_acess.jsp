@@ -15,7 +15,7 @@
                 <h3 class="appTitle">본선 등록을 위한 비밀번호를 입력하세요</h3>
                 <div class="inputContainer">
                     <div class="inputBox">
-                    	<input type="password" name="password" id="password" placeholder="비밀번호를 입력하세요">
+                    	<input type="password" name="password" id="password" placeholder="비밀번호를 입력하세요" onkeypress="if(event.keyCode == 13){fn_join();}" >
                     </div>
                 </div>
             </div>

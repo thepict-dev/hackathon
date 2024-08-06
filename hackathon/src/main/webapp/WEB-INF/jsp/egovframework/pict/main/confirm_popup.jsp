@@ -130,6 +130,8 @@
 			var parent_relation_text = ""
 			if(parent_relation == '기타') parent_relation_text = $('#parent_relation_text').val()
 			else parent_relation_text = parent_relation
+			
+			if(parent_relation_text == null || parent_relation_text == undefined || parent_relation_text == '') parent_relation_text = ""
 			var parent_address = $('#parent_address').val()
 			var parent_address2 = $('#parent_address2').val()
 			

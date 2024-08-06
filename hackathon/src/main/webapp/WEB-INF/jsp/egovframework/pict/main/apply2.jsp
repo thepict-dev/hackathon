@@ -22,7 +22,7 @@
                         <div class="inputBox sm2">
                             <p class="inputCaption">생년월일</p>
                             <div class="birthInput">
-                                <input type="text" name="birthday_1" id="birthday_1" placeholder="YYYYMMDD" class="" maxlength="8" onkeyup="fn_active_apply2()">
+                                <input type="text" name="birthday" id="birthday_1" placeholder="YYYYMMDD" class="" maxlength="8" onkeyup="fn_active_apply2()">
                             </div>
                             <span class="inputSubCaption youth">미성년자의 경우 보호자의 정보가 필요합니다</span>
                         </div>
@@ -30,12 +30,12 @@
 		                    <p class="inputCaption">성별</p>
 		                    <div class="radioContainer">
 		                        <div class="radioInput">
-		                            <input type="radio" name="sex" id="male">
-		                            <label for="male">남</label>
+		                            <input type="radio" name="sex_1" id="male_1" value="1">
+		                            <label for="male_1">남</label>
 		                        </div>
 		                        <div class="radioInput">
-		                            <input type="radio" name="sex" id="female">
-		                            <label for="female">여</label>
+		                            <input type="radio" name="sex_1" id="female_1" value="2">
+		                            <label for="female_1">여</label>
 		                        </div>
 		                    </div>
 		                </div>
@@ -46,15 +46,15 @@
                         <div class="flexInputs">
                             <div class="inputBox per">
                                 <p class="inputCaption">보호자 성명</p>
-                                <input type="text" name="parent_name" id="parent_name" placeholder="성명을 입력하세요">
+                                <input type="text" name="parent_name_1" id="parent_name_1" placeholder="성명을 입력하세요">
                             </div>
                             <div class="inputBox per">
                                 <p class="inputCaption">보호자 생년월일</p>
                                 <div class="birthInput">
-                                    <input type="text" name="parent_birthday" id="parent_birthday" placeholder="YYMMDD" class="" maxlength="6">
+                                    <input type="text" name="parent_birthday_1" id="parent_birthday_1" placeholder="YYMMDD" class="" maxlength="6">
                                     <span>-</span>
                                     <label for="birth2">
-                                        <input type="text" name="parent_birthday_extra" id="parent_birthday_extra" class="" maxlength="1">
+                                        <input type="text" name="parent_birthday_extra_1" id="parent_birthday_extra_1" class="" maxlength="1">
                                     </label>
                                 </div>
                             </div>
@@ -64,24 +64,24 @@
                         <div class="flexInputs">
                             <div class="inputBox per">
                                 <p class="inputCaption">보호자 연락처</p>
-                                <input type="text" name="parent_mobile" id="parent_mobile" placeholder="-빼고 입력하세요" maxlength="11">
+                                <input type="text" name="parent_mobile_1" id="parent_mobile_1" placeholder="-빼고 입력하세요" maxlength="11">
                             </div>
                             <div class="inputBox per">
                                 <p class="inputCaption mb24">관계</p>
                                 <div class="radioContainer">
                                     <div class="radioInput">
-                                        <input type="radio" name="parent_relation" id="parents" value="부모">
+                                        <input type="radio" name="parent_relation_1" id="parents" value="부모">
                                         <label for="parents">부모</label>
                                     </div>
                                     <div class="radioInput">
-                                        <input type="radio" name="parent_relation" id="grand_parents" value="조부모">
+                                        <input type="radio" name="parent_relation_1" id="grand_parents" value="조부모">
                                         <label for="grand_parents">조부모</label>
                                     </div>
                                     <div class="radioInput">
-                                        <input type="radio" name="parent_relation" id="etc" value="기타">
+                                        <input type="radio" name="parent_relation_1" id="etc" value="기타">
                                         <label for="etc">기타</label>
                                     </div>
-                                    <input type="text" name="parent_relation_text" id="parent_relation_text" class="etcInput" placeholder="관계를 입력하세요">
+                                    <input type="text" name="parent_relation_text_1" id="parent_relation_text_1" class="etcInput" placeholder="관계를 입력하세요">
                                 </div>
                             </div>
                         </div>
@@ -90,11 +90,11 @@
                         <div class="addContainer">
                             <div class="inputBox">
                                 <p class="inputCaption">보호자 주소</p>
-                                <input type="text" name="parent_address" id="parent_address" readonly>
+                                <input type="text" name="parent_address_1" id="parent_address_1" readonly>
                             </div>
                             <a href="#lnk" id="searchZip">주소검색</a>
                         </div>
-                        <input type="text" name="parent_address2" id="parent_address2" placeholder="상세주소를 입력해주세요">
+                        <input type="text" name="parent_address2_1" id="parent_address2_1" placeholder="상세주소를 입력해주세요">
                     </div>
                 </div>
                 <div class="inputContainer">
@@ -208,7 +208,7 @@
             </div>
             <div class="applyButton">
                 <a href="#lnk" onclick="fn_apply1_back()" class="prevButton">이전으로</a>
-                <a href="#lnk" onclick="fn_apply2_next()" class="nextButton" id="apply2_next">다음으로</a>
+                <a href="#lnk" onclick="fn_apply2_next()" class="nextButton active" id="apply2_next">다음으로</a>
             </div>
         </form>
     </div>
@@ -223,7 +223,7 @@
 	function fn_active_apply2(){
 		var name_1 = $('#name_1').val()
 		var birthday_1 = $('#birthday_1').val()
-		var sex = $("input[name='sex']:checked").val()
+		var sex = $("input[name='sex_1']:checked").val()
 		var mobile_1 = $('#mobile_1').val()
 		var email_1 = $('#email_1').val()
 		var company = $('#company_1').val()
@@ -257,10 +257,25 @@
 	function fn_apply2_next(){
 		$('#apply2').hide();
 		$('#apply3').css("display", "flex");
-		apply_draw();
+		//apply_draw();
+		
+		var team_cnt = Number($("input[name='team_cnt']:checked").val())
+		
+		if(team_cnt > 0 ){
+			for(var i=1; i<team_cnt; i++){
+				$('#teamwond_'+i).css("display", "flex")
+				
+			}
+		}
 	}
+	
+	
 	$('#birthday_1').blur(function(e){
-		var birth = $('#birthday_1').val()
+		
+		var target = $(this).attr('id');
+		
+		//var birth = $('#birthday_1').val()
+		var birth = $('#' + target).val();
 		if(birth.length != 8){
 			alert("생년월일 입력을 확인해주세요.")
 			return false;
@@ -308,8 +323,8 @@
 	        new daum.Postcode({
 	            oncomplete: function(data) { //선택시 입력값 세팅
 	                //document.getElementById("HPOSTCODE").value = data.zonecode;
-	                document.getElementById("parent_address").value = data.address; // 주소 넣기
-	                document.getElementById("parent_address2").focus();
+	                document.getElementById("parent_address_1").value = data.address; // 주소 넣기
+	                document.getElementById("parent_address2_1").focus();
 	            }
 	        }).open();
 	    });

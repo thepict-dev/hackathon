@@ -86,9 +86,9 @@
 		if(team_cnt > 0 ){
 			var html = ''
 			for(var i=2; i<team_cnt+1; i++){
-				var icon = '②'
-				if(i == 3) icon = '③'
-				if(i == 4) icon = '④'
+				var icon = '①'
+				if(i == 3) icon = '②'
+				if(i == 4) icon = '③'
 				if(i == 5) icon = '④'
 				
 				var name = $('#name_'+i).val()

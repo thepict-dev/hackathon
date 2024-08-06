@@ -24,7 +24,7 @@
                             <div class="birthInput">
                                 <input type="text" name="birthday" id="birthday_1" placeholder="YYYYMMDD" class="" maxlength="8" onkeyup="fn_active_apply2()">
                             </div>
-                            <span class="inputSubCaption youth">미성년자의 경우 보호자의 정보가 필요합니다</span>
+                            <span class="inputSubCaption youth" id="youth_1">미성년자의 경우 보호자의 정보가 필요합니다</span>
                         </div>
 		                <div class="inputBox sm">
 		                    <p class="inputCaption">성별</p>
@@ -41,7 +41,7 @@
 		                </div>
                     </div>
                 </div>
-                <div class="parentsContainer">
+                <div class="parentsContainer" id="parent_1">
                     <div class="inputContainer">
                         <div class="flexInputs">
                             <div class="inputBox per">
@@ -92,7 +92,7 @@
                                 <p class="inputCaption">보호자 주소</p>
                                 <input type="text" name="parent_address_1" id="parent_address_1" readonly>
                             </div>
-                            <a href="#lnk" id="searchZip">주소검색</a>
+                            <a href="#lnk" id="searchZip1">주소검색</a>
                         </div>
                         <input type="text" name="parent_address2_1" id="parent_address2_1" placeholder="상세주소를 입력해주세요">
                     </div>
@@ -270,12 +270,14 @@
 	}
 	
 	
-	$('#birthday_1').blur(function(e){
+	$('[id^="birthday_"]').blur(function(e) {
 		
 		var target = $(this).attr('id');
-		
+		var idx = target.split("_")[1] 
 		//var birth = $('#birthday_1').val()
 		var birth = $('#' + target).val();
+		
+		
 		if(birth.length != 8){
 			alert("생년월일 입력을 확인해주세요.")
 			return false;
@@ -308,27 +310,16 @@
 		
 		//미성년자
 		if(age < 19){
-			$('.parentsContainer').addClass("active")
-			$('.youth').addClass("active")
 			
+			$('#parent_' + idx).addClass("active")
+			$('#youth_' + idx).addClass("active")
 		}
 		else{
-			
+			$('#parent_' + idx).removeClass("active")
+			$('#youth_' + idx).removeClass("active")
 		}
 	})
 	
-	window.onload = function(){
-	    document.getElementById("searchZip").addEventListener("click", function(){ //주소입력칸을 클릭하면
-	        //카카오 지도 발생
-	        new daum.Postcode({
-	            oncomplete: function(data) { //선택시 입력값 세팅
-	                //document.getElementById("HPOSTCODE").value = data.zonecode;
-	                document.getElementById("parent_address_1").value = data.address; // 주소 넣기
-	                document.getElementById("parent_address2_1").focus();
-	            }
-	        }).open();
-	    });
-	}
 	
 	
 

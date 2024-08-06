@@ -82,23 +82,23 @@
                 <ul class="teamInfo">
                     <li>
                         <p>성명</p>
-                        <p>이유리</p>
+                        <p id="final_parent_name">이유리</p>
                     </li>
                     <li>
                         <p>생년월일</p>
-                        <p>19951031</p>
+                        <p id="final_parent_birthday">19951031</p>
                     </li>
                     <li>
                         <p>연락처</p>
-                        <p>01057491031</p>
+                        <p id="final_parent_mobile">01057491031</p>
                     </li>
                     <li>
                         <p>관계</p>
-                        <p>부모</p>
+                        <p id="final_parent_relation">부모</p>
                     </li>
                     <li>
                         <p>주소</p>
-                        <p>효자로효자로효자로효자로 효자로 1234</p>
+                        <p id="final_parent_address">효자로효자로효자로효자로 효자로 1234</p>
                     </li>
                 </ul>
 	        </div>

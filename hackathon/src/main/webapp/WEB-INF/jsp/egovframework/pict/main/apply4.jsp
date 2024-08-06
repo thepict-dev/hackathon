@@ -57,7 +57,7 @@
 		$('#final_team_cnt').text(team_cnt + "명")
 		$('#final_assignment_name').text(assignment_name)
 		
-		debugger
+		
 		//팀장정보
 		var name_1 = $('#name_1').val()
 		var birthday_1 = $('#birthday_1').val()
@@ -71,6 +71,15 @@
 		var depart = $('#depart_1').val()
 		var shirt_1 = $("input[name='shirt_1']:checked").val()
 		
+		
+		var parent_name = $('#parent_name_1').val()
+		var parent_birthday = $('#parent_birthday_1').val()
+		var parent_mobile = $('#parent_mobile_1').val()
+		var parent_relation = $("input[name='parent_relation_1']:checked").val()
+		var parent_address_1 = $('#parent_address_1').val()
+		var parent_address_2 = $('#parent_address2_1').val()
+		
+		
 		$('#final_name').text(name_1)
 		$('#final_birthday').text(birthday_1)
 		$('#final_sex').text(sex)
@@ -79,6 +88,13 @@
 		$('#final_company').text(company)
 		$('#final_depart').text(depart)
 		$('#final_shirt').text(shirt_1)
+		
+		
+		$('#final_parent_name').text(parent_name)
+		$('#final_parent_birthday').text(parent_birthday)
+		$('#final_parent_mobile').text(parent_mobile)
+		$('#final_parent_relation').text(parent_relation)
+		$('#final_parent_address').text(parent_address_1 + parent_address_2)
 		
 		
 		//팀원정보

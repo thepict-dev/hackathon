@@ -79,6 +79,9 @@ button{
 .inputCaption.mb24{
     margin-bottom: 24px;
 }
+.inputCaption.confirmPrents{
+    margin-top: 12px;
+}
 .inputSubCaption{
     margin-top: 8px;
     display: block;
@@ -151,27 +154,20 @@ input[type="checkbox"]{
     width: 16px;
     height: 16px;
     border-radius: 50%;
-    border: 1px solid var(--grey-500);
     appearance: none;
     cursor: pointer;
+    background-image: url('/front_img/uncheck.png');
+    background-repeat: no-repeat;
+    background-size: 100%;
+    background-position: center center;
 }
 input[type="checkbox"]:checked {
-    position: relative;
     width: 16px;
     height: 16px;
-    border: 2px solid #583D94;
-}
-input[type="checkbox"]:checked::after {
-    display: inline-block;
-    content: "";
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    background: #583D94;
+    background-repeat: no-repeat;
+    background-image: url('/front_img/checked.png');
+    background-size: 100%;
+    background-position: center center;
 }
 
 /* radio */
@@ -185,27 +181,20 @@ input[type="radio"]{
     width: 12px;
     height: 12px;
     border-radius: 50%;
-    border: 1px solid var(--grey-500);
     appearance: none;
     cursor: pointer;
+    background-image: url('/front_img/uncheck.png');
+    background-repeat: no-repeat;
+    background-size: 100%;
+    background-position: center center;
 }
 input[type="radio"]:checked {
-    position: relative;
     width: 12px;
     height: 12px;
-    border: 1px solid #583D94;
-}
-input[type="radio"]:checked::after {
-    display: inline-block;
-    content: "";
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    width: 6px;
-    height: 6px;
-    border-radius: 50%;
-    background: #583D94;
+    background-repeat: no-repeat;
+    background-image: url('/front_img/checked.png');
+    background-size: 100%;
+    background-position: center center;
 }
 .radioInput label{
     color: var(--TEXT, #242A30);

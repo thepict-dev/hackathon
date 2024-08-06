@@ -78,7 +78,30 @@
                         <p id="final_shirt"></p>
                     </li>
                 </ul>
-            </div>
+                <p class="inputCaption confirmPrents">보호자 정보</p>
+                <ul class="teamInfo">
+                    <li>
+                        <p>성명</p>
+                        <p>이유리</p>
+                    </li>
+                    <li>
+                        <p>생년월일</p>
+                        <p>19951031</p>
+                    </li>
+                    <li>
+                        <p>연락처</p>
+                        <p>01057491031</p>
+                    </li>
+                    <li>
+                        <p>관계</p>
+                        <p>부모</p>
+                    </li>
+                    <li>
+                        <p>주소</p>
+                        <p>효자로효자로효자로효자로 효자로 1234</p>
+                    </li>
+                </ul>
+	        </div>
             <div class="tabInner">
                 <div class="swiper">
                     <div class="swiper-wrapper" id="final_div"></div>
@@ -91,7 +114,7 @@
             </div>
             <div class="applyButton">
                 <a href="#lnk" class="prevButton" onclick="fn_apply4_back()">이전으로</a>
-                <a href="#lnk" class="nextButton active" onclick="fn_submit()">재출완료</a>
+                <a href="#lnk" class="nextButton" onclick="fn_submit()" id="confirm_btn">제출완료</a>
             </div>
         </div>
     </div>
@@ -104,7 +127,9 @@
 	}
 	function fn_submit(){
 		var confirms = $("input[name='confirm']:checked").val()
-		if(confirms != 'Y'){
+		if(confirms == 'Y'){
+			$('#confirm_btn').addClass("active");
+		} else {
 			alert("모든정보 확인란을 체크해주세요.")
 			$('#confirm').focus()
 			return false

@@ -104,6 +104,7 @@ select[disabled] + .fsb-select {
   white-space: nowrap;
   text-overflow: ellipsis;
   overflow: hidden;
+  font-weight: 500;
 }
 
 .fsb-button > span {
@@ -201,6 +202,7 @@ select[disabled] + .fsb-select .fsb-list {
   white-space: nowrap;
   text-overflow: ellipsis;
   overflow: hidden;
+  font-weight: 500;
 }
 
 .fsb-option[aria-selected="true"] {

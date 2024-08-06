@@ -40,7 +40,7 @@
 			, success : function(result){
 				if(result && result.rst == 'Y'){
 					$('#apply1').css("display", "flex");
-					$('#apply_acsses').css("display", "none")
+					$('#apply_acsses').css("display", "none");
 				}
 				else{
 					alert("비밀번호가 올바르지 않습니다.");

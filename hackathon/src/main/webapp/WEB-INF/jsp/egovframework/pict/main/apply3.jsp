@@ -48,20 +48,29 @@
 				'<h3 class="appTitle">팀원'+icon+' 정보</h3>'+
 				'<div class="inputContainer">'+
 				'<div class="flexInputs">'+
-				'<div class="inputBox per">'+
+				'<div class="inputBox lg">'+
 				'<p class="inputCaption">성명</p>'+
 				'<input type="text" name="name_'+i+'" id="name_'+i+'" placeholder="성명을 입력하세요" onkeyup="fn_active_apply3()">'+
 				'</div>'+
-				'<div class="inputBox per">'+
+				'<div class="inputBox sm2">'+
 				'<p class="inputCaption">생년월일</p>'+
 				'<div class="birthInput">'+
 				'<input type="text" name="birthday_'+i+'" id="birthday_'+i+'" placeholder="YYYYMMDD" class="" maxlength="8" onkeyup="fn_active_apply3()">'+
-				'<span>-</span>'+
-				'<label for="birth2">'+
-				'<input type="text" name="birthday_'+i+'_extra" id="birthday_'+i+'_extra" class="" maxlength="1" onkeyup="fn_active_apply3()">'+
-				'</label>'+
 				'</div>'+
 				'<span class="inputSubCaption youth">미성년자의 경우 보호자의 정보가 필요합니다</span>'+
+				'</div>'+
+				'<div class="inputBox sm">'+
+				'<p class="inputCaption">성별</p>'+
+				'<div class="radioContainer">'+
+				'<div class="radioInput">'+
+				'<input type="radio" name="sex_'+i+'" id="male_'+i+'" value="male" onchange="fn_active_apply3()">'+
+				'<label for="male_'+i+'">남</label>'+
+				'</div>'+
+				'<div class="radioInput">'+
+				'<input type="radio" name="sex_'+i+'" id="female_'+i+'" value="female" onchange="fn_active_apply3()">'+
+				'<label for="female_'+i+'">여</label>'+
+				'</div>'+
+				'</div>'+
 				'</div>'+
 				'</div>'+
 				'</div>'+
@@ -187,7 +196,7 @@
 			for(var i=2; i<team_cnt+1; i++){
 				var name = $('#name_'+i).val()
 				var birthday = $('#birthday_'+i).val()
-				var birthday_extra = $('#birthday_'+i+'_extra').val()
+				var birthday_extra = $('#sex'+i).val()
 				var mobile = $('#mobile_'+i).val()
 				var email = $('#email_'+i).val()
 				var company = $('#company_'+i).val()
@@ -198,7 +207,7 @@
 				if(
 					checkCondition(name) &&
 				    checkCondition(birthday) &&
-				    checkCondition(birthday_extra) &&
+				    checkCondition(sex) &&
 				    checkCondition(mobile) &&
 				    checkCondition(email) &&
 				    checkCondition(company) &&

@@ -15,21 +15,30 @@
                 <h3 class="appTitle">팀장 정보</h3>
                 <div class="inputContainer">
                     <div class="flexInputs">
-                        <div class="inputBox per">
+                        <div class="inputBox lg">
                             <p class="inputCaption">성명</p>
                             <input type="text" name="name_1" id="name_1" placeholder="성명을 입력하세요" onkeyup="fn_active_apply2()">
                         </div>
-                        <div class="inputBox per">
+                        <div class="inputBox sm2">
                             <p class="inputCaption">생년월일</p>
                             <div class="birthInput">
                                 <input type="text" name="birthday_1" id="birthday_1" placeholder="YYYYMMDD" class="" maxlength="8" onkeyup="fn_active_apply2()">
-                                <span>-</span>
-                                <label for="birth2">
-                                    <input type="text" name="birthday_1_extra" id="birthday_1_extra" class="" maxlength="1" onkeyup="fn_active_apply2()">
-                                </label>
                             </div>
                             <span class="inputSubCaption youth">미성년자의 경우 보호자의 정보가 필요합니다</span>
                         </div>
+		                <div class="inputBox sm">
+		                    <p class="inputCaption">성별</p>
+		                    <div class="radioContainer">
+		                        <div class="radioInput">
+		                            <input type="radio" name="sex" id="male">
+		                            <label for="male">남</label>
+		                        </div>
+		                        <div class="radioInput">
+		                            <input type="radio" name="sex" id="female">
+		                            <label for="female">여</label>
+		                        </div>
+		                    </div>
+		                </div>
                     </div>
                 </div>
                 <div class="parentsContainer">
@@ -214,7 +223,7 @@
 	function fn_active_apply2(){
 		var name_1 = $('#name_1').val()
 		var birthday_1 = $('#birthday_1').val()
-		var birthday_1_extra = $('#birthday_1_extra').val()
+		var sex = $("input[name='sex']:checked").val()
 		var mobile_1 = $('#mobile_1').val()
 		var email_1 = $('#email_1').val()
 		var company = $('#company_1').val()
@@ -224,7 +233,7 @@
 		
 		if(name_1 != null && name_1 != '' && name_1 != undefined){
 			if(birthday_1 != null && birthday_1 != '' && birthday_1 != undefined){
-				if(birthday_1_extra != null && birthday_1_extra != '' && birthday_1_extra != undefined){
+				if(sex != null && sex != '' && sex != undefined){
 					if(mobile_1 != null && mobile_1 != '' && mobile_1 != undefined){
 						if(email_1 != null && email_1 != '' && email_1 != undefined){
 							if(company != null && company != '' && company != undefined){

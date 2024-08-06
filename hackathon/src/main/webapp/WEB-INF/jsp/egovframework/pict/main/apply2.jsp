@@ -94,7 +94,7 @@
                             </div>
                             <a href="#lnk" id="searchZip1">주소검색</a>
                         </div>
-                        <input type="text" name="parent_address2_1" id="parent_address2_1" placeholder="상세주소를 입력해주세요">
+                        <input type="text" name="parent_address2_1" id="parent_address2_1" placeholder="상세주소를 입력해주세요" style="display:none">
                     </div>
                 </div>
                 <div class="inputContainer">

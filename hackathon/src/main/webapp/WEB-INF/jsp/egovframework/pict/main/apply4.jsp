@@ -40,6 +40,7 @@
 	}
 	function fn_apply4_next(){
 		//팀정보
+		$('#final_div').children().remove();
 		var assignment_id = $("input[name='assignment_id']:checked").val()
 		var assignment = ""
 		if(assignment_id == '1') assignment = "자유과제"
@@ -89,12 +90,14 @@
 		$('#final_depart').text(depart)
 		$('#final_shirt').text(shirt_1)
 		
+		if(parent_name != ''){
+			$('#final_parent_name').text(parent_name)
+			$('#final_parent_birthday').text(parent_birthday)
+			$('#final_parent_mobile').text(parent_mobile)
+			$('#final_parent_relation').text(parent_relation)
+			$('#final_parent_address').text(parent_address_1 + parent_address_2)	
+		}
 		
-		$('#final_parent_name').text(parent_name)
-		$('#final_parent_birthday').text(parent_birthday)
-		$('#final_parent_mobile').text(parent_mobile)
-		$('#final_parent_relation').text(parent_relation)
-		$('#final_parent_address').text(parent_address_1 + parent_address_2)
 		
 		
 		//팀원정보
@@ -119,6 +122,14 @@
 				var company = $('#company_'+i).val()
 				var depart = $('#depart_'+i).val()
 				var shirt = $("input[name='shirt_"+i+"']:checked").val()
+				
+				
+				var parent_name_sub = $('#parent_name_'+i).val()
+				var parent_birthday_sub = $('#parent_birthday_'+i).val()
+				var parent_mobile_sub = $('#parent_mobile_'+i).val()
+				var parent_relation_sub = $("input[name='parent_relation_"+i+"']:checked").val()
+				var parent_address_1_sub = $('#parent_address_'+i).val()
+				var parent_address_2_sub = $('#parent_address2_'+i).val()
 				
 				
 				html +=
@@ -157,8 +168,37 @@
 				'<p>단체티 사이즈</p>'+
 				'<p>'+shirt+'</p>'+
 				'</li>'+
-				'</ul>'+
-				'</div>'
+				'</ul>'
+				
+				if(parent_name_sub != ''){
+					html +='<p class="inputCaption confirmPrents">보호자 정보</p>'+
+					'<ul class="teamInfo">'+
+					'<li>'+
+					'<p>성명</p>'+
+					'<p>'+parent_name_sub+'</p>'+
+					'</li>'+
+					'<li>'+
+					'<p>생년월일</p>'+
+					'<p>'+parent_birthday_sub+'</p>'+
+					'</li>'+
+					'<li>'+
+					'<p>연락처</p>'+
+					'<p>'+parent_mobile_sub+'</p>'+
+					'</li>'+
+					'<li>'+
+					'<p>관계</p>'+
+					'<p>'+parent_relation_sub+'</p>'+
+					'</li>'+
+					'<li>'+
+					'<p>주소</p>'+
+					'<p>'+parent_address_1_sub+parent_address_2_sub+'</p>'+
+					'</li>'+
+					'</ul>'+
+					'</div>'
+				}
+				
+				
+				
 			}
 			$('#final_div').append(html)
 		}

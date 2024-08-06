@@ -70,16 +70,16 @@
 			                    <p class="inputCaption mb24">관계</p>
 			                    <div class="radioContainer">
 			                        <div class="radioInput">
-			                            <input type="radio" name="parent_relation_2" id="parents" value="부모">
-			                            <label for="parents">부모</label>
+			                            <input type="radio" name="parent_relation_2" id="parents_2" value="부모">
+			                            <label for="parents_2">부모</label>
 			                        </div>
 			                        <div class="radioInput">
-			                            <input type="radio" name="parent_relation_2" id="grand_parents" value="조부모">
-			                            <label for="grand_parents">조부모</label>
+			                            <input type="radio" name="parent_relation_2" id="grand_parents_2" value="조부모">
+			                            <label for="grand_parents_2">조부모</label>
 			                        </div>
 			                        <div class="radioInput">
-			                            <input type="radio" name="parent_relation_2" id="etc" value="기타">
-			                            <label for="etc">기타</label>
+			                            <input type="radio" name="parent_relation_2" id="etc_2" value="기타">
+			                            <label for="etc_2">기타</label>
 			                        </div>
 			                        <input type="text" name="parent_relation_text_2" id="parent_relation_text_2" class="etcInput" placeholder="관계를 입력하세요">
 			                    </div>
@@ -94,7 +94,7 @@
 			                </div>
 			                <a href="#lnk" id="searchZip2">주소검색</a>
 			            </div>
-			            <input type="text" name="parent_address2_2" id="parent_address2_2" placeholder="상세주소를 입력해주세요">
+			            <input type="text" name="parent_address2_2" id="parent_address2_2" placeholder="상세주소를 입력해주세요" style="display:none">
 			        </div>
 			    </div>
 			    <div class="inputContainer">
@@ -265,16 +265,16 @@
 			                    <p class="inputCaption mb24">관계</p>
 			                    <div class="radioContainer">
 			                        <div class="radioInput">
-			                            <input type="radio" name="parent_relation_3" id="parents" value="부모">
-			                            <label for="parents">부모</label>
+			                            <input type="radio" name="parent_relation_3" id="parents_3" value="부모">
+			                            <label for="parents_3">부모</label>
 			                        </div>
 			                        <div class="radioInput">
-			                            <input type="radio" name="parent_relation_3" id="grand_parents" value="조부모">
-			                            <label for="grand_parents">조부모</label>
+			                            <input type="radio" name="parent_relation_3" id="grand_parents_3" value="조부모">
+			                            <label for="grand_parents_3">조부모</label>
 			                        </div>
 			                        <div class="radioInput">
-			                            <input type="radio" name="parent_relation_3" id="etc" value="기타">
-			                            <label for="etc">기타</label>
+			                            <input type="radio" name="parent_relation_3" id="etc_3" value="기타">
+			                            <label for="etc_3">기타</label>
 			                        </div>
 			                        <input type="text" name="parent_relation_text_3" id="parent_relation_text_3" class="etcInput" placeholder="관계를 입력하세요">
 			                    </div>
@@ -289,7 +289,7 @@
 			                </div>
 			                <a href="#lnk" id="searchZip3">주소검색</a>
 			            </div>
-			            <input type="text" name="parent_address2_3" id="parent_address2_3" placeholder="상세주소를 입력해주세요">
+			            <input type="text" name="parent_address2_3" id="parent_address2_3" placeholder="상세주소를 입력해주세요" style="display:none">
 			        </div>
 			    </div>
 			    <div class="inputContainer">
@@ -460,16 +460,16 @@
 			                    <p class="inputCaption mb24">관계</p>
 			                    <div class="radioContainer">
 			                        <div class="radioInput">
-			                            <input type="radio" name="parent_relation_4" id="parents" value="부모">
-			                            <label for="parents">부모</label>
+			                            <input type="radio" name="parent_relation_4" id="parents_4" value="부모">
+			                            <label for="parents_2">부모</label>
 			                        </div>
 			                        <div class="radioInput">
-			                            <input type="radio" name="parent_relation_4" id="grand_parents" value="조부모">
-			                            <label for="grand_parents">조부모</label>
+			                            <input type="radio" name="parent_relation_4" id="grand_parents_4" value="조부모">
+			                            <label for="grand_parents_4">조부모</label>
 			                        </div>
 			                        <div class="radioInput">
-			                            <input type="radio" name="parent_relation_4" id="etc" value="기타">
-			                            <label for="etc">기타</label>
+			                            <input type="radio" name="parent_relation_4" id="etc_4" value="기타">
+			                            <label for="etc_4">기타</label>
 			                        </div>
 			                        <input type="text" name="parent_relation_text_4" id="parent_relation_text_4" class="etcInput" placeholder="관계를 입력하세요">
 			                    </div>
@@ -484,7 +484,7 @@
 			                </div>
 			                <a href="#lnk" id="searchZip4">주소검색</a>
 			            </div>
-			            <input type="text" name="parent_address2_4" id="parent_address2_4" placeholder="상세주소를 입력해주세요">
+			            <input type="text" name="parent_address2_4" id="parent_address2_4" placeholder="상세주소를 입력해주세요" style="display:none">
 			        </div>
 			    </div>
 			    <div class="inputContainer">
@@ -655,16 +655,16 @@
 			                    <p class="inputCaption mb24">관계</p>
 			                    <div class="radioContainer">
 			                        <div class="radioInput">
-			                            <input type="radio" name="parent_relation_5" id="parents" value="부모">
-			                            <label for="parents">부모</label>
+			                            <input type="radio" name="parent_relation_5" id="parents_5" value="부모">
+			                            <label for="parents_5">부모</label>
 			                        </div>
 			                        <div class="radioInput">
-			                            <input type="radio" name="parent_relation_5" id="grand_parents" value="조부모">
-			                            <label for="grand_parents">조부모</label>
+			                            <input type="radio" name="parent_relation_5" id="grand_parents_5" value="조부모">
+			                            <label for="grand_parents_5">조부모</label>
 			                        </div>
 			                        <div class="radioInput">
-			                            <input type="radio" name="parent_relation_5" id="etc" value="기타">
-			                            <label for="etc">기타</label>
+			                            <input type="radio" name="parent_relation_5" id="etc_5" value="기타">
+			                            <label for="etc_5">기타</label>
 			                        </div>
 			                        <input type="text" name="parent_relation_text_5" id="parent_relation_text_5" class="etcInput" placeholder="관계를 입력하세요">
 			                    </div>
@@ -679,7 +679,7 @@
 			                </div>
 			                <a href="#lnk" id="searchZip5">주소검색</a>
 			            </div>
-			            <input type="text" name="parent_address2_5" id="parent_address2_5" placeholder="상세주소를 입력해주세요">
+			            <input type="text" name="parent_address2_5" id="parent_address2_5" placeholder="상세주소를 입력해주세요" style="display:none">
 			        </div>
 			    </div>
 			    <div class="inputContainer">
@@ -907,6 +907,7 @@
 	                //document.getElementById("HPOSTCODE").value = data.zonecode;
 	                document.getElementById("parent_address_1").value = data.address; // 주소 넣기
 	                document.getElementById("parent_address2_1").focus();
+	                $('#parent_address2_1').css("display", "block")
 	            }
 	        }).open();
 	    });
@@ -917,6 +918,7 @@
 	                //document.getElementById("HPOSTCODE").value = data.zonecode;
 	                document.getElementById("parent_address_2").value = data.address; // 주소 넣기
 	                document.getElementById("parent_address2_2").focus();
+	                $('#parent_address2_2').css("display", "block")
 	            }
 	        }).open();
 	    });
@@ -927,6 +929,7 @@
 	                //document.getElementById("HPOSTCODE").value = data.zonecode;
 	                document.getElementById("parent_address_3").value = data.address; // 주소 넣기
 	                document.getElementById("parent_address2_3").focus();
+	                $('#parent_address2_3').css("display", "block")
 	            }
 	        }).open();
 	    });
@@ -937,6 +940,7 @@
 	                //document.getElementById("HPOSTCODE").value = data.zonecode;
 	                document.getElementById("parent_address_4").value = data.address; // 주소 넣기
 	                document.getElementById("parent_address2_4").focus();
+	                $('#parent_address2_4').css("display", "block")
 	            }
 	        }).open();
 	    });
@@ -947,6 +951,7 @@
 	                //document.getElementById("HPOSTCODE").value = data.zonecode;
 	                document.getElementById("parent_address_5").value = data.address; // 주소 넣기
 	                document.getElementById("parent_address2_5").focus();
+	                $('#parent_address2_5').css("display", "block")
 	            }
 	        }).open();
 	    });

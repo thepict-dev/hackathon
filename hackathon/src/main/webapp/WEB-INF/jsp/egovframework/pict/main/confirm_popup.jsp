@@ -82,23 +82,23 @@
                 <ul class="teamInfo">
                     <li>
                         <p>성명</p>
-                        <p id="final_parent_name">이유리</p>
+                        <p id="final_parent_name"></p>
                     </li>
                     <li>
                         <p>생년월일</p>
-                        <p id="final_parent_birthday">19951031</p>
+                        <p id="final_parent_birthday"></p>
                     </li>
                     <li>
                         <p>연락처</p>
-                        <p id="final_parent_mobile">01057491031</p>
+                        <p id="final_parent_mobile"></p>
                     </li>
                     <li>
                         <p>관계</p>
-                        <p id="final_parent_relation">부모</p>
+                        <p id="final_parent_relation"></p>
                     </li>
                     <li>
                         <p>주소</p>
-                        <p id="final_parent_address">효자로효자로효자로효자로 효자로 1234</p>
+                        <p id="final_parent_address"></p>
                     </li>
                 </ul>
 	        </div>
@@ -147,27 +147,27 @@
 			var json = {}
 			var name = $('#name_1').val()
 			var birthday = $('#birthday_1').val()
-			var birthday_extra = $('#birthday_1_extra').val()
+			var sex = $("input[name='sex_1']:checked").val()
 			var mobile = $('#mobile_1').val()
 			var email = $('#email_1').val()
 			var company = $('#company_1').val()
 			var depart = $('#depart_1').val()
 			var shirt = $("input[name='shirt_1']:checked").val()
-			var parent_name = $('#parent_name').val()
-			var parent_birthday = $('#parent_birthday').val()
-			var parent_mobile = $('#parent_mobile').val()
-			var parent_relation = $("input[name='parent_relation']:checked").val()
+			var parent_name = $('#parent_name_1').val() == undefined ? "" : $('#parent_name_1').val()
+			var parent_birthday = $('#parent_birthday_1').val() == undefined ? "" : $('#parent_birthday_1').val()
+			var parent_mobile = $('#parent_mobile_1').val() == undefined ? "" : $('#parent_mobile_1').val()
+			var parent_relation = $("input[name='parent_relation_1']:checked").val() == undefined ? "" : $("input[name='parent_relation_1']:checked").val()
 			var parent_relation_text = ""
-			if(parent_relation == '기타') parent_relation_text = $('#parent_relation_text').val()
+			if(parent_relation == '기타') parent_relation_text = $('#parent_relation_text_1').val()
 			else parent_relation_text = parent_relation
 			
 			if(parent_relation_text == null || parent_relation_text == undefined || parent_relation_text == '') parent_relation_text = ""
-			var parent_address = $('#parent_address').val()
-			var parent_address2 = $('#parent_address2').val()
+			var parent_address = $('#parent_address_1').val() == undefined ? "" : $('#parent_address_1').val()
+			var parent_address2 = $('#parent_address2_1').val() == undefined ? "" : $('#parent_address2_1').val()
 			
 			json.name = name
 			json.birthday = birthday
-			json.birthday_extra = birthday_extra
+			json.sex = sex
 			json.mobile = mobile
 			json.email = email
 			json.company = company
@@ -190,33 +190,49 @@
 					
 					var name = $('#name_'+i).val()
 					var birthday = $('#birthday_'+i).val()
-					var birthday_extra = $('#birthday_'+i+'_extra').val()
+					var sex = $("input[name='sex_"+i+"']:checked").val()
 					var mobile = $('#mobile_'+i).val()
 					var email = $('#email_'+i).val()
 					var company = $('#company_'+i).val()
 					var depart = $('#depart_'+i).val()
 					var shirt = $("input[name='shirt_"+i+"']:checked").val()
 					
+					var parent_name_sub = $('#parent_name_'+i).val() == undefined ? "" : $('#parent_name_'+i).val()
+					var parent_birthday_sub = $('#parent_birthday_'+i).val() == undefined ? "" : $('#parent_birthday_'+i).val()
+					var parent_mobile_sub = $('#parent_mobile_'+i).val() == undefined ? "" : $('#parent_mobile_'+i).val()
+					var parent_relation_sub = $("input[name='parent_relation_"+i+"']:checked").val() == undefined ? "" : $("input[name='parent_relation_"+i+"']:checked").val()
+							
+					
+					var parent_relation_text_sub = ""
+					if(parent_relation_sub == '기타') parent_relation_text_sub = $('#parent_relation_text_'+i).val()
+					else parent_relation_text_sub = parent_relation_sub
+					
+					if(parent_relation_text_sub == null || parent_relation_text_sub == undefined || parent_relation_text_sub == '') parent_relation_text_sub = ""
+							
+							
+					var parent_address_1_sub = $('#parent_address_'+i).val() == undefined ? "" : $('#parent_address_'+i).val()
+					var parent_address_2_sub = $('#parent_address2_'+i).val() == undefined ? "" : $('#parent_address2_'+i).val()
+					
 					
 					json_won.name = name
 					json_won.birthday = birthday
-					json_won.birthday_extra = birthday_extra
+					json_won.sex = sex
 					json_won.mobile = mobile
 					json_won.email = email
 					json_won.company = company
 					json_won.depart = depart
 					json_won.shirt = shirt
-					json_won.parent_name = "공란"
-					json_won.parent_birthday = "공란"
-					json_won.parent_mobile = "공란"
-					json_won.parent_relation = "공란"
-					json_won.parent_address = "공란"
-					json_won.parent_address2 = "공란"
+					json_won.parent_name = parent_name_sub
+					json_won.parent_birthday = parent_birthday_sub
+					json_won.parent_mobile = parent_mobile_sub
+					json_won.parent_relation = parent_relation_text_sub
+					json_won.parent_address = parent_address_1_sub
+					json_won.parent_address2 = parent_address_2_sub
 					
 					arr.push(json_won)
 				}
 			}
-			
+			debugger
 			var requestData = {
 				assignment_id : $("input[name='assignment_id']:checked").val(),
 				local : $("select[name=local]").val(),

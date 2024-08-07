@@ -17,12 +17,12 @@
                     <div class="flexInputs">
                         <div class="inputBox lg">
                             <p class="inputCaption">성명</p>
-                            <input type="text" name="name_1" id="name_1" placeholder="성명을 입력하세요" onkeyup="fn_active_apply2()">
+                            <input type="text" name="name_1" id="name_1" placeholder="성명을 입력하세요" onkeyup="fn_active_apply2()" autocomplete="new-password">
                         </div>
                         <div class="inputBox sm2">
                             <p class="inputCaption">생년월일</p>
                             <div class="birthInput">
-                                <input type="text" name="birthday" id="birthday_1" placeholder="YYYYMMDD" class="" maxlength="8" onkeyup="fn_active_apply2()">
+                                <input type="text" name="birthday" id="birthday_1" placeholder="YYYYMMDD" class="" maxlength="8" onkeyup="fn_active_apply2()"  autocomplete="new-password">
                             </div>
                             <span class="inputSubCaption youth" id="youth_1">미성년자의 경우 보호자의 정보가 필요합니다</span>
                         </div>
@@ -46,15 +46,15 @@
                         <div class="flexInputs">
                             <div class="inputBox per">
                                 <p class="inputCaption">보호자 성명</p>
-                                <input type="text" name="parent_name_1" id="parent_name_1" placeholder="성명을 입력하세요">
+                                <input type="text" name="parent_name_1" id="parent_name_1" placeholder="성명을 입력하세요" autocomplete="new-password">
                             </div>
                             <div class="inputBox per">
                                 <p class="inputCaption">보호자 생년월일</p>
                                 <div class="birthInput">
-                                    <input type="text" name="parent_birthday_1" id="parent_birthday_1" placeholder="YYMMDD" class="" maxlength="6">
+                                    <input type="text" name="parent_birthday_1" id="parent_birthday_1" placeholder="YYMMDD" class="" maxlength="6" autocomplete="new-password">
                                     <span>-</span>
                                     <label for="birth2">
-                                        <input type="text" name="parent_birthday_extra_1" id="parent_birthday_extra_1" class="" maxlength="1">
+                                        <input type="text" name="parent_birthday_extra_1" id="parent_birthday_extra_1" class="" maxlength="1" autocomplete="new-password">
                                     </label>
                                 </div>
                             </div>
@@ -64,7 +64,7 @@
                         <div class="flexInputs">
                             <div class="inputBox per">
                                 <p class="inputCaption">보호자 연락처</p>
-                                <input type="text" name="parent_mobile_1" id="parent_mobile_1" placeholder="-빼고 입력하세요" oninput="oninputPhone(this)" maxlength="13">
+                                <input type="text" name="parent_mobile_1" id="parent_mobile_1" placeholder="-빼고 입력하세요" oninput="oninputPhone(this)" maxlength="13" autocomplete="new-password">
                             </div>
                             <div class="inputBox per">
                                 <p class="inputCaption mb24">관계</p>
@@ -81,7 +81,7 @@
                                         <input type="radio" name="parent_relation_1" id="etc" value="기타">
                                         <label for="etc">기타</label>
                                     </div>
-                                    <input type="text" name="parent_relation_text_1" id="parent_relation_text_1" class="etcInput" placeholder="관계를 입력하세요">
+                                    <input type="text" name="parent_relation_text_1" id="parent_relation_text_1" class="etcInput" placeholder="관계를 입력하세요" autocomplete="new-password">
                                 </div>
                             </div>
                         </div>
@@ -90,22 +90,22 @@
                         <div class="addContainer">
                             <div class="inputBox">
                                 <p class="inputCaption">보호자 주소</p>
-                                <input type="text" name="parent_address_1" id="parent_address_1" readonly>
+                                <input type="text" name="parent_address_1" id="parent_address_1" readonly autocomplete="new-password">
                             </div>
                             <a href="#lnk" id="searchZip1">주소검색</a>
                         </div>
-                        <input type="text" name="parent_address2_1" id="parent_address2_1" placeholder="상세주소를 입력해주세요" style="display:none">
+                        <input type="text" name="parent_address2_1" id="parent_address2_1" placeholder="상세주소를 입력해주세요" style="display:none" autocomplete="new-password">
                     </div>
                 </div>
                 <div class="inputContainer">
                     <div class="flexInputs">
                         <div class="inputBox per">
                             <p class="inputCaption">연락처</p>
-                            <input type="text" name="mobile_1" id="mobile_1" placeholder="-빼고 입력하세요" onkeyup="fn_active_apply2()" oninput="oninputPhone(this)" maxlength="13">
+                            <input type="text" name="mobile_1" id="mobile_1" placeholder="-빼고 입력하세요" onkeyup="fn_active_apply2()" oninput="oninputPhone(this)" maxlength="13" autocomplete="new-password">
                         </div>
                         <div class="inputBox per">
                             <p class="inputCaption">이메일</p>
-                            <input type="text" name="email_1" id="email_1" placeholder="이메일주소를 입력하세요" onkeyup="fn_active_apply2()">
+                            <input type="text" name="email_1" id="email_1" placeholder="이메일주소를 입력하세요" onkeyup="fn_active_apply2()" autocomplete="new-password">
                         </div>
                     </div>
                 </div>
@@ -113,11 +113,11 @@
                     <div class="flexInputs">
                         <div class="inputBox per">
                             <p class="inputCaption">직장/학교명</p>
-                            <input type="text" name="company_1" id="company_1" placeholder="직장/학교명을 입력하세요" onkeyup="fn_active_apply2()">
+                            <input type="text" name="company_1" id="company_1" placeholder="직장/학교명을 입력하세요" onkeyup="fn_active_apply2()" autocomplete="new-password">
                         </div>
                         <div class="inputBox per">
                             <p class="inputCaption">부서/학과명(선택)</p>
-                            <input type="text" name="depart_1" id="depart_1" placeholder="부서/학과명을 입력하세요" onkeyup="fn_active_apply2()">
+                            <input type="text" name="depart_1" id="depart_1" placeholder="부서/학과명을 입력하세요" onkeyup="fn_active_apply2()" autocomplete="new-password">
                         </div>
                     </div>
                 </div>

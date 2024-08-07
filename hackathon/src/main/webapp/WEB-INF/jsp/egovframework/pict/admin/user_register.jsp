@@ -74,7 +74,7 @@
 								</div>
 								<div class="write-box">
 									<div class="write-item">
-										<label for="title" class="title">이름</label>
+										<label for="title" class="title">소속</label>
 										<div class="input-box">
 											<input type="text" id="depart" name="depart" value="${pictVO.depart}" class="input opt-max-width-200">
 										</div>
@@ -95,6 +95,60 @@
 									</div>
 								</div>
 								
+								
+								
+								
+								
+								<div class="write-box">
+									<div class="write-item">
+										<label for="title" class="title">보호자 성명</label>
+										<div class="input-box">
+											<input type="text" id="parent_name" name="parent_name" value="${pictVO.parent_name}" class="input opt-max-width-200">
+										</div>
+									</div>
+								</div>
+								<div class="write-box">
+									<div class="write-item">
+										<label for="title" class="title">보호자 생년월일</label>
+										<div class="input-box">
+											<input type="text" id="parent_birthday" name="parent_birthday" value="${pictVO.parent_birthday}" class="input opt-max-width-200">
+										</div>
+									</div>
+								</div>
+								<div class="write-box">
+									<div class="write-item">
+										<label for="title" class="title">보호자 연락처</label>
+										<div class="input-box">
+											<input type="text" id="parent_mobile" name="parent_mobile" value="${pictVO.parent_mobile}" class="input opt-max-width-200">
+										</div>
+									</div>
+								</div>
+								<div class="write-box">
+									<div class="write-item">
+										<label for="title" class="title">보호자관계</label>
+										<select id="parent_relation" name="parent_relation" class="input opt-max-width-300">
+											<option value="부모" <c:if test="${'부모' eq pictVO.parent_relation}"> selected</c:if> >부모</option>
+											<option value="조부모" <c:if test="${'조부모' eq pictVO.parent_relation}"> selected</c:if> >조부모</option>
+											<option value="기타" <c:if test="${'기타' eq pictVO.parent_relation}"> selected</c:if> >기타</option>
+										</select>
+									</div>
+								</div>
+								<div class="write-box">
+									<div class="write-item">
+										<label for="title" class="title">보호자 주소</label>
+										<div class="input-box">
+											<input type="text" id="parent_address" name="parent_address" value="${pictVO.parent_address}" class="input opt-max-width-500">
+										</div>
+									</div>
+								</div>
+								<div class="write-box">
+									<div class="write-item">
+										<label for="title" class="title">보호자 주소(상세)</label>
+										<div class="input-box">
+											<input type="text" id="parent_address2" name="parent_address2" value="${pictVO.parent_address2}" class="input opt-max-width-500">
+										</div>
+									</div>
+								</div>
 								
 									
 								<div class="btn-box">

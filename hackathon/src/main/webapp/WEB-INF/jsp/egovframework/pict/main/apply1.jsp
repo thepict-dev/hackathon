@@ -55,7 +55,7 @@
                     <div class="flexInputs">
                         <div class="inputBox per">
                             <p class="inputCaption">팀명</p>
-                            <input type="text" name="title" id="title" placeholder="팀명을 입력하세요" onkeyup="fn_active()">
+                            <input type="text" name="title" id="title" placeholder="팀명을 입력하세요" onkeyup="fn_active()" autocomplete="new-password">
                         </div>
                         <div class="inputBox per">
                             <p class="inputCaption mb24">팀원 수</p>
@@ -88,7 +88,7 @@
                     <div class="flexInputs">
                         <div class="inputBox">
                             <p class="inputCaption">제안명</p>
-                            <input type="text" name="assignment_name" id="assignment_name" placeholder="제안명을 입력하세요" onkeyup="fn_active()">
+                            <input type="text" name="assignment_name" id="assignment_name" placeholder="제안명을 입력하세요" onkeyup="fn_active()" autocomplete="new-password">
                         </div>
                     </div>
                     <span class="inputSubCaption">참가자 개발 분야와 관련된 제목을 표기해주세요</span>
@@ -97,7 +97,7 @@
                     <div class="flexInputs">
                         <div class="inputBox">
                             <p class="inputCaption">키워드</p>
-                            <input type="text" name="keyword" id="keyword" placeholder="키워드를 5개 이내로 입력하세요" onkeyup="fn_active()">
+                            <input type="text" name="keyword" id="keyword" placeholder="키워드를 5개 이내로 입력하세요" onkeyup="fn_active()"  autocomplete="new-password">
                         </div>
                     </div>
                     <span class="inputSubCaption">쉼표로 구분하세요</span>

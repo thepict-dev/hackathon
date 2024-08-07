@@ -130,6 +130,10 @@ public interface PictMapper {
 
 	PictVO password_compare(PictVO pictVO) throws Exception;
 
+	Integer team_list_cnt(PictVO pictVO) throws Exception;
+
+	Integer user_list_cnt(PictVO pictVO) throws Exception;
+
 
 
 }

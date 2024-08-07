@@ -801,6 +801,17 @@
 </div>
 
 <script>
+	$('[id^="birthday_"]').on('blur', function(e) {
+		var target = $(this).attr('id');
+	    var idx = target.split("_")[1];
+	    var birth = $('#' + target).val();
+	    
+	    if(birth.length != 8){
+	    	alert("생년월일을 확인해주세요");
+	    	return false;
+	    }
+	})
+
 	$('[id^="birthday_"]').on('input', function(e) {
 	    var target = $(this).attr('id');
 	    var idx = target.split("_")[1];

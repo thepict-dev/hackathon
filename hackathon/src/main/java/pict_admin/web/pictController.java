@@ -450,11 +450,40 @@ public class pictController {
 		if(session == null || session == "null") {
 			return "redirect:/pict_login.do";
 		}
-		pictVO.setUser_id(session);
-	
+		
+		
+		int limitNumber = 20;
+		pictVO.setLimit(limitNumber);
+		Integer pageNum = pictVO.getPageNumber();
+		if(pageNum == 0) {
+			pictVO.setPageNumber(1);
+			pageNum = 1;
+		}
+		int startNum = (pageNum - 1) * limitNumber;
+		pictVO.setStartNumber(startNum);
+		Integer totalCnt = pictService.team_list_cnt(pictVO);
+		System.out.println(totalCnt);
+		int lastPageValue = (int)(Math.ceil( totalCnt * 1.0 / 20 )); 
+		pictVO.setLastPage(lastPageValue);
+		Integer s_page = pageNum - 4;
+		Integer e_page = pageNum + 5;
+		if (s_page <= 0) {
+			s_page = 1;
+			e_page = 10;
+		} 
+		if (e_page > lastPageValue){
+			e_page = lastPageValue;
+		}
+		pictVO.setStartPage(s_page);
+		pictVO.setEndPage(e_page);
+		
+		
 		List<?> reference_list = pictService.team_list(pictVO);
+
 		model.addAttribute("resultList", reference_list);
-		model.addAttribute("size", reference_list.size());
+		model.addAttribute("board_cnt", totalCnt);
+		
+		
 		model.addAttribute("pictVO", pictVO);
 		
 		return "pict/admin/team_list";
@@ -480,11 +509,19 @@ public class pictController {
 		return "pict/admin/team_register";
 	}
 	@RequestMapping(value = "/team/team_save.do", method = RequestMethod.POST)
-	public String team_save(@ModelAttribute("searchVO") PictVO pictVO, ModelMap model, MultipartHttpServletRequest request) throws Exception {
+	public String team_save(@ModelAttribute("searchVO") PictVO pictVO, ModelMap model, MultipartHttpServletRequest request,
+			@RequestParam("attach_file1") MultipartFile attach_file1) throws Exception {
 		String sessions = (String)request.getSession().getAttribute("id");
 		
 		if(sessions == null || sessions == "null") {
 			return "redirect:/pict_login.do";
+		}
+		
+		if(attach_file1.getSize() != 0) {	//팀 파일
+			String uploadPath = fileUpload(request, attach_file1, (String)request.getSession().getAttribute("id"));
+			String filepath = "/user1/upload_file/hackathon/";
+			String filename = uploadPath.split("#####")[1];
+			pictVO.setFile_url(filepath+filename);
 		}
 	
 		if(pictVO.getSaveType() != null && pictVO.getSaveType().equals("update")) {
@@ -526,7 +563,31 @@ public class pictController {
 		if(session == null || session == "null") {
 			return "redirect:/pict_login.do";
 		}
-		pictVO.setUser_id(session);
+		
+		int limitNumber = 20;
+		pictVO.setLimit(limitNumber);
+		Integer pageNum = pictVO.getPageNumber();
+		if(pageNum == 0) {
+			pictVO.setPageNumber(1);
+			pageNum = 1;
+		}
+		int startNum = (pageNum - 1) * limitNumber;
+		pictVO.setStartNumber(startNum);
+		Integer totalCnt = pictService.user_list_cnt(pictVO);
+		int lastPageValue = (int)(Math.ceil( totalCnt * 1.0 / 20 )); 
+		pictVO.setLastPage(lastPageValue);
+		Integer s_page = pageNum - 4;
+		Integer e_page = pageNum + 5;
+		if (s_page <= 0) {
+			s_page = 1;
+			e_page = 10;
+		} 
+		if (e_page > lastPageValue){
+			e_page = lastPageValue;
+		}
+		pictVO.setStartPage(s_page);
+		pictVO.setEndPage(e_page);
+		
 	
 		List<?> reference_list = pictService.user_list(pictVO);
 		model.addAttribute("resultList", reference_list);

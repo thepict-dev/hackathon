@@ -233,19 +233,21 @@
 		
 		if(name_1 != null && name_1 != '' && name_1 != undefined){
 			if(birthday_1 != null && birthday_1 != '' && birthday_1 != undefined){
-				if(sex != null && sex != '' && sex != undefined){
-					if(mobile_1 != null && mobile_1 != '' && mobile_1 != undefined){
-						if(email_1 != null && email_1 != '' && email_1 != undefined){
-							if(company != null && company != '' && company != undefined){
-								if(depart != null && depart != '' && depart != undefined){
-									if(shirt_1 != null && shirt_1 != '' && shirt_1 != undefined){
-										$('#apply2_next').addClass("active");
+				if(birthday_1.length == 8){
+					if(sex != null && sex != '' && sex != undefined){
+						if(mobile_1 != null && mobile_1 != '' && mobile_1 != undefined){
+							if(email_1 != null && email_1 != '' && email_1 != undefined){
+								if(company != null && company != '' && company != undefined){
+									if(depart != null && depart != '' && depart != undefined){
+										if(shirt_1 != null && shirt_1 != '' && shirt_1 != undefined){
+											$('#apply2_next').addClass("active");
+										}	
 									}	
 								}	
 							}	
 						}	
-					}	
-				}	
+					}
+				}
 			}	
 		}
 	}
@@ -269,6 +271,16 @@
 		}
 	}
 	
+	$('[id^="birthday_"]').on('blur', function(e) {
+		var target = $(this).attr('id');
+	    var idx = target.split("_")[1];
+	    var birth = $('#' + target).val();
+	    
+	    if(birth.length != 8){
+	    	alert("생년월일을 확인해주세요");
+	    	return false;
+	    }
+	})
 	
 	$('[id^="birthday_"]').on('input', function(e) {
 	    var target = $(this).attr('id');

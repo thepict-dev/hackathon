@@ -140,7 +140,64 @@ public class PictVO extends PictDefaultVO {
 	private String sex;
 	private String password;
 	
+	private int pageNumber;
+	private int startNumber;
+	private int limit;
+	private int totalPage;
+	private int offset;
+	private int lastPage;
+	private int startPage;
+	private int endPage;
 	
+	
+	public int getPageNumber() {
+		return pageNumber;
+	}
+	public int getStartNumber() {
+		return startNumber;
+	}
+	public int getLimit() {
+		return limit;
+	}
+	public int getTotalPage() {
+		return totalPage;
+	}
+	public int getOffset() {
+		return offset;
+	}
+	public int getLastPage() {
+		return lastPage;
+	}
+	public int getStartPage() {
+		return startPage;
+	}
+	public int getEndPage() {
+		return endPage;
+	}
+	public void setPageNumber(int pageNumber) {
+		this.pageNumber = pageNumber;
+	}
+	public void setStartNumber(int startNumber) {
+		this.startNumber = startNumber;
+	}
+	public void setLimit(int limit) {
+		this.limit = limit;
+	}
+	public void setTotalPage(int totalPage) {
+		this.totalPage = totalPage;
+	}
+	public void setOffset(int offset) {
+		this.offset = offset;
+	}
+	public void setLastPage(int lastPage) {
+		this.lastPage = lastPage;
+	}
+	public void setStartPage(int startPage) {
+		this.startPage = startPage;
+	}
+	public void setEndPage(int endPage) {
+		this.endPage = endPage;
+	}
 	public String getPassword() {
 		return password;
 	}

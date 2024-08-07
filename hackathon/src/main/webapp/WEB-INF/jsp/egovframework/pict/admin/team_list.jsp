@@ -11,7 +11,46 @@
 	<c:import url="./header.jsp">
     	<c:param name="pageTitle" value="참가팀 리스트"/>
     </c:import>
-    
+    <style type="text/css">
+		.paginations{
+		    display: flex;
+   			justify-content: center;
+		    column-gap: 5px;
+		    width: 100%;
+		    max-width: 513px;
+		    margin: 0 auto;
+		    padding: 25px 0 30px 0;
+		}
+		.paginations li{
+		    display: flex;
+		    justify-content: center;
+		    align-items: center;
+		    width: 32px;
+		    height: 32px;
+		    border-radius: 8px;
+		    border: 1px solid #F1F1F1;
+		    font-size: 13px;
+		    font-weight: 600;
+		    font-family: var(--fn-open);
+		}
+		.paginations li.cut{
+		    border: 0;
+		}
+		.paginations li a{
+		    display: flex;
+		    justify-content: center;
+		    align-items: center;
+		    width: 100%;
+		    height: 100%;
+		    color: #333;
+		    border-radius: 8px;
+		    text-decoration: none;
+		}
+		.paginations li.active a{
+		    color: #fff;
+		    background-color: #0575E6;
+		}
+	</style>
     <body class="sb-nav-fixed">
         <%@include file="./navigation.jsp" %>
         <div id="layoutSidenav">
@@ -36,17 +75,21 @@
 							        	<colgroup>
 							        		<col style="width:10%;">
 							        		<col style="width:10%;">
-							        		<col style="width:40%;">
-							        		<col style="width:20%;">
+							        		<col style="width:10%;">
+							        		<col style="width:15%;">
+							        		<col style="width:25%;">
+							        		<col style="width:10%;">
 							        		<col style="width:20%;">
 							        	</colgroup>
 							            <thead>
 							                <tr class="thead">
 							                    <th>순서</th>
-							                    <th>카테고리</th>
-							                    <th>제목</th>
+							                    <th>과제</th>
+							                    <th>지역</th>
+							                    <th>팀명</th>
+							                    <th>과제명</th>
+							                    <th>수상</th>
 							                    <th>등록일</th>
-							                    <th>삭제</th>
 							                </tr>
 							            </thead>
 							            <tbody>
@@ -54,55 +97,54 @@
 								                <tr>
 							                    	<td>${status.count}</td>
 							                    	<td>
-							                    		<c:if test="${resultList.category eq '1'}">공지사항</c:if>
-							                    		<c:if test="${resultList.category eq '2'}">보도자료</c:if>
+							                    		<c:if test="${resultList.assignment_id eq '1'}">자유과제</c:if>
+							                    		<c:if test="${resultList.assignment_id eq '2'}">지정과제1</c:if>
+							                    		<c:if test="${resultList.assignment_id eq '3'}">지정과제2</c:if>
 													</td>
+													<td>${resultList.local}</td>
 							                    	<td class="opt-tl"><a href="javascript:void(0);" onclick="board_mod('${resultList.idx}');" class="link">${resultList.title}</a></td>
+							                    	<td class="opt-tl"><a href="javascript:void(0);" onclick="board_mod('${resultList.idx}');" class="link">${resultList.assignment_name}</a></td>
+							                    	<td>${resultList.award}</td>
 							                    	<td>${resultList.reg_date}</td>
-							                    	<td>
-							                    		<button type="button" onclick="javascript:board_delete('${resultList.idx}')" class="btn-basic btn-fill btn-sm">삭제</button>
-									            	</td>
 								                </tr>
 							                </c:forEach>
 							            </tbody>
 						            </table>
 				            	</div>
+				            	<ul class="paginations">
+									<c:if test="${pictVO.pageNumber ne 1}">
+										<li><a href="/team/team_list.do?search_text=${param.search_text}&pageNumber=1"><img src="/front_img/First.png" alt=""></a></li>
+										<li><a href="/team/team_list.do?search_text=${param.search_text}&pageNumber=${pictVO.pageNumber - 10 < 1 ? 1 : pictVO.pageNumber - 10}"><img src="/front_img/Prev.png" alt=""></a></li>
+									</c:if>	
+								
+									<c:forEach var="i" begin="${pictVO.startPage}" end="${pictVO.endPage}">
+										<c:if test="${i eq pictVO.pageNumber}">
+											<li class="active"><a href="/team/team_list.do?search_text=${param.search_text}&pageNumber=${i}" >${i}</a></li>
+										</c:if>
+										<c:if test="${i ne pictVO.pageNumber}">
+											<li><a href="/team/team_list.do?search_text=${param.search_text}&pageNumber=${i}" >${i}</a></li>
+										</c:if>
+									</c:forEach>	
+							
+									<c:if test="${pictVO.lastPage ne pictVO.pageNumber}">
+										<li><a href="/team/team_list.do?search_text=${param.search_text}&pageNumber=${pictVO.pageNumber + 10 > pictVO.lastPage ?  pictVO.lastPage : pictVO.pageNumber + 10}"><img src="/front_img/Next.png" alt=""></a></li>
+										<li><a href="/team/team_list.do?search_text=${param.search_text}&pageNumber=${pictVO.lastPage}"><img src="/front_img/Last.png" alt=""></a></li>
+									</c:if>
+								</ul>
 				            </div>
 			            </div>
-			            <div style="float : right; margin-right: 20%">
-				            <button type="button" id="button1" onclick="aaa();">게시글 리스트</button>
-			            </div>
 		            </div>
-		            
 				</main>
 			</div>
 		</div>
-		<form action="/teamList" id="register" name="register" method="post">
-			<input type='hidden' name="idx" id="idx" value="aaa" />
-			<input type='hidden' name="use_at" id="use_at" value="bbb" />
-			<input type='hidden' name="type" id="type" value="ccc" />
-		</form>
-		<script>
-			function aaa(){
-				$("#register").submit();
-			}
 
+		<script>
 			function board_mod(idx){
-				location.href= "/board/board_register.do?idx="+ idx;
-			}
-			function board_list(){
-				location.href= "/board/board_list.do";
-			}
-			function board_delete(idx) {
-				if (confirm("삭제 하시겠습니까?")) {
-					$('#idx').val(idx)
-					$("#register").attr("action", "/board/board_delete.do");
-					$("#register").submit();
-				}
+				location.href= "/team/team_register.do?idx="+ idx;
 			}
 			
 			function search(){
-				$("#search_fm").attr("action", "/board/board_list.do");
+				$("#search_fm").attr("action", "/team/team_list.do");
 				$("#search_fm").submit();
 			}
 		</script>

@@ -111,7 +111,21 @@
 		</if>
 
 		order by reg_date desc
+		LIMIT #{limit} OFFSET #{startNumber}
 	</select>
+	
+	<select id="team_list_cnt" resultType="int">
+		select count(title) from team_table
+		where 1=1
+		<if test="search_text != null and search_text != '' ">
+			and (
+				title LIKE CONCAT('%', #{search_text}, '%') or assignment_name LIKE CONCAT('%', #{search_text}, '%')
+			) 
+		</if>
+
+		order by reg_date desc
+	</select>
+	
 	
 	<select id="team_list_one" resultType="pictVO">
 		select * from team_table
@@ -147,20 +161,36 @@
 	
 	<!-- 참가자 -->
 	<select id="user_list" resultType="pictVO">
-		select * from user_table
+		select t.title, t.assignment_name, u.*
+		from user_table u
+		left outer join team_table t on u.team_id = t.idx
 		where 1=1
 		<if test="search_text != null and search_text != '' ">
 			and (
-				title LIKE CONCAT('%', #{search_text}, '%') or mobile LIKE CONCAT('%', #{search_text}, '%')
+				name LIKE CONCAT('%', #{search_text}, '%') or mobile LIKE CONCAT('%', #{search_text}, '%')
 			) 
 		</if>
 
 		order by reg_date desc
+		LIMIT #{limit} OFFSET #{startNumber}
 	</select>
 	
 	<select id="user_list_one" resultType="pictVO">
 		select * from user_table
 		where idx = #{idx}
+	</select>
+	
+	<select id="user_list_cnt" resultType="int">
+		select count(u.idx)
+		from user_table u
+		left outer join team_table t on u.team_id = t.idx
+		where 1=1
+		<if test="search_text != null and search_text != '' ">
+			and (
+				name LIKE CONCAT('%', #{search_text}, '%')
+			) 
+		</if>
+
 	</select>
 	
 	<insert id="user_insert" parameterType="pictVO">
@@ -173,12 +203,11 @@
 			  ) 
 	</insert>
 	
+	<!-- , parent_name = #{parent_name}, parent_birthday = #{parent_birthday}, parent_mobile = #{parent_mobile}, parent_relation = #{parent_relation}
+		, parent_address = #{parent_address}, parent_address2 = #{parent_address2}, judge = #{judge}, -->
 	<update id="user_update" parameterType="pictVO">
 		update user_table
-		set team_id =#{team_id}, name=#{name}, birthday = #{birthday}, mobile = #{mobile}
-		, email = #{email}, company = #{company}, depart = #{depart}, shirt = #{shirt}
-		, parent_name = #{parent_name}, parent_birthday = #{parent_birthday}, parent_mobile = #{parent_mobile}, parent_relation = #{parent_relation}
-		, parent_address = #{parent_address}, parent_address2 = #{parent_address2}, judge = #{judge}, reg_date = now()
+		set name=#{name}, birthday = #{birthday}, mobile = #{mobile}, sex= #{sex}, email = #{email}, company = #{company}, depart = #{depart}, shirt = #{shirt}, reg_date = now()
 		
 		where idx = #{idx}
 	</update>

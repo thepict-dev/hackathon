@@ -25,7 +25,37 @@
 							<div class="card-body">
 								<div class="write-box">
 									<div class="write-item">
-										<label for="title" class="title">제목</label>
+										<label for="title" class="title">과제</label>
+										<select id="assignment_id" name="assignment_id" class="input opt-max-width-300">
+											<option value="1" <c:if test="${'1' eq pictVO.assignment_id}"> selected</c:if> >자유과제</option>
+											<option value="2" <c:if test="${'2' eq pictVO.assignment_id}"> selected</c:if> >지정과제1</option>
+											<option value="2" <c:if test="${'2' eq pictVO.assignment_id}"> selected</c:if> >지정과제2</option>
+										</select>
+									</div>
+								</div>
+								
+								<div class="write-box">
+									<div class="write-item">
+										<label for="title" class="title">지역</label>
+										<select id="local" name="local" class="input opt-max-width-300">
+											<option value="강원" <c:if test="${'강원' eq pictVO.local}"> selected</c:if> >강원</option>
+											<option value="충북" <c:if test="${'충북' eq pictVO.local}"> selected</c:if> >충북</option>
+											<option value="충남" <c:if test="${'충남' eq pictVO.local}"> selected</c:if> >충남</option>
+											<option value="경북" <c:if test="${'경북' eq pictVO.local}"> selected</c:if> >경북</option>
+											<option value="경남" <c:if test="${'경남' eq pictVO.local}"> selected</c:if> >경남</option>
+											<option value="전북" <c:if test="${'전북' eq pictVO.local}"> selected</c:if> >전북</option>
+											<option value="제주" <c:if test="${'제주' eq pictVO.local}"> selected</c:if> >제주</option>
+											<option value="세종" <c:if test="${'세종' eq pictVO.local}"> selected</c:if> >세종</option>
+											<option value="대구" <c:if test="${'대구' eq pictVO.local}"> selected</c:if> >대구</option>
+											<option value="울산" <c:if test="${'울산' eq pictVO.local}"> selected</c:if> >울산</option>
+											<option value="부산" <c:if test="${'부산' eq pictVO.local}"> selected</c:if> >부산</option>
+										</select>
+									</div>
+								</div>
+								
+								<div class="write-box">
+									<div class="write-item">
+										<label for="title" class="title">팀명</label>
 										<div class="input-box">
 											<input type="text" id="title" name="title" value="${pictVO.title}" class="input opt-max-width-500">
 										</div>
@@ -34,95 +64,45 @@
 								
 								<div class="write-box">
 									<div class="write-item">
-										<label for="title" class="title">카테고리</label>
-										<select id="category" name="category" class="input opt-max-width-300">
-											<option value="1" <c:if test="${'1' eq pictVO.category}"> selected</c:if> >공지사항</option>
-											<option value="2" <c:if test="${'2' eq pictVO.category}"> selected</c:if> >보도자료</option>
-										</select>
+										<label for="title" class="title">팀원수</label>
+										<div class="input-box">
+											<input type="text" id="team_cnt" name="team_cnt" value="${pictVO.team_cnt}" class="input opt-max-width-200">
+										</div>
 									</div>
 								</div>
 								
-								<div class="write-item">
-									<label for="title" class="title">내용</label>
-									<div class="input-box">
-										<textarea name="text" id="text" cols="30" rows="10" class="txt" style="width:100%;">${pictVO.text}</textarea>
-		                            	<!-- 에디터 설정 -->
-										<script type="text/javascript">
-											var oEditors = [];
-											nhn.husky.EZCreator.createInIFrame({
-												oAppRef: oEditors,
-												elPlaceHolder: "text", //textarea에서 지정한 id와 일치해야 합니다.
-												sSkinURI: "/js/SmartEditor2Skin.html",
-												fCreator: "createSEditor2"
-											});
-										</script>
+								<div class="write-box">
+									<div class="write-item">
+										<label for="title" class="title">과제명</label>
+										<div class="input-box">
+											<input type="text" id="assignment_name" name="assignment_name" value="${pictVO.assignment_name}" class="input opt-max-width-500">
+										</div>
 									</div>
 								</div>
+								
+								<div class="write-box">
+									<div class="write-item">
+										<label for="title" class="title">키워드</label>
+										<div class="input-box">
+											<input type="text" id="keyword" name="keyword" value="${pictVO.keyword}" class="input opt-max-width-500">
+										</div>
+									</div>
+								</div>
+								
 								<div class="write-item" id="file_div">
 									<label for="title" class="title">첨부자료</label>
 									<div class="input-box" style="display: flex; flex-direction: column;">
 										<input style="margin-bottom:8px" type="file" id="attach_file1" name="attach_file1" value="${pictVO.file_1}" class="input opt-max-width-600">
 										<c:if test="${pictVO.file_1 ne '' && pictVO.file_1 ne undfined}">
 											<div style="display: flex; align-items: center;">
-												<span>${fn:split(pictVO.file_1, "/")[3]}</span>
-												<a onclick="file_del('1')" style="margin: 3px 0 0 7px; cursor: pointer;"><i class="fa-regular fa-circle-xmark fa-lg" style="color: #aeaeae;"></i></a>
+												<span>${fn:split(pictVO.file_url, "/")[3]}</span>
 											</div>
 										</c:if>
 									</div>
 								</div>
-								<div class="write-item" id="file_div">
-									<label for="title" class="title">첨부자료</label>
-									<div class="input-box" style="display: flex; flex-direction: column;">
-										<input style="margin-bottom:8px" type="file" id="attach_file2" name="attach_file2" value="${pictVO.file_2}" class="input opt-max-width-600">
-										<c:if test="${pictVO.file_2 ne '' && pictVO.file_2 ne undfined}">
-											<div style="display: flex; align-items: center;">
-												<span>첨부된 자료 : ${fn:split(pictVO.file_2, "/")[3]}</span>
-												<a onclick="file_del('2')" style="margin: 3px 0 0 7px; cursor: pointer;"><i class="fa-regular fa-circle-xmark fa-lg" style="color: #aeaeae;"></i></a>
-											</div>
-										</c:if>
-									</div>
-								</div>
-								<div class="write-item" id="file_div">
-									<label for="title" class="title">첨부자료</label>
-									<div class="input-box" style="display: flex; flex-direction: column;">
-										<input style="margin-bottom:8px" type="file" id="attach_file3" name="attach_file3" value="${pictVO.file_3}" class="input opt-max-width-600">
-										<c:if test="${pictVO.file_3 ne '' && pictVO.file_3 ne undfined}">
-											<div style="display: flex; align-items: center;">	
-												<span>첨부된 자료 : ${fn:split(pictVO.file_3, "/")[3]}</span>
-												<a onclick="file_del('3')" style="margin: 3px 0 0 7px; cursor: pointer;"><i class="fa-regular fa-circle-xmark fa-lg" style="color: #aeaeae;"></i></a>
-											</div>
-										</c:if>
-									</div>
-								</div>
-								<div class="write-item" id="file_div">
-									<label for="title" class="title">첨부자료</label>
-									<div class="input-box" style="display: flex; flex-direction: column;">
-										<input style="margin-bottom:8px" type="file" id="attach_file4" name="attach_file4" value="${pictVO.file_4}" class="input opt-max-width-600">
-										<c:if test="${pictVO.file_4 ne '' && pictVO.file_4 ne undfined}">
-											<div style="display: flex; align-items: center;">												
-												<span>첨부된 자료 : ${fn:split(pictVO.file_4, "/")[3]}</span>
-												<a onclick="file_del('4')" style="margin: 3px 0 0 7px; cursor: pointer;"><i class="fa-regular fa-circle-xmark fa-lg" style="color: #aeaeae;"></i></a>
-											</div>
-										</c:if>
-									</div>
-								</div>
-								<div class="write-item" id="file_div">
-									<label for="title" class="title">첨부자료</label>
-									<div class="input-box" style="display: flex; flex-direction: column;">
-										<input style="margin-bottom:8px" type="file" id="attach_file5" name="attach_file5" value="${pictVO.file_5}" class="input opt-max-width-600">
-										<c:if test="${pictVO.file_5 ne '' && pictVO.file_5 ne undfined}">
-											<div style="display: flex; align-items: center;">
-												<span>첨부된 자료 : ${fn:split(pictVO.file_5, "/")[3]}</span>
-												<a onclick="file_del('5')" style="margin: 3px 0 0 7px; cursor: pointer;"><i class="fa-regular fa-circle-xmark fa-lg" style="color: #aeaeae;"></i></a>
-											</div>
-										</c:if>
-									</div>
-								</div>
-									
+								
 								<div class="btn-box">
-									<c:if test="${pictVO.saveType eq 'update'}">
-										<button type="button" onclick="javascript:board_delete()" class="btn-basic btn-fill btn-sm">삭제</button>
-									</c:if>
+
 									<c:if test="${pictVO.saveType eq 'insert'}">
 										<button type="button" onclick="button1_click();" class="btn-basic btn-primary btn-sm">등록</button>
 									</c:if>
@@ -146,21 +126,15 @@
 	</form>
 	
 	<script>
-		function file_del(idx){
-			if (confirm("해당 첨부파일을 삭제 하시겠습니까?")) {
-				$('#del_idx').val(idx)
-				$("#register").attr("action", "/board/board_att_del.do");
-				$("#register").submit();
-			}
-		}
+		
 		function board_delete() {
 			if (confirm("삭제 하시겠습니까?")) {
-				$("#register").attr("action", "/board/board_delete.do");
+				$("#register").attr("action", "/team/team_delete.do");
 				$("#register").submit();
 			}
 		}
 		function board_list() {
-			location.href = "/board/board_list.do";
+			location.href = "/team/team_list.do";
 		}
 		function button1_click() {
 			var title = $('#title').val();
@@ -170,7 +144,6 @@
 				$('#title').focus();
 				return false;
 			}
-			oEditors[0].exec("UPDATE_CONTENTS_FIELD", []);
 			
 			var text = "등록하시겠습니까?";
 			if (saveType == 'update') {
@@ -178,7 +151,7 @@
 			}
 
 			if (confirm(text)) {
-				$("#register").attr("action", "/board/board_save.do");
+				$("#register").attr("action", "/team/team_save.do");
 				$("#register").submit();
 			}
 		}

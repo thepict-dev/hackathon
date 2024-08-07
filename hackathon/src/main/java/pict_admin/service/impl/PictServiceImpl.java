@@ -325,6 +325,18 @@ public class PictServiceImpl extends EgovAbstractServiceImpl implements PictServ
 		return pictMapper.password_compare(pictVO);
 	}
 
+	@Override
+	public Integer team_list_cnt(PictVO pictVO) throws Exception {
+		// TODO Auto-generated method stub
+		return pictMapper.team_list_cnt(pictVO);
+	}
+
+	@Override
+	public Integer user_list_cnt(PictVO pictVO) throws Exception {
+		// TODO Auto-generated method stub
+		return pictMapper.user_list_cnt(pictVO);
+	}
+
 
 
 	

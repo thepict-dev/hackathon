@@ -208,7 +208,7 @@
             </div>
             <div class="applyButton">
                 <a href="#lnk" onclick="fn_apply1_back()" class="prevButton">이전으로</a>
-                <a href="#lnk" onclick="fn_apply2_next()" class="nextButton active" id="apply2_next">다음으로</a>
+                <a href="#lnk" onclick="fn_apply2_next()" class="nextButton" id="apply2_next">다음으로</a>
             </div>
         </form>
     </div>

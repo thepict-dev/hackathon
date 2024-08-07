@@ -62,9 +62,7 @@
 		//팀장정보
 		var name_1 = $('#name_1').val()
 		var birthday_1 = $('#birthday_1').val()
-		var birthday_1_extra = $('#birthday_1_extra').val()
-		var sex = "남"
-		if(birthday_1_extra == '2' || birthday_1_extra == '4') sex = "여"
+		var sex_1 = $("input[name='sex_1']:checked").val() == '1' ? "남" : "여"
 		
 		var mobile_1 = $('#mobile_1').val()
 		var email_1 = $('#email_1').val()
@@ -83,7 +81,7 @@
 		
 		$('#final_name').text(name_1)
 		$('#final_birthday').text(birthday_1)
-		$('#final_sex').text(sex)
+		$('#final_sex').text(sex_1)
 		$('#final_mobile').text(mobile_1)
 		$('#final_email').text(email_1)
 		$('#final_company').text(company)
@@ -113,9 +111,8 @@
 				var name = $('#name_'+i).val()
 				var birthday = $('#birthday_'+i).val()
 				
-				var sex = $('#birthday_'+i + '_extra').val()
-				if(sex == '1' || sex == '3') sex = "남"
-				else sex = "여"
+				var sex = $("input[name='sex_"+i+"']:checked").val() == "1" ? "남" : "여" 
+			
 				
 				var mobile = $('#mobile_'+i).val()
 				var email = $('#email_'+i).val()

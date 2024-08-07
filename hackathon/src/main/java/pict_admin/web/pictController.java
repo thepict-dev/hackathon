@@ -170,7 +170,7 @@ public class pictController {
                     pictVO.setTeam_id(pictVO.getIdx()+"");
                     pictVO.setName(map.get("name").toString());
                     pictVO.setBirthday(map.get("birthday").toString());
-                    pictVO.setSex(map.get("birthday_extra").toString());
+                    pictVO.setSex(map.get("sex").toString());
                     pictVO.setMobile(map.get("mobile").toString());
                     pictVO.setEmail(map.get("email").toString());
                     pictVO.setCompany(map.get("company").toString());

@@ -42,7 +42,7 @@ function raf(time) {
 requestAnimationFrame(raf)
 
 lenis.on('scroll', ({ scroll, limit, velocity, direction, progress }) => {
-    if ($('#apply1, #apply2, #apply3, #apply4').is(':visible')) {
+    if ($('#apply1, #apply2, #apply3, #apply4, .confirmWrapper').is(':visible')) {
         // 모달이 열려있을 때는 메인 스크롤 막기
         return false;
     }
@@ -54,13 +54,13 @@ $('.rightButtons button, .mbGnb li button').click(function(){
    $('body').addClass('modal-open');
     
    // .appBottom에 대한 스크롤 이벤트 추가
-   $('.appBottom').on('wheel touchmove', function(e) {
+   $('.appBottom, .confirmContainer').on('wheel touchmove', function(e) {
        e.stopPropagation();
    });
 });
 
 $('.appTop button').click(function(){
-   $('.applyWrapper').hide();
+   $('.applyWrapper, .confirmWrapper').hide();
    $('body').removeClass('modal-open');
    
    // Lenis 스크롤 다시 시작
@@ -70,7 +70,7 @@ $('.appTop button').click(function(){
    $('body').off('wheel touchmove');
    
    // .appBottom 스크롤 이벤트 제거
-   $('.appBottom').off('wheel touchmove');
+   $('.appBottom, .confirmContainer').off('wheel touchmove');
 
 	location.reload(); // 페이지 새로고침
 });

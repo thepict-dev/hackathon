@@ -203,12 +203,12 @@
 			  ) 
 	</insert>
 	
-	<!-- , parent_name = #{parent_name}, parent_birthday = #{parent_birthday}, parent_mobile = #{parent_mobile}, parent_relation = #{parent_relation}
-		, parent_address = #{parent_address}, parent_address2 = #{parent_address2}, judge = #{judge}, -->
+	<!-- ,  -->
 	<update id="user_update" parameterType="pictVO">
 		update user_table
 		set name=#{name}, birthday = #{birthday}, mobile = #{mobile}, sex= #{sex}, email = #{email}, company = #{company}, depart = #{depart}, shirt = #{shirt}, reg_date = now()
-		
+		, parent_name = #{parent_name}, parent_birthday = #{parent_birthday}, parent_mobile = #{parent_mobile}, parent_relation = #{parent_relation}
+		, parent_address = #{parent_address}, parent_address2 = #{parent_address2}, judge = #{judge}
 		where idx = #{idx}
 	</update>
 	

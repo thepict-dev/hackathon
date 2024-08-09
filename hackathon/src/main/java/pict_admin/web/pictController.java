@@ -212,6 +212,32 @@ public class pictController {
         return fileName;
     }
 	
+	//심사페이지
+	//로그인
+	@RequestMapping(value = "/audit_login.do")
+	public String audit_login(@ModelAttribute("searchVO") AdminVO adminVO, HttpServletRequest request, ModelMap model, HttpSession session, RedirectAttributes rttr) throws Exception {
+		
+		return "pict/audit/audit_login";
+	}
+	//인트로
+	@RequestMapping(value = "/audit_intro.do")
+	public String audit_intro(@ModelAttribute("searchVO") AdminVO adminVO, HttpServletRequest request, ModelMap model, HttpSession session, RedirectAttributes rttr) throws Exception {
+		
+		return "pict/audit/audit_intro";
+	}
+	//주제리스트
+	@RequestMapping(value = "/audit_lists.do")
+	public String audit_lists(@ModelAttribute("searchVO") AdminVO adminVO, HttpServletRequest request, ModelMap model, HttpSession session, RedirectAttributes rttr) throws Exception {
+		
+		return "pict/audit/audit_lists";
+	}
+	//팀리스트
+	@RequestMapping(value = "/audit_team_list.do")
+	public String audit_team_list(@ModelAttribute("searchVO") AdminVO adminVO, HttpServletRequest request, ModelMap model, HttpSession session, RedirectAttributes rttr) throws Exception {
+		
+		return "pict/audit/audit_team_list";
+	}
+	
 	//관리자
 	@RequestMapping(value = "/pict_main.do")
 	public String pict_main(@ModelAttribute("searchVO") AdminVO adminVO, HttpServletRequest request, ModelMap model, HttpSession session, RedirectAttributes rttr) throws Exception {

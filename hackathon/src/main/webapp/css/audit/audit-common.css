@@ -1,0 +1,187 @@
+@import url('https://webfontworld.github.io/sunn/SUIT.css');
+
+:root {
+    --fn-suit: 'SUIT';
+    --grey-50: #f3f5f6;
+    --grey-100: #dbdee2;
+    --grey-200: #cacfd4;
+    --grey-300: #b1b9c1;
+    --grey-400: #a2abb5;
+    --grey-500: #8b96a2;
+    --grey-600: #7e8993;
+    --grey-700: #636b73;
+    --grey-800: #4c5359;
+    --grey-900: #3a3f44;
+    --dark-100: #0A0C0B;
+    --dark-200: #1C1C1E;
+    --color-org: #FF4800;
+    --color-green: #01F2A1;
+}
+
+body{
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    font-family: var(--fn-suit);
+    background-color: #000;
+    color: #fff;
+    overflow: hidden;
+}
+
+button{
+    font-family: var(--fn-suit);
+}
+
+.blind {
+    width: 0;
+    height: 0;
+    text-indent: -9999px;
+    padding: 0;
+    margin: 0;
+    visibility: hidden;
+}
+
+/* text, number */
+input[type=text], input[type=number]{
+    width: 100%;
+    border: 0;
+    border-bottom: 1px solid var(--grey-100);
+    padding: 24px 12px;
+    color: #fff;
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 100%; /* 18px */
+    box-sizing: border-box;
+    background-color: transparent;
+    font-family: var(--fn-suit);
+}
+input[type=text]:focus, input[type=number]:focus{
+    outline: none;
+}
+input[type=text]::placeholder, input[type=number]::placeholder{
+    color: #fff;
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 100%; /* 18px */
+    font-family: var(--fn-suit);
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    appearance: none;
+    margin: 0;
+}
+
+/* checkbox */
+input[type="checkbox"]{
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    appearance: none;
+    cursor: pointer;
+    background-image: url('/front_img/uncheck.png');
+    background-repeat: no-repeat;
+    background-size: 100%;
+    background-position: center center;
+}
+input[type="checkbox"]:checked {
+    width: 16px;
+    height: 16px;
+    background-repeat: no-repeat;
+    background-image: url('/front_img/checked.png');
+    background-size: 100%;
+    background-position: center center;
+}
+
+/* radio */
+.radioContainer{
+    display: flex;
+    align-items: center;
+    column-gap: 12px;
+    padding: 10px 4px;
+}
+input[type="radio"]{
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    appearance: none;
+    cursor: pointer;
+    background-image: url('/front_img/uncheck.png');
+}
+input[type="radio"]:checked {
+    width: 12px;
+    height: 12px;
+    background-repeat: no-repeat;
+    background-image: url('/front_img/checked.png');
+    background-size: 100%;
+    background-position: center center;
+}
+.radioInput label{
+    color: var(--TEXT, #242A30);
+    font-family: SUIT;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 100%; /* 18px */
+    letter-spacing: -0.9px;
+    cursor: pointer;
+}
+
+/* button */
+.buttonsContainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    column-gap: 20px;
+    width: 100%;
+    margin-top: 80px;
+}
+.buttonsContainer.max{
+    max-width: 1060px;
+}
+.buttonsContainer a{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 12px 42px;
+    border-radius: 20px;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 140%; /* 25.2px */
+    letter-spacing: -0.9px;
+    transition: all .2s;
+}
+.buttonsContainer a.disable{
+    color: var(--grey-500);
+    background: var(--dark-200);
+    pointer-events: none;
+}
+.buttonsContainer a.active{
+    color: #000;
+    background: var(--color-green);
+    pointer-events: all;
+}
+.buttonsContainer a.active:hover{
+    background-color: rgba(1, 242, 161, 0.8);
+}
+
+.buttonsContainer.double a{
+    width: 145px;
+    height: 49px;
+}
+.buttonsContainer.double a:first-of-type{
+    border-radius: 20px;
+    background: var(--grey-blue-700, #636B73);
+}
+
+/* modal */
+.modalContainer{
+    position: fixed;
+    left: 0;
+    top: 0;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(103, 103, 103, 0.8);
+}

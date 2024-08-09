@@ -1,0 +1,51 @@
+header{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 80px;
+}
+.headerInner{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    max-width: 2560px;
+    height: 100%;
+    margin: 0 auto;
+    padding: 0 80px;
+}
+.headerTitles{
+    display: flex;
+    align-items: center;
+    column-gap: 4px;
+    height: 100%;
+}
+.headerTitles h1{
+    max-width: 240px;
+    height: 100%;
+}
+.headerTitles h1 a{
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+.headerTitles h1 a img{
+    width: 100%;
+}
+.headerTitles p{
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 100%; /* 24px */
+    letter-spacing: -1.2px;
+}
+.headerInner > p{
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 100%; /* 18px */
+    letter-spacing: -0.9px;
+}
+.headerInner > p span{
+    font-weight: 700;
+}

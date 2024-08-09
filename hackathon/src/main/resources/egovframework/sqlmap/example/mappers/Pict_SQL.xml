@@ -164,7 +164,7 @@
 		select t.title, t.assignment_name, u.*
 		from user_table u
 		left outer join team_table t on u.team_id = t.idx
-		where 1=1
+		where 1=1 and judge != "Y"
 		<if test="search_text != null and search_text != '' ">
 			and (
 				name LIKE CONCAT('%', #{search_text}, '%') or mobile LIKE CONCAT('%', #{search_text}, '%')
@@ -178,13 +178,14 @@
 	<select id="user_list_one" resultType="pictVO">
 		select * from user_table
 		where idx = #{idx}
+		
 	</select>
 	
 	<select id="user_list_cnt" resultType="int">
 		select count(u.idx)
 		from user_table u
 		left outer join team_table t on u.team_id = t.idx
-		where 1=1
+		where 1=1 and judge != "Y"
 		<if test="search_text != null and search_text != '' ">
 			and (
 				name LIKE CONCAT('%', #{search_text}, '%')
@@ -208,7 +209,7 @@
 		update user_table
 		set name=#{name}, birthday = #{birthday}, mobile = #{mobile}, sex= #{sex}, email = #{email}, company = #{company}, depart = #{depart}, shirt = #{shirt}, reg_date = now()
 		, parent_name = #{parent_name}, parent_birthday = #{parent_birthday}, parent_mobile = #{parent_mobile}, parent_relation = #{parent_relation}
-		, parent_address = #{parent_address}, parent_address2 = #{parent_address2}, judge = #{judge}
+		, parent_address = #{parent_address}, parent_address2 = #{parent_address2}, judge = "N"
 		where idx = #{idx}
 	</update>
 	
@@ -259,5 +260,35 @@
 		and password = #{password}
 	</select>
 	
+	
+	<select id="user_list_one_login" resultType="pictVO">
+		select * from user_table
+		where 1=1
+		and name = #{name} and mobile = #{mobile}
+		<if test="type != null and type != '' and type =='judge'">
+			and judge = 'Y'
+		</if>
+		<if test="type != null and type != '' and type =='user'">
+			and judge != 'Y'
+		</if>
+	</select>
+	
+	<select id="subject_list" resultType="pictVO">
+		select t.*, u.assignment_id as user_assignment_id,
+		exists(select j.idx from judge_table j where j.user_idx = #{user_idx} and j.team_id = t.idx) as is_judge
+		from team_table t
+		left outer join user_table u ON u.assignment_id LIKE CONCAT('%', t.assignment_id, '%')
+		where u.idx = #{user_idx}
+	</select>
+	
+	<select id="team_judge_list" resultType="pictVO">
+		select t.assignment_name, t.local, t.title
+		, ifnull((select point_1 from judge_table j where user_idx = #{user_idx} and j.team_id = t.idx), 0) as point_1
+		, ifnull((select point_2 from judge_table j where user_idx = #{user_idx} and j.team_id = t.idx), 0) as point_2
+		, ifnull((select point_3 from judge_table j where user_idx = #{user_idx} and j.team_id = t.idx), 0) as point_3
+		, ifnull((select point_4 from judge_table j where user_idx = #{user_idx} and j.team_id = t.idx), 0) as point_4
+		from team_table t 
+		where t.assignment_id = #{assignment_id}
+	</select>
 	
 </mapper>

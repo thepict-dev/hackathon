@@ -11,7 +11,7 @@
         <li>
             <p class="lnbListTitle">총 평가팀</p>
             <div class="lnbListText">
-                <span>6</span>
+                <span>${whole_cnt}</span>
                 <p>팀</p>
             </div>
         </li>
@@ -19,14 +19,14 @@
             <p class="lnbListTitle">평가 완료팀</p>
             <div class="lnbListText">
                 <!-- finish -->
-                <span class="completion">3</span>
+                <span class="completion">${whole_cnt - remain_cnt }</span>
                 <p>팀</p>
             </div>
         </li>
         <li>
             <p class="lnbListTitle">남은 팀</p>
             <div class="lnbListText">
-                <span>3</span>
+                <span>${remain_cnt}</span>
                 <p>팀</p>
             </div>
         </li>

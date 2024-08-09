@@ -22,7 +22,12 @@
                             <input type="file" id="attach_file" class="blind">
                         </div>
                     </div>
-                    <span class="inputSubCaption lh"><span>•</span>첨부파일의 용량은 50메가바이트(mb)를 넘을 수 없습니다.<br><span>•</span>지원 서류는 1개 파일만 업로드 가능합니다. 지원서류가 여러 파일일 경우, 폴더에 넣어 1개 파일로 압축한 형태로 업로드해주세요.</span>
+                    <span class="inputSubCaption lh">
+                    	<span>•</span>첨부파일의 용량은 300메가바이트(mb)를 넘을 수 없습니다.<br>
+                    	<span>•</span>첨부파일의 용량이 300메가바이트(mb)를 초과하는 파일을 업로드 해야하는 경우 사무국으로 문의 바랍니다.<br>
+                    	<span>•</span>지원 서류는 1개 파일만 업로드 가능합니다. 지원서류가 여러 파일일 경우, 폴더에 넣어 1개 파일로 압축한 형태로 업로드해주세요.
+                    	
+                   	</span>
                 </div>
             </div>
             <div class="applyButton">
@@ -34,6 +39,18 @@
 </div>
 
 <script>
+	$("#attach_file").change(function(){
+		var fileSize = $("#attach_file")[0].files[0].size;
+		if(fileSize > 300000000){
+			alert("첨부파일 용량은 300메가바이트(mb) 를 초과할 수 없습니다.")
+			$("#attach_file").val("");
+			$('#apply4_next').removeClass("active");
+			return false;
+		}
+		else{
+			$('#apply4_next').addClass("active");
+		}
+	});
 	function fn_apply3_back(){
 		$('#apply3').css("display", "flex");
 		$('#apply4').hide();
@@ -206,7 +223,4 @@
 		
 	}
 
-	$("#attach_file").change(function(){
-		$('#apply4_next').addClass("active");
-	})
 </script>

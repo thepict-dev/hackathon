@@ -214,28 +214,284 @@ public class pictController {
 	
 	//심사페이지
 	//로그인
+	@RequestMapping(value = "/audit_main.do")
+	public String audit_main(@ModelAttribute("searchVO") AdminVO adminVO, HttpServletRequest request, ModelMap model, HttpSession session, RedirectAttributes rttr) throws Exception {
+		String sessions = (String)request.getSession().getAttribute("user_idx");
+		if(sessions == null || sessions == "null") {
+			return "redirect:/audit_login.do";
+		}
+		else {
+		
+			return "redirect:/audit_intro.do";
+		
+		}
+		
+	}
 	@RequestMapping(value = "/audit_login.do")
 	public String audit_login(@ModelAttribute("searchVO") AdminVO adminVO, HttpServletRequest request, ModelMap model, HttpSession session, RedirectAttributes rttr) throws Exception {
+		String sessions = (String)request.getSession().getAttribute("user_idx");
+		if(sessions == null || sessions == "null") {
+			return "pict/audit/audit_login";
+		}
+		else {
 		
-		return "pict/audit/audit_login";
+			return "redirect:/audit_intro.do";
+		
+		}
 	}
+	@RequestMapping(value = "/audit_login_action.do")
+	public String audit_login_action(@ModelAttribute("pictVO") PictVO pictVO, HttpServletRequest request,  ModelMap model) throws Exception {
+		//처음 드러와서 세션에 정보있으면 메인으로 보내줘야함
+		String inpuId = pictVO.getName();
+		String inputMobile = pictVO.getMobile();
+		pictVO.setType("judge");
+		pictVO = pictService.user_list_one_login(pictVO);
+
+		if (pictVO != null && pictVO.getName() != null && !pictVO.getName().equals("") && pictVO.getMobile() != null && !pictVO.getMobile().equals("")) {
+			if(inpuId.equals(pictVO.getName()) && inputMobile.equals(pictVO.getMobile())) {
+				request.getSession().setAttribute("user_idx", pictVO.getIdx()+"");
+				request.getSession().setAttribute("id", pictVO.getId());
+				request.getSession().setAttribute("name", pictVO.getName());
+				request.getSession().setAttribute("company", pictVO.getCompany());
+				request.getSession().setAttribute("depart", pictVO.getDepart());
+			    
+				return "redirect:/audit_intro.do";
+				
+			}
+			else {
+				model.addAttribute("message", "입력하신 정보가 일치하지 않습니다.");
+				model.addAttribute("retType", ":location");
+				model.addAttribute("retUrl", "/audit_login.do");
+				return "pict/admin/message";
+			}
+		}
+		else {
+			model.addAttribute("message", "입력하신 정보가 일치하지 않습니다.");
+			model.addAttribute("retType", ":location");
+			model.addAttribute("retUrl", "/audit_login.do");
+			return "pict/admin/message";
+		}
+	}
+	
 	//인트로
 	@RequestMapping(value = "/audit_intro.do")
 	public String audit_intro(@ModelAttribute("searchVO") AdminVO adminVO, HttpServletRequest request, ModelMap model, HttpSession session, RedirectAttributes rttr) throws Exception {
+		String sessions = (String)request.getSession().getAttribute("user_idx");
+		if(sessions == null || sessions == "null") {
+			return "pict/audit/audit_login";
+		}
 		
 		return "pict/audit/audit_intro";
 	}
 	//주제리스트
 	@RequestMapping(value = "/audit_lists.do")
-	public String audit_lists(@ModelAttribute("searchVO") AdminVO adminVO, HttpServletRequest request, ModelMap model, HttpSession session, RedirectAttributes rttr) throws Exception {
+	public String audit_lists(@ModelAttribute("searchVO") PictVO pictVO, HttpServletRequest request, ModelMap model, HttpSession session, RedirectAttributes rttr) throws Exception {
+		String sessions = (String)request.getSession().getAttribute("user_idx");
+		if(sessions == null || sessions == "null") {
+			return "pict/audit/audit_login";
+		}
+		
+		pictVO.setUser_idx(request.getSession().getAttribute("user_idx").toString());
+		List<PictVO> subject_list = pictService.subject_list(pictVO);
+		if(subject_list.size() > 0) {
+			int whole_cnt = subject_list.size();
+			int remain_cnt = 0;
+			String arr[] = subject_list.get(0).getUser_assignment_id().split(",");
+			
+			int subject1_cnt = 0;
+			int subject2_cnt = 0;
+			int subject3_cnt = 0;
+			
+			int subject1_remaincnt = 0;
+			int subject2_remaincnt = 0;
+			int subject3_remaincnt = 0;
+			
+			
+			for(int i=0; i<subject_list.size(); i++) {
+				if(subject_list.get(i).getIs_judge().equals("0")) {
+					remain_cnt++;
+				}
+				if(subject_list.get(i).getAssignment_id().equals("1")) {
+					subject1_cnt++;
+					if(subject_list.get(i).getIs_judge().equals("0")) {
+						subject1_remaincnt++;
+					}
+				}
+				if(subject_list.get(i).getAssignment_id().equals("2")) {
+					subject2_cnt++;
+					if(subject_list.get(i).getIs_judge().equals("0")) {
+						subject2_remaincnt++;
+					}
+				}
+				if(subject_list.get(i).getAssignment_id().equals("3")) {
+					subject3_cnt++;
+					if(subject_list.get(i).getIs_judge().equals("0")) {
+						subject3_remaincnt++;
+					}
+				}
+			}
+			
+			model.addAttribute("subject_list", subject_list);
+			model.addAttribute("whole_cnt", whole_cnt);
+			model.addAttribute("remain_cnt", remain_cnt);
+			model.addAttribute("arr", arr);
+			
+			model.addAttribute("subject1_cnt", subject1_cnt);
+			model.addAttribute("subject2_cnt", subject2_cnt);
+			model.addAttribute("subject3_cnt", subject3_cnt);
+			model.addAttribute("subject1_remaincnt", subject1_remaincnt);
+			model.addAttribute("subject2_remaincnt", subject2_remaincnt);
+			model.addAttribute("subject3_remaincnt", subject3_remaincnt);
+			
+		}
+		else {
+			model.addAttribute("message", "심사 정보가 존재하지 않습니다.");
+			model.addAttribute("retType", ":location");
+			model.addAttribute("retUrl", "/audit_intro.do");
+			return "pict/admin/message";
+		}
+		
 		
 		return "pict/audit/audit_lists";
 	}
 	//팀리스트
 	@RequestMapping(value = "/audit_team_list.do")
-	public String audit_team_list(@ModelAttribute("searchVO") AdminVO adminVO, HttpServletRequest request, ModelMap model, HttpSession session, RedirectAttributes rttr) throws Exception {
+	public String audit_team_list(@ModelAttribute("searchVO") PictVO pictVO, HttpServletRequest request, ModelMap model, HttpSession session, RedirectAttributes rttr) throws Exception {
+		String sessions = (String)request.getSession().getAttribute("user_idx");
+		if(sessions == null || sessions == "null") {
+			return "pict/audit/audit_login";
+		}
+		
+		model.addAttribute("assignment_id", pictVO.getAssignment_id());
+		pictVO.setUser_idx(request.getSession().getAttribute("user_idx").toString());
+		List<PictVO> subject_list = pictService.subject_list(pictVO);
+		if(subject_list.size() > 0) {
+			int whole_cnt = subject_list.size();
+			int remain_cnt = 0;
+			String arr[] = subject_list.get(0).getUser_assignment_id().split(",");
+			
+			int subject1_cnt = 0;
+			int subject2_cnt = 0;
+			int subject3_cnt = 0;
+			
+			int subject1_remaincnt = 0;
+			int subject2_remaincnt = 0;
+			int subject3_remaincnt = 0;
+			
+			
+			for(int i=0; i<subject_list.size(); i++) {
+				if(subject_list.get(i).getIs_judge().equals("0")) {
+					remain_cnt++;
+				}
+				if(subject_list.get(i).getAssignment_id().equals("1")) {
+					subject1_cnt++;
+					if(subject_list.get(i).getIs_judge().equals("0")) {
+						subject1_remaincnt++;
+					}
+				}
+				if(subject_list.get(i).getAssignment_id().equals("2")) {
+					subject2_cnt++;
+					if(subject_list.get(i).getIs_judge().equals("0")) {
+						subject2_remaincnt++;
+					}
+				}
+				if(subject_list.get(i).getAssignment_id().equals("3")) {
+					subject3_cnt++;
+					if(subject_list.get(i).getIs_judge().equals("0")) {
+						subject3_remaincnt++;
+					}
+				}
+			}
+			
+			model.addAttribute("whole_cnt", whole_cnt);
+			model.addAttribute("remain_cnt", remain_cnt);
+			
+			model.addAttribute("subject1_cnt", subject1_cnt);
+			model.addAttribute("subject2_cnt", subject2_cnt);
+			model.addAttribute("subject3_cnt", subject3_cnt);
+			model.addAttribute("subject1_remaincnt", subject1_remaincnt);
+			model.addAttribute("subject2_remaincnt", subject2_remaincnt);
+			model.addAttribute("subject3_remaincnt", subject3_remaincnt);
+			
+			
+			pictVO.setUser_idx(request.getSession().getAttribute("user_idx").toString());
+			List<PictVO> team_list = pictService.team_judge_list(pictVO);
+			
+			model.addAttribute("team_list", team_list);
+			
+		}
+		else {
+			model.addAttribute("message", "심사 정보가 존재하지 않습니다.");
+			model.addAttribute("retType", ":location");
+			model.addAttribute("retUrl", "/audit_intro.do");
+			return "pict/admin/message";
+		}
+		
 		
 		return "pict/audit/audit_team_list";
+	}
+	
+	
+	
+	//사용자 로그인
+	@RequestMapping(value = "/user_main.do")
+	public String user_main(@ModelAttribute("searchVO") AdminVO adminVO, HttpServletRequest request, ModelMap model, HttpSession session, RedirectAttributes rttr) throws Exception {
+		String sessions = (String)request.getSession().getAttribute("user_idx");
+		if(sessions == null || sessions == "null") {
+			return "redirect:/user_login.do";
+		}
+		else {
+		
+			return "redirect:/";
+		
+		}
+		
+	}
+	@RequestMapping(value = "/user_login.do")
+	public String user_login(@ModelAttribute("searchVO") AdminVO adminVO, HttpServletRequest request, ModelMap model, HttpSession session, RedirectAttributes rttr) throws Exception {
+		String sessions = (String)request.getSession().getAttribute("user_idx");
+		if(sessions == null || sessions == "null") {
+			return "pict/audit/user_login";
+		}
+		else {
+		
+			return "redirect:/";
+		
+		}
+	}
+	@RequestMapping(value = "/user_login_action.do")
+	public String user_login_action(@ModelAttribute("pictVO") PictVO pictVO, HttpServletRequest request,  ModelMap model) throws Exception {
+		//처음 드러와서 세션에 정보있으면 메인으로 보내줘야함
+		String inpuId = pictVO.getName();
+		String inputMobile = pictVO.getMobile();
+		pictVO.setType("user");
+		pictVO = pictService.user_list_one_login(pictVO);
+
+		if (pictVO != null && pictVO.getName() != null && !pictVO.getName().equals("") && pictVO.getMobile() != null && !pictVO.getMobile().equals("")) {
+		
+			if(inpuId.equals(pictVO.getName()) && inputMobile.equals(pictVO.getMobile())) {
+				request.getSession().setAttribute("user_idx", pictVO.getIdx()+"");
+				request.getSession().setAttribute("id", pictVO.getId());
+				request.getSession().setAttribute("name", pictVO.getName());
+				request.getSession().setAttribute("company", pictVO.getCompany());
+				request.getSession().setAttribute("depart", pictVO.getDepart());
+			    
+				return "redirect:/";
+				
+			}
+			else {
+				model.addAttribute("message", "입력하신 정보가 일치하지 않습니다.");
+				model.addAttribute("retType", ":location");
+				model.addAttribute("retUrl", "/user_login.do");
+				return "pict/admin/message";
+			}
+		}
+		else {
+			model.addAttribute("message", "입력하신 정보가 일치하지 않습니다.");
+			model.addAttribute("retType", ":location");
+			model.addAttribute("retUrl", "/user_login.do");
+			return "pict/admin/message";
+		}
 	}
 	
 	//관리자

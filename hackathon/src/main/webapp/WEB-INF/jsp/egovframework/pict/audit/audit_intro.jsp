@@ -3,7 +3,11 @@
 <%@ taglib prefix="form"   uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="ui"     uri="http://egovframework.gov/ctl/ui"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
-
+<%
+	pageContext.setAttribute("user_idx", session.getAttribute("user_idx"));
+	pageContext.setAttribute("name", session.getAttribute("name"));
+	pageContext.setAttribute("company", session.getAttribute("company"));
+%>
 <!DOCTYPE html>
 <html lang="ko">
 	<c:import url="./include/head.jsp">
@@ -12,11 +16,11 @@
     <body>
         <div class="introContainer">
 	        <div class="introInner">
-	            <p class="textsWrapper"><span>홍길동 </span><span>심사위원님, </span><span> 안녕하세요.</span></p>
+	            <p class="textsWrapper"><span>${name} </span><span>심사위원님, </span><span> 안녕하세요.</span></p>
 	            <p class="textsWrapper"><span>2024 대한민국 SW 융합 해커톤대회의 </span><span>심사를 맡아주셔서 </span><span> 감사합니다.</span></p>
 	        </div>
 	        <p class="bottomTextWrapper">만약 성함이 다르다면 손을 들어 현장 담당자에게 말씀해주세요</p>
-	        <a href="#lnk">성함이 맞다면 이곳을 클릭하세요</a>
+	        <a href="/audit_lists.do">성함이 맞다면 이곳을 클릭하세요</a>
 	    </div>	
     </body>
 </html>

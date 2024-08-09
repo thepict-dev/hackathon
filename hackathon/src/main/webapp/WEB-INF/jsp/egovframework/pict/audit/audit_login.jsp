@@ -18,21 +18,48 @@
 	            </div>
 	            <form action="" class="loginInputs">
 	                <div class="loginInput">
-	                    <input type="text" name="judge_name" id="judge_name" placeholder="이름을 입력하세요">
-	                    <input type="text" name="judge_mobile" id="judge_mobile" placeholder="휴대폰번호를 입력하세요" oninput="oninputPhone(this)" maxlength="13" autocomplete="new-password">
+	                    <input type="text" name="judge_name" id="judge_name" placeholder="이름을 입력하세요" onkeypress="if(event.keyCode == 13){fn_login();}">
+	                    <input type="text" name="judge_mobile" id="judge_mobile" placeholder="휴대폰번호를 입력하세요" oninput="oninputPhone(this)" maxlength="13" autocomplete="new-password" onkeypress="if(event.keyCode == 13){fn_login();}">
 	                </div>
 	                <div class="loginButton">
-	                    <a href="#lnk">로그인</a>
+	                    <a href="#lnk" onclick="javascript:fn_login();">로그인</a>
 	                </div>
 	            </form>
 	        </div>
 	    </div>
+	    <form action="#" id="loginForm" name="loginForm" method="post">
+			<input type="hidden" name="name" id="name" value="">
+			<input type="hidden" name="mobile" id="mobile" value="">
+		</form>
     </body>
     <script>
+	    function fn_login() {
+			if ($("#judge_name").val() == "") {
+				alert("이름을 입력하세요.");
+				$("#judge_name").focus();
+				return false;
+			} 
+			else {
+				$("#name").val($("#judge_name").val());
+			}
+			
+			if ($("#judge_mobile").val() == "") {
+				alert("휴대전화번호를 입력하세요.");
+				$("#judge_mobile").focus();
+				return false;
+			} 
+			else {
+				$("#mobile").val($("#judge_mobile").val());
+			}
+			document.loginForm.action = "/audit_login_action.do";
+			document.loginForm.submit();
+			
+		}
 		function oninputPhone(target) {
 		    target.value = target.value
 	        .replace(/[^0-9]/g, '')
 	        .replace(/(^02.{0}|^01.{1}|[0-9]{3,4})([0-9]{3,4})([0-9]{4})/g, "$1-$2-$3");
 		}
     </script>
+    
 </html>

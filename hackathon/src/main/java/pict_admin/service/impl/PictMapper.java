@@ -134,6 +134,12 @@ public interface PictMapper {
 
 	Integer user_list_cnt(PictVO pictVO) throws Exception;
 
+	PictVO user_list_one_login(PictVO pictVO) throws Exception;
+
+	List<PictVO> subject_list(PictVO pictVO) throws Exception;
+
+	List<PictVO> team_judge_list(PictVO pictVO) throws Exception;
+
 
 
 }

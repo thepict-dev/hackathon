@@ -11,42 +11,42 @@
     </c:import>
     <body>
         <%@include file="./include/header.jsp" %>
-        <%@include file="./include/lnb.jsp" %>
+        <c:import url="./include/lnb.jsp">
+	    	<c:param name="whole_cnt" value="${whole_cnt}"/>
+	    	<c:param name="remain_cnt" value="${remain_cnt}"/>
+	    </c:import>
 	    <div class="contentsContainer">
 	        <div class="contentsInner">
 	            <h3>심사 과제를 선택하세요</h3>
 	            <ul class="auditList">
-	                <li>
-	                    <a href="#lnk">
-	                        <div class="auditListTitle">
-	                            <span>01</span>
-	                            <p>자유과제 디지털 기반 SW융합제품 또는 서비스 개발</p>
-	                        </div>
-	                        <p class="count">0/6<span>완료</span></p>
-	                    </a>
-	                </li>
-	                <li>
-	                    <a href="#lnk">
-	                        <div class="auditListTitle">
-	                            <span>02</span>
-	                            <p>지정과제① 지역사회 현안해결을 위한 SW융합제품 및 서비스 개발</p>
-	                        </div>
-	                        <p class="count">4/6<span>완료</span></p>
-	                    </a>
-	                </li>
-	                <li class="finish">
-	                    <a href="#lnk">
-	                        <div class="auditListTitle">
-	                            <span>03</span>
-	                            <p>지정과제② 관광데이터 기반 SW 융합제품 및 서비스 개발</p>
-	                        </div>
-	                        <p class="count">6/6<span> 완료</span></p>
-	                    </a>
-	                </li>
+	            	<c:forEach var="arr" items="${arr}" varStatus="status">
+		                <li>
+		                    <a href="/audit_team_list.do?assignment_id=${arr}">
+		                        <div class="auditListTitle">
+		                            <span>0${status.count}</span>
+		                            <p>
+		                            	<c:if test="${arr eq '1' || arr eq 1}">자유과제 디지털 기반 SW융합제품 또는 서비스 개발</c:if>
+		                            	<c:if test="${arr eq '2' || arr eq 2}">지정과제① 지역사회 현안해결을 위한 SW융합제품 및 서비스 개발</c:if>
+		                            	<c:if test="${arr eq '3' || arr eq 3}">지정과제② 관광데이터 기반 SW 융합제품 및 서비스 개발</c:if>
+	                            	</p>
+		                        </div>
+		                        <c:if test="${arr eq '1'}">
+		                        	<p class="count">${subject1_cnt - subject1_remaincnt}/${subject1_cnt}<span>완료</span></p>	
+		                        </c:if>
+		                        <c:if test="${arr eq '2'}">
+		                        	<p class="count">${subject2_cnt - subject2_remaincnt}/${subject2_cnt}<span>완료</span></p>	
+		                        </c:if>
+		                        <c:if test="${arr eq '3'}">
+		                        	<p class="count">${subject3_cnt - subject3_remaincnt}/${subject3_cnt}<span>완료</span></p>	
+		                        </c:if>
+		                        
+		                    </a>
+		                </li>
+	                </c:forEach>
 	            </ul>
 	            <div class="buttonsContainer max">
 	                <!-- active -->
-	                <a href="#lnk" class="disable" id="all_done_button">모든 심사 완료</a>
+	                <a href="#lnk" class="disable <c:if test="${remain_cnt eq 0}">active</c:if>"  id="all_done_button">모든 심사 완료</a>
 	            </div>
 	        </div>
 	    </div>

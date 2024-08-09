@@ -150,6 +150,57 @@ public class PictVO extends PictDefaultVO {
 	private int endPage;
 	
 	
+	private String point_1;
+	private String point_2;
+	private String point_3;
+	private String point_4;
+	private String is_judge;
+	private String user_idx;
+	private String user_assignment_id;
+	
+	
+	public String getUser_assignment_id() {
+		return user_assignment_id;
+	}
+	public void setUser_assignment_id(String user_assignment_id) {
+		this.user_assignment_id = user_assignment_id;
+	}
+	public String getPoint_1() {
+		return point_1;
+	}
+	public String getPoint_2() {
+		return point_2;
+	}
+	public String getPoint_3() {
+		return point_3;
+	}
+	public String getPoint_4() {
+		return point_4;
+	}
+	public String getIs_judge() {
+		return is_judge;
+	}
+	public String getUser_idx() {
+		return user_idx;
+	}
+	public void setPoint_1(String point_1) {
+		this.point_1 = point_1;
+	}
+	public void setPoint_2(String point_2) {
+		this.point_2 = point_2;
+	}
+	public void setPoint_3(String point_3) {
+		this.point_3 = point_3;
+	}
+	public void setPoint_4(String point_4) {
+		this.point_4 = point_4;
+	}
+	public void setIs_judge(String is_judge) {
+		this.is_judge = is_judge;
+	}
+	public void setUser_idx(String user_idx) {
+		this.user_idx = user_idx;
+	}
 	public int getPageNumber() {
 		return pageNumber;
 	}

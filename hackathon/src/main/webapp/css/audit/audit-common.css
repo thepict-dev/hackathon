@@ -73,23 +73,26 @@ input::-webkit-inner-spin-button {
 
 /* checkbox */
 input[type="checkbox"]{
-    width: 16px;
-    height: 16px;
+    width: 24px;
+    height: 24px;
     border-radius: 50%;
     appearance: none;
     cursor: pointer;
-    background-image: url('/front_img/uncheck.png');
+    background-image: url('/front_img/audit/unchecked.png');
     background-repeat: no-repeat;
     background-size: 100%;
     background-position: center center;
 }
 input[type="checkbox"]:checked {
-    width: 16px;
-    height: 16px;
+    width: 24px;
+    height: 24px;
     background-repeat: no-repeat;
-    background-image: url('/front_img/checked.png');
+    background-image: url('/front_img/audit/checked.png');
     background-size: 100%;
     background-position: center center;
+}
+label{
+    cursor: pointer;
 }
 
 /* radio */
@@ -138,6 +141,9 @@ input[type="radio"]:checked {
 .buttonsContainer.max{
     max-width: 1060px;
 }
+.buttonsContainer.sign{
+    margin-top: 40px;
+}
 .buttonsContainer a{
     display: flex;
     justify-content: center;
@@ -171,6 +177,24 @@ input[type="radio"]:checked {
 .buttonsContainer.double a:first-of-type{
     border-radius: 20px;
     background: var(--grey-blue-700, #636B73);
+}
+.buttonsContainer.erase{
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 8px;
+}
+.buttonsContainer.double.erase a{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+    border-radius: 20px;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 140%; /* 25.2px */
+    letter-spacing: -0.9px;
+    transition: all .2s;
+    background-color: var(--grey-900);
 }
 
 /* modal */

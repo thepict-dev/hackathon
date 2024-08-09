@@ -282,7 +282,7 @@
 	</select>
 	
 	<select id="team_judge_list" resultType="pictVO">
-		select t.assignment_name, t.local, t.title
+		select t.idx, t.assignment_name, t.local, t.title
 		, ifnull((select point_1 from judge_table j where user_idx = #{user_idx} and j.team_id = t.idx), 0) as point_1
 		, ifnull((select point_2 from judge_table j where user_idx = #{user_idx} and j.team_id = t.idx), 0) as point_2
 		, ifnull((select point_3 from judge_table j where user_idx = #{user_idx} and j.team_id = t.idx), 0) as point_3
@@ -290,5 +290,33 @@
 		from team_table t 
 		where t.assignment_id = #{assignment_id}
 	</select>
+	
+	<select id="get_judge_info" resultType="pictVO">
+		select j.*, t.assignment_name
+		from judge_table j
+		left outer join team_table t on j.team_id = t.idx
+		where team_id = #{team_id} and user_idx = #{user_idx}
+	</select>
+	
+	
+	<insert id="get_judge_insert" parameterType="pictVO">
+		INSERT INTO judge_table
+			(
+			 team_id, user_idx, point_1, point_2, point_3, point_4, reg_date
+			)
+		VALUES (
+			 #{team_id}, #{user_idx}, #{point_1}, #{point_2}, #{point_3}, #{point_4}, now() 
+			  ) 
+	</insert>
+	
+	<update id="get_judge_update" parameterType="pictVO">
+		update judge_table
+		set point_1 = #{point_1}
+		,point_2 = #{point_2}
+		,point_3 = #{point_3}
+		,point_4 = #{point_4}
+		,reg_date = now()
+		where team_id =#{team_id} and user_idx = #{user_idx}
+	</update>
 	
 </mapper>

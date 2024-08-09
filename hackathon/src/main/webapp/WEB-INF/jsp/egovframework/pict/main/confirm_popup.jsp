@@ -232,7 +232,7 @@
 					arr.push(json_won)
 				}
 			}
-			debugger
+			
 			var requestData = {
 				assignment_id : $("input[name='assignment_id']:checked").val(),
 				local : $("select[name=local]").val(),

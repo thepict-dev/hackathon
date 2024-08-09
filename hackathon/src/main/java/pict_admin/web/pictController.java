@@ -430,7 +430,81 @@ public class pictController {
 		
 		return "pict/audit/audit_team_list";
 	}
-	
+
+	//점수 표 정보
+	@RequestMapping("/get_judge_info.do")
+	@ResponseBody
+	public HashMap<String, Object> get_judge_info(@ModelAttribute("pictVO") PictVO pictVO, ModelMap model, HttpServletRequest request, @RequestBody Map<String, Object> param) throws Exception {	
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		String user_idx = request.getSession().getAttribute("user_idx").toString();
+		
+		if(user_idx == null) {
+			map.put("status", "logout");
+			return map;
+		}
+		else {
+			map.put("status", "login");
+			pictVO.setUser_idx(user_idx);
+			String team_id = param.get("team_id").toString();
+			pictVO.setTeam_id(team_id);
+			
+			pictVO = pictService.get_judge_info(pictVO);
+			if(pictVO != null) {
+				map.put("rst", pictVO);
+			}
+			else {
+				return map;
+			}
+		}
+		return map;
+	}
+	//팀별 점수저장
+	@RequestMapping("/get_judge_save.do")
+	@ResponseBody
+	public HashMap<String, Object> get_judge_save(@ModelAttribute("pictVO") PictVO pictVO, ModelMap model, HttpServletRequest request, @RequestBody Map<String, Object> param) throws Exception {	
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		try {
+			String user_idx = request.getSession().getAttribute("user_idx").toString();
+			
+			if(user_idx == null) {
+				map.put("status", "logout");
+				return map;
+			}
+			else {
+				map.put("status", "login");
+				pictVO.setUser_idx(user_idx);
+				String team_id = param.get("team_id").toString();
+				pictVO.setTeam_id(team_id);
+				
+				
+				PictVO existVO = pictService.get_judge_info(pictVO);
+				
+				String point_1 = param.get("point_1").toString();
+				pictVO.setPoint_1(point_1);
+				String point_2= param.get("point_2").toString();
+				pictVO.setPoint_2(point_2);
+				String point_3 = param.get("point_3").toString();
+				pictVO.setPoint_3(point_3);
+				String point_4 = param.get("point_4").toString();
+				pictVO.setPoint_4(point_4);
+				
+				if(existVO != null) {
+					pictService.get_judge_update(pictVO);
+					map.put("rst", "Y");
+				}
+				else {
+					pictService.get_judge_insert(pictVO);
+					map.put("rst", "Y");
+				}
+			}
+			return map;
+		}
+		catch (Exception e){
+			map.put("rst", "N");
+			return map;
+		}
+		
+	}
 	
 	
 	//사용자 로그인

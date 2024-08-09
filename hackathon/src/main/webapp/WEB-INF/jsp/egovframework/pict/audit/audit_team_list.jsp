@@ -18,7 +18,7 @@
 		<div class="contentsContainer">
 			<div class="contentsInner teams">
 				<div class="linkTitle">
-					<a href="#lnk"><img src="/front_img/audit/back.png" alt=""></a>
+					<a href="/audit_lists.do"><img src="/front_img/audit/back.png" alt=""></a>
 					<h3>
 						<c:if test="${assignment_id eq '1' || assignment_id eq 1}">자유과제 디지털 기반 SW융합제품 또는 서비스 개발</c:if>
 						<c:if test="${assignment_id eq '2' || assignment_id eq 2}">지정과제① 지역사회 현안해결을 위한 SW융합제품 및 서비스 개발</c:if>
@@ -37,30 +37,38 @@
 				<ul class="listBody">
 					<c:forEach var="team_list" items="${team_list}" varStatus="status">
 						<li>
-						    <a href="#lnk">
-							<p>${status.count}</p>
-							<p class="grey">
-								<c:if test="${assignment_id eq 1 || assignment_id eq '1'}">자유과제</c:if>
-								<c:if test="${assignment_id eq 2 || assignment_id eq '2'}">지정과제①</c:if>
-								<c:if test="${assignment_id eq 3 || assignment_id eq '3'}">지정과제②</c:if>
-							</p>
-							<p>강원</p>
-							<p class="ellip">${team_list.assignment_name}</p>
-							<p class="ellip">${team_list.title}</p>
-							
-							<c:if test="${team_list.point_1 + team_list.point_2 +team_list.point_3+team_list.point_4 eq 0}">
-								<p class="nonScore">평가 미완료</p>
-							</c:if>
-							<c:if test="${team_list.point_1 + team_list.point_2 +team_list.point_3+team_list.point_4 > 0}">
-								<p class="scored">${team_list.point_1 + team_list.point_2 +team_list.point_3+team_list.point_4}</p>
-							</c:if>
+						    <a href="#lnk" onclick="fn_team_modal('${team_list.idx}', '${team_list.assignment_name}')">
+								<p>${status.count}</p>
+								<p class="grey">
+									<c:if test="${assignment_id eq 1 || assignment_id eq '1'}">자유과제</c:if>
+									<c:if test="${assignment_id eq 2 || assignment_id eq '2'}">지정과제①</c:if>
+									<c:if test="${assignment_id eq 3 || assignment_id eq '3'}">지정과제②</c:if>
+								</p>
+								<p>강원</p>
+								<p class="ellip">${team_list.assignment_name}</p>
+								<p class="ellip">${team_list.title}</p>
+								
+								<c:if test="${team_list.point_1 + team_list.point_2 +team_list.point_3+team_list.point_4 eq 0}">
+									<p class="nonScore">평가 미완료</p>
+								</c:if>
+								<c:if test="${team_list.point_1 + team_list.point_2 +team_list.point_3+team_list.point_4 > 0}">
+									<p class="scored">${team_list.point_1 + team_list.point_2 +team_list.point_3+team_list.point_4}</p>
+								</c:if>
 						    </a>
 						</li>
 					</c:forEach>
 				</ul>
 				<div class="buttonsContainer">
 				<!-- active -->
-					<a href="#lnk" class="disable">심사 완료</a>
+					<c:if test="${assignment_id eq '1' or assignment_id eq 1}">
+						<a href="#lnk" onclick="assignment_send()" class="disable <c:if test="${subject1_remaincnt eq 0}">active</c:if>">심사 완료</a>
+					</c:if>
+					<c:if test="${assignment_id eq '1' or assignment_id eq 1}">
+						<a href="#lnk" onclick="assignment_send()" class="disable <c:if test="${subject2_remaincnt eq 0}">active</c:if>">심사 완료</a>
+					</c:if>
+					<c:if test="${assignment_id eq '1' or assignment_id eq 3}">
+						<a href="#lnk" onclick="assignment_send()" class="disable <c:if test="${subject3_remaincnt eq 0}">active</c:if>">심사 완료</a>
+					</c:if>
 				</div>
 			</div>
 		</div>
@@ -136,13 +144,12 @@
 	            </form>
 	        </div>
 	    </div>
-	    <div class="modalContainer" id="confirm_Modal">
+	    <div class="modalContainer" id="confirm_modal">
 	        <div class="confirmInner">
 	            <div class="confirmTextsWrapper">
 	                <p>성공적으로 저장했습니다.</p>
 	                <div class="confirmText">
-	                    <p>선박자동식별시스템(AIS)를 활용한 해양수질 시각화 서비스해양수질 시각화 서비스</p>
-	                    <span>팀명이 이곳에 들어갑니다</span>
+	                    <p id="confirm_assignment"></p>
 	                </div>
 	            </div>
 	            <div class="buttonsContainer">
@@ -151,56 +158,155 @@
 	            </div>
 	        </div>
 	    </div>
+	    <input type="hidden" name="idx" id="idx">
+	    <input type="hidden" name="txt_assignment_name" id="txt_assignment_name">
     </body>
     <script>
-	    // 체점 모달 열기
-	    $('.listBody li a').click(function(){
-	    	//ajax 데이터 바인딩
-	    	$('#point_1').val(1)
-	    	$('#point_2').val(2)
-	    	$('#point_3').val(3)
-	    	$('#point_4').val(4)
-	    	$('#whole_score').val(1+2+3+4)
-	        $('#score_modal').css('display', 'flex');
-	    });
+    	function assignment_send(){
+    		if(confirm("해당 과제의 평가를 완료하고 리스트 페이지로 이동 하시겠습니까?\n최종 제출을 하시기 전에는 평가점수 수정이 가능합니다.")){
+    			window.location.href="/audit_lists.do"
+    		}
+    	}
+    	function point_sum(){
+    		var point_1 = Number($('#point_1').val())
+	        var point_2 = Number($('#point_2').val())
+	        var point_3 = Number($('#point_3').val())
+	        var point_4 = Number($('#point_4').val())
+	        $('#whole_score').val(point_1 + point_2 + point_3 + point_4)
+    	}
+    	function point_reset(){
+    		$('#point_1').val("")
+	    	$('#point_2').val("")
+	    	$('#point_3').val("")
+	    	$('#point_4').val("")
+	    	$('#whole_score').val("")
+    	}
+    	
+    	function fn_team_modal(idx, assignment_name){
+    		$('#idx').val(idx);
+    		$('#assignment_name').text(assignment_name)
+    		$('#txt_assignment_name').val(assignment_name)
+    		var param ={
+    			team_id : idx
+    		}
+    		$.ajax({
+				url : "/get_judge_info.do"
+				, type : "POST"
+				, data : JSON.stringify(param)
+				, contentType : "application/json"
+				, dataType : "json"
+				, success : function(data, status, xhr) {
+					if(data.status != 'login'){
+						window.location.href= "/audit_main.do"
+					}
+					else{
+						//데이터 있을때 바인딩
+						if(data.rst != undefined){
+							$('#point_1').val(data.rst.point_1)
+							$('#point_2').val(data.rst.point_2)
+							$('#point_3').val(data.rst.point_3)
+							$('#point_4').val(data.rst.point_4)
+							point_sum()
+							
+							
+					        $('#score_modal').css('display', 'flex');		
+						}
+						//없으면 공란으로 띄우고
+						else{
+							$('#score_modal').css('display', 'flex');
+						}
+					}
+								
+				}
+				, error : function(xhr, status, error) {
+					alert("불러오기 중 오류가 발생했습니다.\n관리자에게 문의해주세요.");
+					console.log(xhr);
+					console.log("에러")
+				}
+			});	
+    	}
+
 	    // 체점 모달 -> 확인 모달 종료 & 열기
 	    $('#close_score').click(function() {
 	    	if(confirm("입력한 데이터는 저장되지 않고 리스트로 돌아갑니다.")){
-	    		$('#point_1').val("")
-		    	$('#point_2').val("")
-		    	$('#point_3').val("")
-		    	$('#point_4').val("")
-		    	$('#whole_score').val("")
+	    		point_reset()
 	    		$('#score_modal').css('display', 'none');	
 	    	}
-	        
 	    });
 	    
 	    $('#submit_score').click(function() {
 	    	if(confirm("입력을 완료 하시겠습니까?")){
-	    		debugger
 	    		//벨리데이션 체크 해서 입력안된값 체크
-		    	//ajax호출해서 데이터 저장값이 Y면 닫고 벨류 초기화
-		    	$('#score_modal').css('display', 'none');
-		    	$('#confirm_modal').css('display', 'flex');
-		    	$('#point_1').val("")
-		    	$('#point_2').val("")
-		    	$('#point_3').val("")
-		    	$('#point_4').val("")
-		    	$('#whole_score').val("")
-		    	
-		    	//오류팝업은 얼럿으로 대체	
+	    		var point_1 = $('#point_1').val()
+	    		var point_2 = $('#point_2').val()
+	    		var point_3 = $('#point_3').val()
+	    		var point_4 = $('#point_4').val()
+	    		
+	    		if(point_1 == '' || point_1 == null || point_1 == undefined){
+	    			alert("사업화 가능성 점수를 확인해주세요.")
+	    			$('#point_1').focus()
+	    			return false;
+	    		}
+	    		if(point_2 == '' || point_2 == null || point_2 == undefined){
+	    			alert("기술성 점수를 확인해주세요.")
+	    			$('#point_2').focus()
+	    			return false;
+	    		}
+	    		if(point_3 == '' || point_3 == null || point_3 == undefined){
+	    			alert("독창성 점수를 확인해주세요.")
+	    			$('#point_3').focus()
+	    			return false;
+	    		}
+	    		if(point_4 == '' || point_4 == null || point_4 == undefined){
+	    			alert("적합성 점수를 확인해주세요.")
+	    			$('#point_4').focus()
+	    			return false;
+	    		}
+	    		var param ={
+	    			team_id : $('#idx').val(),
+	    			point_1 : point_1,
+	    			point_2 : point_2,
+	    			point_3 : point_3,
+	    			point_4 : point_4
+	    		}
+	    		$.ajax({
+					url : "/get_judge_save.do"
+					, type : "POST"
+					, data : JSON.stringify(param)
+					, contentType : "application/json"
+					, dataType : "json"
+					, success : function(data, status, xhr) {
+						if(data.status != 'login'){
+							window.location.href= "/audit_main.do"
+						}
+						else{
+							if(data.rst != undefined && data.rst == 'Y'){
+								$('#score_modal').css('display', 'none');
+								$('#confirm_assignment').text($('#txt_assignment_name').val())
+						    	$('#confirm_modal').css('display', 'flex');
+						    	point_reset()
+							}
+							else{
+								alert("데이터 저장 중 오류가 발생했습니다.\n관리자에게 문의해주세요.");
+								$('#score_modal').css('display', 'none');
+							}
+						}
+					}
+					, error : function(xhr, status, error) {
+						alert("데이터 저장 중 오류가 발생했습니다.\n관리자에게 문의해주세요.");
+						console.log(xhr);
+						console.log("에러")
+					}
+				});	
 	    	}
-	    	
 	    });
 
 	    // 최종확인 종료
 	    $('#confirm_done').click(function(){
-	        $('#confirm_Modal').css('display', 'none');
+	        $('#confirm_modal').css('display', 'none');
 	        window.location.reload();
 	    });
-	
-	
+	    
 	    const input = document.querySelector('.tableWrapper table tbody tr td input');
 	
 	    input.addEventListener('input', function(e) {
@@ -237,19 +343,11 @@
 	    }
 	
 	    $('[id^="point_"]').on('input', function(e) {
-	    	var point_1 = Number($('#point_1').val())
-	        var point_2 = Number($('#point_2').val())
-	        var point_3 = Number($('#point_3').val())
-	        var point_4 = Number($('#point_4').val())
-	        $('#whole_score').val(point_1 + point_2 + point_3 + point_4)
+	    	point_sum()
 	    })
 	    
 	    $(document).ready(function(){
-	        var point_1 = Number($('#point_1').val())
-	        var point_2 = Number($('#point_2').val())
-	        var point_3 = Number($('#point_3').val())
-	        var point_4 = Number($('#point_4').val())
-	        $('#whole_score').val(point_1 + point_2 + point_3 + point_4)
+	    	point_sum()
 	    });
 
     </script>

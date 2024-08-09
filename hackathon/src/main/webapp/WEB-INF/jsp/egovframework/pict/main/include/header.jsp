@@ -4,7 +4,11 @@
 <%@ taglib prefix="ui"     uri="http://egovframework.gov/ctl/ui"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
-
+<%
+	pageContext.setAttribute("user_idx", session.getAttribute("user_idx"));
+	pageContext.setAttribute("name", session.getAttribute("name"));
+	pageContext.setAttribute("company", session.getAttribute("company"));
+%>
 <c:set var="currentUrl" value="${pageContext.request.requestURI}" />
 
 <header>
@@ -18,7 +22,13 @@
             </ul>
         </div>
         <div class="rightButtons">
-            <a href="#lnk" onclick="fn_alert()">로그인</a>
+        	<c:if test="${user_idx ne null && user_idx ne '' && user_idx ne undefined}">
+            	<a href="#lnk" onclick="fn_logout()">로그아웃</a>
+           	</c:if>
+           	<c:if test="${user_idx eq null || user_idx eq '' || user_idx eq undefined}">
+           		<a href="#lnk" onclick="fn_alert()">로그인</a>
+           	</c:if>
+           	
             <button type="button">본선등록</button>
         </div>
         <button></button>
@@ -42,7 +52,15 @@
 
 <script>
 	function fn_alert() {
-	    alert("서비스를 준비중입니다.");
-	    return false;
+	    window.location.href="/user_main.do"
+	    
 	}
+	function fn_logout() {
+		if(confirm("로그아웃 하시겠습니까?")){
+			location.href="/user_logout.do";
+			return false;	
+		}
+	    
+	}
+	
 </script>

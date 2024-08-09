@@ -250,8 +250,8 @@ public class pictController {
 		if (pictVO != null && pictVO.getName() != null && !pictVO.getName().equals("") && pictVO.getMobile() != null && !pictVO.getMobile().equals("")) {
 			if(inpuId.equals(pictVO.getName()) && inputMobile.equals(pictVO.getMobile())) {
 				request.getSession().setAttribute("user_idx", pictVO.getIdx()+"");
-				request.getSession().setAttribute("id", pictVO.getId());
 				request.getSession().setAttribute("name", pictVO.getName());
+				request.getSession().setAttribute("mobile", pictVO.getMobile());
 				request.getSession().setAttribute("company", pictVO.getCompany());
 				request.getSession().setAttribute("depart", pictVO.getDepart());
 			    
@@ -517,21 +517,30 @@ public class pictController {
 		else {
 		
 			return "redirect:/";
-		
 		}
-		
 	}
 	@RequestMapping(value = "/user_login.do")
 	public String user_login(@ModelAttribute("searchVO") AdminVO adminVO, HttpServletRequest request, ModelMap model, HttpSession session, RedirectAttributes rttr) throws Exception {
 		String sessions = (String)request.getSession().getAttribute("user_idx");
 		if(sessions == null || sessions == "null") {
-			return "pict/audit/user_login";
+			return "pict/main/user_login";
 		}
 		else {
 		
 			return "redirect:/";
 		
 		}
+	}
+	@RequestMapping(value = "/user_logout.do")
+	public String user_logout(@ModelAttribute("searchVO") PictVO pictVO, HttpServletRequest request,  ModelMap model) throws Exception {
+		request.getSession().setAttribute("user_idx", null);
+		request.getSession().setAttribute("name", null);
+		request.getSession().setAttribute("mobile", null);
+		request.getSession().setAttribute("company", null);
+		request.getSession().setAttribute("depart", null);
+
+		return "redirect:/";
+		
 	}
 	@RequestMapping(value = "/user_login_action.do")
 	public String user_login_action(@ModelAttribute("pictVO") PictVO pictVO, HttpServletRequest request,  ModelMap model) throws Exception {
@@ -545,12 +554,17 @@ public class pictController {
 		
 			if(inpuId.equals(pictVO.getName()) && inputMobile.equals(pictVO.getMobile())) {
 				request.getSession().setAttribute("user_idx", pictVO.getIdx()+"");
-				request.getSession().setAttribute("id", pictVO.getId());
 				request.getSession().setAttribute("name", pictVO.getName());
+				request.getSession().setAttribute("mobile", pictVO.getMobile());
 				request.getSession().setAttribute("company", pictVO.getCompany());
 				request.getSession().setAttribute("depart", pictVO.getDepart());
 			    
-				return "redirect:/";
+				
+				model.addAttribute("message", pictVO.getName()+"님 환영합니다.");
+				model.addAttribute("retType", ":location");
+				model.addAttribute("retUrl", "/");
+				return "pict/admin/message";
+				
 				
 			}
 			else {

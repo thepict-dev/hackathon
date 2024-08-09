@@ -163,7 +163,7 @@
     </body>
     <script>
     	function assignment_send(){
-    		if(confirm("해당 과제의 평가를 완료하고 리스트 페이지로 이동 하시겠습니까?\n최종 제출을 하시기 전에는 평가점수 수정이 가능합니다.")){
+    		if(confirm("해당 과제 평가를 완료하시겠습니까?\n페이지 이동 후 최종 제출 전까지 수정이 가능합니다.")){
     			window.location.href="/audit_lists.do"
     		}
     	}

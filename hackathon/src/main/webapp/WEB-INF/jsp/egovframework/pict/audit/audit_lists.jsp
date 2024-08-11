@@ -68,9 +68,9 @@
 	            </div>
 	            <ul class="tabNav">
 	            	<c:forEach var="arr" items="${arr}" varStatus="status">
-						<c:if test="${arr eq '1' || arr eq 1}"><li><a href="#lnk">자유과제</a></li></c:if>
-						<c:if test="${arr eq '2' || arr eq 2}"><li><a href="#lnk">지정과제①</a></li></c:if>
-						<c:if test="${arr eq '3' || arr eq 3}"><li><a href="#lnk">지정과제②</a></li></c:if>
+						<c:if test="${arr eq '1' || arr eq 1}"><li class="${status.first ? 'active' : ''}"><a href="#lnk">자유과제</a></li></c:if>
+						<c:if test="${arr eq '2' || arr eq 2}"><li class="${status.first ? 'active' : ''}"><a href="#lnk">지정과제①</a></li></c:if>
+						<c:if test="${arr eq '3' || arr eq 3}"><li class="${status.first ? 'active' : ''}"><a href="#lnk">지정과제②</a></li></c:if>
 	                </c:forEach>
 	            </ul>
 	            <div id="modal_list"></div>

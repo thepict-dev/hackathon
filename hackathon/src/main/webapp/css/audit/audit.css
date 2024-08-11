@@ -738,11 +738,14 @@
     border-bottom: 1px solid #fff;
     font-weight: 700;
 }
+#modal_list{
+    height: calc(100% - 250px);
+}
 .tabInner{
 	display: none;
     width: 100%;
     padding: 40px;
-    height: calc(100% - 250px);
+    height: 100%;
 }
 .tabInner.active{
 	display: block;

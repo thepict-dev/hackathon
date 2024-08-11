@@ -343,6 +343,11 @@ public class pictController {
 			model.addAttribute("subject2_remaincnt", subject2_remaincnt);
 			model.addAttribute("subject3_remaincnt", subject3_remaincnt);
 			
+			
+			pictVO.setUser_idx(request.getSession().getAttribute("user_idx").toString());
+			List<PictVO> team_list = pictService.team_judge_list(pictVO);
+			model.addAttribute("team_list", team_list);
+			
 		}
 		else {
 			model.addAttribute("message", "심사 정보가 존재하지 않습니다.");

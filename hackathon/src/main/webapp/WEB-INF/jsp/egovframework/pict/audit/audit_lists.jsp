@@ -20,7 +20,12 @@
 	            <h3>심사 과제를 선택하세요</h3>
 	            <ul class="auditList">
 	            	<c:forEach var="arr" items="${arr}" varStatus="status">
-		                <li>
+		                <li class="
+		                	<c:if test="${arr eq '1' || arr eq 1}"><c:if test="${subject1_remaincnt eq 0}"> finish</c:if></c:if>
+		                	<c:if test="${arr eq '2' || arr eq 2}"><c:if test="${subject2_remaincnt eq 0}"> finish</c:if></c:if>
+		                	<c:if test="${arr eq '3' || arr eq 3}"><c:if test="${subject3_remaincnt eq 0}"> finish</c:if></c:if>
+		                	"
+		                >
 		                    <a href="/audit_team_list.do?assignment_id=${arr}">
 		                        <div class="auditListTitle">
 		                            <span>0${status.count}</span>
@@ -71,6 +76,7 @@
 	                        <li>평가점수</li>
 	                    </ul>
 	                    <ul class="listBody finals">
+	                        
 	                        <li>
 	                            <a href="#lnk">
 	                                <p>01</p>
@@ -80,131 +86,57 @@
 	                                <p class="scored">70</p>
 	                            </a>
 	                        </li>
-	                        <li>
-	                            <a href="#lnk">
-	                                <p>01</p>
-	                                <p>강원</p>
-	                                <p class="ellip">선박자동식별시스템(AIS)를 활용한 해양수질 시각화 서비스해양수질 시각화 서비스</p>
-	                                <p class="ellip">황천길 싫어요</p>
-	                                <p class="scored">70</p>
-	                            </a>
-	                        </li>
-	                        <li>
-	                            <a href="#lnk">
-	                                <p>01</p>
-	                                <p>강원</p>
-	                                <p class="ellip">선박자동식별시스템(AIS)를 활용한 해양수질 시각화 서비스해양수질 시각화 서비스</p>
-	                                <p class="ellip">황천길 싫어요</p>
-	                                <p class="scored">70</p>
-	                            </a>
-	                        </li>
-	                        <li>
-	                            <a href="#lnk">
-	                                <p>01</p>
-	                                <p>강원</p>
-	                                <p class="ellip">선박자동식별시스템(AIS)를 활용한 해양수질 시각화 서비스해양수질 시각화 서비스</p>
-	                                <p class="ellip">황천길 싫어요</p>
-	                                <p class="scored">70</p>
-	                            </a>
-	                        </li>
-	                        <li>
-	                            <a href="#lnk">
-	                                <p>01</p>
-	                                <p>강원</p>
-	                                <p class="ellip">선박자동식별시스템(AIS)를 활용한 해양수질 시각화 서비스해양수질 시각화 서비스</p>
-	                                <p class="ellip">황천길 싫어요</p>
-	                                <p class="scored">70</p>
-	                            </a>
-	                        </li>
-	                        <li>
-	                            <a href="#lnk">
-	                                <p>01</p>
-	                                <p>강원</p>
-	                                <p class="ellip">선박자동식별시스템(AIS)를 활용한 해양수질 시각화 서비스해양수질 시각화 서비스</p>
-	                                <p class="ellip">황천길 싫어요</p>
-	                                <p class="scored">70</p>
-	                            </a>
-	                        </li>
-	                        <li>
-	                            <a href="#lnk">
-	                                <p>01</p>
-	                                <p>강원</p>
-	                                <p class="ellip">선박자동식별시스템(AIS)를 활용한 해양수질 시각화 서비스해양수질 시각화 서비스</p>
-	                                <p class="ellip">황천길 싫어요</p>
-	                                <p class="scored">70</p>
-	                            </a>
-	                        </li>
-	                        <li>
-	                            <a href="#lnk">
-	                                <p>01</p>
-	                                <p>강원</p>
-	                                <p class="ellip">선박자동식별시스템(AIS)를 활용한 해양수질 시각화 서비스해양수질 시각화 서비스</p>
-	                                <p class="ellip">황천길 싫어요</p>
-	                                <p class="scored">70</p>
-	                            </a>
-	                        </li>
-	                        <li>
-	                            <a href="#lnk">
-	                                <p>01</p>
-	                                <p>강원</p>
-	                                <p class="ellip">선박자동식별시스템(AIS)를 활용한 해양수질 시각화 서비스해양수질 시각화 서비스</p>
-	                                <p class="ellip">황천길 싫어요</p>
-	                                <p class="scored">70</p>
-	                            </a>
-	                        </li>
-	                        <li>
-	                            <a href="#lnk">
-	                                <p>01</p>
-	                                <p>강원</p>
-	                                <p class="ellip">선박자동식별시스템(AIS)를 활용한 해양수질 시각화 서비스해양수질 시각화 서비스</p>
-	                                <p class="ellip">황천길 싫어요</p>
-	                                <p class="scored">70</p>
-	                            </a>
-	                        </li>
-	                        <li>
-	                            <a href="#lnk">
-	                                <p>01</p>
-	                                <p>강원</p>
-	                                <p class="ellip">선박자동식별시스템(AIS)를 활용한 해양수질 시각화 서비스해양수질 시각화 서비스</p>
-	                                <p class="ellip">황천길 싫어요</p>
-	                                <p class="scored">70</p>
-	                            </a>
-	                        </li>
-	                        <li>
-	                            <a href="#lnk">
-	                                <p>01</p>
-	                                <p>강원</p>
-	                                <p class="ellip">선박자동식별시스템(AIS)를 활용한 해양수질 시각화 서비스해양수질 시각화 서비스</p>
-	                                <p class="ellip">황천길 싫어요</p>
-	                                <p class="scored">70</p>
-	                            </a>
-	                        </li>
-	                        <li>
-	                            <a href="#lnk">
-	                                <p>01</p>
-	                                <p>강원</p>
-	                                <p class="ellip">선박자동식별시스템(AIS)를 활용한 해양수질 시각화 서비스해양수질 시각화 서비스</p>
-	                                <p class="ellip">황천길 싫어요</p>
-	                                <p class="scored">70</p>
-	                            </a>
-	                        </li>
-	                        <li>
-	                            <a href="#lnk">
-	                                <p>01</p>
-	                                <p>강원</p>
-	                                <p class="ellip">선박자동식별시스템(AIS)를 활용한 해양수질 시각화 서비스해양수질 시각화 서비스</p>
-	                                <p class="ellip">황천길 싫어요</p>
-	                                <p class="scored">70</p>
-	                            </a>
-	                        </li>
+	                        
 	                    </ul>
 	                </div>
 	            </div>
 	            <div class="tabInner">
-	
+					<div class="scroll">
+	                    <ul class="listHead finals">
+	                        <li>순서</li>
+	                        <li>지역</li>
+	                        <li>제안명</li>
+	                        <li>팀명</li>
+	                        <li>평가점수</li>
+	                    </ul>
+	                    <ul class="listBody finals">
+	                        
+	                        <li>
+	                            <a href="#lnk">
+	                                <p>01</p>
+	                                <p>강원</p>
+	                                <p class="ellip">선박자동식별시스템(AIS)를 활용한 해양수질 시각화 서비스해양수질 시각화 서비스</p>
+	                                <p class="ellip">황천길 싫어요</p>
+	                                <p class="scored">70</p>
+	                            </a>
+	                        </li>
+	                        
+	                    </ul>
+	                </div>
 	            </div>
 	            <div class="tabInner">
-	
+					<div class="scroll">
+	                    <ul class="listHead finals">
+	                        <li>순서</li>
+	                        <li>지역</li>
+	                        <li>제안명</li>
+	                        <li>팀명</li>
+	                        <li>평가점수</li>
+	                    </ul>
+	                    <ul class="listBody finals">
+	                        
+	                        <li>
+	                            <a href="#lnk">
+	                                <p>01</p>
+	                                <p>강원</p>
+	                                <p class="ellip">선박자동식별시스템(AIS)를 활용한 해양수질 시각화 서비스해양수질 시각화 서비스</p>
+	                                <p class="ellip">황천길 싫어요</p>
+	                                <p class="scored">70</p>
+	                            </a>
+	                        </li>
+	                        
+	                    </ul>
+	                </div>
 	            </div>
 	            <div class="buttonsContainer double finals">
 	                <a href="#lnk" id="close_final">닫기</a>

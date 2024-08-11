@@ -13,6 +13,7 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Comparator;
 import java.util.HashMap;
 
 import org.apache.commons.codec.binary.Base64;
@@ -578,13 +579,13 @@ public class pictController {
 				PictVO existVO = pictService.get_judge_info(pictVO);
 				
 				String point_1 = param.get("point_1").toString();
-				pictVO.setPoint_1(point_1);
+				pictVO.setPoint_1(Integer.parseInt(point_1));
 				String point_2= param.get("point_2").toString();
-				pictVO.setPoint_2(point_2);
+				pictVO.setPoint_2(Integer.parseInt(point_2));
 				String point_3 = param.get("point_3").toString();
-				pictVO.setPoint_3(point_3);
+				pictVO.setPoint_3(Integer.parseInt(point_3));
 				String point_4 = param.get("point_4").toString();
-				pictVO.setPoint_4(point_4);
+				pictVO.setPoint_4(Integer.parseInt(point_4));
 				
 				if(existVO != null) {
 					pictService.get_judge_update(pictVO);
@@ -1184,9 +1185,50 @@ public class pictController {
 		}
 		pictVO.setUser_id(session);
 	
-		List<?> reference_list = pictService.judge_list(pictVO);
-		model.addAttribute("resultList", reference_list);
-		model.addAttribute("size", reference_list.size());
+		List<PictVO> reference_list = pictService.judge_list(pictVO);
+		
+		ArrayList<Map<String, Object>> array = new ArrayList();
+		for(int i=0; i<reference_list.size(); i++) {
+			int judge_point2 = (Integer)reference_list.get(i).getPoint();
+			int max_point = (Integer)reference_list.get(i).getMax_point();
+			int min_point = (Integer)reference_list.get(i).getMin_point();
+			int point_cnt = (Integer)reference_list.get(i).getPoint_cnt();
+			
+			System.out.println(i);
+			double dbl = 0.0;
+			if(point_cnt <= 2) {
+				dbl = (double)(judge_point2);
+			}
+			else {
+				//최대값 최소값 뺐으니까 cnt - 2
+				dbl = (double)(judge_point2 - max_point - min_point) / (point_cnt - 2);
+			}
+			
+			double judge = (double)Math.round(dbl*100) / 100;
+			
+			
+			Map<String, Object> map = new HashMap<>();
+			map.put("title", reference_list.get(i).getTitle());
+			map.put("local", reference_list.get(i).getLocal());
+			map.put("award", reference_list.get(i).getAward());
+			map.put("assignment_id", reference_list.get(i).getAssignment_id());
+			map.put("assignment_name", reference_list.get(i).getAssignment_name());
+			map.put("point", judge);
+			map.put("title", reference_list.get(i).getTitle());
+			map.put("point_cnt", reference_list.get(i).getPoint_cnt());
+			map.put("point_sum", reference_list.get(i).getPoint());
+			
+			array.add(map);
+			
+		}
+		System.out.println("끝났어?");
+		
+		array.sort(
+			Comparator.comparing((Map<String, Object> map) -> (double) map.get("point")).reversed()
+		);
+		
+		model.addAttribute("resultList", array);
+		
 		model.addAttribute("pictVO", pictVO);
 		
 		return "pict/admin/judge_list";

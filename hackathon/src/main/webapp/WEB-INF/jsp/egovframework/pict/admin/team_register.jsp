@@ -89,6 +89,15 @@
 									</div>
 								</div>
 								
+								<div class="write-box">
+									<div class="write-item">
+										<label for="title" class="title">수상</label>
+										<div class="input-box">
+											<input type="text" id="award" name="award" value="${pictVO.award}" class="input opt-max-width-500">
+										</div>
+									</div>
+								</div>
+								
 								<div class="write-item" id="file_div">
 									<label for="title" class="title">첨부자료</label>
 									<div class="input-box" style="display: flex; flex-direction: column;">

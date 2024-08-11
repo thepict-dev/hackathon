@@ -123,7 +123,7 @@ public interface PictService {
 
 	List<?> vote_user_list(PictVO pictVO) throws Exception;
 
-	List<?> judge_list(PictVO pictVO) throws Exception;
+	List<PictVO> judge_list(PictVO pictVO) throws Exception;
 
 	PictVO password_compare(PictVO pictVO) throws Exception;
 

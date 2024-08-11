@@ -66,6 +66,7 @@
 						    <div class="card-body">
 							    <div class="search-form">
 							    	<form action="" id="search_fm" name="search_fm" method="get" class="search-box">
+
 								    	<input type="text" id="search_text" name="search_text" value="${pictVO.search_text}" class="input" placeholder="검색어를 입력하세요." autocomplete="off">
 								    	<button type="button" onclick="search();" class="btn"><i class="fa-solid fa-magnifying-glass"></i></button>
 							    	</form>

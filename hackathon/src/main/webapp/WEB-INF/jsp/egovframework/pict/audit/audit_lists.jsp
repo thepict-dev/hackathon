@@ -149,6 +149,9 @@
 								var first = "active"
 									for(var i=0; i<main_arr.length; i++){
 										if(i != 0) first = ""
+										var subject_1 = 1;
+										var subject_2 = 1;
+										var subject_3 = 1;
 										
 										html += 
 							            '<div class="tabInner '+first+'">'+
@@ -164,12 +167,25 @@
 						            
 					                    for(var j=0; j<data.list.length; j++){
 					                    	if(main_arr[i] == data.list[j].assignment_id){
-					                    		
 					                    		html +=
 								                    '<li>'+
-								                    '<a href="#lnk" onclick="fn_team_modal('+data.list[j].idx+', \''+data.list[j].assignment_name+'\')">'+
-					                                '<p>'+j+1+'</p>'+
-					                                '<p>'+data.list[j].local+'</p>'+
+								                    '<a href="#lnk" onclick="fn_team_modal('+data.list[j].idx+', \''+data.list[j].assignment_name+'\')">'
+								                    
+								                    if(data.list[j].assignment_id == '1' || data.list[j].assignment_id == 1){
+								                    	html += '<p>'+subject_1+'</p>'
+								                    	subject_1++;
+								                    }
+							                    	if(data.list[j].assignment_id == '2' || data.list[j].assignment_id == 2){
+							                    		html += '<p>'+subject_2+'</p>'
+							                    		subject_2++;
+							                    	}
+							                    	if(data.list[j].assignment_id == '3' || data.list[j].assignment_id == 3){
+							                    		html += '<p>'+subject_3+'</p>'
+							                    		subject_3++;
+							                    	}
+								                    
+								                    
+					                                html += '<p>'+data.list[j].local+'</p>'+
 					                                '<p class="ellip">'+data.list[j].assignment_name+'</p>'+
 					                                '<p class="ellip">'+data.list[j].title+'</p>'+
 					                                '<p class="scored">'+data.list[j].point_sum+'</p>'+

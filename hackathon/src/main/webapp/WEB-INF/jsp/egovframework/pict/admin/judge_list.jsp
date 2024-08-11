@@ -9,7 +9,7 @@
 <!DOCTYPE html>
 <html lang="ko">
 	<c:import url="./header.jsp">
-    	<c:param name="pageTitle" value="청중투표 리스트"/>
+    	<c:param name="pageTitle" value="심사평가 리스트"/>
     </c:import>
     
     <body class="sb-nav-fixed">
@@ -21,32 +21,44 @@
 			
 			<div id="layoutSidenav_content">
 				<main class="contents">
-					<h2 class="contents-title">청중투표 리스트</h2>
+					<h2 class="contents-title">심사평가 리스트</h2>
 					<div class="contents-box">
 						<div class="card">
 						    <div class="card-body">
 							    <div class="search-form">
 							    	<form action="" id="search_fm" name="search_fm" method="get" class="search-box">
-								    	<input type="text" id="search_text" name="search_text" value="${pictVO.search_text}" class="input" placeholder="검색어를 입력하세요." autocomplete="off">
-								    	<button type="button" onclick="search();" class="btn"><i class="fa-solid fa-magnifying-glass"></i></button>
+								    	<select id="assignment_id" name="assignment_id" class="input opt-max-width-500" style="width:400px">
+											<option value="">과제구분선택</option>
+											<option value="1" <c:if test="${pictVO.assignment_id eq '1' || pictVO.assignment_id eq 1}">selected</c:if>>자유과제</option>
+											<option value="2" <c:if test="${pictVO.assignment_id eq '2' || pictVO.assignment_id eq 2}">selected</c:if>>지정과제①</option>
+											<option value="3" <c:if test="${pictVO.assignment_id eq '3' || pictVO.assignment_id eq 3}">selected</c:if>>지정과제②</option>
+										</select>
 							    	</form>
 							    </div>
 						    	<div class="tbl-basic tbl-hover">
 							        <table style="text-align : left">
 							        	<colgroup>
+							        		<col style="width:8%;">
+							        		<col style="width:8%;">
+							        		<col style="width:8%;">
 							        		<col style="width:10%;">
 							        		<col style="width:10%;">
-							        		<col style="width:20%;">
-							        		<col style="width:40%;">
-							        		<col style="width:20%;">
+							        		<col style="width:32%;">
+							        		<col style="width:8%;">
+							        		<col style="width:8%;">
+							        		<col style="width:8%;">
 							        	</colgroup>
 							            <thead>
 							                <tr class="thead">
 							                    <th>순서</th>
-							                    <th>과제구분</th>
+							                    <th>과제</th>
+							                    <th>지역</th>
+							                    <th>수상</th>
 							                    <th>팀명</th>
 							                    <th>과제명</th>
-							                    <th>청중투표 수</th>
+							                    <th>총점수</th>
+							                    <th>심사평가 수</th>
+							                    <th>평균점수</th>
 							                </tr>
 							            </thead>
 							            <tbody>
@@ -54,13 +66,17 @@
 								                <tr>
 							                    	<td>${status.count}</td>
 							                    	<td>
-							                    		<c:if test="${resultList.assignment_id eq '1'}">자유과제</c:if>
-							                    		<c:if test="${resultList.assignment_id eq '2'}">지정과제①</c:if>
-							                    		<c:if test="${resultList.assignment_id eq '3'}">지정과제②</c:if>
+							                    		<c:if test="${resultList.assignment_id eq '1' || resultList.assignment_id eq 1}">자유과제</c:if>
+							                    		<c:if test="${resultList.assignment_id eq '2' || resultList.assignment_id eq 2}">지정과제1</c:if>
+							                    		<c:if test="${resultList.assignment_id eq '3' || resultList.assignment_id eq 3}">지정과제2</c:if>
 													</td>
+													<td>${resultList.local}</td>
+							                    	<td>${resultList.award}</td>
 							                    	<td>${resultList.title}</td>
 							                    	<td>${resultList.assignment_name}</td>
-							                    	<td>${resultList.cnt}</td>
+							                    	<td>${resultList.point_sum}</td>
+							                    	<td>${resultList.point_cnt}</td>
+							                    	<td>${resultList.point}</td>
 								                </tr>
 							                </c:forEach>
 							            </tbody>
@@ -69,9 +85,6 @@
 				            </div>
 			            </div>
 		            </div>
-		            <!-- <div style="float : right; margin-right: 20%">
-			            <button type="button" id="button1" onclick="board_list();">게시글 리스트</button>
-		            </div> -->
 				</main>
 			</div>
 		</div>
@@ -81,23 +94,13 @@
 			<input type='hidden' name="type" id="type" value='' />
 		</form>
 		<script>
-
-			function board_mod(idx){
-				location.href= "/board/board_register.do?idx="+ idx;
-			}
-			function board_list(){
-				location.href= "/board/board_list.do";
-			}
-			function board_delete(idx) {
-				if (confirm("삭제 하시겠습니까?")) {
-					$('#idx').val(idx)
-					$("#register").attr("action", "/board/board_delete.do");
-					$("#register").submit();
-				}
-			}
-			
+			$("#search_fm").change(function(){
+				$("#search_fm").attr("action", "/judge/judge_list.do");
+				$("#search_fm").submit();
+			});
+		
 			function search(){
-				$("#search_fm").attr("action", "/board/board_list.do");
+				$("#search_fm").attr("action", "/judge/judge_list.do");
 				$("#search_fm").submit();
 			}
 		</script>

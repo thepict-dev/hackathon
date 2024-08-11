@@ -60,13 +60,13 @@
 				</ul>
 				<div class="buttonsContainer">
 				<!-- active -->
-					<c:if test="${assignment_id eq '1' or assignment_id eq 1}">
+					<c:if test="${assignment_id eq '1' || assignment_id eq 1}">
 						<a href="#lnk" onclick="assignment_send()" class="disable <c:if test="${subject1_remaincnt eq 0}">active</c:if>">심사 완료</a>
 					</c:if>
-					<c:if test="${assignment_id eq '1' or assignment_id eq 1}">
+					<c:if test="${assignment_id eq '2' || assignment_id eq 2}">
 						<a href="#lnk" onclick="assignment_send()" class="disable <c:if test="${subject2_remaincnt eq 0}">active</c:if>">심사 완료</a>
 					</c:if>
-					<c:if test="${assignment_id eq '1' or assignment_id eq 3}">
+					<c:if test="${assignment_id eq '3' || assignment_id eq 3}">
 						<a href="#lnk" onclick="assignment_send()" class="disable <c:if test="${subject3_remaincnt eq 0}">active</c:if>">심사 완료</a>
 					</c:if>
 				</div>

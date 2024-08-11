@@ -150,11 +150,15 @@ public class PictVO extends PictDefaultVO {
 	private int endPage;
 	
 	
-	private String point_1;
-	private String point_2;
-	private String point_3;
-	private String point_4;
-	private String point_sum;
+	private int point_1;
+	private int point_2;
+	private int point_3;
+	private int point_4;
+	private int point;
+	private int max_point;
+	private int min_point;
+	private int point_sum;
+	private int point_cnt;
 	private String is_judge;
 	private String user_idx;
 	private String user_assignment_id;
@@ -162,54 +166,82 @@ public class PictVO extends PictDefaultVO {
 	
 	
 	
+
+	public int getPoint_1() {
+		return point_1;
+	}
+	public int getPoint_2() {
+		return point_2;
+	}
+	public int getPoint_3() {
+		return point_3;
+	}
+	public int getPoint_4() {
+		return point_4;
+	}
+	public int getPoint() {
+		return point;
+	}
+	public int getMax_point() {
+		return max_point;
+	}
+	public int getMin_point() {
+		return min_point;
+	}
+	public int getPoint_sum() {
+		return point_sum;
+	}
+	public int getPoint_cnt() {
+		return point_cnt;
+	}
+	public void setPoint_1(int point_1) {
+		this.point_1 = point_1;
+	}
+	public void setPoint_2(int point_2) {
+		this.point_2 = point_2;
+	}
+	public void setPoint_3(int point_3) {
+		this.point_3 = point_3;
+	}
+	public void setPoint_4(int point_4) {
+		this.point_4 = point_4;
+	}
+	public void setPoint(int point) {
+		this.point = point;
+	}
+	public void setMax_point(int max_point) {
+		this.max_point = max_point;
+	}
+	public void setMin_point(int min_point) {
+		this.min_point = min_point;
+	}
+	public void setPoint_sum(int point_sum) {
+		this.point_sum = point_sum;
+	}
+	public void setPoint_cnt(int point_cnt) {
+		this.point_cnt = point_cnt;
+	}
 	public String getImg_url() {
 		return img_url;
 	}
 	public void setImg_url(String img_url) {
 		this.img_url = img_url;
 	}
-	public String getPoint_sum() {
-		return point_sum;
-	}
-	public void setPoint_sum(String point_sum) {
-		this.point_sum = point_sum;
-	}
+	
 	public String getUser_assignment_id() {
 		return user_assignment_id;
 	}
 	public void setUser_assignment_id(String user_assignment_id) {
 		this.user_assignment_id = user_assignment_id;
 	}
-	public String getPoint_1() {
-		return point_1;
-	}
-	public String getPoint_2() {
-		return point_2;
-	}
-	public String getPoint_3() {
-		return point_3;
-	}
-	public String getPoint_4() {
-		return point_4;
-	}
+	
 	public String getIs_judge() {
 		return is_judge;
 	}
 	public String getUser_idx() {
 		return user_idx;
 	}
-	public void setPoint_1(String point_1) {
-		this.point_1 = point_1;
-	}
-	public void setPoint_2(String point_2) {
-		this.point_2 = point_2;
-	}
-	public void setPoint_3(String point_3) {
-		this.point_3 = point_3;
-	}
-	public void setPoint_4(String point_4) {
-		this.point_4 = point_4;
-	}
+	
 	public void setIs_judge(String is_judge) {
 		this.is_judge = is_judge;
 	}

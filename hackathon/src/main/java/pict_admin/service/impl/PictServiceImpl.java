@@ -314,7 +314,7 @@ public class PictServiceImpl extends EgovAbstractServiceImpl implements PictServ
 	}
 
 	@Override
-	public List<?> judge_list(PictVO pictVO) throws Exception {
+	public List<PictVO> judge_list(PictVO pictVO) throws Exception {
 		// TODO Auto-generated method stub
 		return pictMapper.judge_list(pictVO);
 	}

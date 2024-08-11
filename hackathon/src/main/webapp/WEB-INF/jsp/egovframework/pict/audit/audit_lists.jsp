@@ -365,6 +365,29 @@
 	        $('#close_sign').click(function(){
 	            $('#sign_modal').css('display', 'none');
 	        });
+	        
+	      	//탭
+	        const tabItem = document.querySelectorAll('.tabNav li');
+	        const tabInner = document.querySelectorAll('.tabInner');
+
+	        function activateTab(items, index) {
+	            tabInner.forEach((inner) => {
+	                inner.classList.remove('active');
+	            });
+
+	            items.forEach((item) => {
+	                item.classList.remove('active');
+	            });
+
+	            items[index].classList.add('active');
+	            tabInner[index].classList.add('active');
+	        }
+
+	        tabItem.forEach((tab, idx) => {
+	            tab.addEventListener('click', function() {
+	                activateTab(tabItem, idx);
+	            });
+	        });
 	    </script>
 	</body>
 </html>

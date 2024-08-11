@@ -1197,7 +1197,7 @@ public class pictController {
 			System.out.println(i);
 			double dbl = 0.0;
 			if(point_cnt <= 2) {
-				dbl = (double)(judge_point2);
+				dbl = (double)(judge_point2) / point_cnt;
 			}
 			else {
 				//최대값 최소값 뺐으니까 cnt - 2
@@ -1208,6 +1208,7 @@ public class pictController {
 			
 			
 			Map<String, Object> map = new HashMap<>();
+			map.put("idx", reference_list.get(i).getIdx());
 			map.put("title", reference_list.get(i).getTitle());
 			map.put("local", reference_list.get(i).getLocal());
 			map.put("award", reference_list.get(i).getAward());

@@ -126,6 +126,25 @@
 	    <input type="hidden" name="txt_assignment_name" id="txt_assignment_name">
 	    <%@include file="./audit_modal.jsp" %>
 	    <script>
+		    $(document).ready(function(){
+		    	var params = {}
+	        	$.ajax({
+	    			url : "/is_over.do"
+	    			, type : "POST"
+	    			, contentType : "application/json"
+	    			, data : JSON.stringify(params)
+	    			, dataType : "json"
+	    			, success : function(data, status, xhr) {
+	    				if(data.rst == 'Y'){
+	    					$('#all_done_button').text("평가 결과 보기");
+	    					$('#final_submit').css("display", "none")
+	    				}
+	    				else{
+	    								
+	    				}
+	    			}
+	        	})
+		    })
 	    	
 	    	function get_team_list_ajax(){
 	    		$('#modal_list').children().remove()
@@ -481,7 +500,8 @@
 								//데이터 있을때 바인딩
 								if(data.rst != undefined && data.rst == 'Y'){
 									alert("최종제출이 완료되었습니다.");
-									$('#sign_modal').css('display', 'none');		
+									$('#sign_modal').css('display', 'none');
+									window.location.href="/audit_lists.do"
 								}
 								//없으면 공란으로 띄우고
 								else{
@@ -529,7 +549,7 @@
 	    				else{
 	    					$('#final_modal').css('display', 'none');
 	    		            $('#sign_modal').css('display', 'flex');
-	    		            resizeCanvas(); // 모달이 열릴 때 캔버스 크기 조정			
+	    		            resizeCanvas(); // 모달이 열릴 때 캔버스 크기 조정
 	    				}
 	    			}
 	        	})
@@ -540,7 +560,34 @@
 	            $('#sign_modal').css('display', 'none');
 	        });
 	        
-	      	
+	        const input = document.querySelector('.tableWrapper table tbody tr td input');
+	    	
+		    input.addEventListener('input', function(e) {
+		        this.value = this.value.replace(/[^0-9]/g, '');
+		    });
+		
+		    const inputs = [
+		        { id: 'point_1', max: 30 },
+		        { id: 'point_2', max: 30 },
+		        { id: 'point_3', max: 20 },
+		        { id: 'point_4', max: 20 }
+		    ];
+		
+		    inputs.forEach(input => {
+		        const element = document.getElementById(input.id);
+		        if (element) {
+		            element.addEventListener('input', function() {
+		                let value = parseInt(this.value);
+		                if (isNaN(value)) {
+		                    this.value = '';
+		                } else if (value > input.max) {
+		                    this.value = input.max;
+		                } else if (value < 0) {
+		                    this.value = 0;
+		                }
+		            });
+		        }
+		    });
 	    </script>
 	</body>
 </html>

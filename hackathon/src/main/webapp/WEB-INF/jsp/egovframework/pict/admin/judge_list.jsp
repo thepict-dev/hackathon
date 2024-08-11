@@ -72,8 +72,8 @@
 													</td>
 													<td>${resultList.local}</td>
 							                    	<td>${resultList.award}</td>
-							                    	<td>${resultList.title}</td>
-							                    	<td>${resultList.assignment_name}</td>
+							                    	<td class="opt-tl"><a href="javascript:void(0);" onclick="board_mod('${resultList.idx}');" class="link">${resultList.title}</a></td>
+							                    	<td class="opt-tl"><a href="javascript:void(0);" onclick="board_mod('${resultList.idx}');" class="link">${resultList.assignment_name}</a></td>
 							                    	<td>${resultList.point_sum}</td>
 							                    	<td>${resultList.point_cnt}</td>
 							                    	<td>${resultList.point}</td>
@@ -102,6 +102,9 @@
 			function search(){
 				$("#search_fm").attr("action", "/judge/judge_list.do");
 				$("#search_fm").submit();
+			}
+			function board_mod(idx){
+				location.href= "/team/team_register.do?idx="+ idx;
 			}
 		</script>
             

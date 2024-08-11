@@ -53,7 +53,7 @@
                             <td><input type="number" name="point_3" id="point_3" required placeholder="점수를 입력하세요"></td>
                         </tr>
                         <tr>
-                            <td>사업화 가능성</td>
+                            <td>적합성</td>
                             <td>
                                 <p><span>•</span> 대회 취지, 주제와의 적합성</p>
                             </td>
@@ -191,8 +191,6 @@
 				console.log("에러")
 			}
 		});	
-    	
-    	
     });
     function go_list(){
         if(confirm("창을 닫으면 입력한 정보는 저장되지 않습니다.")){
@@ -204,7 +202,5 @@
     	point_sum()
     })
     
-    $(document).ready(function(){
-    	point_sum()
-    });
+    
 </script>

@@ -373,6 +373,18 @@ public class PictServiceImpl extends EgovAbstractServiceImpl implements PictServ
 		pictMapper.get_judge_insert(pictVO);
 	}
 
+	@Override
+	public void get_over(PictVO pictVO) throws Exception {
+		// TODO Auto-generated method stub
+		pictMapper.get_over(pictVO);
+	}
+
+	@Override
+	public int is_over(PictVO pictVO) throws Exception {
+		// TODO Auto-generated method stub
+		return pictMapper.is_over(pictVO);
+	}
+
 
 
 	

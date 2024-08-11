@@ -143,5 +143,9 @@ public interface PictService {
 
 	void get_judge_insert(PictVO pictVO) throws Exception;
 
+	void get_over(PictVO pictVO) throws Exception;
+
+	int is_over(PictVO pictVO) throws Exception;
+
 
 }

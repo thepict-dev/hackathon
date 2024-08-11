@@ -359,6 +359,36 @@ public class pictController {
 		
 		return "pict/audit/audit_lists";
 	}
+	//팀리스트 ajax
+	@RequestMapping("/get_team_list_ajax.do")
+	@ResponseBody
+	public HashMap<String, Object> get_team_list_ajax(@ModelAttribute("pictVO") PictVO pictVO, ModelMap model, HttpServletRequest request, @RequestBody Map<String, Object> param) throws Exception {	
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		String user_idx = request.getSession().getAttribute("user_idx").toString();
+		
+		if(user_idx == null) {
+			map.put("status", "logout");
+			return map;
+		}
+		else {
+			map.put("status", "login");
+			pictVO.setUser_idx(user_idx);
+			List<PictVO> team_list = pictService.team_judge_list(pictVO);
+			
+			List<PictVO> subject_list = pictService.subject_list(pictVO);
+			String arr[] = subject_list.get(0).getUser_assignment_id().split(",");
+			
+			if(team_list.size() > 0) {
+				map.put("list", team_list);
+				map.put("arr",arr);
+			}
+			else {
+				return map;
+			}
+		}
+		return map;
+	}
+	
 	//팀리스트
 	@RequestMapping(value = "/audit_team_list.do")
 	public String audit_team_list(@ModelAttribute("searchVO") PictVO pictVO, HttpServletRequest request, ModelMap model, HttpSession session, RedirectAttributes rttr) throws Exception {
@@ -463,6 +493,69 @@ public class pictController {
 		}
 		return map;
 	}
+	//최종제출
+	@RequestMapping("/judge_over.do")
+	@ResponseBody
+	public HashMap<String, Object> judge_over(@ModelAttribute("pictVO") PictVO pictVO, ModelMap model, HttpServletRequest request, @RequestBody Map<String, Object> param) throws Exception {	
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		String user_idx = request.getSession().getAttribute("user_idx").toString();
+		try {
+			if(user_idx == null) {
+				map.put("status", "logout");
+				return map;
+			}
+			else {
+				map.put("status", "login");
+				pictVO.setUser_idx(user_idx);
+				String file_url = param.get("file_url").toString();
+				pictVO.setFile_url(file_url);
+				
+				pictService.get_over(pictVO);
+				
+				map.put("rst", "Y");	
+			}
+		}
+		catch(Exception e) {
+			map.put("rst", "N");
+		}
+		
+		return map;
+	}
+	
+	//최종제출  여부
+	@RequestMapping("/is_over.do")
+	@ResponseBody
+	public HashMap<String, Object> is_over(@ModelAttribute("pictVO") PictVO pictVO, ModelMap model, HttpServletRequest request, @RequestBody Map<String, Object> param) throws Exception {	
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		String user_idx = request.getSession().getAttribute("user_idx").toString();
+		try {
+			if(user_idx == null) {
+				map.put("status", "logout");
+				return map;
+			}
+			else {
+				map.put("status", "login");
+				pictVO.setUser_idx(user_idx);
+
+				int cnt = pictService.is_over(pictVO);
+				if(cnt > 0) {
+					map.put("rst", "Y");
+				}
+				else {
+					map.put("rst", "N");
+				}
+					
+			}
+		}
+		catch(Exception e) {
+			map.put("rst", "N");
+		}
+		
+		return map;
+	}
+	
+	
+	
 	//팀별 점수저장
 	@RequestMapping("/get_judge_save.do")
 	@ResponseBody

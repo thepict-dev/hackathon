@@ -154,11 +154,26 @@ public class PictVO extends PictDefaultVO {
 	private String point_2;
 	private String point_3;
 	private String point_4;
+	private String point_sum;
 	private String is_judge;
 	private String user_idx;
 	private String user_assignment_id;
+	private String img_url;
 	
 	
+	
+	public String getImg_url() {
+		return img_url;
+	}
+	public void setImg_url(String img_url) {
+		this.img_url = img_url;
+	}
+	public String getPoint_sum() {
+		return point_sum;
+	}
+	public void setPoint_sum(String point_sum) {
+		this.point_sum = point_sum;
+	}
 	public String getUser_assignment_id() {
 		return user_assignment_id;
 	}

@@ -282,13 +282,18 @@
 	</select>
 	
 	<select id="team_judge_list" resultType="pictVO">
-		select t.idx, t.assignment_name, t.local, t.title
+		select t.idx, t.assignment_id,  t.assignment_name, t.local, t.title
 		, ifnull((select point_1 from judge_table j where user_idx = #{user_idx} and j.team_id = t.idx), 0) as point_1
 		, ifnull((select point_2 from judge_table j where user_idx = #{user_idx} and j.team_id = t.idx), 0) as point_2
 		, ifnull((select point_3 from judge_table j where user_idx = #{user_idx} and j.team_id = t.idx), 0) as point_3
 		, ifnull((select point_4 from judge_table j where user_idx = #{user_idx} and j.team_id = t.idx), 0) as point_4
+		, ifnull((select point_1 from judge_table j where user_idx = #{user_idx} and j.team_id = t.idx), 0) as point_4
+		, ifnull(cast((select ifnull(point_1, 0) + ifnull(point_2, 0) + ifnull(point_3, 0) + ifnull(point_4, 0) from judge_table j where user_idx = #{user_idx} and j.team_id = t.idx) as  unsigned) , 0) as point_sum
 		from team_table t 
-		where t.assignment_id = #{assignment_id}
+		where 1=1 
+		<if test="assignment_id != null and assignment_id != ''">
+			and t.assignment_id = #{assignment_id}
+		</if>
 	</select>
 	
 	<select id="get_judge_info" resultType="pictVO">
@@ -318,5 +323,21 @@
 		,reg_date = now()
 		where team_id =#{team_id} and user_idx = #{user_idx}
 	</update>
+	
+	
+	<insert id="get_over" parameterType="pictVO">
+		INSERT INTO judge_over
+			(
+			 user_id, file_url, reg_date
+			)
+		VALUES (
+			 #{user_idx}, #{file_url}, now() 
+			  ) 
+	</insert>
+	
+	<select id="is_over" resultType="int">
+		select count(*) from judge_over where user_id = #{user_idx}
+	</select>
+	
 	
 </mapper>

@@ -17,8 +17,8 @@
             <h1><a href="/"></a></h1>
             <ul class="nav">
                 <li <c:if test="${fn:contains(currentUrl, 'intro')}">class="active"</c:if>><a href="/intro.do">행사소개</a></li>
-                <li><a href="#lnk" onclick="fn_alert()">멘토소개</a></li>
                 <li <c:if test="${fn:contains(currentUrl, 'notice')}">class="active"</c:if>><a href="/notice.do">행사소식</a></li>
+                <li><a href="https://hktweb.thepict.co.kr" target="_blank">행사장</a></li>
             </ul>
         </div>
         <div class="rightButtons">

@@ -34,6 +34,8 @@
 <c:set var="team_register" value="${fn:indexOf(url, 'team_register')}"/>
 
 <c:set var="file_list" value="${fn:indexOf(url, 'file_list')}"/>
+<c:set var="final_list" value="${fn:indexOf(url, 'final_list')}"/>
+
 
 <c:set var="vote_list" value="${fn:indexOf(url, 'vote_list')}"/>
 <c:set var="judge_list" value="${fn:indexOf(url, 'judge_list')}"/>
@@ -94,6 +96,11 @@
             <div class="collapse <c:if test="${file_list ne -1}">show</c:if>" id="collapseLayouts2" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                 <nav class="sb-sidenav-menu-nested nav">
                     <a class="nav-link <c:if test="${file_list ne -1}">active</c:if>" href="/file/file_list.do">파일함 리스트</a>
+                </nav>
+            </div>
+            <div class="collapse <c:if test="${final_list ne -1}">show</c:if>" id="collapseLayouts2" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
+                <nav class="sb-sidenav-menu-nested nav">
+                    <a class="nav-link <c:if test="${final_list ne -1}">active</c:if>" href="/file/final_list.do">최종제출 리스트</a>
                 </nav>
             </div>
             

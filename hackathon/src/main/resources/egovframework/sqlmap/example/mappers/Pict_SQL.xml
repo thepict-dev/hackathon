@@ -220,15 +220,41 @@
 	
 	<!-- 파일함 -->
 	<select id="file_list" resultType="pictVO">
-		select * from drive_table
+		select t.title, t.assignment_id, u.name, d.*
+		from drive_table d
+		left outer join team_table t on d.team_id = t.idx
+		left outer join user_table u on d.user_id = u.idx
 		where 1=1
-		<if test="search_text != null and search_text != '' ">
-			and (
-				title LIKE CONCAT('%', #{search_text}, '%')
-			) 
+		<if test="assignment_id != null and assignment_id != '' ">
+			and t.assignment_id = #{assignment_id}
+		</if>
+		<if test="team_id != null and team_id != '' ">
+			and t.team_id = #{team_id}
 		</if>
 
 		order by reg_date desc
+	</select>
+	
+	<!-- 파일함 중에 발표자료인거 -->
+	<select id="final_list" resultType="pictVO">
+		SELECT t.title, t.assignment_id, u.name, d.*
+		FROM team_table t
+		LEFT OUTER JOIN (
+		    SELECT d1.*
+		    FROM drive_table d1
+		    JOIN (
+		        SELECT team_id, MAX(reg_date) AS max_reg_date
+		        FROM drive_table
+		        WHERE type = 2
+		        GROUP BY team_id
+		    ) d2 ON d1.team_id = d2.team_id AND d1.reg_date = d2.max_reg_date
+		    WHERE d1.type = 2
+		) d ON t.idx = d.team_id
+		LEFT OUTER JOIN user_table u ON d.user_id = u.idx
+		WHERE t.idx IS NOT NULL
+		<if test="assignment_id != null and assignment_id != '' ">
+			and t.assignment_id = #{assignment_id}
+		</if>
 	</select>
 	
 	
@@ -245,7 +271,7 @@
 
 	<!-- 심사평가 -->	
 	<select id="judge_list" resultType="pictVO">
-		select t.title, t.assignment_id, t.assignment_name, local, award, 
+		select t.idx, t.title, t.assignment_id, t.assignment_name, local, award, 
 		sum(ifnull((point_1 + point_2 + point_3  + point_4), 0)) as point,
 		max(ifnull((point_1 + point_2 + point_3  + point_4), 0)) as max_point,
 		min(ifnull((point_1 + point_2 + point_3  + point_4), 0)) as min_point,

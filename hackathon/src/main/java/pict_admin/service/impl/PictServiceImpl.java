@@ -385,6 +385,12 @@ public class PictServiceImpl extends EgovAbstractServiceImpl implements PictServ
 		return pictMapper.is_over(pictVO);
 	}
 
+	@Override
+	public List<?> final_list(PictVO pictVO) throws Exception {
+		// TODO Auto-generated method stub
+		return pictMapper.final_list(pictVO);
+	}
+
 
 
 	

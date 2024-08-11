@@ -150,6 +150,8 @@ public interface PictMapper {
 
 	int is_over(PictVO pictVO) throws Exception;
 
+	List<?> final_list(PictVO pictVO) throws Exception;
+
 
 
 }

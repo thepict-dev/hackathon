@@ -1140,8 +1140,24 @@ public class pictController {
 		model.addAttribute("size", reference_list.size());
 		model.addAttribute("pictVO", pictVO);
 		
-		return "pict/admin/user_list";
+		return "pict/admin/file_list";
 	}
+	@RequestMapping(value = "/file/final_list.do")
+	public String final_list(@ModelAttribute("searchVO") PictVO pictVO, ModelMap model, HttpServletRequest request) throws Exception {
+		String session = (String)request.getSession().getAttribute("id");
+		if(session == null || session == "null") {
+			return "redirect:/pict_login.do";
+		}
+		pictVO.setUser_id(session);
+	
+		List<?> reference_list = pictService.final_list(pictVO);
+		model.addAttribute("resultList", reference_list);
+		model.addAttribute("size", reference_list.size());
+		model.addAttribute("pictVO", pictVO);
+		
+		return "pict/admin/final_list";
+	}
+	
 	@RequestMapping(value = "/file/file_delete.do")
 	public String file_delete(@ModelAttribute("searchVO") PictVO pictVO, ModelMap model, HttpServletRequest request) throws Exception {
 		String session = (String)request.getSession().getAttribute("id");

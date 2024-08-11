@@ -3,7 +3,7 @@
 <%@ taglib prefix="form"   uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="ui"     uri="http://egovframework.gov/ctl/ui"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+
 
 
 <!DOCTYPE html>
@@ -87,7 +87,7 @@
 
 		<script>
 			$("#search_fm").change(function(){
-				$("#search_fm").attr("action", "/file/file_list.do");
+				$("#search_fm").attr("action", "/file/final_list.do");
 				$("#search_fm").submit();
 			});
 

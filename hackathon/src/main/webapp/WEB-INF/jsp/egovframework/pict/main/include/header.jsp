@@ -41,8 +41,8 @@
         </div>
         <ul class="mbGnb">
             <li><a href="/intro.do">행사소개</a></li>
-            <li><a href="#lnk" onclick="fn_alert()">멘토소개</a></li>
             <li><a href="/notice.do">행사소식</a></li>
+            <li><a href="https://hktweb.thepict.co.kr" target="_blank">행사장</a></li>
             <li><a href="#lnk" onclick="fn_alert()">로그인</a></li>
             <li><button type="button">본선등록</button></li>
         </ul>

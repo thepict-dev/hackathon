@@ -21,9 +21,9 @@
                 <li><a href="https://hktweb.thepict.co.kr" target="_blank">행사장</a></li>
             </ul>
         </div>
-        <div class="rightButtons drive">
+        <div class="rightButtons">
         	<c:if test="${user_idx ne null && user_idx ne '' && user_idx ne undefined}">
-            	<a href="/drive_list.do">드라이브</a>
+            	<a href="/drive_list.do" class="drive">드라이브</a>
            	</c:if>
         	<c:if test="${user_idx ne null && user_idx ne '' && user_idx ne undefined}">
             	<a href="#lnk" onclick="fn_logout()">로그아웃</a>

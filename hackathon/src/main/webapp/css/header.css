@@ -73,7 +73,7 @@ header{
     letter-spacing: -0.9px;
 }
 .rightButtons button, 
-.rightButtons.drive a{
+.rightButtons a.drive{
     color: #fff;
     background-color: #000;
     cursor: pointer;
@@ -94,7 +94,7 @@ header.active .nav li a{
 header.active .nav li.active a{
     color: var(--yellow, #F5E344);
 }
-header.active .rightButtons > a, header.active .rightButtons > button{
+header.active .rightButtons > a, header.active .rightButtons > button, header.active .rightButtons > a.drive{
     border: 1px solid #fff;
     color: #fff;
 }

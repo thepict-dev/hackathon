@@ -242,6 +242,7 @@
     }
     .mbText{
         display: block;
+        padding: 0 30px;
     }
     .introContainer{
         position: relative;
@@ -504,5 +505,407 @@
     }
     .buttonContainer a{
         width: 100%;
+    }
+}
+
+
+/* drive */
+.driveContainer{
+    width: 100%;
+    margin-top: 40px;
+}
+.fileLists{
+    display: flex;
+    flex-direction: column;
+    row-gap: 20px;
+    margin-top: 20px;
+}
+.fileLists li{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 40px;
+    border-bottom: 1px solid #000;
+    transition: all .2s;
+}
+.indexTitle{
+    display: flex;
+    align-items: center;
+    column-gap: 15px;
+    width: calc(100% - 555px);
+}
+.indexTitle p{
+    color: #000;
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 130%; /* 26px */
+    letter-spacing: -1px;
+}
+.indexTitle p:last-of-type{
+    display: block;
+    align-items: center;
+    width: calc(100% - 40px);
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    word-break: break-all;
+}
+.indexTitle p:last-of-type span{
+    display: inline-block;
+    margin: 0 12px 0 0;
+    padding: 8px;
+    border-radius: 4px;
+    background: #1754D5;
+    color: var(--wh, #FFF);
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 130%; /* 18.2px */
+    letter-spacing: -0.7px;
+}
+.fileInfo{
+    display: flex;
+    align-items: center;
+    column-gap: 43px;
+    width: fit-content;
+}
+.fileInfo > a{
+    display: flex;
+    align-items: center;
+    column-gap: 12px;
+    padding: 10px 20px;
+    border-radius: 4px;
+    /* white-space: nowrap; */
+    background: var(--grey-50);
+    color: var(--grey-500);
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 130%; /* 26px */
+    letter-spacing: -1px;
+    transition: all .2s;
+}
+.fileInfo > a::after{
+    content: "";
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    background-image: url(/front_img/file.png);
+    background-size: 24px;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+.fileInfo span{
+    display: flex;
+    column-gap: 20px;
+    color: var(--grey-500);
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 130%; /* 20.8px */
+    letter-spacing: -0.8px;
+    /* white-space: nowrap; */
+}
+.fileLists li:hover{
+    background-color: var(--grey-50);
+}
+.fileLists li:hover .fileInfo > a{
+    color: #FF4800;
+    background-color: #fff;
+}
+.fileLists li:hover .fileInfo > a::after{
+    background-image: url(/front_img/file2.png);
+}
+.fileModify{
+    display: flex;
+    column-gap: 20px;
+    padding-right: 20px;
+}
+.buttonContainer.files{
+    justify-content: flex-end;
+    margin-top: 60px;
+}
+.buttonContainer.files a{
+    position: relative;
+    width: 250px;
+    height: 56px;
+}
+.buttonContainer.files a img{
+    position: absolute;
+    left: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+@media all and (max-width : 610px){
+    .fileLists li{
+        justify-content: unset;
+        align-items: flex-end;
+        flex-direction: column;
+        row-gap: 12px;
+        padding: 16px 12px;
+    }
+    .fileInfo{
+        flex-direction: column;
+        justify-content: flex-start;
+        row-gap: 20px;
+    }
+    .fileLists{
+        display: flex;
+        flex-direction: column;
+        row-gap: 20px;
+        margin-top: 20px;
+        padding: 0 30px;
+    }
+    .indexTitle{
+        column-gap: 12px;
+        width: 100%;
+    }
+    .indexTitle p:last-of-type{
+        width: calc(100% - 30px);
+    }
+    .fileInfo{
+        align-items: flex-end;
+        column-gap: 20px;
+        width: 100%;
+    }
+    .fileInfo > a{
+        justify-content: space-between;
+        width: 100%;
+    }
+    .buttonContainer.files{
+        padding: 0 30px;
+    }
+}
+
+/* drive form */
+.viewTop.drive{
+    padding: 0;
+    border-bottom: 0;
+}
+.driveForm{
+    display: flex;
+    flex-direction: column;
+    row-gap: 24px;
+    max-width: 1330px;
+    width: 100%;
+    margin: 74px auto 0;
+    padding: 20px;
+}
+.tooltipBox{
+    position: relative;
+}
+.titleTooltip{
+    display: flex;
+    align-items: center;
+    column-gap: 4px;
+    margin-bottom: 20px;
+}
+.titleTooltip .inputCaption{
+    margin-bottom: 0;
+}
+.titleTooltip button{
+    display: block;
+    width: 20px;
+    height: 20px;
+    padding: 0;
+    cursor: pointer;
+}
+.titleTooltip button img{
+    width: 100%;
+    height: 100%;
+}
+.tooltipDesc{
+    display: none;
+    position: absolute;
+    left: 20px;
+    top: 0;
+    width: 260px;
+    padding: 12px 10px;
+    border: 1px solid var(--grey-100);
+    box-shadow: 0px 4px 16.6px 0px rgba(0, 0, 0, 0.12);
+    background-color: #fff;
+}
+.tooltipDesc p{
+    display: flex;
+    column-gap: 5px;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 130%; /* 18px */
+    letter-spacing: -0.9px;
+}
+
+.fileContainer{
+    display: flex;
+    flex-direction: column;
+}
+#dropArea{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 374px;
+    margin-bottom: 20px;
+    border: 1px solid var(--grey-100);
+    background-color: var(--grey-50);
+}
+.dropText{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    row-gap: 12px;
+    width: 100%;
+    /* height: 100%; */
+}
+.dropText p{
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 140%; /* 22.4px */
+    letter-spacing: -0.8px;
+}
+.dropText p:first-of-type{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 162px;
+    height: 44px;
+    border: 1px solid var(--grey-200);
+    cursor: pointer;
+}
+#fileNameContainer{
+    display: none;
+    align-items: center;
+    column-gap: 20px;
+    width: fit-content;
+    margin-bottom: 12px;
+    padding: 12px 20px;
+    border-radius: 999px;
+    border: 1px solid var(--grey-500);
+    color: #475569;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 100%; /* 14px */
+}
+#removeFile{
+    display: block;
+    width: 20px;
+    height: 20px;
+    padding: 0;
+    cursor: pointer;
+}
+#removeFile img{
+    width: 100%;
+    height: 100%;
+}
+
+.fileDesc li{
+    display: flex;
+    column-gap: 6px;
+    color: var(--grey-500);
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 140%; /* 19.6px */
+    letter-spacing: -0.7px;
+}
+
+
+.applyButton{
+    display: flex;
+    justify-content: center;
+    column-gap: 20px;
+    width: 100%;
+    padding: 12px 0 20px 0;
+}
+.applyButton a{
+    display: flex;
+    width: 206px;
+    height: 56px;
+    padding: 8px;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    border: 1px solid var(--grey-grey-100, #DBDEE2);
+    background: var(--wh, #FFF);
+    font-family: var(--fn-suit);
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 170%; /* 23.8px */
+    letter-spacing: -0.7px;
+}
+.applyButton a.nextButton{
+    color: #fff;
+    background-color: #1754D5;
+}
+
+@media all and (max-width: 1024px){
+    .driveForm{
+        margin: 58px auto 0;
+        padding: 0;
+    }
+    
+    .dropText p:last-of-type{
+        display: none;
+    }
+    #fileNameContainer{
+        display: none;
+        align-items: center;
+        column-gap: 20px;
+        width: fit-content;
+        margin-bottom: 12px;
+        padding: 12px 20px;
+        border-radius: 999px;
+        border: 1px solid var(--grey-500);
+        color: #475569;
+        font-size: 14px;
+        font-weight: 500;
+        line-height: 100%; /* 14px */
+    }
+    #dropArea{
+        margin-bottom: 12px;
+    }
+    #removeFile{
+        display: block;
+        width: 20px;
+        height: 20px;
+        cursor: pointer;
+    }
+    #removeFile img{
+        width: 100%;
+        height: 100%;
+    }
+    
+    .fileDesc li{
+        color: var(--grey-500);
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 140%; /* 19.6px */
+        letter-spacing: -0.7px;
+    }
+    
+    
+    .applyButton{
+        display: flex;
+        justify-content: center;
+        column-gap: 20px;
+        width: 100%;
+        padding: 46px 0 0 0;
+    }
+    .applyButton a{
+        display: flex;
+        width: 157px;
+        height: 56px;
+        padding: 8px;
+        justify-content: center;
+        align-items: center;
+        gap: 8px;
+        border: 1px solid var(--grey-grey-100, #DBDEE2);
+        background: var(--wh, #FFF);
+        font-family: var(--fn-suit);
+        font-size: 14px;
+        font-weight: 500;
+        line-height: 170%; /* 23.8px */
+        letter-spacing: -0.7px;
+    }
+    .applyButton a.nextButton{
+        color: #fff;
+        background-color: #1754D5;
     }
 }

@@ -72,7 +72,8 @@ header{
     line-height: 100%; /* 18px */
     letter-spacing: -0.9px;
 }
-.rightButtons button{
+.rightButtons button, 
+.rightButtons.drive a{
     color: #fff;
     background-color: #000;
     cursor: pointer;

@@ -100,10 +100,20 @@ public class pictController {
 		model.addAttribute("pictVO", pictVO);
 		return "pict/main/news_view";
 	}
+	//드라이브
+	@RequestMapping(value = "/drive_list.do")
+	public String drive_list(@ModelAttribute("searchVO") AdminVO adminVO, HttpServletRequest request, ModelMap model, HttpSession session, RedirectAttributes rttr) throws Exception {
+		
+		return "pict/main/drive_list";
+	}
+	//드라이브 폼
+	@RequestMapping(value = "/drive_form.do")
+	public String drive_form(@ModelAttribute("searchVO") AdminVO adminVO, HttpServletRequest request, ModelMap model, HttpSession session, RedirectAttributes rttr) throws Exception {
+		
+		return "pict/main/drive_form";
+	}
 	
 	//사전등록
-	
-	
 	@RequestMapping("/password_compare.do")
 	@ResponseBody
 	public HashMap<String, Object> password_compare(@ModelAttribute("pictVO") PictVO pictVO, ModelMap model, HttpServletRequest request, @RequestBody Map<String, Object> param) throws Exception {	

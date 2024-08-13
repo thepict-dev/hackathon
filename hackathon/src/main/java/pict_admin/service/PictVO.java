@@ -163,10 +163,22 @@ public class PictVO extends PictDefaultVO {
 	private String user_idx;
 	private String user_assignment_id;
 	private String img_url;
-	
-	
+	private String team_title;
+	private String mainy;
 	
 
+	public String getMainy() {
+		return mainy;
+	}
+	public void setMainy(String mainy) {
+		this.mainy = mainy;
+	}
+	public String getTeam_title() {
+		return team_title;
+	}
+	public void setTeam_title(String team_title) {
+		this.team_title = team_title;
+	}
 	public int getPoint_1() {
 		return point_1;
 	}

@@ -152,6 +152,14 @@ public interface PictMapper {
 
 	List<?> final_list(PictVO pictVO) throws Exception;
 
+	PictVO file_list_one(PictVO pictVO) throws Exception;
+
+	void drive_update(PictVO pictVO) throws Exception;
+
+	void drive_insert(PictVO pictVO) throws Exception;
+
+	PictVO team_info(PictVO pictVO) throws Exception;
+
 
 
 }

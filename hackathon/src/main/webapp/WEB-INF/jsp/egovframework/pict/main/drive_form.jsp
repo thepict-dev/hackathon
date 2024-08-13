@@ -21,11 +21,12 @@
 	                            <p>파일올리기</p>
 	                        </div>
 	                    </div>
-	                    <form action="" class="driveForm">
+	                    <form action="" id="register" name="register" method="post" enctype="multipart/form-data" class="driveForm">
+	                    	<input type='hidden' name="saveType" id="saveType" value='${pictVO.saveType}' /> 
 	                        <div class="inputContainer">
 	                            <div class="inputBox per">
 	                                <p class="inputCaption">제목</p>
-	                                <input type="text" name="file_title" id="file_title" placeholder="제목을 입력하세요" style="max-width: 979px;">
+	                                <input type="text" name="title" id="title" placeholder="제목을 입력하세요" style="max-width: 979px;" value="${pictVO.title}">
 	                            </div>
 	                        </div>
 	                        <div class="inputContainer">
@@ -42,11 +43,11 @@
 	                                </div>
 	                                <div class="radioContainer">
 	                                    <div class="radioInput">
-	                                        <input type="radio" name="file_type" id="file_type1">
+	                                        <input type="radio" name="type" id="file_type1" value="1" <c:if test="${pictVO.type eq '1' || pictVO.type eq 1}">checked</c:if>>
 	                                        <label for="file_type1">일반파일</label>
 	                                    </div>
 	                                    <div class="radioInput">
-	                                        <input type="radio" name="file_type" id="file_type2">
+	                                        <input type="radio" name="type" id="file_type2" value="2" <c:if test="${pictVO.type eq '2' || pictVO.type eq 2}">checked</c:if>>
 	                                        <label for="file_type2">최종파일</label>
 	                                    </div>
 	                                </div>
@@ -61,10 +62,11 @@
 	                                            <p id="choiceFile">파일 선택</p>
 	                                            <p>혹은 파일을 이곳으로 끌어오세요</p>
 	                                        </div>
-	                                        <input type="file" id="file_input" style="display: none;">
+	                                        <input type="file" id="attach_file1" name="attach_file1" style="display: none;">
 	                                    </div>
-	                                    <div id="fileNameContainer">
-	                                        <span id="fileName">asdfasdf</span>
+	                                    
+	                                    <div id="fileNameContainer" style="<c:if test="${pictVO.file_url ne '' && pictVO.file_url ne null && pictVO.file_url ne undefined}">display:flex</c:if>">
+	                                        <span id="fileName">${fn:split(pictVO.file_url, "/")[4]}</span>
 	                                        <button id="removeFile" type="button"><img src="/front_img/del-file.png" alt=""></button>
 	                                    </div>
 	                                    <ul class="fileDesc">
@@ -78,16 +80,26 @@
 	                </div>
 	                <div class="applyButton">
 	                    <a href="/drive_list.do" class="prevButton">목록으로</a>
-	                    <a href="#lnk" class="nextButton active">업로드</a>
+	                    <a href="#lnk" class="nextButton active" onclick="button1_click()">업로드</a>
 	                </div>
 	            </div>
 	        </div>
 	    </div>
         <%@include file="./include/footer.jsp" %>
         <script>
+        	function button1_click() {
+        		var text = "등록하시겠습니까?";
+    			if (saveType == 'update') {
+    				text = "수정하시겠습니까?"
+    			}
+		        if (confirm(text)) {
+					$("#register").attr("action", "/drive_save.do");
+					$("#register").submit();
+				}
+        	}
 	        const dropArea = document.getElementById("dropArea");
 	        const choiceFile = document.getElementById("choiceFile");
-	        const fileInput = document.getElementById("file_input");
+	        const fileInput = document.getElementById("attach_file1");
 	        const fileNameContainer = document.getElementById("fileNameContainer");
 	        const fileName = document.getElementById("fileName");
 	        const removeFileBtn = document.getElementById("removeFile");

@@ -220,7 +220,7 @@
 	
 	<!-- 파일함 -->
 	<select id="file_list" resultType="pictVO">
-		select t.title, t.assignment_id, u.name, d.*
+		select t.title as team_title, t.assignment_id, u.name, d.*
 		from drive_table d
 		left outer join team_table t on d.team_id = t.idx
 		left outer join user_table u on d.user_id = u.idx
@@ -229,7 +229,7 @@
 			and t.assignment_id = #{assignment_id}
 		</if>
 		<if test="team_id != null and team_id != '' ">
-			and t.team_id = #{team_id}
+			and t.idx = #{team_id}
 		</if>
 
 		order by reg_date desc
@@ -260,6 +260,9 @@
 	
 	<delete id="file_delete" parameterType="pictVO">
 		delete from drive_table where idx = #{idx}
+		<if test="mainy != null and mainy != '' ">
+			and team_id = #{team_id}
+		</if>
 	</delete>
 	
 	<!-- 청중투표 -->
@@ -374,5 +377,41 @@
 		select count(*) from judge_over where user_id = #{user_idx}
 	</select>
 	
+	<select id="file_list_one" resultType="pictVO">
+		select * from drive_table
+		where user_id = #{user_id} and team_id = #{team_id} and idx = #{idx}
+	</select>
+	
+	
+	<insert id="drive_insert" parameterType="pictVO">
+		INSERT INTO drive_table
+			(
+			 user_id, team_id, title, type, img_url, file_url, reg_date
+			)
+		VALUES (
+			 #{user_id}, #{team_id},  #{title}, #{type}, #{img_url}, #{file_url}, now() 
+			  ) 
+	</insert>
+	
+	<update id="drive_update" parameterType="pictVO">
+		update drive_table
+		set title = #{title}
+		,type = #{type}
+		<if test="img_url != null and img_url != ''">
+			, img_url = #{img_url}
+		</if>
+		<if test="file_url != null and file_url != ''">
+			, file_url = #{file_url}
+		</if>
+		,reg_date = now()
+		where team_id =#{team_id} and user_id = #{user_id}
+	</update>
+	
+	<select id="team_info" resultType="pictVO">
+		select t.*
+        from team_table t
+        left outer join user_table u on t.idx = u.team_id
+        where u.idx = #{user_id}
+	</select>
 	
 </mapper>

@@ -102,15 +102,100 @@ public class pictController {
 	}
 	//드라이브
 	@RequestMapping(value = "/drive_list.do")
-	public String drive_list(@ModelAttribute("searchVO") AdminVO adminVO, HttpServletRequest request, ModelMap model, HttpSession session, RedirectAttributes rttr) throws Exception {
+	public String drive_list(@ModelAttribute("searchVO") PictVO pictVO, HttpServletRequest request, ModelMap model, HttpSession session, RedirectAttributes rttr) throws Exception {
+		String sessions = (String)request.getSession().getAttribute("user_idx");
+		String team_id = (String)request.getSession().getAttribute("team_id");
+		if(sessions == null || sessions == "null") {
+			return "pict/main/user_login";
+		}
+		pictVO.setTeam_id(team_id);
+		List<?> reference_list = pictService.file_list(pictVO);
+		model.addAttribute("resultList", reference_list);
+		
+		pictVO.setUser_id(sessions);
+		pictVO = pictService.team_info(pictVO);
+		model.addAttribute("pictVO", pictVO);
 		
 		return "pict/main/drive_list";
 	}
 	//드라이브 폼
 	@RequestMapping(value = "/drive_form.do")
-	public String drive_form(@ModelAttribute("searchVO") AdminVO adminVO, HttpServletRequest request, ModelMap model, HttpSession session, RedirectAttributes rttr) throws Exception {
+	public String drive_form(@ModelAttribute("searchVO") PictVO pictVO, HttpServletRequest request, ModelMap model, RedirectAttributes rttr) throws Exception {
+		String session = (String)request.getSession().getAttribute("user_idx");
+		if(session == null || session == "null") {
+			return "pict/main/user_login";
+		}
 		
+		if(pictVO.getIdx() != 0) {
+			//수정
+			String team_id = (String)request.getSession().getAttribute("team_id");
+			pictVO.setTeam_id(team_id);
+			pictVO.setUser_id(session);
+			pictVO = pictService.file_list_one(pictVO);
+			pictVO.setSaveType("update");
+			
+		}
+		else {
+			pictVO.setSaveType("insert");
+		}
+		
+		model.addAttribute("pictVO", pictVO);
 		return "pict/main/drive_form";
+	}
+	@RequestMapping(value = "/drive_save.do", method = RequestMethod.POST)
+	public String drive_save(@ModelAttribute("searchVO") PictVO pictVO, ModelMap model, MultipartHttpServletRequest request,
+			@RequestParam("attach_file1") MultipartFile attach_file1) throws Exception {
+		String sessions = (String)request.getSession().getAttribute("user_idx");
+		if(sessions == null || sessions == "null") {
+			return "pict/main/user_login";
+		}
+		String team_id = (String)request.getSession().getAttribute("team_id");
+		
+		if(attach_file1.getSize() != 0) {	//첨부파일
+			String uploadPath = fileUpload(request, attach_file1, (String)request.getSession().getAttribute("id"));
+			String filepath = "/user1/upload_file/hackathon/team/";
+			String filename = uploadPath.split("#####")[1];
+			pictVO.setFile_url(filepath+filename);
+		}
+
+		pictVO.setTeam_id(team_id);
+		pictVO.setUser_id(sessions);
+		
+		if(pictVO.getSaveType() != null && pictVO.getSaveType().equals("update")) {
+			pictService.drive_update(pictVO);
+			model.addAttribute("message", "정상적으로 수정되었습니다.");
+			model.addAttribute("retType", ":location");
+			model.addAttribute("retUrl", "/drive_list.do");
+			return "pict/admin/message";
+		}
+		else {
+			pictService.drive_insert(pictVO);
+			model.addAttribute("message", "정상적으로 저장되었습니다.");
+			model.addAttribute("retType", ":location");
+			model.addAttribute("retUrl", "/drive_list.do");
+			return "pict/admin/message";	
+		}
+		
+	}	
+	
+	//드라이브 삭제
+	@RequestMapping(value = "/drive_delete.do")
+	public String drive_delete(@ModelAttribute("searchVO") PictVO pictVO, ModelMap model, HttpServletRequest request) throws Exception {
+		String session = (String)request.getSession().getAttribute("user_idx");
+		if(session == null || session == "null") {
+			return "pict/main/user_login";
+		}
+		
+		String team_id = (String)request.getSession().getAttribute("team_id");
+		pictVO.setMainy("main");
+		pictVO.setTeam_id(team_id);
+		pictService.file_delete(pictVO);
+		
+		model.addAttribute("message", "정상적으로 삭제되었습니다.");
+		model.addAttribute("retType", ":location");
+		model.addAttribute("retUrl", "/drive_list.do");
+		return "pict/admin/message";
+		
 	}
 	
 	//사전등록
@@ -663,6 +748,7 @@ public class pictController {
 		
 			if(inpuId.equals(pictVO.getName()) && inputMobile.equals(pictVO.getMobile())) {
 				request.getSession().setAttribute("user_idx", pictVO.getIdx()+"");
+				request.getSession().setAttribute("team_id", pictVO.getTeam_id());
 				request.getSession().setAttribute("name", pictVO.getName());
 				request.getSession().setAttribute("mobile", pictVO.getMobile());
 				request.getSession().setAttribute("company", pictVO.getCompany());

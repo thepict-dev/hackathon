@@ -67,7 +67,7 @@
 							                    	<td>${resultList.title}</td>
 							                    	<td>${resultList.name}</td>
 							                    	<td>
-							                    		<a href="https://www.swhackathon.kr${resultList.file_url }" target="_blank">${fn:split(resultList.file_url,'/')[4]}</a>
+							                    		<a href="${resultList.file_url }" download target="_blank">${fn:split(resultList.file_url,'/')[3]}</a>
 						                    		</td>
 							                    	<td>${resultList.reg_date}</td>
 								                </tr>

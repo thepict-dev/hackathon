@@ -37,7 +37,7 @@
 	                                	</p>
 		                            </div>
 		                            <div class="fileInfo">
-		                                <a href="${resultList.file_url}" download>${fn:split(resultList.file_url, "/")[4]}</a>
+		                                <a href="${resultList.file_url}" download>${fn:split(resultList.file_url, "/")[3]}</a>
 		                                <span><span>${resultList.name}</span>${resultList.reg_date}</span>
 		                                <div class="fileModify">
 		                                    <a href="#lnk" onclick="drive_mod('${resultList.idx}', '${resultList.user_id}')"><img src="/front_img/edit.png" alt="수정"></a>

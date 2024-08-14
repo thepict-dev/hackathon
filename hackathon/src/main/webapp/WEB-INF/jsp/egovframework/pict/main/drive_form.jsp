@@ -66,7 +66,7 @@
 	                                    </div>
 	                                    
 	                                    <div id="fileNameContainer" style="<c:if test="${pictVO.file_url ne '' && pictVO.file_url ne null && pictVO.file_url ne undefined}">display:flex</c:if>">
-	                                        <span id="fileName">${fn:split(pictVO.file_url, "/")[4]}</span>
+	                                        <span id="fileName">${fn:split(pictVO.file_url, "/")[3]}</span>
 	                                        <button id="removeFile" type="button"><img src="/front_img/del-file.png" alt=""></button>
 	                                    </div>
 	                                    <ul class="fileDesc">

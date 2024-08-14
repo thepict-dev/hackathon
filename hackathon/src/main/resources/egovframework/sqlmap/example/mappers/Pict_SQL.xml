@@ -317,6 +317,7 @@
 		from team_table t
 		left outer join user_table u ON u.assignment_id LIKE CONCAT('%', t.assignment_id, '%')
 		where u.idx = #{user_idx}
+		order by order_by asc
 	</select>
 	
 	<select id="team_judge_list" resultType="pictVO">
@@ -332,6 +333,7 @@
 		<if test="assignment_id != null and assignment_id != ''">
 			and t.assignment_id = #{assignment_id}
 		</if>
+		order by order_by asc
 	</select>
 	
 	<select id="get_judge_info" resultType="pictVO">

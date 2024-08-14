@@ -32,7 +32,7 @@
            		<a href="#lnk" onclick="fn_alert()">로그인</a>
            	</c:if>
            	
-            <button type="button">본선등록</button>
+            <!-- <button type="button">본선등록</button> -->
         </div>
         <button></button>
     </div>
@@ -47,7 +47,7 @@
             <li><a href="/notice.do">행사소식</a></li>
             <li><a href="https://hktweb.thepict.co.kr" target="_blank">행사장</a></li>
             <li><a href="#lnk" onclick="fn_alert()">로그인</a></li>
-            <li><button type="button">본선등록</button></li>
+            <!-- <li><button type="button">본선등록</button></li> -->
         </ul>
     </div>
     

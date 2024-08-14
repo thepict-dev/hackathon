@@ -153,7 +153,7 @@ public class pictController {
 		
 		if(attach_file1.getSize() != 0) {	//첨부파일
 			String uploadPath = fileUpload(request, attach_file1, (String)request.getSession().getAttribute("id"));
-			String filepath = "/user1/upload_file/hackathon/team/";
+			String filepath = "/user1/upload_file/hackathon/";
 			String filename = uploadPath.split("#####")[1];
 			pictVO.setFile_url(filepath+filename);
 		}
@@ -1306,7 +1306,6 @@ public class pictController {
 			int min_point = (Integer)reference_list.get(i).getMin_point();
 			int point_cnt = (Integer)reference_list.get(i).getPoint_cnt();
 			
-			System.out.println(i);
 			double dbl = 0.0;
 			if(point_cnt <= 2) {
 				dbl = (double)(judge_point2) / point_cnt;
@@ -1334,7 +1333,6 @@ public class pictController {
 			array.add(map);
 			
 		}
-		System.out.println("끝났어?");
 		
 		array.sort(
 			Comparator.comparing((Map<String, Object> map) -> (double) map.get("point")).reversed()

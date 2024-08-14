@@ -65,6 +65,7 @@
 	            <div class="finalTitles">
 	                <h4>최종 제출 이후 수정이 불가합니다.</h4>
 	                <p>최종 제출을 원하신다면 아래 정보를<br>확인하신 후 ‘최종제출’ 버튼을 눌러주세요.</p>
+	                <p>최종제출 전 제안명 혹은 팀명을 클릭하시면 점수 수정이 가능합니다.</p>
 	            </div>
 	            <ul class="tabNav">
 	            	<c:forEach var="arr" items="${arr}" varStatus="status">

@@ -532,7 +532,7 @@
     display: flex;
     align-items: center;
     column-gap: 15px;
-    width: calc(100% - 555px);
+    width: calc(100% - 800px);
 }
 .indexTitle p{
     color: #000;
@@ -583,6 +583,16 @@
     letter-spacing: -1px;
     transition: all .2s;
 }
+.fileInfo > span{
+    display: flex;
+    column-gap: 20px;
+    color: var(--grey-500);
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 130%; /* 20.8px */
+    letter-spacing: -0.8px;
+    /* white-space: nowrap; */
+}
 .fileInfo > a::after{
     content: "";
     display: inline-block;
@@ -593,7 +603,7 @@
     background-repeat: no-repeat;
     background-position: center;
 }
-.fileInfo span{
+.fileInfo > span{
     display: flex;
     column-gap: 20px;
     color: var(--grey-500);
@@ -668,6 +678,15 @@
     .fileInfo > a{
         justify-content: space-between;
         width: 100%;
+    }
+    .fileInfo > a span{
+        display: inline-block;
+        overflow: visible;
+        white-space: wrap;
+        text-overflow: ellipsis;
+        word-break: break-all;
+        max-width: unset;
+        width: calc(100% - 24px);
     }
     .buttonContainer.files{
         padding: 0 30px;

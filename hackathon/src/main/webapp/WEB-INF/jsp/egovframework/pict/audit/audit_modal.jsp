@@ -77,19 +77,28 @@
 </div>
 <script>
 	function point_sum(){
-		var point_1 = Number($('#point_1').val())
-	    var point_2 = Number($('#point_2').val())
-	    var point_3 = Number($('#point_3').val())
-	    var point_4 = Number($('#point_4').val())
+	    var point_1 = Math.min(Number($('#point_1').val()) || 0, 30);
+	    var point_2 = Math.min(Number($('#point_2').val()) || 0, 30);
+	    var point_3 = Math.min(Number($('#point_3').val()) || 0, 20);
+	    var point_4 = Math.min(Number($('#point_4').val()) || 0, 20);
+	    
 	    $('#whole_score').val(point_1 + point_2 + point_3 + point_4)
 	}
 	function point_reset(){
-		$('#point_1').val("")
-		$('#point_2').val("")
-		$('#point_3').val("")
-		$('#point_4').val("")
-		$('#whole_score').val("")
+	    $('#point_1, #point_2, #point_3, #point_4, #whole_score').val("");
 	}
+	
+	$('[id^="point_"]').on('input', function() {
+	    var max = $(this).attr('id') === 'point_1' || $(this).attr('id') === 'point_2' ? 30 : 20;
+	    if (Number($(this).val()) > max) {
+	        $(this).val(max);
+	    }
+	    point_sum();
+	});
+	
+	$(document).ready(function(){
+	    point_sum();
+	});
 	// 체점 모달 -> 확인 모달 종료 & 열기
     $('#close_score').click(function() {
     	if(confirm("입력한 데이터는 저장되지 않고 리스트로 돌아갑니다.")){

@@ -37,7 +37,7 @@
 				<ul class="listBody">
 					<c:forEach var="team_list" items="${team_list}" varStatus="status">
 						<li>
-						    <a href="#lnk" onclick="fn_team_modal('${team_list.idx}', '${team_list.assignment_name}')">
+						    <a href="#lnk" onclick="fn_team_modal('${team_list.idx}', '${team_list.assignment_name}', '${team_list.title}')">
 								<p>${status.count}</p>
 								<p class="grey">
 									<c:if test="${assignment_id eq 1 || assignment_id eq '1'}">자유과제</c:if>
@@ -81,6 +81,7 @@
 	                <p>성공적으로 저장했습니다.</p>
 	                <div class="confirmText">
 	                    <p id="confirm_assignment"></p>
+	                    <span id="confirm_teamName"></span>
 	                </div>
 	            </div>
 	            <div class="buttonsContainer">
@@ -91,6 +92,8 @@
 	    </div>
 	    <input type="hidden" name="idx" id="idx">
 	    <input type="hidden" name="txt_assignment_name" id="txt_assignment_name">
+	    <input type="hidden" name="txt_team_name" id="txt_team_name">
+	    
     </body>
     <script>
     	function assignment_send(){
@@ -100,10 +103,11 @@
     	}
     	
     	
-    	function fn_team_modal(idx, assignment_name){
+    	function fn_team_modal(idx, assignment_name, title){
     		$('#idx').val(idx);
     		$('#assignment_name').text(assignment_name)
     		$('#txt_assignment_name').val(assignment_name)
+    	    $('#txt_team_name').val(title)  // 팀 이름
     		var param ={
     			team_id : idx
     		}
@@ -133,6 +137,8 @@
 						else{
 							$('#score_modal').css('display', 'flex');
 						}
+		                // 확인 모달에 팀 이름 설정
+		                $('#confirm_teamName').text($('#txt_team_name').val());
 					}
 								
 				}

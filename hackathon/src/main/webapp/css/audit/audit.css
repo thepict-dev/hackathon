@@ -742,7 +742,7 @@
 
 .listHead.finals{
     display: grid;
-    grid-template-columns: 10% 7% 53% 20% 10%;
+    grid-template-columns: 10% 60% 20% 10%;
     width: 100%;
     margin-bottom: 8px;
     padding: 20px;
@@ -753,7 +753,7 @@
     text-align: left;
 }
 .listBody.finals li a{
-    grid-template-columns: 10% 7% 53% 20% 10%;
+    grid-template-columns: 10% 60% 20% 10%;
     text-align: left;
 }
 .listBody.finals li p{

@@ -438,10 +438,10 @@
         padding: 40px 60px;
     }
     .listHead{
-        grid-template-columns: 9% 9% 6% 55% 12% 9%;
+        grid-template-columns: 9% 12% 40% 27% 12%;
     }
     .listBody li a{
-        grid-template-columns: 9% 9% 6% 55% 12% 9%;
+        grid-template-columns: 9% 12% 40% 27% 12%;
     }
 }
 @media all and (max-width : 1587px){
@@ -449,13 +449,13 @@
         padding: 40px 20px;
     }
     .listHead{
-        grid-template-columns: 9% 10% 6% 54% 12% 9%;
+        grid-template-columns: 9% 12% 40% 27% 12%;
     }
     .listHead li{
         font-size: 18px;
     }
     .listBody li a{
-        grid-template-columns: 9% 10% 6% 54% 12% 9%;
+        grid-template-columns: 9% 12% 40% 27% 12%;
     }
     .listBody li a p{
         font-size: 16px;
@@ -463,53 +463,36 @@
 }
 @media all and (max-width : 1305px){
     .listHead{
-        grid-template-columns: 9% 10% 6% 52% 12% 11%;
+        grid-template-columns: 9% 12% 40% 27% 12%;
     }
     .listHead li{
         font-size: 18px;
     }
     .listBody li a{
-        grid-template-columns: 9% 10% 6% 52% 12% 11%;
+        grid-template-columns: 9% 12% 40% 27% 12%;
     }
     .listBody li a p{
         font-size: 16px;
     }
 }
 @media all and (max-width : 1216px){
-    .listHead{
-        grid-template-columns: 9% 12% 6% 50% 12% 11%;
-    }
+
     .listHead li{
         font-size: 18px;
-    }
-    .listBody li a{
-        grid-template-columns: 9% 12% 6% 50% 12% 11%;
     }
     .listBody li a p{
         font-size: 16px;
     }
 }
 @media all and (max-width : 1079px){
-    .listHead{
-        grid-template-columns: 9% 12% 6% 50% 12% 11%;
-    }
     .listHead li{
         font-size: 16px;
-    }
-    .listBody li a{
-        grid-template-columns: 9% 12% 6% 50% 12% 11%;
     }
     .listBody li a p{
         font-size: 14px;
     }
 }
 @media all and (max-width : 1000px){
-    .listHead{
-        grid-template-columns: 10% 14% 6% 47% 12% 11%;
-    }
-    .listBody li a{
-        grid-template-columns: 10% 14% 6% 47% 12% 11%;
-    }
 }
 
 /* modal */

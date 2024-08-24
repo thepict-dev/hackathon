@@ -178,7 +178,6 @@
 										'<div class="scroll">'+
 							            '<ul class="listHead finals">'+
 				                        '<li>순서</li>'+
-				                        '<li>지역</li>'+
 				                        '<li>제안명</li>'+
 				                        '<li>팀명</li>'+
 				                        '<li>평가점수</li>'+
@@ -205,7 +204,7 @@
 							                    	}
 								                    
 								                    
-					                                html += '<p>'+data.list[j].local+'</p>'+
+					                                html += 
 					                                '<p class="ellip">'+data.list[j].assignment_name+'</p>'+
 					                                '<p class="ellip">'+data.list[j].title+'</p>'+
 					                                '<p class="scored">'+data.list[j].point_sum+'</p>'+

@@ -29,7 +29,6 @@
 				<ul class="listHead">
 					<li>순서</li>
 					<li>구분</li>
-					<li>지역</li>
 					<li>제안명</li>
 					<li>팀명</li>
 					<li>평가점수</li>
@@ -44,7 +43,6 @@
 									<c:if test="${assignment_id eq 2 || assignment_id eq '2'}">지정과제①</c:if>
 									<c:if test="${assignment_id eq 3 || assignment_id eq '3'}">지정과제②</c:if>
 								</p>
-								<p>강원</p>
 								<p class="ellip">${team_list.assignment_name}</p>
 								<p class="ellip">${team_list.title}</p>
 								

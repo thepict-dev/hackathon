@@ -49,7 +49,7 @@
 							                <tr class="thead">
 							                    <th>순서</th>
 							                    <th>과제구분</th>
-							                    <th>팀명</th>
+							                    <th>제목</th>
 							                    <th>등록자</th>
 							                    <th>첨부파일</th>
 							                    <th>등록일</th>
@@ -67,7 +67,7 @@
 							                    	<td>${resultList.title}</td>
 							                    	<td>${resultList.name}</td>
 							                    	<td>
-							                    		<a href="https://www.swhackathon.kr${resultList.file_url }" target="_blank">${fn:split(resultList.file_url,'/')[4]}</a>
+							                    		<a href="https://www.swhackathon.kr${resultList.file_url }" target="_blank">${fn:split(resultList.file_url,'/')[3]}</a>
 						                    		</td>
 							                    	<td>${resultList.reg_date}</td>
 								                </tr>

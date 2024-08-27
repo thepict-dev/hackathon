@@ -22,6 +22,10 @@
 	    	.print-contents{
 		        width: 210mm;
 		        height: 297mm;
+				margin-top: 10mm;
+				margin-bottom: 10mm;
+				margin-left: 10mm;
+				margin-right: 10mm
 		-webkit-print-color-adjust: exact;
 		       	print-color-adjust: exact;
 		       	page-break-after:auto;

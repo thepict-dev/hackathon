@@ -17,16 +17,13 @@
 	    
 		@page {
 		    size: A4;
-		    margin: 0;
 		}
 	    @media print {
 	    	.print-contents{
 		        width: 210mm;
 		        height: 297mm;
-			    margin:0;
-			    padding:0;
-			    page-break-after: avoid;
-			    page-break-before: avoid
+		       	padding: 0;
+		       	margin: 0;
 	    	}
 			.resultInfo{
 			    background: #F3F5F6 !important;
@@ -36,6 +33,27 @@
 			}
 			.printButton{
 				display: none;
+			}
+			.resultContainer > p{
+			    font-size: 22px;
+			}
+			.resultBox > p{
+			    font-size: 14px;
+			}
+			.textLists li p{
+			    min-width: 50px;
+			    font-size: 12px;
+			}
+			.textLists li span{
+			    font-size: 12px;
+			}
+			.resultHead li{
+			    padding-right: 10px;
+			    font-size: 14px;
+			}
+			.resultBody li p{
+			    padding-right: 10px;
+			    font-size: 12px;
 			}
 	    }
     </style>

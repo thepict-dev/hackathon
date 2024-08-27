@@ -16,14 +16,15 @@
 	    /* 프린트용 스타일 */
 	    
 		@page {
-		    size: A4;
+		    size: auto;
 		}
 	    @media print {
 	    	.print-contents{
 		        width: 210mm;
 		        height: 297mm;
-		       	padding: 0;
-		       	margin: 0;
+		-webkit-print-color-adjust: exact;
+		       	print-color-adjust: exact;
+		       	page-break-after:auto;
 	    	}
 			.resultInfo{
 			    background: #F3F5F6 !important;

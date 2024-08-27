@@ -14,9 +14,19 @@
     </c:import>
     <style>
 	    /* 프린트용 스타일 */
+	    
+		@page {
+		    size: A4;
+		    margin: 0;
+		}
 	    @media print {
 	    	.print-contents{
-				
+		        width: 210mm;
+		        height: 297mm;
+			    margin:0;
+			    padding:0;
+			    page-break-after: avoid;
+			    page-break-before: avoid
 	    	}
 			.resultInfo{
 			    background: #F3F5F6 !important;

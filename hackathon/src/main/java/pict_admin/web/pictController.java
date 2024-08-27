@@ -1366,6 +1366,20 @@ public class pictController {
 		return "Y";
 	}	
 	
+	//print
+	@RequestMapping(value = "/print.do")
+	public String print(@ModelAttribute("searchVO") PictVO pictVO, ModelMap model, HttpServletRequest request) throws Exception {
+		String user_idx = request.getParameter("user_idx");
+		pictVO.setUser_idx(user_idx);
+		pictVO = pictService.judge_one(pictVO);
+		
+		pictVO.setUser_idx(user_idx);
+		List<?> reference_list = pictService.judge_final_list(pictVO);
+		
+		model.addAttribute("pictVO", pictVO);
+		model.addAttribute("reference_list", reference_list);
+		return "pict/admin/print_list";
+	}
 	
 	//메소드
 	public static String encryptPassword(String password, String id) throws Exception {

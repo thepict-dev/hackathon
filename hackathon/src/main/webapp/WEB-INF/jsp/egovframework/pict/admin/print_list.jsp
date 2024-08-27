@@ -3,6 +3,7 @@
 <%@ taglib prefix="form"   uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="ui"     uri="http://egovframework.gov/ctl/ui"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 
 
 
@@ -64,22 +65,35 @@
 							            <div class="resultBox">
 							                <p>심사위원</p>
 							                <ul class="textLists">
-							                    <li><p>소속</p><span>더픽트</span></li>
-							                    <li><p>직위</p><span>주임</span></li>
-							                    <li><p>성명</p><span>한지현</span></li>
+							                    <li><p>소속</p><span>${pictVO.company}</span></li>
+							                    <li><p>직위</p><span>${pictVO.depart}</span></li>
+							                    <li><p>성명</p><span>${pictVO.name}</span></li>
 							                </ul>
 							            </div>
 							            <div class="resultBox">
 							                <p>심사대상</p>
 							                <ul class="textLists">
-							                    <li><p>참가구분</p><span>지정과제1</span></li>
+							                	<li><p>참가구분</p><span>
+							                	<c:set var="text" value="${fn:split(pictVO.assignment_id,',')}" />
+											    <c:forEach var="textValue" items="${text}" varStatus="varStatus">
+												    <c:if test="${textValue eq '1' || textValue eq 1}">
+											         	자유과제
+												    </c:if>
+												    <c:if test="${textValue eq '2' || textValue eq 2}">
+											         	, 지정과제1
+												    </c:if>
+												    <c:if test="${textValue eq '3' || textValue eq 3}">
+											         	, 지정과제2
+												    </c:if>
+											    </c:forEach>
+							                    </span></li>
 							                    <li><p>평가일자</p><span>2024-08-25</span></li>
 							                </ul>
 							            </div>
 							            <div class="resultBox">
 							                <p>본인확인 서명</p>
 							                <div class="signImg">
-							                    <img src="/front_img/sign-test.png" alt="">
+							                    <img src="${pictVO.file_url }" alt="">
 							                </div>
 							            </div>
 							        </div>
@@ -95,16 +109,18 @@
 							                <li>합계(100)</li>
 							            </ul>
 							            <ul class="resultBody">
-							                <li>
-							                    <p>01</p>
-							                    <p>선박자동식별시스템(AIS)를 활용한 해양수질 시각화 서비스해양수질 시각화 서비스</p>
-							                    <p>황천길 싫어요</p>
-							                    <p>10</p>
-							                    <p>20</p>
-							                    <p>30</p>
-							                    <p>40</p>
-							                    <p>100</p>
-							                </li>
+							            	<c:forEach var="reference_list" items="${reference_list}" varStatus="status">
+								                <li>
+								                    <p>${status.count }</p>
+								                    <p>${reference_list.assignment_name}</p>
+								                    <p>${reference_list.title}</p>
+								                    <p>${reference_list.point_1}</p>
+								                    <p>${reference_list.point_2}</p>
+								                    <p>${reference_list.point_3}</p>
+								                    <p>${reference_list.point_4}</p>
+								                    <p>${reference_list.point_1 + reference_list.point_2 + reference_list.point_3 + reference_list.point_4}</p>
+								                </li>
+							                </c:forEach>
 							            </ul>
 							        </div>
 							        <div class="printButton">

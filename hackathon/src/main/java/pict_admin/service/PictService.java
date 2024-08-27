@@ -157,6 +157,10 @@ public interface PictService {
 
 	PictVO team_info(PictVO pictVO) throws Exception;
 
+	PictVO judge_one(PictVO pictVO) throws Exception;
+
+	List<?> judge_final_list(PictVO pictVO) throws Exception;
+
 
 
 }

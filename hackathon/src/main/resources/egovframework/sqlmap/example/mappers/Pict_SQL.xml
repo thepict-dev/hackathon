@@ -416,4 +416,22 @@
         where u.idx = #{user_id}
 	</select>
 	
+	
+	<select id="judge_one" resultType="pictVO">
+		select * 
+		from user_table u
+		left outer join judge_over j on u.idx = j.user_id
+ 		where u.idx = #{user_idx}
+	</select>
+	
+	<select id="judge_final_list" resultType="pictVO">
+		SELECT * 
+		from judge_table j
+		left outer join team_table t on t.idx = j.team_id
+		where 1=1
+		and j.user_idx = #{user_idx}
+		order by t.order_by asc
+	</select>
+	
+	
 </mapper>

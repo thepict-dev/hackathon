@@ -27,6 +27,12 @@ body{
     color: #fff;
     overflow: hidden;
 }
+body.print{
+	position: unset;
+    background-color: #fff;
+    height: auto;
+    overflow: visible;
+}
 
 button{
     font-family: var(--fn-suit);

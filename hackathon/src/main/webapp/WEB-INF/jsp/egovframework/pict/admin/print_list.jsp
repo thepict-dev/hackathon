@@ -184,7 +184,7 @@
                 document.body.appendChild(printContainer);
                 
                 // 페이지 나누기
-                const itemsPerPage = 7;
+                const itemsPerPage = 9;
                 for (let i = 0; i < items.length; i += itemsPerPage) {
                     // 페이지 나누기
                     if (i > 0) {

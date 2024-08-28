@@ -1028,3 +1028,6 @@
 .printButton.back{
     justify-content: center;
 }
+.resultTitle{
+	display: none;
+}

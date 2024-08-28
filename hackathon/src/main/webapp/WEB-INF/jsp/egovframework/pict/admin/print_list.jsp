@@ -26,7 +26,7 @@
                 width: 210mm;
                 height: 297mm;
                 margin: 0;
-                padding: 10mm;
+                padding: 30mm 10mm 10mm 10mm;
                 box-sizing: border-box;
                 page-break-after: always;
             }
@@ -57,6 +57,25 @@
                 margin: 0;
                 border: 0;
             }
+			.resultTitle{
+				display: block;
+				width: 100%;
+				position: fixed;
+				text-align: center;
+				top: 15mm;
+				left: 50%;
+				transform: translateX(-50%);
+			    margin-bottom: 20px;
+			    color: #000;
+			    font-size: 20px;
+			    font-style: normal;
+			    font-weight: 500;
+			    line-height: 100%; /* 20px */
+			    letter-spacing: -1px;
+			}
+			.resultTitle span{
+			    font-weight: 700;
+			}
 	    }
     </style>
     <body class="print">
@@ -64,6 +83,7 @@
    	    <div class="resultContainer" id="print-contents">
 	        <p><span>제11회 대한민국 SW융합 해커톤 대회 발표평가 </span>개별 평가 서류</p>
 	        <div class="resultInfo">
+	        	<p class="resultTitle"><span>제11회 대한민국 SW융합 해커톤 대회 발표평가 </span>개별 평가 서류</p>
 	            <div class="resultBox">
 	                <p>심사위원</p>
 	                <ul class="textLists">

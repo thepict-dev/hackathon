@@ -165,8 +165,15 @@ public class PictVO extends PictDefaultVO {
 	private String img_url;
 	private String team_title;
 	private String mainy;
-	
+	private String avg_point;
 
+	
+	public String getAvg_point() {
+		return avg_point;
+	}
+	public void setAvg_point(String avg_point) {
+		this.avg_point = avg_point;
+	}
 	public String getMainy() {
 		return mainy;
 	}

@@ -1298,7 +1298,7 @@ public class pictController {
 		pictVO.setUser_id(session);
 	
 		List<PictVO> reference_list = pictService.judge_list(pictVO);
-		
+		/*
 		ArrayList<Map<String, Object>> array = new ArrayList();
 		for(int i=0; i<reference_list.size(); i++) {
 			int judge_point2 = (Integer)reference_list.get(i).getPoint();
@@ -1337,8 +1337,8 @@ public class pictController {
 		array.sort(
 			Comparator.comparing((Map<String, Object> map) -> (double) map.get("point")).reversed()
 		);
-		
-		model.addAttribute("resultList", array);
+		*/
+		model.addAttribute("resultList", reference_list);
 		
 		model.addAttribute("pictVO", pictVO);
 		

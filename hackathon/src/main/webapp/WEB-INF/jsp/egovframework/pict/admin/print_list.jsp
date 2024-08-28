@@ -83,7 +83,7 @@
    	    <div class="resultContainer" id="print-contents">
 	        <p><span>제11회 대한민국 SW융합 해커톤 대회 발표평가 </span>개별 평가 서류</p>
 	        <div class="resultInfo">
-	        	<p class="resultTitle"><span>제11회 대한민국 SW융합 해커톤 대회 발표평가 </span>개별 평가 서류</p>
+	        	
 	            <div class="resultBox">
 	                <p>심사위원</p>
 	                <ul class="textLists">

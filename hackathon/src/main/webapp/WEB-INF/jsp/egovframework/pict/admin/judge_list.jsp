@@ -65,18 +65,14 @@
 								            <c:forEach var="resultList" items="${resultList}" varStatus="status">
 								                <tr>
 							                    	<td>${status.count}</td>
-							                    	<td>
-							                    		<c:if test="${resultList.assignment_id eq '1' || resultList.assignment_id eq 1}">자유과제</c:if>
-							                    		<c:if test="${resultList.assignment_id eq '2' || resultList.assignment_id eq 2}">지정과제1</c:if>
-							                    		<c:if test="${resultList.assignment_id eq '3' || resultList.assignment_id eq 3}">지정과제2</c:if>
-													</td>
+							                    	<td>${resultList.assignment_id}</td>
 													<td>${resultList.local}</td>
 							                    	<td>${resultList.award}</td>
 							                    	<td class="opt-tl"><a href="javascript:void(0);" onclick="board_mod('${resultList.idx}');" class="link">${resultList.title}</a></td>
 							                    	<td class="opt-tl"><a href="javascript:void(0);" onclick="board_mod('${resultList.idx}');" class="link">${resultList.assignment_name}</a></td>
-							                    	<td>${resultList.point_sum}</td>
-							                    	<td>${resultList.point_cnt}</td>
 							                    	<td>${resultList.point}</td>
+							                    	<td>${resultList.point_cnt}</td>
+							                    	<td>${resultList.avg_point}</td>
 								                </tr>
 							                </c:forEach>
 							            </tbody>

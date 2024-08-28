@@ -274,20 +274,31 @@
 
 	<!-- 심사평가 -->	
 	<select id="judge_list" resultType="pictVO">
-		select t.idx, t.title, t.assignment_id, t.assignment_name, local, award, 
-		sum(ifnull((point_1 + point_2 + point_3  + point_4), 0)) as point,
-		max(ifnull((point_1 + point_2 + point_3  + point_4), 0)) as max_point,
-		min(ifnull((point_1 + point_2 + point_3  + point_4), 0)) as min_point,
-		count(point_1) as point_cnt
-		from team_table t
-		left outer join judge_table j on j.team_id = t.idx
-		where 1=1
-		<if test="assignment_id != null and assignment_id != '' ">
+		select (case when t.assignment_id = 1 then '자유과제' when t.assignment_id = 2 then '지정과제1' when t.assignment_id = 3 then '지정과제2' end) as 'assignment_id', local, t.title,  t.assignment_name, award,
+        round((sum(ifnull((point_1 + point_2 + point_3  + point_4), 0)) - max(ifnull((point_1 + point_2 + point_3  + point_4), 0)) - min(ifnull((point_1 + point_2 + point_3  + point_4), 0))) / (count(point_1) -2), 2) as 'avg_point',
+		       
+		 sum(ifnull((point_1 + point_2 + point_3  + point_4), 0)) as point,
+		        
+		 #sum(point_1) as '사업화가능성', sum(point_2) as '기술성', sum(point_3) as '독창성', sum(point_4) as '적합성',
+		        
+		
+		 count(point_1) as point_cnt,
+		        #,  award,
+		        max(ifnull((point_1 + point_2 + point_3  + point_4), 0)) as max_point,
+		 min(ifnull((point_1 + point_2 + point_3  + point_4), 0)) as min_point
+		        
+		 from team_table t
+		 left outer join judge_table j on j.team_id = t.idx
+		 where 1=1
+		 
+		        <if test="assignment_id != null and assignment_id != '' ">
 			and t.assignment_id = #{assignment_id}
 		</if>
+		 group by t.idx
+		 order by round((sum(ifnull((point_1 + point_2 + point_3  + point_4), 0)) - max(ifnull((point_1 + point_2 + point_3  + point_4), 0)) - min(ifnull((point_1 + point_2 + point_3  + point_4), 0))) / (count(point_1) -2), 2) desc,
+		        sum(point_1) desc, sum(point_2) desc, sum(point_3) desc, sum(point_4) desc;
 		
-		group by t.idx
-		order by t.idx asc
+		
 	</select>
 	
 	

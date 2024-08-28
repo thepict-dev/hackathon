@@ -14,85 +14,49 @@
     </c:import>
     <style>
 	    /* 프린트용 스타일 */
-	    
-		@page {
-		    size: auto;
-		-webkit-print-color-adjust: exact;
-		       	print-color-adjust: exact;
-		}
 	    @media print {
-	    	header{
-	    		display: none;
-	    	}
-			.headerInner{
-			    padding: 0 10px;
-			}
-			.headerTitles h1{
-			    max-width: 180px;
-			}
-			.headerTitles p{
-			    font-size: 18px;
-			}
-			.resultContainer{
-			    width: 100%;
-			    margin: 0;
-			}
-			.signImg{
-			    height: 100px;
-			}
-	    	.print-contents{
-		        width: 210mm;
-		        height: 297mm;
-				margin-top: 0;
-				margin-bottom: 5mm;
-				margin-left: 5mm;
-				margin-right: 5mm
-		-webkit-print-color-adjust: exact;
-		       	print-color-adjust: exact;
-		       	page-break-after:always;
-	    	}
-			.resultInfo{
-    			padding: 10px;
-			    background: #F3F5F6 !important;
-			}
-			.resultListsWrap{
-			    background: #F3F5F6 !important;
-			}
-			.printButton{
-				display: none;
-			}
-			.resultContainer > p{
-			    font-size: 22px;
-			}
-			.resultBox > p{
-			    font-size: 14px;
-			}
-			.textLists li p{
-   				padding: 4px 0;
-			    min-width: 40px;
-			    font-size: 12px;
-			    white-space: nowrap;
-			}
-			.textLists li span{
-			    font-size: 12px;
-			}
-			.resultListsWrap{
-			    padding: 10px;
-		    }
-		    .resultHead{
-    			grid-template-columns: 5% 22% 10% 15% 11% 11% 11% 11%;
-		    }
-			.resultBody li{
-			    grid-template-columns: 5% 22% 10% 15% 11% 11% 11% 11%;
-		    }
-			.resultHead li{
-			    padding-right: 10px;
-			    font-size: 12px;
-			}
-			.resultBody li p{
-			    padding-right: 10px;
-			    font-size: 12px;
-			}
+            body { margin: 0; padding: 0; }
+            header { display: none; }
+            .headerInner { padding: 0 10px; }
+            .headerTitles h1 { max-width: 180px; }
+            .headerTitles p { font-size: 18px; }
+            .resultContainer { width: 100%; margin: 0; }
+            .signImg { height: 100px; }
+            .print-page {
+                width: 210mm;
+                height: 297mm;
+                margin: 0;
+                padding: 10mm;
+                box-sizing: border-box;
+                page-break-after: always;
+            }
+            .resultInfo, .resultListsWrap { 
+                background: #F3F5F6 !important; 
+                padding: 10px;
+            }
+            .printButton { display: none; }
+            .resultContainer > p { font-size: 22px; }
+            .resultBox > p { font-size: 14px; }
+            .textLists li p {
+                padding: 4px 0;
+                min-width: 40px;
+                font-size: 12px;
+                white-space: nowrap;
+            }
+            .textLists li span { font-size: 12px; }
+            .resultHead, .resultBody li {
+                grid-template-columns: 5% 22% 10% 15% 11% 11% 11% 11%;
+            }
+            .resultHead li, .resultBody li p {
+                padding-right: 10px;
+                font-size: 12px;
+            }
+            .page-break { 
+                page-break-before: always; 
+                height: 0;
+                margin: 0;
+                border: 0;
+            }
 	    }
     </style>
     <body class="print">
@@ -140,7 +104,7 @@
 	                <li>적합성(20)</li>
 	                <li>합계(100)</li>
 	            </ul>
-	            <ul class="resultBody">
+	            <ul class="resultBody"  id="paginatedContent">
 	            	<c:forEach var="reference_list" items="${reference_list}" varStatus="status">
 		                <li>
 		                    <p>${status.count }</p>
@@ -156,7 +120,7 @@
 	            </ul>
 	        </div>
 	        <div class="printButton">
-	            <a href="#lnk" onclick="window.print()"><img src="/front_img/print.png" alt="">개별 평가지 인쇄</a>
+	            <a href="#lnk"><img src="/front_img/print.png" alt="">개별 평가지 인쇄</a>
 	        </div>
 	    </div>
 		<form action="" id="register" name="register" method="post" enctype="multipart/form-data">
@@ -184,12 +148,75 @@
 				$("#search_fm").attr("action", "/board/board_list.do");
 				$("#search_fm").submit();
 			}
+
+
+            function prepareForPrint() {
+                const container = document.getElementById('print-contents');
+                const resultInfo = document.querySelector('.resultInfo');
+                const resultBody = document.querySelector('.resultBody');
+                const items = resultBody.querySelectorAll('li');
+                
+                container.style.display = 'none';
+                
+                // 새로운 프린트용 컨테이너
+                const printContainer = document.createElement('div');
+                printContainer.id = 'print-container';
+                document.body.appendChild(printContainer);
+                
+                // 페이지 나누기
+                const itemsPerPage = 7;
+                for (let i = 0; i < items.length; i += itemsPerPage) {
+                    // 페이지 나누기
+                    if (i > 0) {
+                        const pageBreak = document.createElement('div');
+                        pageBreak.className = 'page-break';
+                        printContainer.appendChild(pageBreak);
+                    }
+
+                    const page = document.createElement('div');
+                    page.className = 'print-page';
+                    
+                    // resultInfo 
+                    const infoClone = resultInfo.cloneNode(true);
+                    page.appendChild(infoClone);
+                    
+                    // resultListsWrap 
+                    const listsWrap = document.createElement('div');
+                    listsWrap.className = 'resultListsWrap';
+                    
+                    // resultHead 
+                    const headClone = document.querySelector('.resultHead').cloneNode(true);
+                    listsWrap.appendChild(headClone);
+                    
+                    // resultBody 
+                    const bodyClone = document.createElement('ul');
+                    bodyClone.className = 'resultBody';
+                    for (let j = i; j < i + itemsPerPage && j < items.length; j++) {
+                        bodyClone.appendChild(items[j].cloneNode(true));
+                    }
+                    listsWrap.appendChild(bodyClone);
+                    
+                    page.appendChild(listsWrap);
+                    printContainer.appendChild(page);
+                }
+            }
+
+            function cleanupAfterPrint() {
+                const printContainer = document.getElementById('print-container');
+                if (printContainer) {
+                    printContainer.remove();
+                }
+                document.getElementById('print-contents').style.display = '';
+            }
+
+            window.onbeforeprint = prepareForPrint;
+            window.onafterprint = cleanupAfterPrint;
+
+            document.querySelector('.printButton a').addEventListener('click', function(e) {
+                e.preventDefault();
+                window.print();
+            });
+
 		</script>
-            
-		<script src="../../../../../js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
-		<script src="../../../../../js/scripts.js"></script>
-		<script src="../../../../../js/Chart.min.js" crossorigin="anonymous"></script>
-		<script src="../../../../../js/simple-datatables@latest.js" crossorigin="anonymous"></script>
-		
     </body>
 </html>

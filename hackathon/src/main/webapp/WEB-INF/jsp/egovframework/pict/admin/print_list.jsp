@@ -17,20 +17,42 @@
 	    
 		@page {
 		    size: auto;
+		-webkit-print-color-adjust: exact;
+		       	print-color-adjust: exact;
 		}
 	    @media print {
+	    	header{
+	    		display: none;
+	    	}
+			.headerInner{
+			    padding: 0 10px;
+			}
+			.headerTitles h1{
+			    max-width: 180px;
+			}
+			.headerTitles p{
+			    font-size: 18px;
+			}
+			.resultContainer{
+			    width: 100%;
+			    margin: 0;
+			}
+			.signImg{
+			    height: 100px;
+			}
 	    	.print-contents{
 		        width: 210mm;
 		        height: 297mm;
-				margin-top: 10mm;
-				margin-bottom: 10mm;
-				margin-left: 10mm;
-				margin-right: 10mm
+				margin-top: 0;
+				margin-bottom: 5mm;
+				margin-left: 5mm;
+				margin-right: 5mm
 		-webkit-print-color-adjust: exact;
 		       	print-color-adjust: exact;
-		       	page-break-after:auto;
+		       	page-break-after:always;
 	    	}
 			.resultInfo{
+    			padding: 10px;
 			    background: #F3F5F6 !important;
 			}
 			.resultListsWrap{
@@ -46,15 +68,26 @@
 			    font-size: 14px;
 			}
 			.textLists li p{
-			    min-width: 50px;
+   				padding: 4px 0;
+			    min-width: 40px;
 			    font-size: 12px;
+			    white-space: nowrap;
 			}
 			.textLists li span{
 			    font-size: 12px;
 			}
+			.resultListsWrap{
+			    padding: 10px;
+		    }
+		    .resultHead{
+    			grid-template-columns: 5% 22% 10% 15% 11% 11% 11% 11%;
+		    }
+			.resultBody li{
+			    grid-template-columns: 5% 22% 10% 15% 11% 11% 11% 11%;
+		    }
 			.resultHead li{
 			    padding-right: 10px;
-			    font-size: 14px;
+			    font-size: 12px;
 			}
 			.resultBody li p{
 			    padding-right: 10px;
@@ -99,7 +132,7 @@
 	        <div class="resultListsWrap">
 	            <ul class="resultHead">
 	                <li>순서</li>
-	                <li>제안명</li>
+	                <li>과제명</li>
 	                <li>팀명</li>
 	                <li>사업화 가능성(30)</li>
 	                <li>기술성(30)</li>
@@ -123,7 +156,7 @@
 	            </ul>
 	        </div>
 	        <div class="printButton">
-	            <a href="#lnk"><img src="/front_img/print.png" alt="">개별 평가지 인쇄</a>
+	            <a href="#lnk" onclick="window.print()"><img src="/front_img/print.png" alt="">개별 평가지 인쇄</a>
 	        </div>
 	    </div>
 		<form action="" id="register" name="register" method="post" enctype="multipart/form-data">

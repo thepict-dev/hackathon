@@ -45,12 +45,22 @@
             }
             .textLists li span { font-size: 12px; }
             .resultHead, .resultBody li {
-                grid-template-columns: 5% 22% 10% 15% 11% 11% 11% 11%;
+                grid-template-columns: 5% 24% 10% 15% 11% 11% 11% 11%;
             }
             .resultHead li, .resultBody li p {
                 padding-right: 10px;
                 font-size: 12px;
+                text-align: center;
             }
+            .resultBody li p:nth-of-type(2){
+                text-align: left;
+                word-break: keep-all;
+            	
+            }
+            .resultHead li:nth-of-type(n + 4), .resultBody li p:nth-of-type(n + 4) {
+			    text-align: center;
+			    padding-right: 0;
+			}
             .page-break { 
                 page-break-before: always; 
                 height: 0;

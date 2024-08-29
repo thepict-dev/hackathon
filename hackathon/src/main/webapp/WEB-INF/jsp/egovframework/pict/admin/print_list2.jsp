@@ -21,7 +21,6 @@
             .headerTitles h1 { max-width: 180px; }
             .headerTitles p { font-size: 18px; }
             .resultContainer { width: 100%; margin: 0; }
-            .signImg { height: 100px; }
             .print-page {
                 width: 210mm;
                 height: 297mm;
@@ -43,19 +42,21 @@
                 font-size: 12px;
                 white-space: nowrap;
             }
-            .textLists li span { font-size: 12px; }
+            .textLists li span { font-size: 12px; line-height: 130%;}
             .resultHead, .resultBody li {
-                grid-template-columns: 5% 24% 10% 15% 11% 11% 11% 11%;
+    			grid-template-columns: 5% 15% 14% 11% 11% 11% 11% 22%;
+    			text-align: center;
+             	padding: 10px;
             }
+             .resultBody li{
+             	text-align: center;
+             }
             .resultHead li, .resultBody li p {
-                padding-right: 10px;
+                padding-right: 0;
                 font-size: 12px;
                 text-align: center;
-            }
-            .resultBody li p:nth-of-type(2){
-                text-align: left;
-                word-break: keep-all;
-            	
+                display: flex;
+                justify-content: center;
             }
             .resultHead li:nth-of-type(n + 4), .resultBody li p:nth-of-type(n + 4) {
 			    text-align: center;
@@ -86,65 +87,77 @@
 			.resultTitle span{
 			    font-weight: 700;
 			}
+			.resultBody li p span{
+				width: 80px;
+				height: 34.4px;
+				text-align: center;
+			}
 	    }
     </style>
     <body class="print">
         <%@include file="../audit/include/header_print.jsp" %>
    	    <div class="resultContainer" id="print-contents">
-	        <p><span>제11회 대한민국 SW융합 해커톤 대회 발표평가 </span>개별 평가 서류</p>
+	        <p><span>제11회 대한민국 SW융합 해커톤 대회 발표평가 </span>팀별 평가 서류</p>
 	        <div class="resultInfo">
-	        	<p class="resultTitle"><span>제11회 대한민국 SW융합 해커톤 대회 발표평가 </span>개별 평가 서류</p>
-	            <div class="resultBox">
+	        	<p class="resultTitle"><span>제11회 대한민국 SW융합 해커톤 대회 발표평가 </span>팀별 평가 서류</p>
+	            <div class="resultBox teams">
 	                <p>심사위원</p>
 	                <ul class="textLists">
-	                    <li><p>소속</p><span>${pictVO.company}</span></li>
-	                    <li><p>직위</p><span>${pictVO.depart}</span></li>
-	                    <li><p>성명</p><span>${pictVO.name}</span></li>
+	                    <li>
+	                    	<p>과제구분</p>
+		                	<c:if test="${pictVO.assignment_id eq '1'}">
+	                    		<span>자유과제</span>
+						    </c:if>
+		                	<c:if test="${pictVO.assignment_id eq '2'}">
+	                    		<span>지정과제1</span>
+						    </c:if>
+		                	<c:if test="${pictVO.assignment_id eq '3'}">
+	                    		<span>지정과제2</span>
+						    </c:if>
+	                    </li>
+	                    <li><p>과제명</p><span>${pictVO.assignment_name}</span></li>
 	                </ul>
 	            </div>
-	            <div class="resultBox">
+	            <div class="resultBox teams">
 	                <p>심사대상</p>
 	                <ul class="textLists">
-	                	<li><p>참가구분</p><span>
-	                	<c:if test="${pictVO.assignment_id eq '1,3'}">
-				         	자유과제, 지정과제2
-					    </c:if>
-					    <c:if test="${pictVO.assignment_id eq '2'}">
-				         	지정과제1
-					    </c:if>
-	                    </span></li>
-	                    <li><p>평가일자</p><span>2024-08-25</span></li>
+	                	<li><p>지역</p><span>${pictVO.local}</span></li>
+	                    <li><p>팀명</p><span>${pictVO.title}</span></li>
 	                </ul>
 	            </div>
+	            <!-- 
 	            <div class="resultBox">
 	                <p>본인확인 서명</p>
 	                <div class="signImg">
 	                    <img src="${pictVO.file_url }" alt="">
 	                </div>
 	            </div>
+	             -->
 	        </div>
-	        <div class="resultListsWrap">
+	        <div class="resultListsWrap teams">
 	            <ul class="resultHead">
 	                <li>순서</li>
-	                <li>과제명</li>
-	                <li>팀명</li>
+	                <li>심사위원명</li>
 	                <li>사업화 가능성(30)</li>
 	                <li>기술성(30)</li>
 	                <li>독창성(20)</li>
 	                <li>적합성(20)</li>
 	                <li>합계(100)</li>
+	                <li>심사위원 서명</li>
 	            </ul>
 	            <ul class="resultBody"  id="paginatedContent">
 	            	<c:forEach var="reference_list" items="${reference_list}" varStatus="status">
 		                <li>
-		                    <p>${status.count }</p>
-		                    <p>${reference_list.assignment_name}</p>
-		                    <p>${reference_list.title}</p>
+		                    <p>${status.count}</p>
+		                    <p>${pictVO.name}</p>
 		                    <p>${reference_list.point_1}</p>
 		                    <p>${reference_list.point_2}</p>
 		                    <p>${reference_list.point_3}</p>
 		                    <p>${reference_list.point_4}</p>
 		                    <p>${reference_list.point_1 + reference_list.point_2 + reference_list.point_3 + reference_list.point_4}</p>
+		                    <p>
+			                    <span><img src="${pictVO.file_url}" alt=""></span>
+		                    </p>
 		                </li>
 	                </c:forEach>
 	            </ul>

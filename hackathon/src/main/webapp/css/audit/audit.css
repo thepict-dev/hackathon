@@ -899,6 +899,10 @@
     border-radius: 10px;
     background-color: #fff;
 }
+.resultBox.teams{
+    width: calc(100% / 2);
+	
+}
 .resultBox > p{
     margin-bottom: 20px;
     color: #000;
@@ -1030,4 +1034,67 @@
 }
 .resultTitle{
 	display: none;
+}
+
+
+.resultListsWrap.teams .resultHead{
+    display: grid;
+    grid-template-columns: 5% 15% 11% 11% 11% 11% 11% 25%;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 8px;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    text-align: center;
+}
+.resultListsWrap.teams .resultHead li{
+    padding-right: 0;
+    color: var(--grey-blue-900, #3A3F44);
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 100%; /* 20px */
+    letter-spacing: -1px;
+}
+.resultHead li:nth-of-type(n + 4){
+    text-align: center;
+}
+.resultListsWrap.teams .resultBody li{
+    display: grid;
+    grid-template-columns: 5% 15% 11% 11% 11% 11% 11% 25%;
+    align-items: center;
+    width: 100%;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    text-align: center;
+
+}
+.resultListsWrap.teams .resultBody li p{
+    padding-right: 0;
+    color: var(--grey-blue-900, #3A3F44);
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 140%; /* 25.2px */
+    letter-spacing: -0.9px;
+    text-align: center;
+}
+.resultListsWrap.teams .resultBody li p:nth-of-type(n + 4){
+    text-align: center;
+}
+.resultBody li p span{
+	display: block;
+	width: 150px;
+	height: 68.4px;
+	margin: 0 auto;
+	overflow: hidden;
+	border-radius: 3px;
+	border: 0.3px solid var(--grey-100);
+	background: var(--wh, #FFF);
+}
+.resultBody li p span img{
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
 }

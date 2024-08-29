@@ -164,6 +164,10 @@ public interface PictMapper {
 
 	List<?> judge_final_list(PictVO pictVO) throws Exception;
 
+	PictVO team_one(PictVO pictVO) throws Exception;
+
+	List<?> team_final_list(PictVO pictVO) throws Exception;
+
 
 
 }

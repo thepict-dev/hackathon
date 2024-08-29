@@ -1379,6 +1379,19 @@ public class pictController {
 		model.addAttribute("pictVO", pictVO);
 		model.addAttribute("reference_list", reference_list);
 		return "pict/admin/print_list";
+	}//print
+	@RequestMapping(value = "/print_list.do")
+	public String print_list(@ModelAttribute("searchVO") PictVO pictVO, ModelMap model, HttpServletRequest request) throws Exception {
+		String team_id = request.getParameter("team_id");
+		pictVO.setTeam_id(team_id);
+		pictVO = pictService.team_one(pictVO);
+		
+		pictVO.setTeam_id(team_id);
+		List<?> reference_list = pictService.team_final_list(pictVO);
+		
+		model.addAttribute("pictVO", pictVO);
+		model.addAttribute("reference_list", reference_list);
+		return "pict/admin/print_list2";
 	}
 	
 	//메소드

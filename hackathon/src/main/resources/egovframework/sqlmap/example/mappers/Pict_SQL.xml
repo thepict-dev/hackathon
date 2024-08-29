@@ -444,5 +444,18 @@
 		order by t.order_by asc
 	</select>
 	
+	<select id="team_one" resultType="pictVO">
+		select * from team_table where idx = #{team_id}
+	</select>
 	
+	<select id="team_final_list" resultType="pictVO">
+		select u.name, point_1, point_2, point_3, point_4, (point_1 + point_2 + point_3 + point_4) as point, o.file_url
+		from judge_table j 
+		left outer join team_table t on j.team_id = t.idx
+		left outer join user_table u on u.idx = j.user_idx
+		left outer join judge_over o on j.user_idx = o.user_id
+		where j.team_id = #{team_id}
+		order by u.name asc
+	</select>
+	 
 </mapper>

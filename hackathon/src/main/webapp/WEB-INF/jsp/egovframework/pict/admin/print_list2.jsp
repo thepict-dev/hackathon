@@ -41,6 +41,7 @@
                 min-width: 40px;
                 font-size: 12px;
                 white-space: nowrap;
+                line-height: 130%;
             }
             .textLists li span { font-size: 12px; line-height: 130%;}
             .resultHead, .resultBody li {
@@ -149,14 +150,14 @@
 	            	<c:forEach var="reference_list" items="${reference_list}" varStatus="status">
 		                <li>
 		                    <p>${status.count}</p>
-		                    <p>${pictVO.name}</p>
+		                    <p>${reference_list.name}</p>
 		                    <p>${reference_list.point_1}</p>
 		                    <p>${reference_list.point_2}</p>
 		                    <p>${reference_list.point_3}</p>
 		                    <p>${reference_list.point_4}</p>
 		                    <p>${reference_list.point_1 + reference_list.point_2 + reference_list.point_3 + reference_list.point_4}</p>
 		                    <p>
-			                    <span><img src="${pictVO.file_url}" alt=""></span>
+			                    <span><img src="${reference_list.file_url}" alt=""></span>
 		                    </p>
 		                </li>
 	                </c:forEach>
